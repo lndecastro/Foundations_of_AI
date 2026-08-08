@@ -1,0 +1,48 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro.md
+parts:
+  - caption: "Part I — Foundations"
+    chapters:
+      - file: Unit_01_History_and_Evolution.md
+        title: "Unit 1: History and Evolution of AI"
+      - file: Unit_02_Goals_and_Foundations.md
+        title: "Unit 2: Goals and Foundations of AI"
+      - file: Unit_03_How_AI_Works.md
+        title: "Unit 3: How AI Works"
+  - caption: "Part II — How Machines Learn"
+    chapters:
+      - file: Unit_04_Machine_Learning_Paradigms.md
+        title: "Unit 4: Machine Learning Paradigms"
+      - file: Unit_05_Deep_Learning_and_Neural_Networks.md
+        title: "Unit 5: Deep Learning and Neural Networks"
+  - caption: "Part III — AI in Practice"
+    chapters:
+      - file: Unit_06_AI_Applications.md
+        title: "Unit 6: AI Applications Across Domains"
+      - file: Unit_07_Prompt_Engineering.md
+        title: "Unit 7: Prompt Engineering"
+      - file: Unit_08_Careers_in_AI.md
+        title: "Unit 8: Careers in AI"
+  - caption: "Part IV — Data, Fairness, and Responsibility"
+    chapters:
+      - file: Unit_09_Data_Quality_and_Privacy.md
+        title: "Unit 9: Data, Quality and Privacy"
+      - file: Unit_10_Bias_and_Fairness.md
+        title: "Unit 10: Bias and Fairness"
+      - file: Unit_11_Ethics_and_Responsible_AI.md
+        title: "Unit 11: Ethics and Responsible AI"
+      - file: Unit_12_Policy_and_Governance.md
+        title: "Unit 12: Policy, Regulation and Governance"
+      - file: Unit_13_The_Future_of_AI.md
+        title: "Unit 13: The Future of AI"
+  - caption: "Appendices"
+    chapters:
+      - file: Appendix_A_Python_and_Colab_Primer.md
+        title: "Appendix A: Python and Colab Primer"
+      - file: Appendix_B_Capstone_Project_Guide.md
+        title: "Appendix B: Capstone Project Guide"
+      - file: Appendix_C_AI_Use_and_Disclosure.md
+        title: "Appendix C: AI Use and Disclosure"
