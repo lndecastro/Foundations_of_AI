@@ -170,5 +170,6 @@ Run it. Then look carefully at the third message: *"Free coffee in the break roo
 
 - Russell, S., & Norvig, P. (2022). _Artificial Intelligence: A Modern Approach_, 4th Ed., Ch. 1. Pearson.
 - Mitchell, M. (2020). _Artificial Intelligence: A Guide for Thinking Humans_, Part I. Penguin Books.
+- de Castro, L. N. (2026). _Exploratory Data Analysis: Descriptive Statistics, Visualization, and Dashboard Design_, CRC Press.
 - Turing, A. M. (1950). Computing Machinery and Intelligence. _Mind_, 59(236), 433–460.
 - Dendritic Institute (2025). _AI Literacy Series — Module 1: A Brief History of AI._
