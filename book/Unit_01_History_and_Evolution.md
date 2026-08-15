@@ -2,7 +2,7 @@
 
 > **Sessions 1–4** · Aug 17, 19, 24, 26 · **HW1 assigned Aug 26, due Sep 02**
 
-Artificial Intelligence is often described as a recent breakthrough. It is not. The field is roughly seventy years old, and almost every idea making headlines today has intellectual roots that stretch back decades. Understanding that history is not trivia — it is the fastest way to develop **judgment** about what is genuinely new and what is a familiar idea wearing new clothes.
+Artificial Intelligence is often described as a recent breakthrough. It is not. The field is roughly eighty years old, and almost every idea making headlines today has intellectual roots that stretch back decades. Understanding that history is not trivia, it is the fastest way to develop **judgment** about what is genuinely new and what is a familiar idea wearing new clothes.
 
 ## Learning Objectives
 
@@ -21,19 +21,18 @@ The idea of mechanical reasoning predates computers entirely. What changed in th
 
 - **1943** — McCulloch and Pitts propose a mathematical model of a neuron. This is the ancestor of every neural network in use today.
 - **1950** — Alan Turing publishes _Computing Machinery and Intelligence_, proposing what we now call the **Turing Test** and reframing "can machines think?" into a question about observable behavior.
-- **1956** — The **Dartmouth Summer Research Project** coins the term *artificial intelligence*. The proposal famously suggested that significant progress could be made in a single summer by ten people.
-
-> That last detail is worth sitting with. **Underestimating difficulty has been a constant in this field**, from 1956 to the present day.
+- **1956** — The **Dartmouth Summer Research Project** coins the term *artificial intelligence*. The proposal famously suggested that significant progress could be made in a short period of time by few researchers.
+- **1942** — Asimov's Three Laws of Robotics.** In the short story *Runaround*, Isaac Asimov proposed three rules that a robot must follow, in strict priority order: don't harm a human (or allow harm through inaction), obey human orders unless doing so violates the first law, and protect itself unless doing so violates the first two.  
 
 ### 1.2 The Symbolic Era (1956 – 1974)
 
-Early AI was built on a clear and plausible bet: intelligence is **symbol manipulation**. If you can encode facts and rules precisely enough, reasoning follows.
+Early AI was built on a clear and plausible approach: intelligence is **symbol manipulation**. If you can encode facts and rules precisely enough, reasoning follows.
 
 - Programs proved mathematical theorems and played competent chess.
-- **ELIZA** (1966) simulated a psychotherapist using pattern substitution — and unsettled its creator by how readily people confided in it.
+- **ELIZA** (1966) simulated a psychotherapist using pattern substitution, and unsettled its creator by how readily people confided in it.
 - Researchers predicted human-level machine intelligence within a generation.
 
-**What went wrong:** the approach worked beautifully on **toy problems** and collapsed on real ones. Encoding common-sense knowledge by hand turned out to require an unbounded number of rules.
+**What went wrong:** the approach worked beautifully on **toy problems** and collapsed on real ones. Encoding common-sense knowledge by hand turned out to require an unbounded number of rules and showed no generalization capability.
 
 ### 1.3 The First AI Winter (1974 – 1980)
 
@@ -41,15 +40,15 @@ Funding evaporated when results failed to match promises. The 1973 **Lighthill R
 
 ### 1.4 Expert Systems and the Second Winter (1980 – 1993)
 
-**Expert systems** encoded specialist knowledge as explicit `IF–THEN` rules and found genuine commercial success. But they were brittle, expensive to maintain, and unable to learn. When the specialized hardware market collapsed in the late 1980s, so did the funding — a **second winter** followed.
+**Expert systems** encoded specialist knowledge as explicit `IF–THEN` rules and found genuine commercial success. But they were brittle, expensive to maintain, and unable to learn. When the specialized hardware market collapsed in the late 1980s, so did the funding and a **second winter** followed.
 
-> Both winters share a structure: **a real capability was oversold, the gap was noticed, and the correction overshot.** Keep this pattern in mind as you read AI coverage today.
+> Both winters share a structure: **a real capability was oversold, the gap was noticed, and the correction overshot.** At that time, some key components to effective AI systems were missing: connectivity, data, storage and processing power, and algorithmic development.
 
 ## Part II — The Statistical Turn
 
 ### 2.1 Learning Instead of Programming
 
-The decisive shift was philosophical before it was technical. Rather than *telling* a machine the rules, researchers began letting it **infer the rules from data**.
+The decisive shift was philosophical before it was technical. Rather than *telling* a machine the rules, researchers began letting it **infer the rules from input (data)**.
 
 | Era | Approach | How knowledge enters the system |
 | :--- | :--- | :--- |
@@ -67,7 +66,7 @@ This is the single most important conceptual boundary in the course, and Unit 3 
 - **2018–present** — Large language models scale rapidly; generative AI reaches general public use.
 
 ```{note}
-Notice how much of the recent acceleration comes from **scale** — more data, more compute, larger models — rather than from fundamentally new mathematics. Whether that trend continues is one of the genuinely open questions of Unit 13.
+Notice how much of the recent acceleration comes from **scale** (more data, more compute, larger models) and model developments. Whether that trend continues is one of the open questions of Unit 13.
 ```
 
 ## ⚙️ Hands-On: Plotting the Arc of AI
@@ -87,10 +86,10 @@ milestones = [
     (1966, "ELIZA"),
     (1980, "Expert systems boom"),
     (1997, "Deep Blue beats Kasparov"),
-    (2012, "AlexNet / deep learning"),
+    (2012, "AlexNet / DL"),
     (2016, "AlphaGo beats Lee Sedol"),
-    (2017, "Transformer architecture"),
-    (2022, "Generative AI goes mainstream"),
+    (2017, "Transformers"),
+    (2022, "GenAI"),
 ]
 
 winters = [(1974, 1980, "First AI Winter"),
@@ -117,7 +116,7 @@ ax.set_xlim(1935, 2030)
 ax.set_ylim(-1.6, 1.4)
 ax.set_yticks([])
 ax.set_xlabel("Year")
-ax.set_title("Seventy Years of Artificial Intelligence", fontsize=14, weight="bold")
+ax.set_title("Eighty Years of Artificial Intelligence", fontsize=14, weight="bold")
 ax.spines[["left", "right", "top"]].set_visible(False)
 plt.tight_layout()
 plt.show()
@@ -145,17 +144,17 @@ def is_spam_rules(email):
 tests = [
     "URGENT: you are a WINNER, click here for your free prize",
     "Hi Professor, attaching my homework for Unit 1. Thanks!",
-    "Free coffee in the break room today",
+    "Free pizza for the hackathon winner — details in the break room",
 ]
 
 print("SYMBOLIC APPROACH")
 for t in tests:
-    print(f"  spam={is_spam_rules(t)!s:<6} | {t[:55]}")
+    print(f"  spam={is_spam_rules(t)!s:<6} | {t[:56]}")
 ```
 
-Run it. Then look carefully at the third message: *"Free coffee in the break room today."* It contains a spam word but is obviously legitimate. Fixing that requires another rule. And that rule will break something else.
+Run it. Then look carefully at the third message: *"Free pizza for the hackathon winner — details in the break room."* It contains two spam words but is obviously legitimate. Fixing that requires another rule. And that rule will break something else.
 
-**This is exactly the wall that ended the symbolic era.** In Unit 3, you will solve the same problem by learning from examples instead — and you will see it handle cases nobody wrote a rule for.
+**This is exactly the wall that ended the symbolic era.** In Unit 3, you will solve the same problem by learning from examples instead, and you will see it handle cases nobody wrote a rule for.
 
 ## 🧭 Reflection
 
