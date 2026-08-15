@@ -156,6 +156,193 @@ Run it. Then look carefully at the third message: *"Free pizza for the hackathon
 
 **This is exactly the wall that ended the symbolic era.** In Unit 3, you will solve the same problem by learning from examples instead, and you will see it handle cases nobody wrote a rule for.
 
+---
+
+## Part III — The Many Faces of AI
+
+If you have spent any time reading about AI, you have probably noticed something confusing: the field seems to have a dozen names: Artificial intelligence; Machine learning; Deep learning; Data science; Generative AI; etc. Are these the same thing? Different things? Marketing?
+
+The honest answer is: they are overlapping ideas, each named at a specific moment, by specific people, for a specific reason. Once you know *when* and *why* a term was coined, the confusion largely disappears. Terminology in this field is archaeology, each layer tells you what problem people were stuck on at the time.
+
+This section walks through seven of these terms in roughly the order they entered the vocabulary.
+
+### 1. Artificial Neural Networks (ANN)
+
+**Proposed:** 1943 (foundational model) · 1958 (first learning machine) · 1986 (revival)
+
+**The short version:** computing inspired by the wiring of the brain.
+
+In 1943, neurophysiologist Warren McCulloch and logician Walter Pitts published a model of an artificial neuron, a tiny unit that adds up its inputs and fires if the total crosses a threshold. It was a mathematical abstraction, not a working machine, but it established a durable idea: *thinking might be reducible to networks of simple units*.
+
+In 1958, Frank Rosenblatt built the **Perceptron**, a physical machine that could adjust its own connection strengths to learn a task. This is the first system most historians would call a learning machine.
+
+**Why the term exists:** to distinguish brain-inspired, *learn-the-rules* computing from the logic-and-rules approach that dominated early AI. These were rival camps, not collaborators.
+
+```{admonition} Two winters, one idea
+:class: note
+ANNs have died and returned twice. Minsky and Papert's 1969 book *Perceptrons* showed what single-layer networks could not do, and funding collapsed.
+The field revived in 1986 when Rumelhart, Hinton, and Williams popularized **backpropagation**, a method for training networks with multiple layers.
+(Paul Werbos had described the essential technique in his 1974 dissertation; it went largely unnoticed. Credit here is genuinely contested.)
+```
+
+### 2. Soft Computing
+
+**Proposed:** early 1990s, by Lotfi Zadeh
+
+**The short version:** a deliberate tolerance for imprecision, in exchange for solutions that actually work.
+
+Zadeh had introduced **fuzzy logic** in 1965 as a way of representing "somewhat hot" rather than forcing a binary hot/cold. By the early 1990s he grouped fuzzy logic,
+neural networks, and evolutionary computation under a single banner: **soft computing**, explicitly opposed to "hard" computing's demand for exactness and certainty.
+
+**Why the term exists:** as an argument. Zadeh's claim was that real-world problems are messy, and that insisting on precise answers to imprecise questions is a way of guaranteeing failure. 
+Accepting approximate, partially true answers is not sloppiness, it is what makes hard problems tractable.
+
+You hear "soft computing" less today, but the argument won. Every modern AI system outputs probabilities and confidence scores rather than certainties.
+
+### 3. Natural Computing
+
+**Proposed:** consolidated as an umbrella term through the 1990s and 2000s
+
+**The short version:** computing inspired by nature, computing *with* nature, and computing that simulates nature.
+
+Rather than one invention, this is a family that accumulated over decades:
+
+| Approach | Inspired by | Roughly |
+|---|---|---|
+| Evolutionary computation | Natural selection | 1960s–1975 |
+| Artificial neural networks | The brain | 1943 onward |
+| Swarm intelligence | Ant colonies, bird flocks | 1989–1995 |
+| Artificial immune systems | The immune response | 1990s |
+| DNA computing | Molecular biology | 1994 |
+
+**Why the term exists:** to name a shared *strategy* rather than a shared technique.
+The insight is that nature has already solved extraordinarily hard optimization and adaptation problems (evolution, immunity, collective foraging) and that these
+solutions can be borrowed as algorithms. It is a research philosophy: when stuck,
+look at how a living system handles the same pressure.
+
+```{admonition} Worth noticing
+:class: tip
+Natural computing is one of the few terms here that is genuinely *broader* than AI rather than narrower.
+Some of it (DNA computing) is not about intelligence at all, it is about using molecules as hardware.
+```
+
+### 4. Machine Learning
+
+**Proposed:** 1959, by Arthur Samuel
+
+**The short version:** programs that improve with experience instead of being told exactly what to do.
+
+Samuel, working at IBM, wrote a checkers program that played games against itself and got better. 
+In his 1959 paper he described this as giving computers "the ability to learn without being explicitly programmed", the phrase that defined the field.
+
+**Why the term exists:** to name the alternative to hand-written rules. Recall the spam filter from the previous section: every rule you add may break something else. 
+ML is the response to that wall. Instead of writing rules, you show the system thousands of labeled examples and let it derive the rules itself.
+
+For roughly thirty years this remained a niche within AI. It became *the* mainstream of AI in the 1990s and 2000s, for two unglamorous reasons: data became abundant, and computers became faster.
+
+### 5. Data Mining
+
+**Proposed:** as a pejorative in the 1960s–70s · reclaimed 1989 (first KDD workshop) · mainstream through the 1990s
+
+**The short version:** finding useful patterns in large databases, especially patterns nobody thought to look for.
+
+The term began as an accusation. Statisticians used "data mining", along with "data dredging" and "fishing expedition", to describe the sin of searching a dataset until something looked significant, then reporting it as though you had predicted it in advance. Search hard enough and any dataset will yield a coincidence.
+
+In 1989, Gregory Piatetsky-Shapiro organized the first workshop on **Knowledge Discovery in Databases (KDD)**, and the community adopted the insult as its name.
+The reasoning was that the sin is not looking, it is looking without validating what you find. Done with proper holdout data and significance correction, pattern discovery is legitimate and enormously valuable.
+
+**Why the term exists:** because businesses had accumulated databases far larger than anyone could inspect by hand, and the interesting patterns were unknown in advance. 
+Machine learning as practiced then mostly answered a question you posed; data mining asked *what is in here that I did not think to ask about?*
+
+```{admonition} Why you hear it less now
+:class: note
+Data mining did not fail, it was absorbed. Its techniques live on inside machine learning and data science, but is still one of the most widely used process models for data projects. The term faded partly because "mining" acquired an unfortunate connotation once consumer data collection became a public concern.
+```
+
+```{admonition} The original sin, still worth avoiding
+:class: warning
+The pejorative meaning has not gone away. If you test enough hypotheses against one dataset, you will find "significant" results by chance alone.
+This has a name — **p-hacking** — and it is a live problem across the sciences. When your capstone finds a striking pattern, the first question to ask is whether you went looking for that specific pattern, or whether you found it by looking at everything.
+```
+
+### 6. Data Science
+
+**Proposed:** 1974 (first use) · 2001 (as a discipline) · 2008 (as a job title)
+
+**The short version:** the whole pipeline around the data, not just the algorithm.
+
+The term appears as early as 1974 in Peter Naur's writing. It was proposed as a discipline in 2001 by statistician William Cleveland, who argued that statistics should expand to include computing and real data problems. It became a *career* in 2008, when Jeff Hammerbacher (Facebook) and DJ Patil (LinkedIn) adopted "data scientist" as a job title for people who did not fit existing categories.
+
+**Why the term exists:** because the algorithm is the easy part. Somebody has to find the data, clean it, ask whether it is representative, check what it is missing, build the pipeline, and explain the result to a decision-maker who does not care about gradient descent. That work needed a name.
+
+```{admonition} A distinction that matters for your capstone
+:class: important
+Machine learning is a *method*. Data science is a *process* that often uses that method.
+A data science project can succeed with no ML at all, sometimes the answer is a well-constructed chart and an honest caveat.
+```
+
+### 7. Deep Learning
+
+**Proposed:** term used in this sense from ~2000–2006 · mainstream from 2012
+
+**The short version:** neural networks with many layers, made practical.
+
+The word "deep" refers simply to the number of layers between input and output. Rina Dechter used "deep learning" in a different machine-learning context in 1986; Igor Aizenberg applied it to neural networks around 2000; Geoffrey Hinton and colleagues popularized it from 2006 with methods for training deep networks that previously would not train.
+
+The moment everything changed was 2012, when a deep network called **AlexNet** won the ImageNet image-recognition competition by a margin so wide it ended the debate.
+Within two years, essentially the whole field had switched.
+
+**Why the term exists:** partly as rebranding. "Neural networks" carried the stigma of two failed hype cycles. But it also names something real: depth is what lets a network build up concepts in stages, from edges to shapes to objects, without anyone specifying those stages.
+
+```{admonition} What actually changed in 2012
+:class: note
+Not the theory. The core ideas were decades old. What changed was **GPUs** (graphics chips repurposed for the math) and **ImageNet** (a labeled dataset of 14 million images).
+Old ideas plus new data plus new hardware. Keep this pattern in mind, as it recurs.
+```
+
+### 8. Generative AI
+
+**Proposed:** techniques from 2013–2017 · the term entered common use in 2022–2023
+
+**The short version:** systems that produce new content rather than simply performing inferences over existing content.
+
+Most AI before this was *discriminative*: is this spam or not, is this a tumor or not, which of these ten digits is this. 
+Generative systems produce the artifact itself, such as text, images, audio, and code.
+
+Key milestones:
+
+- **2013** — variational autoencoders
+- **2014** — Generative Adversarial Networks (Ian Goodfellow), which pit two networks against each other, one generating and one detecting fakes
+- **2017** — the **Transformer** architecture ("Attention Is All You Need"), the foundation of every major language model since
+- **2022** — ChatGPT launches in November and reaches an estimated 100 million users within two months
+
+**Why the term exists:** because the shift is real, not cosmetic. When a system infers (e.g. classifies), you can check whether it was right. 
+When a system *generates*, "right" is often undefined, which is why questions of authorship, accuracy, and accountability suddenly became urgent for everyone rather than for specialists.
+
+Note the five-year gap between the Transformer paper and ChatGPT. The technology was public and published the entire time.
+
+### 📅 Putting It Together
+
+| Term | Anchor year | Named in response to |
+|---|---|---|
+| Artificial neural networks | 1943 / 1958 | Can we compute the way brains do? |
+| Fuzzy logic → soft computing | 1965 / early 1990s | Exact answers to inexact questions are useless |
+| Natural computing | 1990s–2000s | Nature already solved hard problems |
+| Machine learning | 1959 | Hand-written rules do not scale |
+| Data science | 2001 / 2008 | The algorithm is the easy part |
+| Deep learning | ~2006 / 2012 | Depth works, given data and hardware |
+| Generative AI | 2014–2017 / 2022 | Systems that create, not just classify |
+
+```{admonition} How they nest — approximately
+:class: warning
+You will often see a tidy diagram: AI contains ML contains deep learning contains generative AI.
+It is a useful first approximation and it is not quite right.
+Natural computing overlaps AI without being contained by it.
+Data science overlaps ML but extends well outside it.
+Plenty of generative techniques are not deep learning.
+Treat the nesting as a rough map, not a taxonomy.
+```
+
 ## 🧭 Reflection
 
 > Every era of AI believed it had found the right approach, and every era was partly right and partly wrong.
@@ -171,4 +358,13 @@ Run it. Then look carefully at the third message: *"Free pizza for the hackathon
 - Mitchell, M. (2020). _Artificial Intelligence: A Guide for Thinking Humans_, Part I. Penguin Books.
 - de Castro, L. N. (2026). _Exploratory Data Analysis: Descriptive Statistics, Visualization, and Dashboard Design_, CRC Press.
 - Turing, A. M. (1950). Computing Machinery and Intelligence. _Mind_, 59(236), 433–460.
+- McCulloch, W. & Pitts, W. (1943). *A Logical Calculus of the Ideas Immanent in Nervous Activity.*
+- Samuel, A. (1959). *Some Studies in Machine Learning Using the Game of Checkers.*
+- Zadeh, L. (1965). *Fuzzy Sets.*
+- Rumelhart, D., Hinton, G. & Williams, R. (1986). *Learning representations by back-propagating errors.*
+- Cleveland, W. (2001). *Data Science: An Action Plan for Expanding the Technical Areas of the Field of Statistics.*
+- de Castro, L. N. (2006). *Fundamentals of Natural Computing.* Chapman & Hall/CRC.
+- Goodfellow, I. et al. (2014). *Generative Adversarial Networks.*
+- Vaswani, A. et al. (2017). *Attention Is All You Need.*
+- Mitchell, M. (2019). *Artificial Intelligence: A Guide for Thinking Humans.*
 - Dendritic Institute (2025). _AI Literacy Series — Module 1: A Brief History of AI._
