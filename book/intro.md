@@ -1,8 +1,8 @@
 # Foundations of AI
 
-Welcome to **CAI 4002 — Foundations of AI**, offered by the **Department of Computing and Software Engineering** in the **U.A. Whitaker College of Engineering** at Florida Gulf Coast University.
+Welcome to **Foundations of AI**, a course about one of the most consequential technologies of our time! This course will give you an introductory and practical understanding of what artificial intelligence is, how it actually works, and why it matters for whatever field you end up in.
 
-This Jupyter Book is the **companion text** for the course. It follows the thirteen units of the semester, from the origins of artificial intelligence through to questions of policy, governance, and what comes next. Every unit combines conceptual material with **runnable code snippets** you can copy into Google Colab — no installation, no setup, no prior programming background required.
+This Jupyter Book is the **companion text** for the course. It follows the thirteen units of the semester, from the origins of artificial intelligence through to questions of policy, governance, and what comes next. Every unit combines conceptual material with **runnable code snippets** you can copy into any IDE you prefer, though I recommend using Google Colab, as no installation or setup will be necessary.
 
 ```{note}
 This book builds on the **AI Literacy Program** of the **FGCU AI Academy**, led by the **Dendritic Institute for Human-Centered AI & Data Science**. Where AI Literacy offers a gentle first encounter with AI for learners of all backgrounds, *Foundations of AI* goes further: it asks you to **run the systems, inspect their behavior, and evaluate them critically**. Several units point you back to AI Literacy modules for a lighter treatment of shared topics.
@@ -22,7 +22,7 @@ This book builds on the **AI Literacy Program** of the **FGCU AI Academy**, led 
 
 ## Who This Course Is For
 
-**No prior technical background is required.** What you do need is curiosity, a willingness to engage with new ideas, and an openness to thinking critically about the technology shaping our world. This is a course for thinkers, problem-solvers, and future professionals — whether you plan to work in technology, healthcare, business, education, law, or any other field.
+**No prior technical background is required.** What you do need is curiosity, a willingness to engage with new ideas, and an openness to thinking critically about the technology shaping our world. This is a course for thinkers, problem-solvers, and future professionals, whether you plan to work in technology, healthcare, business, education, law, or any other field.
 
 You will not be asked to write software from scratch. You **will** be asked to run code, change it, observe what happens, and explain what you saw.
 
@@ -41,14 +41,14 @@ By the end of this course, you will be able to:
 
 ## Our Journey
 
-The course is organized as a **progressive pathway**. Early units build vocabulary and intuition; middle units put that vocabulary to work on real systems; later units ask what all of it means for society.
+The course is organized as a **progressive pathway**. Early units build vocabulary and methods; middle units put that vocabulary to work on real systems; later units ask what all of it means for society.
 
 | Unit | Theme | Focus |
 | :---: | :--- | :--- |
 | **1** | _History and Evolution of AI_ | From early ideas and pioneers to the systems of today |
-| **2** | _Goals and Foundations of AI_ | What AI is trying to do — agents, problem types, terminology |
+| **2** | _Goals and Foundations of AI_ | What AI is trying to do: agents, problem types, terminology |
 | **3** | _How AI Works_ | The build pipeline, in plain language and in code |
-| **4** | _Machine Learning Paradigms_ | Supervised, unsupervised, reinforcement — and how models learn |
+| **4** | _Machine Learning Paradigms_ | Supervised, unsupervised, reinforcement, and how models learn |
 | **5** | _Deep Learning and Neural Networks_ | Structure, training, applications, and hard limits |
 | **6** | _AI Applications Across Domains_ | Healthcare, education, law, business, finance, creative work |
 | **7** | _Prompt Engineering_ | Communicating effectively with generative systems |
@@ -72,16 +72,16 @@ The course is organized as a **progressive pathway**. Early units build vocabula
 **Colab tip:** when you open a shared notebook, you are working in a temporary copy. Click **File → Save a copy in Drive** *before* you start, or your work will disappear when you close the tab.
 ```
 
-## Required Texts
+## Suggested Readings
 
 - Russell, S. J., & Norvig, P. (2022). _Artificial Intelligence: A Modern Approach_ (4th ed.). Pearson. ISBN 9789356063570
 - Mitchell, M. (2020). _Artificial Intelligence: A Guide for Thinking Humans_. Penguin Books. ISBN 9780241404836
 
-Course materials are delivered through **FGCU First Day Ready** — see the "Course Materials" link in Canvas, or visit [fgcu.edu/firstdayready](https://fgcu.edu/firstdayready).
+Course materials are delivered through **FGCU First Day Ready**. See the "Course Materials" link in Canvas, or visit [fgcu.edu/firstdayready](https://fgcu.edu/firstdayready).
 
 ## A Human-Centered Commitment
 
-This course embraces a **human-centered approach** to AI: these systems are not replacing people — they are amplifying our capacity to think, create, and solve. As you work through these units, keep returning to three questions:
+This course embraces a **human-centered approach** to AI: these systems are not replacing people, they are amplifying our capacity to think, create, and solve. As you work through these units, keep returning to three questions:
 
 > **What can this system actually do?**
 > **What is it doing that I cannot see?**
