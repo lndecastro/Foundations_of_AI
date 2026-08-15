@@ -166,7 +166,7 @@ The honest answer is: they are overlapping ideas, each named at a specific momen
 
 This section walks through seven of these terms in roughly the order they entered the vocabulary.
 
-### 1. Artificial Neural Networks (ANN)
+### 3.1 Artificial Neural Networks (ANN)
 
 **Proposed:** 1943 (foundational model) · 1958 (first learning machine) · 1986 (revival)
 
@@ -185,7 +185,7 @@ The field revived in 1986 when Rumelhart, Hinton, and Williams popularized **bac
 (Paul Werbos had described the essential technique in his 1974 dissertation; it went largely unnoticed. Credit here is genuinely contested.)
 ```
 
-### 2. Soft Computing
+### 3.2 Soft Computing
 
 **Proposed:** early 1990s, by Lotfi Zadeh
 
@@ -199,7 +199,7 @@ Accepting approximate, partially true answers is not sloppiness, it is what make
 
 You hear "soft computing" less today, but the argument won. Every modern AI system outputs probabilities and confidence scores rather than certainties.
 
-### 3. Natural Computing
+### 3.3 Natural Computing
 
 **Proposed:** consolidated as an umbrella term through the 1990s and 2000s
 
@@ -226,7 +226,7 @@ Natural computing is one of the few terms here that is genuinely *broader* than 
 Some of it (DNA computing) is not about intelligence at all, it is about using molecules as hardware.
 ```
 
-### 4. Machine Learning
+### 3.4 Machine Learning
 
 **Proposed:** 1959, by Arthur Samuel
 
@@ -240,7 +240,7 @@ ML is the response to that wall. Instead of writing rules, you show the system t
 
 For roughly thirty years this remained a niche within AI. It became *the* mainstream of AI in the 1990s and 2000s, for two unglamorous reasons: data became abundant, and computers became faster.
 
-### 5. Data Mining
+### 3.5 Data Mining
 
 **Proposed:** as a pejorative in the 1960s–70s · reclaimed 1989 (first KDD workshop) · mainstream through the 1990s
 
@@ -265,7 +265,7 @@ The pejorative meaning has not gone away. If you test enough hypotheses against 
 This has a name — **p-hacking** — and it is a live problem across the sciences. When your capstone finds a striking pattern, the first question to ask is whether you went looking for that specific pattern, or whether you found it by looking at everything.
 ```
 
-### 6. Data Science
+### 3.6 Data Science
 
 **Proposed:** 1974 (first use) · 2001 (as a discipline) · 2008 (as a job title)
 
@@ -281,7 +281,7 @@ Machine learning is a *method*. Data science is a *process* that often uses that
 A data science project can succeed with no ML at all, sometimes the answer is a well-constructed chart and an honest caveat.
 ```
 
-### 7. Deep Learning
+### 3.7 Deep Learning
 
 **Proposed:** term used in this sense from ~2000–2006 · mainstream from 2012
 
@@ -300,7 +300,7 @@ Not the theory. The core ideas were decades old. What changed was **GPUs** (grap
 Old ideas plus new data plus new hardware. Keep this pattern in mind, as it recurs.
 ```
 
-### 8. Generative AI
+### 3.8 Generative AI
 
 **Proposed:** techniques from 2013–2017 · the term entered common use in 2022–2023
 
