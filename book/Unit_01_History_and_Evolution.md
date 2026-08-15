@@ -343,6 +343,74 @@ Plenty of generative techniques are not deep learning.
 Treat the nesting as a rough map, not a taxonomy.
 ```
 
+## ⚙️ Hands-On: Mapping the Vocabulary
+
+The first hands-on plotted *events*. This one plots *names* — when each term in Part III entered the vocabulary, and what argument it was making at the time.
+
+**Copy this into Colab (or any Python environment) and run it.**
+
+```python
+import matplotlib.pyplot as plt
+
+# --- When each term entered the vocabulary, and what it was named against ---
+terms = [
+    (1943, "Artificial Neural Networks",  "Can we compute the way brains do?"),
+    (1959, "Machine Learning",            "Hand-written rules do not scale"),
+    (1965, "Fuzzy Logic / Soft Computing","Exact answers to vague questions"),
+    (1977, "Exploratory Data Analysis",   "Look at the data before modelling"),
+    (1989, "Data Mining",                 "What is in here I did not ask about?"),
+    (1990, "Natural Computing",           "Nature already solved hard problems"),
+    (2001, "Data Science",                "The algorithm is the easy part"),
+    (2006, "Deep Learning",               "Depth works, given data and hardware"),
+    (2014, "Generative AI",               "Systems that create, not just sort"),
+]
+
+winters = [(1974, 1980, "First AI Winter"), (1987, 1993, "Second AI Winter")]
+TODAY = 2026
+
+fig, ax = plt.subplots(figsize=(13, 6))
+
+# Shade the AI winters, exactly as in the first hands-on
+for start, end, label in winters:
+    ax.axvspan(start, end, color="lightsteelblue", alpha=0.45, zorder=0)
+    ax.text((start + end) / 2, len(terms) - 0.3, label, ha="center",
+            fontsize=8.5, style="italic", color="navy")
+
+# One bar per term, running from the year it was coined to today
+for i, (year, name, _) in enumerate(terms):
+    row = len(terms) - 1 - i
+    ax.barh(row, TODAY - year, left=year, height=0.55,
+            color="darkgreen", alpha=0.30, zorder=2)
+    ax.plot(year, row, "o", color="darkgreen", markersize=9, zorder=3)
+    ax.text(year - 1.5, row, str(year), ha="right", va="center",
+            fontsize=9, weight="bold")
+    ax.text(year + 2, row + 0.02, name, ha="left", va="center", fontsize=9.5)
+
+ax.set_yticks([])
+ax.set_xlim(1935, TODAY + 4)
+ax.set_ylim(-0.8, len(terms) + 0.2)
+ax.set_xlabel("Year")
+ax.set_title("The Many Faces of AI: when each name entered the vocabulary",
+             fontsize=14, weight="bold")
+ax.spines[["left", "right", "top"]].set_visible(False)
+plt.tight_layout()
+plt.show()
+
+print("Nothing on this chart has ended. Every bar runs to today.\n")
+for year, name, against in terms:
+    print(f"  {year}  {name:<30} {against}")
+```
+
+Look at the shape the bars make: a staircase, each step starting later than the last and none of them stopping. **The terms accumulated; they did not replace one another.** Machine learning did not retire neural networks, and generative AI has not retired data mining. All nine are in active use today, which is precisely why the vocabulary feels so crowded when you first encounter it.
+
+Then notice what crosses the shaded bands. Artificial neural networks, machine learning, and fuzzy logic were all named *before* the first AI winter and were all still being worked on during both. Winters are periods when funding and attention collapse, not periods when the ideas disappear.
+
+**Try changing it:**
+
+1. The date for Natural Computing is the softest on this chart — its components arrived separately (evolutionary computation in the 1960s, swarm intelligence around 1990, DNA computing in 1994). Pick the date you think is most defensible, change it, and be ready to say why. Which other rows could reasonably move?
+2. Add a row for **Symbolic AI**, which Part I covered but Part III did not list. What year do you give it, and does its bar run to today like the others, or does it stop?
+3. Three terms sit close together between 1977 and 2001 — EDA, data mining, and data science. What was happening in the world during those years that would cause three names for working with data to appear in such quick succession?
+
 ## 🧭 Reflection
 
 > Every era of AI believed it had found the right approach, and every era was partly right and partly wrong.
