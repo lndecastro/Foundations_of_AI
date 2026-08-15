@@ -68,6 +68,10 @@ The course is organized as a **progressive pathway**. Early units build vocabula
 - Read Appendix A first if you have never run Python before. It takes about ten minutes.
 - Use this book alongside **Canvas**, where all assignments are submitted, and the required texts.
 
+```{note}
+All dates presented here are tentative and subject to change depending on the course development.
+```
+
 ```{warning}
 **Colab tip:** when you open a shared notebook, you are working in a temporary copy. Click **File → Save a copy in Drive** *before* you start, or your work will disappear when you close the tab.
 ```
