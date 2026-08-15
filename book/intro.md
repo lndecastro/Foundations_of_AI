@@ -69,7 +69,7 @@ The course is organized as a **progressive pathway**. Early units build vocabula
 - Use this book alongside **Canvas**, where all assignments are submitted, and the required texts.
 
 ```{note}
-All dates presented here are tentative and subject to change depending on the course development.
+All class and assignments dates presented here are tentative and subject to change depending on the course development.
 ```
 
 ```{warning}
