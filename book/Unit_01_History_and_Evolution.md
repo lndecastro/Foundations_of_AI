@@ -44,7 +44,7 @@ Funding evaporated when results failed to match promises. The 1973 **Lighthill R
 
 > Both winters share a structure: **a real capability was oversold, the gap was noticed, and the correction overshot.** At that time, some key components to effective AI systems were missing: connectivity, data, storage and processing power, and algorithmic development.
 
-## Part II — The Learning Turn
+## Part II — The Statistical (Learning) Turn
 
 ### 2.1 Learning Instead of Programming
 
