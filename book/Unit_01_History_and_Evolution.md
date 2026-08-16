@@ -22,7 +22,7 @@ The idea of mechanical reasoning predates computers entirely. What changed in th
 - **1943** — McCulloch and Pitts propose a mathematical model of a neuron. This is the ancestor of every neural network in use today.
 - **1950** — Alan Turing publishes _Computing Machinery and Intelligence_, proposing what we now call the **Turing Test** and reframing "can machines think?" into a question about observable behavior.
 - **1956** — The **Dartmouth Summer Research Project** coins the term *artificial intelligence*. The proposal famously suggested that significant progress could be made in a short period of time by few researchers.
-- **1942** — Asimov's Three Laws of Robotics.** In the short story *Runaround*, Isaac Asimov proposed three rules that a robot must follow, in strict priority order: don't harm a human (or allow harm through inaction), obey human orders unless doing so violates the first law, and protect itself unless doing so violates the first two.  
+- **1942** — Asimov's **Three Laws of Robotics**. In the short story *Runaround*, Isaac Asimov proposed three rules that a robot must follow, in strict priority order: don't harm a human (or allow harm through inaction), obey human orders unless doing so violates the first law, and protect itself unless doing so violates the first two.  
 
 ### 1.2 The Symbolic Era (1956 – 1974)
 
@@ -44,7 +44,7 @@ Funding evaporated when results failed to match promises. The 1973 **Lighthill R
 
 > Both winters share a structure: **a real capability was oversold, the gap was noticed, and the correction overshot.** At that time, some key components to effective AI systems were missing: connectivity, data, storage and processing power, and algorithmic development.
 
-## Part II — The Statistical Turn
+## Part II — The Learning Turn
 
 ### 2.1 Learning Instead of Programming
 
