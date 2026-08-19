@@ -1,6 +1,6 @@
 # Unit 1: History and Evolution of AI
 
-> **Sessions 1–4** · Aug 17, 19, 24, 26 · **HW1 assigned Aug 26, due Sep 02**
+> **Sessions 1–2** · Aug 17, 19 · **HW1 assigned Aug 19, due Aug 23**
 
 Artificial Intelligence is often described as a recent breakthrough. It is not. The field is roughly eighty years old, and almost every idea making headlines today has intellectual roots that stretch back decades. Understanding that history is not trivia, it is the fastest way to develop **judgment** about what is genuinely new and what is a familiar idea wearing new clothes.
 
