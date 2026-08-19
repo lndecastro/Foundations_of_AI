@@ -328,7 +328,8 @@ Note the five-year gap between the Transformer paper and ChatGPT. The technology
 | Artificial neural networks | 1943 / 1958 | Can we compute the way brains do? |
 | Fuzzy logic → soft computing | 1965 / early 1990s | Exact answers to inexact questions are useless |
 | Natural computing | 1990s–2000s | Nature already solved hard problems |
-| Machine learning | 1959 | Hand-written rules do not scale |
+| Machine learning | 1959 / 1997 | Hand-written rules do not scale / T. Mitchel's book |
+| Computational Intelligence | 1994 | World Congress on Computational Intelligence (WCCI) |
 | Data science | 2001 / 2008 | The algorithm is the easy part |
 | Deep learning | ~2006 / 2012 | Depth works, given data and hardware |
 | Generative AI | 2014–2017 / 2022 | Systems that create, not just classify |
