@@ -1,0 +1,805 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 6: AI Applications Across Domains &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_06_AI_Applications';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 7: Prompt Engineering" href="Unit_07_Prompt_Engineering.html" />
+    <link rel="prev" title="Unit 5: Deep Learning and Neural Networks" href="Unit_05_Deep_Learning_and_Neural_Networks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 6: AI Applications Across Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Careers_in_AI.html">Unit 8: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — Data, Fairness, and Responsibility</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Data_Quality_and_Privacy.html">Unit 9: Data, Quality and Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Bias_and_Fairness.html">Unit 10: Bias and Fairness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Ethics_and_Responsible_AI.html">Unit 11: Ethics and Responsible AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Policy_and_Governance.html">Unit 12: Policy, Regulation and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_The_Future_of_AI.html">Unit 13: The Future of AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_06_AI_Applications.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_06_AI_Applications.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 6: AI Applications Across Domains</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-a-framework-for-evaluating-any-application">Part I — A Framework for Evaluating Any Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-the-domains">Part II — The Domains</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#healthcare">2.1 Healthcare</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#education">2.2 Education</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#law">2.3 Law</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#business-and-finance">2.4 Business and Finance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creative-industries">2.5 Creative Industries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-a-business-forecasting-model">⚙️ Hands-On: A Business Forecasting Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applying-the-framework">💡 Example: Applying the Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-6-ai-applications-across-domains">
+<h1>Unit 6: AI Applications Across Domains<a class="headerlink" href="#unit-6-ai-applications-across-domains" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Sessions 16–17</strong> · Oct 12, Oct 14 · <strong>HW6 assigned Oct 14, due Oct 21</strong></p>
+</div></blockquote>
+<p>You now know how AI systems are built and where they break. This unit surveys where they are actually deployed — and, more usefully, teaches you to ask the same five questions of any application claim you encounter.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Survey <strong>major AI applications</strong> across healthcare, education, law, business, finance, and creative work.</p></li>
+<li><p>Apply a consistent <strong>evaluation framework</strong> to any claimed AI application.</p></li>
+<li><p>Distinguish <strong>decision support</strong> from <strong>automated decision-making</strong> and explain why the distinction matters.</p></li>
+<li><p>Build a simple predictive model on tabular business data.</p></li>
+</ul>
+</section>
+<section id="part-i-a-framework-for-evaluating-any-application">
+<h2>Part I — A Framework for Evaluating Any Application<a class="headerlink" href="#part-i-a-framework-for-evaluating-any-application" title="Link to this heading">#</a></h2>
+<p>Before the survey, the tool. For any AI application you encounter — in a paper, a product demo, or a news article — ask these five questions:</p>
+<ol class="arabic simple">
+<li><p><strong>What is the task type?</strong> (Unit 2 — classification, regression, generation, ranking…)</p></li>
+<li><p><strong>Where does the training data come from, and who is in it?</strong></p></li>
+<li><p><strong>What happens when it is wrong?</strong> Are false positives and false negatives equally costly?</p></li>
+<li><p><strong>Is it advising a human, or deciding on its own?</strong></p></li>
+<li><p><strong>Who is accountable for the outcome?</strong></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Question 4 is the one most often glossed over in marketing material. A tool that flags suspicious scans for a radiologist’s review is a fundamentally different product — legally, ethically, and practically — from one that issues a diagnosis. Vendors frequently blur this line.</p>
+</div>
+</section>
+<section id="part-ii-the-domains">
+<h2>Part II — The Domains<a class="headerlink" href="#part-ii-the-domains" title="Link to this heading">#</a></h2>
+<section id="healthcare">
+<h3>2.1 Healthcare<a class="headerlink" href="#healthcare" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Medical imaging</strong> — detecting tumors, fractures, retinal disease. Among the most mature applications.</p></li>
+<li><p><strong>Drug discovery</strong> — protein structure prediction (AlphaFold) has genuinely accelerated research.</p></li>
+<li><p><strong>Clinical documentation</strong> — ambient transcription of doctor-patient visits.</p></li>
+<li><p><strong>Risk prediction</strong> — flagging patients likely to deteriorate or be readmitted.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>The hard part:</strong> models trained at one hospital often fail at another, because scanner models, patient demographics, and labeling practices differ. This is <strong>distribution shift</strong> (Unit 5), and in medicine it can be lethal.</p>
+</div></blockquote>
+</section>
+<section id="education">
+<h3>2.2 Education<a class="headerlink" href="#education" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Adaptive learning platforms that adjust difficulty to the student</p></li>
+<li><p>Automated grading and feedback on written work</p></li>
+<li><p>Early-warning systems identifying students at risk</p></li>
+<li><p>AI tutors available at any hour</p></li>
+</ul>
+<blockquote>
+<div><p><strong>The hard part:</strong> early-warning systems trained on historical outcomes learn historical inequities. A model predicting “likely to drop out” may simply be re-encoding which students received less support in the past. Unit 10 makes this concrete.</p>
+</div></blockquote>
+</section>
+<section id="law">
+<h3>2.3 Law<a class="headerlink" href="#law" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>E-discovery</strong> — sorting millions of documents for relevance (a mature, well-accepted use)</p></li>
+<li><p>Contract review and clause extraction</p></li>
+<li><p>Legal research and case retrieval</p></li>
+<li><p><strong>Risk assessment in sentencing and bail</strong> — deeply contested</p></li>
+</ul>
+<blockquote>
+<div><p><strong>The hard part:</strong> generative models fabricate citations. Multiple attorneys have been sanctioned for filing briefs containing cases that do not exist. Verification is not optional.</p>
+</div></blockquote>
+</section>
+<section id="business-and-finance">
+<h3>2.4 Business and Finance<a class="headerlink" href="#business-and-finance" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Demand forecasting and inventory optimization</p></li>
+<li><p>Fraud detection — one of the oldest and most successful applications</p></li>
+<li><p>Credit scoring and underwriting — heavily regulated, heavily scrutinized</p></li>
+<li><p>Algorithmic trading</p></li>
+<li><p>Customer service automation</p></li>
+</ul>
+</section>
+<section id="creative-industries">
+<h3>2.5 Creative Industries<a class="headerlink" href="#creative-industries" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Text, image, audio, and video generation</p></li>
+<li><p>Design iteration and concept exploration</p></li>
+<li><p>Music composition and production tools</p></li>
+<li><p>Game asset generation</p></li>
+</ul>
+<blockquote>
+<div><p><strong>The hard part:</strong> these questions are unresolved. Who owns output trained on copyrighted work? What happens to entry-level creative jobs? These are live legal and economic disputes, not settled matters — see Unit 12.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="hands-on-a-business-forecasting-model">
+<h2>⚙️ Hands-On: A Business Forecasting Model<a class="headerlink" href="#hands-on-a-business-forecasting-model" title="Link to this heading">#</a></h2>
+<p>Below is a compact but realistic application: predicting monthly sales from marketing spend and seasonality. This is <strong>regression</strong> (Unit 2) applied to tabular business data — by far the most common form of AI in industry, and the least glamorous.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span><span class="o">,</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">r2_score</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">240</span>
+
+<span class="c1"># --- Simulate three years of monthly store data -------------------</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"ad_spend"</span><span class="p">:</span>    <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>      <span class="c1"># thousands $</span>
+    <span class="s2">"month"</span><span class="p">:</span>       <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+    <span class="s2">"competitors"</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+    <span class="s2">"foot_traffic"</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(),</span>
+<span class="p">})</span>
+<span class="c1"># Sales depend on spend (with diminishing returns), season, competition</span>
+<span class="n">season</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.35</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"sales"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"ad_spend"</span><span class="p">])</span> <span class="o">*</span> <span class="n">season</span>
+               <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">"competitors"</span><span class="p">]</span>
+               <span class="o">+</span> <span class="mf">0.02</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s2">"foot_traffic"</span><span class="p">]</span>
+               <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">"sales"</span><span class="p">);</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"sales"</span><span class="p">]</span>
+<span class="n">X_tr</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">y_te</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"Linear Regression"</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">()),</span>
+                    <span class="p">(</span><span class="s2">"Random Forest"</span><span class="p">,</span> <span class="n">RandomForestRegressor</span><span class="p">(</span>
+                        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">11</span><span class="p">))]:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_te</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">20s</span><span class="si">}</span><span class="s2"> MAE </span><span class="si">{</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span><span class="w"> </span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">6.2f</span><span class="si">}</span><span class="s2">   "</span>
+          <span class="sa">f</span><span class="s2">"R² </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span><span class="w"> </span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Which factors drive sales? (Random Forest can tell us)</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span>
+<span class="n">imp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">imp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"barh"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"seagreen"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Relative importance"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"What drives sales, according to the model?"</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The Random Forest outperforms Linear Regression here because the true relationship involves a square root and a seasonal wave — curves that a straight line cannot follow.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Feature importance is not causation.</strong> The chart tells you which variables the model <em>used</em>, not which ones <em>cause</em> sales. If rainy days both reduce foot traffic and increase online orders, the model may show foot traffic as important while being completely wrong about the mechanism. Acting on a correlation as though it were a cause is the most common and most expensive mistake in applied AI.</p>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">store_id</span></code> column of random numbers and refit. Does the model assign it importance? What does spurious importance tell you about trusting these charts?</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">ad_spend</span></code> entirely. How much does performance drop? That gap estimates its real contribution.</p></li>
+<li><p>Frame this as a <strong>decision</strong>: at what point should a manager act on this model without a human review? Use the five questions from Part I.</p></li>
+</ol>
+</section>
+<section id="example-applying-the-framework">
+<h2>💡 Example: Applying the Framework<a class="headerlink" href="#example-applying-the-framework" title="Link to this heading">#</a></h2>
+<p>Take the claim: <em>“Our AI reduces hospital readmissions by 20%.”</em></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Question</p></th>
+<th class="head text-left"><p>What you should ask</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Task type?</strong></p></td>
+<td class="text-left"><p>Classification — will this patient return within 30 days?</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Training data?</strong></p></td>
+<td class="text-left"><p>Which hospital, which years, which patient population?</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Cost of errors?</strong></p></td>
+<td class="text-left"><p>A missed high-risk patient vs. wasted follow-up resources</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Advisory or automated?</strong></p></td>
+<td class="text-left"><p>Does it flag for a nurse, or auto-assign discharge plans?</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Accountable?</strong></p></td>
+<td class="text-left"><p>The hospital, the vendor, or the clinician who accepted the flag?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Notice that <strong>none of these questions is about accuracy.</strong> The accuracy number is the easiest thing to report and the least informative thing to know.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Across all six domains, the mature and uncontroversial applications share a trait: <strong>the AI narrows a search space and a human makes the decision.</strong> The contested applications are those where the system decides.
+Is that a permanent boundary, or just where we currently are?</p>
+</div></blockquote>
+<p><strong>Connecting to HW6 (AI Application Analysis — Choose a Domain, due Oct 21):</strong> pick a domain and a specific claimed application, then run it through the five questions. Depth on one application will earn more than breadth across many.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Russell, S., &amp; Norvig, P. (2022). <em>AI: A Modern Approach</em>, 4th Ed., Ch. 27. Pearson.</p></li>
+<li><p>Topol, E. (2019). <em>Deep Medicine: How Artificial Intelligence Can Make Healthcare Human Again.</em> Basic Books.</p></li>
+<li><p>Dendritic Institute (2025). <em>AI Literacy Series — Module 8: Case Studies.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_05_Deep_Learning_and_Neural_Networks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 5: Deep Learning and Neural Networks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_07_Prompt_Engineering.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 7: Prompt Engineering</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-a-framework-for-evaluating-any-application">Part I — A Framework for Evaluating Any Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-the-domains">Part II — The Domains</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#healthcare">2.1 Healthcare</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#education">2.2 Education</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#law">2.3 Law</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#business-and-finance">2.4 Business and Finance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creative-industries">2.5 Creative Industries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-a-business-forecasting-model">⚙️ Hands-On: A Business Forecasting Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applying-the-framework">💡 Example: Applying the Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,900 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Appendix A: Python and Colab Primer &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Appendix_A_Python_and_Colab_Primer';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Appendix B: Capstone Project Guide" href="Appendix_B_Capstone_Project_Guide.html" />
+    <link rel="prev" title="Unit 13: The Future of AI" href="Unit_13_The_Future_of_AI.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Careers_in_AI.html">Unit 8: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — Data, Fairness, and Responsibility</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Data_Quality_and_Privacy.html">Unit 9: Data, Quality and Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Bias_and_Fairness.html">Unit 10: Bias and Fairness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Ethics_and_Responsible_AI.html">Unit 11: Ethics and Responsible AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Policy_and_Governance.html">Unit 12: Policy, Regulation and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_The_Future_of_AI.html">Unit 13: The Future of AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Appendix_A_Python_and_Colab_Primer.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Appendix_A_Python_and_Colab_Primer.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Appendix A: Python and Colab Primer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-getting-started-with-google-colab">Part I — Getting Started with Google Colab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-open-a-notebook">Step 1 — Open a notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-save-your-own-copy">Step 2 — Save your own copy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-run-a-cell">Step 3 — Run a cell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-know-your-shortcuts">Step 4 — Know your shortcuts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-just-enough-python">Part II — Just Enough Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-names-for-values">Variables — names for values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-ordered-collections">Lists — ordered collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-do-something-repeatedly">Loops — do something repeatedly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-reusable-operations">Functions — reusable operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-borrowing-other-people-s-work">Libraries — borrowing other people’s work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-notes-for-humans">Comments — notes for humans</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-reading-error-messages">Part III — Reading Error Messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ai-to-debug">Using AI to debug</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iv-what-this-course-uses">Part IV — What This Course Uses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-v-verify-your-setup">Part V — Verify Your Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatives-to-colab">Alternatives to Colab</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="appendix-a-python-and-colab-primer">
+<h1>Appendix A: Python and Colab Primer<a class="headerlink" href="#appendix-a-python-and-colab-primer" title="Link to this heading">#</a></h1>
+<p><strong>Read this before Unit 3 if you have never run code before.</strong> It takes about ten minutes and requires no installation. You will not be asked to <em>write</em> programs in this course — but you will run them, change small pieces, and interpret what comes out.</p>
+<section id="part-i-getting-started-with-google-colab">
+<h2>Part I — Getting Started with Google Colab<a class="headerlink" href="#part-i-getting-started-with-google-colab" title="Link to this heading">#</a></h2>
+<p><strong>Google Colab</strong> runs Python in your browser. Nothing to install, works on any laptop, free with a Google account.</p>
+<section id="step-1-open-a-notebook">
+<h3>Step 1 — Open a notebook<a class="headerlink" href="#step-1-open-a-notebook" title="Link to this heading">#</a></h3>
+<p>Go to <a class="reference external" href="https://colab.research.google.com">colab.research.google.com</a> and choose <strong>New notebook</strong>. Or click the 🚀 rocket icon at the top of any page in this book.</p>
+</section>
+<section id="step-2-save-your-own-copy">
+<h3>Step 2 — Save your own copy<a class="headerlink" href="#step-2-save-your-own-copy" title="Link to this heading">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Do this first, every time.</strong> Click <strong>File → Save a copy in Drive</strong>. If you skip this, you are working in a temporary copy and everything you do disappears when you close the tab. This is the single most common way students lose their work.</p>
+</div>
+</section>
+<section id="step-3-run-a-cell">
+<h3>Step 3 — Run a cell<a class="headerlink" href="#step-3-run-a-cell" title="Link to this heading">#</a></h3>
+<p>Click into a code cell and press <strong>Shift + Enter</strong> (or the ▶ play button). Try this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Hello from Colab"</span><span class="p">)</span>
+<span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>The first run takes ten to twenty seconds while Colab starts a machine for you. Subsequent runs are instant.</p>
+</section>
+<section id="step-4-know-your-shortcuts">
+<h3>Step 4 — Know your shortcuts<a class="headerlink" href="#step-4-know-your-shortcuts" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Action</p></th>
+<th class="head text-left"><p>Shortcut</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Run cell, move to next</p></td>
+<td class="text-left"><p><strong>Shift + Enter</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Run cell, stay put</p></td>
+<td class="text-left"><p><strong>Ctrl + Enter</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Add cell below</p></td>
+<td class="text-left"><p><strong>Ctrl + M</strong> then <strong>B</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Delete cell</p></td>
+<td class="text-left"><p><strong>Ctrl + M</strong> then <strong>D</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Interrupt a stuck cell</p></td>
+<td class="text-left"><p><strong>Runtime → Interrupt execution</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Start completely fresh</p></td>
+<td class="text-left"><p><strong>Runtime → Restart session</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="part-ii-just-enough-python">
+<h2>Part II — Just Enough Python<a class="headerlink" href="#part-ii-just-enough-python" title="Link to this heading">#</a></h2>
+<p>You need to <em>read</em> these six things, not write them from memory.</p>
+<section id="variables-names-for-values">
+<h3>Variables — names for values<a class="headerlink" href="#variables-names-for-values" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">course</span> <span class="o">=</span> <span class="s2">"Foundations of AI"</span>      <span class="c1"># text (a "string")</span>
+<span class="n">credits</span> <span class="o">=</span> <span class="mi">3</span>                        <span class="c1"># whole number (an "integer")</span>
+<span class="n">gpa</span> <span class="o">=</span> <span class="mf">3.75</span>                         <span class="c1"># decimal ("float")</span>
+<span class="n">enrolled</span> <span class="o">=</span> <span class="kc">True</span>                    <span class="c1"># yes/no ("boolean")</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">course</span><span class="p">,</span> <span class="n">credits</span><span class="p">,</span> <span class="n">gpa</span><span class="p">,</span> <span class="n">enrolled</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="lists-ordered-collections">
+<h3>Lists — ordered collections<a class="headerlink" href="#lists-ordered-collections" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">units</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"History"</span><span class="p">,</span> <span class="s2">"Foundations"</span><span class="p">,</span> <span class="s2">"How AI Works"</span><span class="p">,</span> <span class="s2">"ML Paradigms"</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>       <span class="c1"># 'History'  -- counting starts at ZERO</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>      <span class="c1"># 'ML Paradigms'  -- negative counts from the end</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">))</span>     <span class="c1"># 4</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Counting from zero</strong> trips up everyone at first. The first item is <code class="docutils literal notranslate"><span class="pre">[0]</span></code>, the second is <code class="docutils literal notranslate"><span class="pre">[1]</span></code>. Whenever code surprises you by being “off by one,” this is usually why.</p>
+</div>
+</section>
+<section id="loops-do-something-repeatedly">
+<h3>Loops — do something repeatedly<a class="headerlink" href="#loops-do-something-repeatedly" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">units</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"This week: </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <strong>indentation matters</strong> in Python. The indented line is what repeats. This is not a style preference — it is the syntax.</p>
+</section>
+<section id="functions-reusable-operations">
+<h3>Functions — reusable operations<a class="headerlink" href="#functions-reusable-operations" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">letter_grade</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">93</span><span class="p">:</span> <span class="k">return</span> <span class="s2">"A"</span>
+    <span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span> <span class="k">return</span> <span class="s2">"A-"</span>
+    <span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">87</span><span class="p">:</span> <span class="k">return</span> <span class="s2">"B+"</span>
+    <span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">83</span><span class="p">:</span> <span class="k">return</span> <span class="s2">"B"</span>
+    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="s2">"see the syllabus"</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">letter_grade</span><span class="p">(</span><span class="mi">94</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letter_grade</span><span class="p">(</span><span class="mi">85</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="libraries-borrowing-other-people-s-work">
+<h3>Libraries — borrowing other people’s work<a class="headerlink" href="#libraries-borrowing-other-people-s-work" title="Link to this heading">#</a></h3>
+<p>Almost all real code imports tools rather than building from scratch:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>              <span class="c1"># numerical arrays</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>             <span class="c1"># tables of data</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> <span class="c1"># charts</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">as</span> <span class="pre">np</span></code> part creates a short nickname. When you see <code class="docutils literal notranslate"><span class="pre">np.mean(...)</span></code>, it means “the <code class="docutils literal notranslate"><span class="pre">mean</span></code> function from numpy.”</p>
+</section>
+<section id="comments-notes-for-humans">
+<h3>Comments — notes for humans<a class="headerlink" href="#comments-notes-for-humans" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Anything after a hash mark is ignored by Python.</span>
+<span class="c1"># The code snippets in this book use comments heavily</span>
+<span class="c1"># to explain what each section is doing. Read them.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="part-iii-reading-error-messages">
+<h2>Part III — Reading Error Messages<a class="headerlink" href="#part-iii-reading-error-messages" title="Link to this heading">#</a></h2>
+<p>Errors are normal and are not a sign you did something stupid. <strong>Read the last line first</strong> — it names the problem.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Error</p></th>
+<th class="head text-left"><p>Usual meaning</p></th>
+<th class="head text-left"><p>Fix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">NameError:</span> <span class="pre">name</span> <span class="pre">'x'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined</span></code></p></td>
+<td class="text-left"><p>Used something before creating it</p></td>
+<td class="text-left"><p>Run the earlier cell first</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code></p></td>
+<td class="text-left"><p>Library not installed</p></td>
+<td class="text-left"><p>Add <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">&lt;name&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">IndentationError</span></code></p></td>
+<td class="text-left"><p>Spacing is inconsistent</p></td>
+<td class="text-left"><p>Align the indented block</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code></p></td>
+<td class="text-left"><p>Typo — often a missing <code class="docutils literal notranslate"><span class="pre">)</span></code> or <code class="docutils literal notranslate"><span class="pre">:</span></code></p></td>
+<td class="text-left"><p>Check the line above too</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">KeyError</span></code></p></td>
+<td class="text-left"><p>Column name doesn’t exist</p></td>
+<td class="text-left"><p>Check spelling and capitalization</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">ValueError:</span> <span class="pre">shapes</span> <span class="pre">not</span> <span class="pre">aligned</span></code></p></td>
+<td class="text-left"><p>Data dimensions mismatch</p></td>
+<td class="text-left"><p>Print <code class="docutils literal notranslate"><span class="pre">.shape</span></code> to inspect</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>The most common problem in Colab is running cells out of order.</strong> Cells share memory, so a cell that worked yesterday may fail today because you skipped the one that defined its variables. When things get strange: <strong>Runtime → Restart session</strong>, then run every cell from the top.</p>
+</div>
+<section id="using-ai-to-debug">
+<h3>Using AI to debug<a class="headerlink" href="#using-ai-to-debug" title="Link to this heading">#</a></h3>
+<p>Per this course’s AI policy, using an AI assistant on lab activities is <strong>encouraged</strong>. A productive approach:</p>
+<blockquote>
+<div><p>I’m getting this error in Python. Explain what it means in plain language and what I should check. Don’t just give me corrected code — I want to understand it.</p>
+<p>[paste the full error message and the code that caused it]</p>
+</div></blockquote>
+<p>Asking for an <em>explanation</em> rather than a <em>fix</em> is the difference between learning and copying. Your exams do not permit AI (see Appendix C).</p>
+</section>
+</section>
+<section id="part-iv-what-this-course-uses">
+<h2>Part IV — What This Course Uses<a class="headerlink" href="#part-iv-what-this-course-uses" title="Link to this heading">#</a></h2>
+<p>Every snippet in this book runs on the <strong>stock Colab environment</strong>. These are already installed:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Library</p></th>
+<th class="head text-left"><p>Purpose</p></th>
+<th class="head text-left"><p>Units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></td>
+<td class="text-left"><p>Numerical arrays and math</p></td>
+<td class="text-left"><p>Throughout</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></td>
+<td class="text-left"><p>Data tables</p></td>
+<td class="text-left"><p>6, 8, 9, 10, 12</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p></td>
+<td class="text-left"><p>Charts and plots</p></td>
+<td class="text-left"><p>Throughout</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></p></td>
+<td class="text-left"><p>Machine learning models</p></td>
+<td class="text-left"><p>3, 4, 5, 6, 9, 10</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">scipy</span></code></p></td>
+<td class="text-left"><p>Scientific computing</p></td>
+<td class="text-left"><p>13</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Only Unit 7 requires an install (<code class="docutils literal notranslate"><span class="pre">transformers</span></code>), and the snippet includes the command.</p>
+</section>
+<section id="part-v-verify-your-setup">
+<h2>Part V — Verify Your Setup<a class="headerlink" href="#part-v-verify-your-setup" title="Link to this heading">#</a></h2>
+<p>Run this before Unit 3. If it prints without error, you are ready for the whole course.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span><span class="o">,</span><span class="w"> </span><span class="nn">matplotlib</span><span class="o">,</span><span class="w"> </span><span class="nn">sklearn</span><span class="o">,</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Python       </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"numpy        </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"pandas       </span><span class="si">{</span><span class="n">pd</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"matplotlib   </span><span class="si">{</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"scikit-learn </span><span class="si">{</span><span class="n">sklearn</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"scipy        </span><span class="si">{</span><span class="n">scipy</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># A quick end-to-end check: train a model and draw a chart</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X_tr</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">y_te</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_te</span><span class="p">,</span> <span class="n">y_te</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="s2">"accuracy"</span><span class="p">],</span> <span class="p">[</span><span class="n">acc</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"seagreen"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Setup OK — model accuracy </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.0%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">✅ Everything works. You are ready for Unit 3."</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="alternatives-to-colab">
+<h2>Alternatives to Colab<a class="headerlink" href="#alternatives-to-colab" title="Link to this heading">#</a></h2>
+<p>You are welcome to use any Python environment you prefer:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Option</p></th>
+<th class="head text-left"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Google Colab</strong></p></td>
+<td class="text-left"><p>Recommended. Nothing to install.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Anaconda / Jupyter</strong></p></td>
+<td class="text-left"><p>Local install; good if you want offline work</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>VS Code</strong> + Python extension</p></td>
+<td class="text-left"><p>Popular with developers</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Kaggle Notebooks</strong></p></td>
+<td class="text-left"><p>Similar to Colab, also free</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>PyCharm</strong></p></td>
+<td class="text-left"><p>Full IDE; more setup</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Every snippet in this book is plain Python and runs anywhere. The only Colab-specific line in the entire book is the <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span></code> in Unit 7 — outside Colab, run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">transformers</span></code> in your terminal instead.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_13_The_Future_of_AI.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 13: The Future of AI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Appendix_B_Capstone_Project_Guide.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendix B: Capstone Project Guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-getting-started-with-google-colab">Part I — Getting Started with Google Colab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-open-a-notebook">Step 1 — Open a notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-save-your-own-copy">Step 2 — Save your own copy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-run-a-cell">Step 3 — Run a cell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-know-your-shortcuts">Step 4 — Know your shortcuts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-just-enough-python">Part II — Just Enough Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-names-for-values">Variables — names for values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-ordered-collections">Lists — ordered collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loops-do-something-repeatedly">Loops — do something repeatedly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-reusable-operations">Functions — reusable operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-borrowing-other-people-s-work">Libraries — borrowing other people’s work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-notes-for-humans">Comments — notes for humans</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-reading-error-messages">Part III — Reading Error Messages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ai-to-debug">Using AI to debug</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iv-what-this-course-uses">Part IV — What This Course Uses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-v-verify-your-setup">Part V — Verify Your Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatives-to-colab">Alternatives to Colab</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

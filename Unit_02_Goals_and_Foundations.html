@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 2: Goals and Foundations of AI &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_02_Goals_and_Foundations';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 3: How AI Works" href="Unit_03_How_AI_Works.html" />
+    <link rel="prev" title="Unit 1: History and Evolution of AI" href="Unit_01_History_and_Evolution.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Careers_in_AI.html">Unit 8: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — Data, Fairness, and Responsibility</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Data_Quality_and_Privacy.html">Unit 9: Data, Quality and Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Bias_and_Fairness.html">Unit 10: Bias and Fairness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Ethics_and_Responsible_AI.html">Unit 11: Ethics and Responsible AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Policy_and_Governance.html">Unit 12: Policy, Regulation and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_The_Future_of_AI.html">Unit 13: The Future of AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_02_Goals_and_Foundations.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_02_Goals_and_Foundations.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 2: Goals and Foundations of AI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-what-is-ai-trying-to-do">Part I — What Is AI Trying to Do?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#four-historical-goals">1.1 Four Historical Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-agent-framework">1.2 The Agent Framework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-environments">1.3 Types of Environments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-core-terminology">Part II — Core Terminology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-types">2.1 Task Types</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-building-a-rational-agent">⚙️ Hands-On: Building a Rational Agent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-naming-the-task-type">💡 Example: Naming the Task Type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-2-goals-and-foundations-of-ai">
+<h1>Unit 2: Goals and Foundations of AI<a class="headerlink" href="#unit-2-goals-and-foundations-of-ai" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Sessions 5–6</strong> · Aug 31, Sep 02 · <strong>HW2 assigned Sep 02, due Sep 09</strong></p>
+</div></blockquote>
+<p>Before you can evaluate an AI system, you need to know <strong>what it is trying to do</strong>. This unit builds the vocabulary you will use for the rest of the semester — and the vocabulary matters more than it might seem. Most public confusion about AI comes from mixing up categories: calling a chatbot “intelligent,” calling a classifier “biased,” calling a prediction a “decision.” Precision here pays off everywhere later.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Distinguish the <strong>four goals</strong> AI has historically pursued and explain which ones dominate today.</p></li>
+<li><p>Define the <strong>rational agent</strong> framework and use it to describe any AI system.</p></li>
+<li><p>Classify a real-world problem into the correct <strong>task type</strong> (classification, regression, clustering, generation, and others).</p></li>
+<li><p>Use core terminology — model, feature, label, training, inference — correctly and precisely.</p></li>
+</ul>
+</section>
+<section id="part-i-what-is-ai-trying-to-do">
+<h2>Part I — What Is AI Trying to Do?<a class="headerlink" href="#part-i-what-is-ai-trying-to-do" title="Link to this heading">#</a></h2>
+<section id="four-historical-goals">
+<h3>1.1 Four Historical Goals<a class="headerlink" href="#four-historical-goals" title="Link to this heading">#</a></h3>
+<p>Russell and Norvig organize the field’s ambitions along two axes: whether the system should <strong>think</strong> or <strong>act</strong>, and whether the standard is <strong>human performance</strong> or <strong>rationality</strong>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p><strong>Humanly</strong></p></th>
+<th class="head text-left"><p><strong>Rationally</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Thinking</strong></p></td>
+<td class="text-left"><p>Cognitive modeling — replicate human reasoning</p></td>
+<td class="text-left"><p>Laws of thought — reason correctly by logic</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Acting</strong></p></td>
+<td class="text-left"><p>Turing Test — behave indistinguishably from a person</p></td>
+<td class="text-left"><p><strong>Rational agents</strong> — do the right thing given the goal</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Modern AI overwhelmingly pursues the bottom-right quadrant: <strong>rational action</strong>. A spam filter is not trying to think like a person about email. It is trying to make the correct sorting decision as often as possible.</p>
+<blockquote>
+<div><p>This is why “does the machine really understand?” is often the wrong question for practical purposes — and simultaneously the right question for ethical ones. Hold both.</p>
+</div></blockquote>
+</section>
+<section id="the-agent-framework">
+<h3>1.2 The Agent Framework<a class="headerlink" href="#the-agent-framework" title="Link to this heading">#</a></h3>
+<p>Nearly any AI system can be described with four elements:</p>
+<ul class="simple">
+<li><p><strong>Environment</strong> → the world the system operates in</p></li>
+<li><p><strong>Sensors / Percepts</strong> → what it can observe</p></li>
+<li><p><strong>Actions / Actuators</strong> → what it can do</p></li>
+<li><p><strong>Performance measure</strong> → how we score whether it did well</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <strong>performance measure</strong> is where most real-world AI failures originate. A system optimizes exactly what you measure — not what you meant. A recommendation engine measured on “watch time” will learn to maximize watch time, even if that means promoting outrage. Unit 10 and Unit 11 return to this repeatedly.</p>
+</div>
+</section>
+<section id="types-of-environments">
+<h3>1.3 Types of Environments<a class="headerlink" href="#types-of-environments" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Property</p></th>
+<th class="head text-left"><p>Easier</p></th>
+<th class="head text-left"><p>Harder</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Observability</strong></p></td>
+<td class="text-left"><p>Fully observable (chess)</p></td>
+<td class="text-left"><p>Partially observable (driving in fog)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Determinism</strong></p></td>
+<td class="text-left"><p>Deterministic</p></td>
+<td class="text-left"><p>Stochastic</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Agents</strong></p></td>
+<td class="text-left"><p>Single agent</p></td>
+<td class="text-left"><p>Multi-agent, possibly adversarial</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Time</strong></p></td>
+<td class="text-left"><p>Episodic (each case independent)</p></td>
+<td class="text-left"><p>Sequential (actions have consequences)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Change</strong></p></td>
+<td class="text-left"><p>Static</p></td>
+<td class="text-left"><p>Dynamic</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Chess is fully observable, deterministic, and static — which is why it fell to computers first. Driving is none of those things, which is why it remains hard.</p>
+</section>
+</section>
+<section id="part-ii-core-terminology">
+<h2>Part II — Core Terminology<a class="headerlink" href="#part-ii-core-terminology" title="Link to this heading">#</a></h2>
+<p>These six terms will appear in every remaining unit. Learn them now.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Term</p></th>
+<th class="head text-left"><p>Meaning</p></th>
+<th class="head text-left"><p>Everyday analogy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Feature</strong></p></td>
+<td class="text-left"><p>An input variable the system observes</p></td>
+<td class="text-left"><p>The symptoms a doctor notes</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Label</strong></p></td>
+<td class="text-left"><p>The correct answer for a given example</p></td>
+<td class="text-left"><p>The confirmed diagnosis</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Model</strong></p></td>
+<td class="text-left"><p>The learned mapping from features to output</p></td>
+<td class="text-left"><p>The doctor’s accumulated judgment</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Training</strong></p></td>
+<td class="text-left"><p>The process of fitting the model to data</p></td>
+<td class="text-left"><p>Years of medical residency</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Inference</strong></p></td>
+<td class="text-left"><p>Using the trained model on new input</p></td>
+<td class="text-left"><p>Seeing a new patient today</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Parameters</strong></p></td>
+<td class="text-left"><p>The internal numbers adjusted during training</p></td>
+<td class="text-left"><p>What actually changed in the doctor’s head</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>A <strong>model</strong> is not a program someone wrote. It is a set of numbers that were <em>discovered</em> by a training process. Nobody chose them, and often nobody can fully explain them. That distinction drives the interpretability problems of Unit 10.</p>
+</div></blockquote>
+<section id="task-types">
+<h3>2.1 Task Types<a class="headerlink" href="#task-types" title="Link to this heading">#</a></h3>
+<p>Most AI problems reduce to a handful of shapes:</p>
+<ul class="simple">
+<li><p><strong>Classification</strong> → predict a category. <em>Is this transaction fraudulent?</em></p></li>
+<li><p><strong>Regression</strong> → predict a number. <em>What will this house sell for?</em></p></li>
+<li><p><strong>Clustering</strong> → group similar items with no labels given. <em>What customer segments exist?</em></p></li>
+<li><p><strong>Ranking</strong> → order items by relevance. <em>Which results go on page one?</em></p></li>
+<li><p><strong>Generation</strong> → produce new content. <em>Write a summary of this report.</em></p></li>
+<li><p><strong>Sequential decision-making</strong> → choose actions over time. <em>Route this delivery fleet.</em></p></li>
+</ul>
+<p>Correctly identifying the task type is the first step in every project — including your capstone.</p>
+</section>
+</section>
+<section id="hands-on-building-a-rational-agent">
+<h2>⚙️ Hands-On: Building a Rational Agent<a class="headerlink" href="#hands-on-building-a-rational-agent" title="Link to this heading">#</a></h2>
+<p>Here is a complete rational agent in about twenty lines. It lives in a small grid world, cannot see the whole map, and must find its way to a goal. Watch how the four elements — environment, percepts, actions, performance measure — appear explicitly in the code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">deque</span>
+
+<span class="c1"># --- The ENVIRONMENT: 0 = open, 1 = wall ---------------------------</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="p">]</span>
+<span class="n">start</span><span class="p">,</span> <span class="n">goal</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">neighbors</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""The agent's PERCEPTS: which adjacent squares are open?"""</span>
+    <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">cell</span>
+    <span class="k">for</span> <span class="n">dr</span><span class="p">,</span> <span class="n">dc</span> <span class="ow">in</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]:</span>   <span class="c1"># its ACTIONS</span>
+        <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">dr</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="n">dc</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nr</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nc</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">and</span> <span class="n">grid</span><span class="p">[</span><span class="n">nr</span><span class="p">][</span><span class="n">nc</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="n">nc</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_path</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Breadth-first search: guarantees the SHORTEST path."""</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([[</span><span class="n">start</span><span class="p">]])</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="p">{</span><span class="n">start</span><span class="p">}</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">goal</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">path</span>
+        <span class="k">for</span> <span class="n">nxt</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">nxt</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nxt</span><span class="p">)</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">nxt</span><span class="p">])</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">find_path</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+
+<span class="c1"># --- The PERFORMANCE MEASURE: number of steps taken ----------------</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Path found in </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> steps:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">)):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="s2">""</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">==</span> <span class="n">start</span><span class="p">:</span>   <span class="n">row</span> <span class="o">+=</span> <span class="s2">" S "</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">==</span> <span class="n">goal</span><span class="p">:</span>  <span class="n">row</span> <span class="o">+=</span> <span class="s2">" G "</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>  <span class="n">row</span> <span class="o">+=</span> <span class="s2">" . "</span>
+        <span class="k">elif</span> <span class="n">grid</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">row</span> <span class="o">+=</span> <span class="s2">" # "</span>
+        <span class="k">else</span><span class="p">:</span>                 <span class="n">row</span> <span class="o">+=</span> <span class="s2">"   "</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Add a wall that blocks the path entirely. What does the agent do? Is failing gracefully a form of rational behavior?</p></li>
+<li><p>Change the performance measure. What if diagonal moves were allowed but cost twice as much? Would the shortest path still be the <em>best</em> path?</p></li>
+<li><p>This agent has <strong>no learning whatsoever</strong> — it searches fresh every time. Is it still “intelligent”? Defend your answer using the four goals from Part I.</p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This agent is <strong>entirely symbolic</strong> — the rules of movement were written by a human. It is a direct descendant of 1970s AI, and it works perfectly here because the environment is small, fully observable, deterministic, and static. Change any one of those and it breaks. That is the boundary line where machine learning becomes necessary.</p>
+</div>
+</section>
+<section id="example-naming-the-task-type">
+<h2>💡 Example: Naming the Task Type<a class="headerlink" href="#example-naming-the-task-type" title="Link to this heading">#</a></h2>
+<p>For each scenario below, decide the task type <em>before</em> reading the answer.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Scenario</p></th>
+<th class="head text-left"><p>Task type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Flagging tumors in an X-ray</p></td>
+<td class="text-left"><p>Classification</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Estimating tomorrow’s electricity demand</p></td>
+<td class="text-left"><p>Regression</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Grouping students by study habits, no categories given</p></td>
+<td class="text-left"><p>Clustering</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Drafting a first-pass contract</p></td>
+<td class="text-left"><p>Generation</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Deciding which ad to show, learning from clicks over time</p></td>
+<td class="text-left"><p>Sequential decision-making</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Sorting job applicants by fit</p></td>
+<td class="text-left"><p>Ranking (<em>and</em> an ethics problem — see Unit 10)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>That last row is deliberate. <strong>Framing a human decision as a ranking task is itself a consequential choice</strong>, not a neutral technical one.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Pick an AI system you used this week. Write out its environment, percepts, actions, and performance measure.
+Now ask: is the performance measure it optimizes the same as the outcome <em>you</em> wanted? Where do they diverge?</p>
+</div></blockquote>
+<p><strong>Connecting to HW2 (Vocabulary &amp; Concept Review, due Sep 09):</strong> the six terms in Part II and the six task types in Part 2.1 form the core of this assignment. Practice using them on systems you encounter, not just on the definitions.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Russell, S., &amp; Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em>, 4th Ed., Ch. 2. Pearson.</p></li>
+<li><p>Mitchell, M. (2020). <em>Artificial Intelligence: A Guide for Thinking Humans</em>, Ch. 1–3. Penguin Books.</p></li>
+<li><p>Dendritic Institute (2025). <em>AI Literacy Series — Module 2: AI and Its Many Branches.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_01_History_and_Evolution.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 1: History and Evolution of AI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_03_How_AI_Works.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 3: How AI Works</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-what-is-ai-trying-to-do">Part I — What Is AI Trying to Do?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#four-historical-goals">1.1 Four Historical Goals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-agent-framework">1.2 The Agent Framework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-environments">1.3 Types of Environments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-core-terminology">Part II — Core Terminology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-types">2.1 Task Types</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-building-a-rational-agent">⚙️ Hands-On: Building a Rational Agent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-naming-the-task-type">💡 Example: Naming the Task Type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

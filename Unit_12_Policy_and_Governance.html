@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 12: Policy, Regulation and Governance &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_12_Policy_and_Governance';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 13: The Future of AI" href="Unit_13_The_Future_of_AI.html" />
+    <link rel="prev" title="Unit 11: Ethics and Responsible AI" href="Unit_11_Ethics_and_Responsible_AI.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Careers_in_AI.html">Unit 8: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — Data, Fairness, and Responsibility</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Data_Quality_and_Privacy.html">Unit 9: Data, Quality and Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Bias_and_Fairness.html">Unit 10: Bias and Fairness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Ethics_and_Responsible_AI.html">Unit 11: Ethics and Responsible AI</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 12: Policy, Regulation and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_The_Future_of_AI.html">Unit 13: The Future of AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_12_Policy_and_Governance.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_12_Policy_and_Governance.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 12: Policy, Regulation and Governance</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-three-regulatory-philosophies">Part I — Three Regulatory Philosophies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-eu-risk-tiers">1.1 The EU Risk Tiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-us-sectoral-landscape">1.2 The US Sectoral Landscape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standards-and-soft-governance">1.3 Standards and Soft Governance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-classifying-systems-by-risk-tier">⚙️ Hands-On: Classifying Systems by Risk Tier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-why-this-is-structurally-hard">Part II — Why This Is Structurally Hard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-pacing-problem">2.1 The Pacing Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-definitional-problem">2.2 The Definitional Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jurisdictional-problem">2.3 The Jurisdictional Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-capacity-problem">2.4 The Capacity Problem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-governance-beyond-government">Part III — Governance Beyond Government</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-12-policy-regulation-and-governance">
+<h1>Unit 12: Policy, Regulation and Governance<a class="headerlink" href="#unit-12-policy-regulation-and-governance" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Sessions 27–28</strong> · Nov 23 and TBD · <strong>HW12 assigned Nov 23, due TBD</strong>
+<em>(Note: Nov 25 falls in Thanksgiving Week — no class.)</em></p>
+</div></blockquote>
+<p>Ethics tells us what we ought to do. <strong>Governance is the machinery that makes it happen</strong> — or fails to. This unit surveys how governments and institutions are actually attempting to regulate AI, and asks the harder question of whether regulation can keep pace with the technology.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>This is the fastest-moving material in the course.</strong> Regulatory frameworks described here may have changed since this book was written. Verify current status before relying on any specific provision — and treat that instability as itself a finding about governing emerging technology.</p>
+</div>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Compare the major <strong>regulatory approaches</strong> to AI and the philosophies behind them.</p></li>
+<li><p>Apply a <strong>risk-tier framework</strong> to classify AI systems.</p></li>
+<li><p>Explain the <strong>pacing problem</strong> and why it makes technology regulation structurally hard.</p></li>
+<li><p>Identify the roles of institutions beyond government in AI governance.</p></li>
+</ul>
+</section>
+<section id="part-i-three-regulatory-philosophies">
+<h2>Part I — Three Regulatory Philosophies<a class="headerlink" href="#part-i-three-regulatory-philosophies" title="Link to this heading">#</a></h2>
+<p>The major jurisdictions have taken meaningfully different approaches, and the differences are philosophical rather than merely technical.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Approach</p></th>
+<th class="head text-left"><p>Exemplar</p></th>
+<th class="head text-left"><p>Logic</p></th>
+<th class="head text-left"><p>Trade-off</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Risk-based, prescriptive</strong></p></td>
+<td class="text-left"><p>EU AI Act</p></td>
+<td class="text-left"><p>Classify systems by risk; impose obligations proportionally</p></td>
+<td class="text-left"><p>Clear rules; may burden low-risk innovation</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Sectoral, existing-agency</strong></p></td>
+<td class="text-left"><p>United States</p></td>
+<td class="text-left"><p>Apply existing regulators (FDA, FTC, EEOC) domain by domain</p></td>
+<td class="text-left"><p>Flexible and expert; produces gaps and inconsistency</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>State-directed</strong></p></td>
+<td class="text-left"><p>China</p></td>
+<td class="text-left"><p>Align AI development with state objectives; register algorithms</p></td>
+<td class="text-left"><p>Rapid coordinated action; different value premises</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="the-eu-risk-tiers">
+<h3>1.1 The EU Risk Tiers<a class="headerlink" href="#the-eu-risk-tiers" title="Link to this heading">#</a></h3>
+<p>The EU AI Act’s structure has become the most widely referenced model, whatever one thinks of it.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Tier</p></th>
+<th class="head text-left"><p>Treatment</p></th>
+<th class="head text-left"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Unacceptable</strong></p></td>
+<td class="text-left"><p>Prohibited</p></td>
+<td class="text-left"><p>Social scoring by governments; certain manipulative systems</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>High risk</strong></p></td>
+<td class="text-left"><p>Strict obligations before and after deployment</p></td>
+<td class="text-left"><p>Hiring, credit, medical devices, critical infrastructure, education access</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Limited risk</strong></p></td>
+<td class="text-left"><p>Transparency obligations</p></td>
+<td class="text-left"><p>Chatbots must disclose they are AI; synthetic media labeling</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Minimal risk</strong></p></td>
+<td class="text-left"><p>No specific obligation</p></td>
+<td class="text-left"><p>Spam filters, recommendation systems, game AI</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="the-us-sectoral-landscape">
+<h3>1.2 The US Sectoral Landscape<a class="headerlink" href="#the-us-sectoral-landscape" title="Link to this heading">#</a></h3>
+<p>Rather than one AI law, the US applies existing authorities:</p>
+<ul class="simple">
+<li><p><strong>EEOC</strong> — employment discrimination, including algorithmic hiring tools</p></li>
+<li><p><strong>FDA</strong> — AI as a medical device</p></li>
+<li><p><strong>FTC</strong> — unfair or deceptive practices, including exaggerated AI claims</p></li>
+<li><p><strong>CFPB</strong> — credit decisions and adverse-action notice requirements</p></li>
+<li><p><strong>State laws</strong> — Colorado, California, Illinois, Texas and others have enacted AI-specific provisions</p></li>
+</ul>
+<blockquote>
+<div><p><strong>The consequence:</strong> in the US, an AI hiring tool is regulated as <em>employment discrimination</em>, not as <em>AI</em>. This has an underappreciated advantage — the underlying harm is what matters, not the technology used to cause it — and a real disadvantage in gaps and inconsistency across states.</p>
+</div></blockquote>
+</section>
+<section id="standards-and-soft-governance">
+<h3>1.3 Standards and Soft Governance<a class="headerlink" href="#standards-and-soft-governance" title="Link to this heading">#</a></h3>
+<p>Not all governance is law:</p>
+<ul class="simple">
+<li><p><strong>NIST AI Risk Management Framework</strong> (US) — voluntary, widely adopted</p></li>
+<li><p><strong>ISO/IEC 42001</strong> — AI management system certification</p></li>
+<li><p><strong>OECD AI Principles</strong> — intergovernmental, adopted by 40+ countries</p></li>
+<li><p><strong>UNESCO Recommendation on AI Ethics</strong> — global normative instrument</p></li>
+</ul>
+</section>
+</section>
+<section id="hands-on-classifying-systems-by-risk-tier">
+<h2>⚙️ Hands-On: Classifying Systems by Risk Tier<a class="headerlink" href="#hands-on-classifying-systems-by-risk-tier" title="Link to this heading">#</a></h2>
+<p>Regulatory reasoning is a skill. This activity makes you apply the criteria rather than memorize them.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># --- A rough EU-AI-Act-style classifier ---------------------------</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">classify_risk</span><span class="p">(</span><span class="n">affects_fundamental_rights</span><span class="p">,</span> <span class="n">safety_critical</span><span class="p">,</span>
+                  <span class="n">automated_decision</span><span class="p">,</span> <span class="n">interacts_with_people</span><span class="p">,</span>
+                  <span class="n">government_scoring</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">manipulative</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">government_scoring</span> <span class="ow">or</span> <span class="n">manipulative</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"UNACCEPTABLE — prohibited"</span>
+    <span class="k">if</span> <span class="n">affects_fundamental_rights</span> <span class="ow">or</span> <span class="n">safety_critical</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"HIGH RISK — conformity assessment, documentation, oversight"</span>
+    <span class="k">if</span> <span class="n">interacts_with_people</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">"LIMITED RISK — transparency obligation"</span>
+    <span class="k">return</span> <span class="s2">"MINIMAL RISK — no specific obligation"</span>
+
+<span class="n">systems</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># name, rights, safety, automated, interacts, gov_score, manipulative</span>
+    <span class="p">(</span><span class="s2">"Resume screening tool"</span><span class="p">,</span>          <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Spam filter"</span><span class="p">,</span>                    <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Tumor detection in CT scans"</span><span class="p">,</span>    <span class="kc">True</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Customer service chatbot"</span><span class="p">,</span>       <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Credit scoring model"</span><span class="p">,</span>           <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Music recommendation"</span><span class="p">,</span>           <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Autonomous vehicle perception"</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"University admissions ranking"</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Citizen social credit scoring"</span><span class="p">,</span>  <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>  <span class="kc">False</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">flags</span> <span class="ow">in</span> <span class="n">systems</span><span class="p">:</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"System"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"Classification"</span><span class="p">:</span> <span class="n">classify_risk</span><span class="p">(</span><span class="o">*</span><span class="n">flags</span><span class="p">)})</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">"display.max_colwidth"</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Add your capstone project</strong> to the list. Which tier does it fall into? What obligations would follow? This belongs in your final presentation.</p></li>
+<li><p>The classifier treats <code class="docutils literal notranslate"><span class="pre">affects_fundamental_rights</span></code> as a single boolean. Which of the nine systems was hardest to assign? <strong>Ambiguity at the boundary is where regulation actually gets contested.</strong></p></li>
+<li><p>A general-purpose language model can perform <em>every</em> task above. How should a system be classified when its risk depends entirely on how someone uses it? This is the hardest open problem in AI regulation.</p></li>
+</ol>
+</section>
+<section id="part-ii-why-this-is-structurally-hard">
+<h2>Part II — Why This Is Structurally Hard<a class="headerlink" href="#part-ii-why-this-is-structurally-hard" title="Link to this heading">#</a></h2>
+<section id="the-pacing-problem">
+<h3>2.1 The Pacing Problem<a class="headerlink" href="#the-pacing-problem" title="Link to this heading">#</a></h3>
+<p>Technology develops faster than law. By the time a statute is drafted, debated, and enacted, the systems it describes have changed. This produces two failure modes:</p>
+<ul class="simple">
+<li><p><strong>Regulating too specifically</strong> → rules become obsolete or trivially circumvented</p></li>
+<li><p><strong>Regulating too generally</strong> → rules become unenforceable and provide no guidance</p></li>
+</ul>
+</section>
+<section id="the-definitional-problem">
+<h3>2.2 The Definitional Problem<a class="headerlink" href="#the-definitional-problem" title="Link to this heading">#</a></h3>
+<p>Laws require definitions, and “artificial intelligence” resists definition. Too broad and you capture ordinary spreadsheets; too narrow and next year’s architecture escapes.</p>
+</section>
+<section id="the-jurisdictional-problem">
+<h3>2.3 The Jurisdictional Problem<a class="headerlink" href="#the-jurisdictional-problem" title="Link to this heading">#</a></h3>
+<p>A model trained in one country, hosted in a second, and used in a third — whose rules apply? The <strong>Brussels Effect</strong> describes how EU rules propagate globally because compliance is cheaper than maintaining separate systems, but it is not universal.</p>
+</section>
+<section id="the-capacity-problem">
+<h3>2.4 The Capacity Problem<a class="headerlink" href="#the-capacity-problem" title="Link to this heading">#</a></h3>
+<p>Regulators must evaluate systems that their own staff often cannot inspect, using expertise concentrated in the companies being regulated. This asymmetry is not easily fixed by writing more rules.</p>
+</section>
+</section>
+<section id="part-iii-governance-beyond-government">
+<h2>Part III — Governance Beyond Government<a class="headerlink" href="#part-iii-governance-beyond-government" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Actor</p></th>
+<th class="head text-left"><p>Governance role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Universities</strong></p></td>
+<td class="text-left"><p>IRB review, research norms, training the next generation</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Professional bodies</strong></p></td>
+<td class="text-left"><p>Codes of conduct (IEEE, ACM, medical boards)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Standards organizations</strong></p></td>
+<td class="text-left"><p>Technical specifications enabling compliance</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Companies</strong></p></td>
+<td class="text-left"><p>Internal review boards, red-teaming, release policies</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Civil society</strong></p></td>
+<td class="text-left"><p>Auditing, investigative journalism, litigation</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Insurers</strong></p></td>
+<td class="text-left"><p>Liability pricing — an underrated and growing lever</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>That last row deserves attention. <strong>Insurance may end up governing AI more effectively than legislation.</strong> If insurers refuse to cover harms from undocumented models, organizations will document their models — faster than any statute could compel. Follow where liability lands.</p>
+</div>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>The US regulates AI harms through existing law; the EU regulates AI as a distinct category. Which approach would you rather be subject to as a developer? As a citizen affected by a decision? <strong>Notice if your answers differ.</strong></p>
+<p>If regulation always lags technology, what should fill the gap in the meantime — and who decides?</p>
+</div></blockquote>
+<p><strong>Connecting to HW12 (AI Policy Brief — Summary &amp; Response):</strong> select one specific regulatory instrument, summarize what it actually requires, and take a position on whether it will achieve its aim. Precision about the actual provisions beats broad commentary.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>U.S. GAO. <em>Artificial Intelligence: Report 25-107653.</em> (Available in course materials)</p></li>
+<li><p>NIST (2023). <em>AI Risk Management Framework 1.0.</em></p></li>
+<li><p>Bradford, A. (2020). <em>The Brussels Effect.</em> Oxford University Press.</p></li>
+<li><p>OECD. <em>AI Principles.</em> <a class="reference external" href="http://oecd.ai">oecd.ai</a></p></li>
+<li><p>Russell, S., &amp; Norvig, P. (2022). <em>AI: A Modern Approach</em>, 4th Ed., §27.3–27.4. Pearson.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_11_Ethics_and_Responsible_AI.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 11: Ethics and Responsible AI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_13_The_Future_of_AI.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 13: The Future of AI</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-three-regulatory-philosophies">Part I — Three Regulatory Philosophies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-eu-risk-tiers">1.1 The EU Risk Tiers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-us-sectoral-landscape">1.2 The US Sectoral Landscape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standards-and-soft-governance">1.3 Standards and Soft Governance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-classifying-systems-by-risk-tier">⚙️ Hands-On: Classifying Systems by Risk Tier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-why-this-is-structurally-hard">Part II — Why This Is Structurally Hard</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-pacing-problem">2.1 The Pacing Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-definitional-problem">2.2 The Definitional Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jurisdictional-problem">2.3 The Jurisdictional Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-capacity-problem">2.4 The Capacity Problem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-governance-beyond-government">Part III — Governance Beyond Government</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

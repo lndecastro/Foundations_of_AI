@@ -1,0 +1,760 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Foundations of AI &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 1: History and Evolution of AI" href="Unit_01_History_and_Evolution.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Careers_in_AI.html">Unit 8: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — Data, Fairness, and Responsibility</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Data_Quality_and_Privacy.html">Unit 9: Data, Quality and Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Bias_and_Fairness.html">Unit 10: Bias and Fairness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Ethics_and_Responsible_AI.html">Unit 11: Ethics and Responsible AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Policy_and_Governance.html">Unit 12: Policy, Regulation and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_The_Future_of_AI.html">Unit 13: The Future of AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/intro.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Foundations of AI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-information">Course Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-this-course-is-for">Who This Course Is For</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-learning-outcomes">Course Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-journey">Our Journey</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to Use This Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-readings">Suggested Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-human-centered-commitment">A Human-Centered Commitment</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="foundations-of-ai">
+<h1>Foundations of AI<a class="headerlink" href="#foundations-of-ai" title="Link to this heading">#</a></h1>
+<p>Welcome to <strong>Foundations of AI</strong>, a course about one of the most consequential technologies of our time! This course will give you an introductory and practical understanding of what artificial intelligence is, how it actually works, and why it matters for whatever field you end up in.</p>
+<p>This Jupyter Book is the <strong>companion text</strong> for the course. It follows the thirteen units of the semester, from the origins of artificial intelligence through to questions of policy, governance, and what comes next. Every unit combines conceptual material with <strong>runnable code snippets</strong> you can copy into any IDE you prefer, though I recommend using Google Colab, as no installation or setup will be necessary.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This book builds on the <strong>AI Literacy Program</strong> of the <strong>FGCU AI Academy</strong>, led by the <strong>Dendritic Institute for Human-Centered AI &amp; Data Science</strong>. Where AI Literacy offers a gentle first encounter with AI for learners of all backgrounds, <em>Foundations of AI</em> goes further: it asks you to <strong>run the systems, inspect their behavior, and evaluate them critically</strong>. Several units point you back to AI Literacy modules for a lighter treatment of shared topics.</p>
+</div>
+<section id="course-information">
+<h2>Course Information<a class="headerlink" href="#course-information" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Course</strong></p></td>
+<td class="text-left"><p>CAI 4002 — Foundations of AI (Section 87714)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Credit Hours</strong></p></td>
+<td class="text-left"><p>3</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Term</strong></p></td>
+<td class="text-left"><p>Fall 2026 — Aug 17 to Nov 24, 2026</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Meetings</strong></p></td>
+<td class="text-left"><p>Monday &amp; Wednesday, 10:30 – 11:45 AM, Holmes Engineering 402</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Final</strong></p></td>
+<td class="text-left"><p>Wednesday, Dec 2, 2026, 10:00 AM – 12:15 PM (Capstone Presentations)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Instructor</strong></p></td>
+<td class="text-left"><p>Leandro de Castro, Ph.D., Full Professor</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Office</strong></p></td>
+<td class="text-left"><p>ETI 112D — Office hours M W 2:00 – 4:00 PM</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="who-this-course-is-for">
+<h2>Who This Course Is For<a class="headerlink" href="#who-this-course-is-for" title="Link to this heading">#</a></h2>
+<p><strong>No prior technical background is required.</strong> What you do need is curiosity, a willingness to engage with new ideas, and an openness to thinking critically about the technology shaping our world. This is a course for thinkers, problem-solvers, and future professionals, whether you plan to work in technology, healthcare, business, education, law, or any other field.</p>
+<p>You will not be asked to write software from scratch. You <strong>will</strong> be asked to run code, change it, observe what happens, and explain what you saw.</p>
+</section>
+<section id="course-learning-outcomes">
+<h2>Course Learning Outcomes<a class="headerlink" href="#course-learning-outcomes" title="Link to this heading">#</a></h2>
+<p>By the end of this course, you will be able to:</p>
+<ol class="arabic simple">
+<li><p><strong>Describe</strong> the history and evolution of artificial intelligence and explain the goals that have shaped its development.</p></li>
+<li><p><strong>Identify and explain</strong> core AI and machine learning concepts, paradigms, and terminology.</p></li>
+<li><p><strong>Recognize</strong> the broad range of tasks AI systems are designed to perform and the domains in which they are applied.</p></li>
+<li><p><strong>Use</strong> AI tools effectively and apply prompt engineering techniques to achieve desired outcomes.</p></li>
+<li><p><strong>Evaluate</strong> career pathways in AI and articulate the skills and knowledge required for AI-adjacent roles.</p></li>
+<li><p><strong>Analyze</strong> the role of data in AI systems, including issues of quality, privacy, and bias.</p></li>
+<li><p><strong>Critically assess</strong> the ethical, social, and policy implications of artificial intelligence in society.</p></li>
+<li><p><strong>Propose and present</strong> an AI-based solution to a real-world problem, demonstrating integration of course concepts.</p></li>
+</ol>
+</section>
+<section id="our-journey">
+<h2>Our Journey<a class="headerlink" href="#our-journey" title="Link to this heading">#</a></h2>
+<p>The course is organized as a <strong>progressive pathway</strong>. Early units build vocabulary and methods; middle units put that vocabulary to work on real systems; later units ask what all of it means for society.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Unit</p></th>
+<th class="head text-left"><p>Theme</p></th>
+<th class="head text-left"><p>Focus</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>1</strong></p></td>
+<td class="text-left"><p><em>History and Evolution of AI</em></p></td>
+<td class="text-left"><p>From early ideas and pioneers to the systems of today</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>2</strong></p></td>
+<td class="text-left"><p><em>Goals and Foundations of AI</em></p></td>
+<td class="text-left"><p>What AI is trying to do: agents, problem types, terminology</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>3</strong></p></td>
+<td class="text-left"><p><em>How AI Works</em></p></td>
+<td class="text-left"><p>The build pipeline, in plain language and in code</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>4</strong></p></td>
+<td class="text-left"><p><em>Machine Learning Paradigms</em></p></td>
+<td class="text-left"><p>Supervised, unsupervised, reinforcement, and how models learn</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>5</strong></p></td>
+<td class="text-left"><p><em>Deep Learning and Neural Networks</em></p></td>
+<td class="text-left"><p>Structure, training, applications, and hard limits</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>6</strong></p></td>
+<td class="text-left"><p><em>AI Applications Across Domains</em></p></td>
+<td class="text-left"><p>Healthcare, education, law, business, finance, creative work</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>7</strong></p></td>
+<td class="text-left"><p><em>Prompt Engineering</em></p></td>
+<td class="text-left"><p>Communicating effectively with generative systems</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>8</strong></p></td>
+<td class="text-left"><p><em>Careers in AI</em></p></td>
+<td class="text-left"><p>Technical and non-technical pathways, and the skills behind them</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>9</strong></p></td>
+<td class="text-left"><p><em>Data, Quality and Privacy</em></p></td>
+<td class="text-left"><p>Where data comes from, what it costs, who owns it</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>10</strong></p></td>
+<td class="text-left"><p><em>Bias and Fairness</em></p></td>
+<td class="text-left"><p>How bias enters systems and what it does downstream</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>11</strong></p></td>
+<td class="text-left"><p><em>Ethics and Responsible AI</em></p></td>
+<td class="text-left"><p>Principles, trade-offs, and accountability</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>12</strong></p></td>
+<td class="text-left"><p><em>Policy, Regulation and Governance</em></p></td>
+<td class="text-left"><p>US and global frameworks, institutional roles</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>13</strong></p></td>
+<td class="text-left"><p><em>The Future of AI</em></p></td>
+<td class="text-left"><p>Opportunities, risks, and open questions</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="how-to-use-this-book">
+<h2>How to Use This Book<a class="headerlink" href="#how-to-use-this-book" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Navigate units using the left-hand sidebar or the <strong>Next/Previous</strong> buttons at the bottom of each page.</p></li>
+<li><p>Look for <strong>💡 Examples</strong>, <strong>⚙️ Hands-On</strong> activities, <strong>🧭 Reflection</strong> prompts, and <strong>📘 Further Reading</strong> in every unit.</p></li>
+<li><p><strong>⚙️ Hands-On sections contain code you can copy and run.</strong> Click the 🚀 rocket icon at the top of any page to open it in <strong>Google Colab</strong>, or paste the snippets into any Python environment you prefer (Jupyter, VS Code, Anaconda, PyCharm).</p></li>
+<li><p>Every snippet in this book runs on the <strong>stock Colab environment</strong> — <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, and <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> are already installed. No <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> needed.</p></li>
+<li><p>Read Appendix A first if you have never run Python before. It takes about ten minutes.</p></li>
+<li><p>Use this book alongside <strong>Canvas</strong>, where all assignments are submitted, and the required texts.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All class and assignments dates presented here are tentative and subject to change depending on the course development.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Colab tip:</strong> when you open a shared notebook, you are working in a temporary copy. Click <strong>File → Save a copy in Drive</strong> <em>before</em> you start, or your work will disappear when you close the tab.</p>
+</div>
+</section>
+<section id="suggested-readings">
+<h2>Suggested Readings<a class="headerlink" href="#suggested-readings" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Russell, S. J., &amp; Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson. ISBN 9789356063570</p></li>
+<li><p>Mitchell, M. (2020). <em>Artificial Intelligence: A Guide for Thinking Humans</em>. Penguin Books. ISBN 9780241404836</p></li>
+</ul>
+<p>Course materials are delivered through <strong>FGCU First Day Ready</strong>. See the “Course Materials” link in Canvas, or visit <a class="reference external" href="https://fgcu.edu/firstdayready">fgcu.edu/firstdayready</a>.</p>
+</section>
+<section id="a-human-centered-commitment">
+<h2>A Human-Centered Commitment<a class="headerlink" href="#a-human-centered-commitment" title="Link to this heading">#</a></h2>
+<p>This course embraces a <strong>human-centered approach</strong> to AI: these systems are not replacing people, they are amplifying our capacity to think, create, and solve. As you work through these units, keep returning to three questions:</p>
+<blockquote>
+<div><p><strong>What can this system actually do?</strong>
+<strong>What is it doing that I cannot see?</strong>
+<strong>Who is accountable when it is wrong?</strong></p>
+</div></blockquote>
+<p>The goal is not to make you an AI engineer in one semester. It is to make you someone who can look at an AI system, understand roughly how it works, ask the right questions about it, and make a sound judgment. That skill will outlast any particular tool.</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="Unit_01_History_and_Evolution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 1: History and Evolution of AI</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-information">Course Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-this-course-is-for">Who This Course Is For</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-learning-outcomes">Course Learning Outcomes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-journey">Our Journey</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to Use This Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-readings">Suggested Readings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-human-centered-commitment">A Human-Centered Commitment</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

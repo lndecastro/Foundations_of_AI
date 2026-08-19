@@ -1,0 +1,1106 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 1: History and Evolution of AI &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_01_History_and_Evolution';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 2: Goals and Foundations of AI" href="Unit_02_Goals_and_Foundations.html" />
+    <link rel="prev" title="Foundations of AI" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Careers_in_AI.html">Unit 8: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — Data, Fairness, and Responsibility</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Data_Quality_and_Privacy.html">Unit 9: Data, Quality and Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Bias_and_Fairness.html">Unit 10: Bias and Fairness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Ethics_and_Responsible_AI.html">Unit 11: Ethics and Responsible AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Policy_and_Governance.html">Unit 12: Policy, Regulation and Governance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_The_Future_of_AI.html">Unit 13: The Future of AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_01_History_and_Evolution.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_01_History_and_Evolution.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 1: History and Evolution of AI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-the-origins">Part I — The Origins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-the-name">1.1 Before the Name</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-symbolic-era-1956-1974">1.2 The Symbolic Era (1956 – 1974)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-ai-winter-1974-1980">1.3 The First AI Winter (1974 – 1980)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expert-systems-and-the-second-winter-1980-1993">1.4 Expert Systems and the Second Winter (1980 – 1993)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-the-statistical-learning-turn">Part II — The Statistical (Learning) Turn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-instead-of-programming">2.1 Learning Instead of Programming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#milestones-of-the-modern-era">2.2 Milestones of the Modern Era</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-plotting-the-arc-of-ai">⚙️ Hands-On: Plotting the Arc of AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rules-vs-learning-side-by-side">💡 Example: Rules vs. Learning, Side by Side</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-the-many-faces-of-ai">Part III — The Many Faces of AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-networks-ann">3.1 Artificial Neural Networks (ANN)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soft-computing">3.2 Soft Computing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-computing">3.3 Natural Computing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">3.4 Machine Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-mining">3.5 Data Mining</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science">3.6 Data Science</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning">3.7 Deep Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai">3.8 Generative AI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-together">📅 Putting It Together</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-mapping-the-vocabulary">⚙️ Hands-On: Mapping the Vocabulary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-1-history-and-evolution-of-ai">
+<h1>Unit 1: History and Evolution of AI<a class="headerlink" href="#unit-1-history-and-evolution-of-ai" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Sessions 1–2</strong> · Aug 17, 19 · <strong>HW1 assigned Aug 19, due Aug 23</strong></p>
+</div></blockquote>
+<p>Artificial Intelligence is often described as a recent breakthrough. It is not. The field is roughly eighty years old, and almost every idea making headlines today has intellectual roots that stretch back decades. Understanding that history is not trivia, it is the fastest way to develop <strong>judgment</strong> about what is genuinely new and what is a familiar idea wearing new clothes.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Trace the <strong>major eras</strong> of AI development and identify what drove each transition.</p></li>
+<li><p>Explain the difference between <strong>symbolic (rule-based)</strong> and <strong>statistical (learning-based)</strong> approaches to AI.</p></li>
+<li><p>Describe what an <strong>“AI winter”</strong> was, why they happened, and what they teach us about hype cycles.</p></li>
+<li><p>Situate today’s systems within a longer arc of technical development.</p></li>
+</ul>
+</section>
+<section id="part-i-the-origins">
+<h2>Part I — The Origins<a class="headerlink" href="#part-i-the-origins" title="Link to this heading">#</a></h2>
+<section id="before-the-name">
+<h3>1.1 Before the Name<a class="headerlink" href="#before-the-name" title="Link to this heading">#</a></h3>
+<p>The idea of mechanical reasoning predates computers entirely. What changed in the mid-twentieth century was the arrival of machines that could actually execute it.</p>
+<ul class="simple">
+<li><p><strong>1943</strong> — McCulloch and Pitts propose a mathematical model of a neuron. This is the ancestor of every neural network in use today.</p></li>
+<li><p><strong>1950</strong> — Alan Turing publishes <em>Computing Machinery and Intelligence</em>, proposing what we now call the <strong>Turing Test</strong> and reframing “can machines think?” into a question about observable behavior.</p></li>
+<li><p><strong>1956</strong> — The <strong>Dartmouth Summer Research Project</strong> coins the term <em>artificial intelligence</em>. The proposal famously suggested that significant progress could be made in a short period of time by few researchers.</p></li>
+<li><p><strong>1942</strong> — Asimov’s <strong>Three Laws of Robotics</strong>. In the short story <em>Runaround</em>, Isaac Asimov proposed three rules that a robot must follow, in strict priority order: don’t harm a human (or allow harm through inaction), obey human orders unless doing so violates the first law, and protect itself unless doing so violates the first two.</p></li>
+</ul>
+</section>
+<section id="the-symbolic-era-1956-1974">
+<h3>1.2 The Symbolic Era (1956 – 1974)<a class="headerlink" href="#the-symbolic-era-1956-1974" title="Link to this heading">#</a></h3>
+<p>Early AI was built on a clear and plausible approach: intelligence is <strong>symbol manipulation</strong>. If you can encode facts and rules precisely enough, reasoning follows.</p>
+<ul class="simple">
+<li><p>Programs proved mathematical theorems and played competent chess.</p></li>
+<li><p><strong>ELIZA</strong> (1966) simulated a psychotherapist using pattern substitution, and unsettled its creator by how readily people confided in it.</p></li>
+<li><p>Researchers predicted human-level machine intelligence within a generation.</p></li>
+</ul>
+<p><strong>What went wrong:</strong> the approach worked beautifully on <strong>toy problems</strong> and collapsed on real ones. Encoding common-sense knowledge by hand turned out to require an unbounded number of rules and showed no generalization capability.</p>
+</section>
+<section id="the-first-ai-winter-1974-1980">
+<h3>1.3 The First AI Winter (1974 – 1980)<a class="headerlink" href="#the-first-ai-winter-1974-1980" title="Link to this heading">#</a></h3>
+<p>Funding evaporated when results failed to match promises. The 1973 <strong>Lighthill Report</strong> in the UK concluded that AI had failed to deliver on its central claims, and government support was withdrawn on both sides of the Atlantic.</p>
+</section>
+<section id="expert-systems-and-the-second-winter-1980-1993">
+<h3>1.4 Expert Systems and the Second Winter (1980 – 1993)<a class="headerlink" href="#expert-systems-and-the-second-winter-1980-1993" title="Link to this heading">#</a></h3>
+<p><strong>Expert systems</strong> encoded specialist knowledge as explicit <code class="docutils literal notranslate"><span class="pre">IF–THEN</span></code> rules and found genuine commercial success. But they were brittle, expensive to maintain, and unable to learn. When the specialized hardware market collapsed in the late 1980s, so did the funding and a <strong>second winter</strong> followed.</p>
+<blockquote>
+<div><p>Both winters share a structure: <strong>a real capability was oversold, the gap was noticed, and the correction overshot.</strong> At that time, some key components to effective AI systems were missing: connectivity, data, storage and processing power, and algorithmic development.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="part-ii-the-statistical-learning-turn">
+<h2>Part II — The Statistical (Learning) Turn<a class="headerlink" href="#part-ii-the-statistical-learning-turn" title="Link to this heading">#</a></h2>
+<section id="learning-instead-of-programming">
+<h3>2.1 Learning Instead of Programming<a class="headerlink" href="#learning-instead-of-programming" title="Link to this heading">#</a></h3>
+<p>The decisive shift was philosophical before it was technical. Rather than <em>telling</em> a machine the rules, researchers began letting it <strong>infer the rules from input (data)</strong>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Era</p></th>
+<th class="head text-left"><p>Approach</p></th>
+<th class="head text-left"><p>How knowledge enters the system</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Symbolic</strong></p></td>
+<td class="text-left"><p>Rules written by experts</p></td>
+<td class="text-left"><p>Humans encode it explicitly</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Statistical</strong></p></td>
+<td class="text-left"><p>Patterns learned from examples</p></td>
+<td class="text-left"><p>The machine extracts it from data</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This is the single most important conceptual boundary in the course, and Unit 3 returns to it in detail.</p>
+</section>
+<section id="milestones-of-the-modern-era">
+<h3>2.2 Milestones of the Modern Era<a class="headerlink" href="#milestones-of-the-modern-era" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>1997</strong> — <strong>Deep Blue</strong> defeats Garry Kasparov at chess, largely through brute-force search rather than learning.</p></li>
+<li><p><strong>2012</strong> — <strong>AlexNet</strong> wins the ImageNet competition by a wide margin, triggering the deep learning boom. Three ingredients converged: large labeled datasets, GPU computing, and better training techniques.</p></li>
+<li><p><strong>2016</strong> — <strong>AlphaGo</strong> defeats Lee Sedol at Go, combining deep networks with reinforcement learning.</p></li>
+<li><p><strong>2017</strong> — The <strong>Transformer</strong> architecture is introduced, enabling the language models that follow.</p></li>
+<li><p><strong>2018–present</strong> — Large language models scale rapidly; generative AI reaches general public use.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice how much of the recent acceleration comes from <strong>scale</strong> (more data, more compute, larger models) and model developments. Whether that trend continues is one of the open questions of Unit 13.</p>
+</div>
+</section>
+</section>
+<section id="hands-on-plotting-the-arc-of-ai">
+<h2>⚙️ Hands-On: Plotting the Arc of AI<a class="headerlink" href="#hands-on-plotting-the-arc-of-ai" title="Link to this heading">#</a></h2>
+<p>Let’s make the history visible. This snippet builds a timeline of major milestones and shades the two AI winters.</p>
+<p><strong>Copy this into Colab (or any Python environment) and run it.</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># --- Major milestones in AI history -------------------------------</span>
+<span class="n">milestones</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">1943</span><span class="p">,</span> <span class="s2">"McCulloch-Pitts neuron"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1950</span><span class="p">,</span> <span class="s2">"Turing Test proposed"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1956</span><span class="p">,</span> <span class="s2">"Dartmouth: 'AI' coined"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1966</span><span class="p">,</span> <span class="s2">"ELIZA"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1980</span><span class="p">,</span> <span class="s2">"Expert systems boom"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1997</span><span class="p">,</span> <span class="s2">"Deep Blue beats Kasparov"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="s2">"AlexNet / DL"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="s2">"AlphaGo beats Lee Sedol"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="s2">"Transformers"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="s2">"GenAI"</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">winters</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1974</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span> <span class="s2">"First AI Winter"</span><span class="p">),</span>
+           <span class="p">(</span><span class="mi">1987</span><span class="p">,</span> <span class="mi">1993</span><span class="p">,</span> <span class="s2">"Second AI Winter"</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Shade the AI winters</span>
+<span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">winters</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"lightsteelblue"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">start</span> <span class="o">+</span> <span class="n">end</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"italic"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"navy"</span><span class="p">)</span>
+
+<span class="c1"># Plot milestones, alternating labels above and below the line</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">milestones</span><span class="p">):</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mf">0.6</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">year</span><span class="p">,</span> <span class="n">year</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"darkgreen"</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">height</span> <span class="o">*</span> <span class="mf">1.15</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">event</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span>
+            <span class="n">va</span><span class="o">=</span><span class="s2">"bottom"</span> <span class="k">if</span> <span class="n">height</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">"top"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1935</span><span class="p">,</span> <span class="mi">2030</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Year"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Eighty Years of Artificial Intelligence"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">,</span> <span class="s2">"top"</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Add three milestones you think belong on this timeline. What did you add, and why?</p></li>
+<li><p>Change the shaded regions. Do <em>you</em> think we are in a hype cycle right now? Where would you shade it?</p></li>
+<li><p>Notice the visual gap between 1956 and 1997. What does that spacing tell you about the pace of the field?</p></li>
+</ol>
+</section>
+<section id="example-rules-vs-learning-side-by-side">
+<h2>💡 Example: Rules vs. Learning, Side by Side<a class="headerlink" href="#example-rules-vs-learning-side-by-side" title="Link to this heading">#</a></h2>
+<p>The clearest way to feel the symbolic/statistical divide is to solve the same problem twice.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Approach 1: SYMBOLIC (1970s style) ---------------------------</span>
+<span class="c1"># A human writes the rules explicitly.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_spam_rules</span><span class="p">(</span><span class="n">email</span><span class="p">):</span>
+    <span class="n">spam_words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"free"</span><span class="p">,</span> <span class="s2">"winner"</span><span class="p">,</span> <span class="s2">"prize"</span><span class="p">,</span> <span class="s2">"urgent"</span><span class="p">,</span> <span class="s2">"click here"</span><span class="p">]</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">hits</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">spam_words</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hits</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+
+<span class="n">tests</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"URGENT: you are a WINNER, click here for your free prize"</span><span class="p">,</span>
+    <span class="s2">"Hi Professor, attaching my homework for Unit 1. Thanks!"</span><span class="p">,</span>
+    <span class="s2">"Free pizza for the hackathon winner — details in the break room"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"SYMBOLIC APPROACH"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  spam=</span><span class="si">{</span><span class="n">is_spam_rules</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="si">!s:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">t</span><span class="p">[:</span><span class="mi">56</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run it. Then look carefully at the third message: <em>“Free pizza for the hackathon winner — details in the break room.”</em> It contains two spam words but is obviously legitimate. Fixing that requires another rule. And that rule will break something else.</p>
+<p><strong>This is exactly the wall that ended the symbolic era.</strong> In Unit 3, you will solve the same problem by learning from examples instead, and you will see it handle cases nobody wrote a rule for.</p>
+</section>
+<hr class="docutils" />
+<section id="part-iii-the-many-faces-of-ai">
+<h2>Part III — The Many Faces of AI<a class="headerlink" href="#part-iii-the-many-faces-of-ai" title="Link to this heading">#</a></h2>
+<p>If you have spent any time reading about AI, you have probably noticed something confusing: the field seems to have a dozen names: Artificial intelligence; Machine learning; Deep learning; Data science; Generative AI; etc. Are these the same thing? Different things? Marketing?</p>
+<p>The honest answer is: they are overlapping ideas, each named at a specific moment, by specific people, for a specific reason. Once you know <em>when</em> and <em>why</em> a term was coined, the confusion largely disappears. Terminology in this field is archaeology, each layer tells you what problem people were stuck on at the time.</p>
+<p>This section walks through seven of these terms in roughly the order they entered the vocabulary.</p>
+<section id="artificial-neural-networks-ann">
+<h3>3.1 Artificial Neural Networks (ANN)<a class="headerlink" href="#artificial-neural-networks-ann" title="Link to this heading">#</a></h3>
+<p><strong>Proposed:</strong> 1943 (foundational model) · 1958 (first learning machine) · 1986 (revival)</p>
+<p><strong>The short version:</strong> computing inspired by the wiring of the brain.</p>
+<p>In 1943, neurophysiologist Warren McCulloch and logician Walter Pitts published a model of an artificial neuron, a tiny unit that adds up its inputs and fires if the total crosses a threshold. It was a mathematical abstraction, not a working machine, but it established a durable idea: <em>thinking might be reducible to networks of simple units</em>.</p>
+<p>In 1958, Frank Rosenblatt built the <strong>Perceptron</strong>, a physical machine that could adjust its own connection strengths to learn a task. This is the first system most historians would call a learning machine.</p>
+<p><strong>Why the term exists:</strong> to distinguish brain-inspired, <em>learn-the-rules</em> computing from the logic-and-rules approach that dominated early AI. These were rival camps, not collaborators.</p>
+<div class="note admonition">
+<p class="admonition-title">Two winters, one idea</p>
+<p>ANNs have died and returned twice. Minsky and Papert’s 1969 book <em>Perceptrons</em> showed what single-layer networks could not do, and funding collapsed.
+The field revived in 1986 when Rumelhart, Hinton, and Williams popularized <strong>backpropagation</strong>, a method for training networks with multiple layers.
+(Paul Werbos had described the essential technique in his 1974 dissertation; it went largely unnoticed. Credit here is genuinely contested.)</p>
+</div>
+</section>
+<section id="soft-computing">
+<h3>3.2 Soft Computing<a class="headerlink" href="#soft-computing" title="Link to this heading">#</a></h3>
+<p><strong>Proposed:</strong> early 1990s, by Lotfi Zadeh</p>
+<p><strong>The short version:</strong> a deliberate tolerance for imprecision, in exchange for solutions that actually work.</p>
+<p>Zadeh had introduced <strong>fuzzy logic</strong> in 1965 as a way of representing “somewhat hot” rather than forcing a binary hot/cold. By the early 1990s he grouped fuzzy logic,
+neural networks, and evolutionary computation under a single banner: <strong>soft computing</strong>, explicitly opposed to “hard” computing’s demand for exactness and certainty.</p>
+<p><strong>Why the term exists:</strong> as an argument. Zadeh’s claim was that real-world problems are messy, and that insisting on precise answers to imprecise questions is a way of guaranteeing failure.
+Accepting approximate, partially true answers is not sloppiness, it is what makes hard problems tractable.</p>
+<p>You hear “soft computing” less today, but the argument won. Every modern AI system outputs probabilities and confidence scores rather than certainties.</p>
+</section>
+<section id="natural-computing">
+<h3>3.3 Natural Computing<a class="headerlink" href="#natural-computing" title="Link to this heading">#</a></h3>
+<p><strong>Proposed:</strong> consolidated as an umbrella term through the 1990s and 2000s</p>
+<p><strong>The short version:</strong> computing inspired by nature, computing <em>with</em> nature, and computing that simulates nature.</p>
+<p>Rather than one invention, this is a family that accumulated over decades:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Approach</p></th>
+<th class="head"><p>Inspired by</p></th>
+<th class="head"><p>Roughly</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Evolutionary computation</p></td>
+<td><p>Natural selection</p></td>
+<td><p>1960s–1975</p></td>
+</tr>
+<tr class="row-odd"><td><p>Artificial neural networks</p></td>
+<td><p>The brain</p></td>
+<td><p>1943 onward</p></td>
+</tr>
+<tr class="row-even"><td><p>Swarm intelligence</p></td>
+<td><p>Ant colonies, bird flocks</p></td>
+<td><p>1989–1995</p></td>
+</tr>
+<tr class="row-odd"><td><p>Artificial immune systems</p></td>
+<td><p>The immune response</p></td>
+<td><p>1990s</p></td>
+</tr>
+<tr class="row-even"><td><p>DNA computing</p></td>
+<td><p>Molecular biology</p></td>
+<td><p>1994</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Why the term exists:</strong> to name a shared <em>strategy</em> rather than a shared technique.
+The insight is that nature has already solved extraordinarily hard optimization and adaptation problems (evolution, immunity, collective foraging) and that these
+solutions can be borrowed as algorithms. It is a research philosophy: when stuck,
+look at how a living system handles the same pressure.</p>
+<div class="tip admonition">
+<p class="admonition-title">Worth noticing</p>
+<p>Natural computing is one of the few terms here that is genuinely <em>broader</em> than AI rather than narrower.
+Some of it (DNA computing) is not about intelligence at all, it is about using molecules as hardware.</p>
+</div>
+</section>
+<section id="machine-learning">
+<h3>3.4 Machine Learning<a class="headerlink" href="#machine-learning" title="Link to this heading">#</a></h3>
+<p><strong>Proposed:</strong> 1959, by Arthur Samuel</p>
+<p><strong>The short version:</strong> programs that improve with experience instead of being told exactly what to do.</p>
+<p>Samuel, working at IBM, wrote a checkers program that played games against itself and got better.
+In his 1959 paper he described this as giving computers “the ability to learn without being explicitly programmed”, the phrase that defined the field.</p>
+<p><strong>Why the term exists:</strong> to name the alternative to hand-written rules. Recall the spam filter from the previous section: every rule you add may break something else.
+ML is the response to that wall. Instead of writing rules, you show the system thousands of labeled examples and let it derive the rules itself.</p>
+<p>For roughly thirty years this remained a niche within AI. It became <em>the</em> mainstream of AI in the 1990s and 2000s, for two unglamorous reasons: data became abundant, and computers became faster.</p>
+</section>
+<section id="data-mining">
+<h3>3.5 Data Mining<a class="headerlink" href="#data-mining" title="Link to this heading">#</a></h3>
+<p><strong>Proposed:</strong> as a pejorative in the 1960s–70s · reclaimed 1989 (first KDD workshop) · mainstream through the 1990s</p>
+<p><strong>The short version:</strong> finding useful patterns in large databases, especially patterns nobody thought to look for.</p>
+<p>The term began as an accusation. Statisticians used “data mining”, along with “data dredging” and “fishing expedition”, to describe the sin of searching a dataset until something looked significant, then reporting it as though you had predicted it in advance. Search hard enough and any dataset will yield a coincidence.</p>
+<p>In 1989, Gregory Piatetsky-Shapiro organized the first workshop on <strong>Knowledge Discovery in Databases (KDD)</strong>, and the community adopted the insult as its name.
+The reasoning was that the sin is not looking, it is looking without validating what you find. Done with proper holdout data and significance correction, pattern discovery is legitimate and enormously valuable.</p>
+<p><strong>Why the term exists:</strong> because businesses had accumulated databases far larger than anyone could inspect by hand, and the interesting patterns were unknown in advance.
+Machine learning as practiced then mostly answered a question you posed; data mining asked <em>what is in here that I did not think to ask about?</em></p>
+<div class="note admonition">
+<p class="admonition-title">Why you hear it less now</p>
+<p>Data mining did not fail, it was absorbed. Its techniques live on inside machine learning and data science, but is still one of the most widely used process models for data projects. The term faded partly because “mining” acquired an unfortunate connotation once consumer data collection became a public concern.</p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">The original sin, still worth avoiding</p>
+<p>The pejorative meaning has not gone away. If you test enough hypotheses against one dataset, you will find “significant” results by chance alone.
+This has a name — <strong>p-hacking</strong> — and it is a live problem across the sciences. When your capstone finds a striking pattern, the first question to ask is whether you went looking for that specific pattern, or whether you found it by looking at everything.</p>
+</div>
+</section>
+<section id="data-science">
+<h3>3.6 Data Science<a class="headerlink" href="#data-science" title="Link to this heading">#</a></h3>
+<p><strong>Proposed:</strong> 1974 (first use) · 2001 (as a discipline) · 2008 (as a job title)</p>
+<p><strong>The short version:</strong> the whole pipeline around the data, not just the algorithm.</p>
+<p>The term appears as early as 1974 in Peter Naur’s writing. It was proposed as a discipline in 2001 by statistician William Cleveland, who argued that statistics should expand to include computing and real data problems. It became a <em>career</em> in 2008, when Jeff Hammerbacher (Facebook) and DJ Patil (LinkedIn) adopted “data scientist” as a job title for people who did not fit existing categories.</p>
+<p><strong>Why the term exists:</strong> because the algorithm is the easy part. Somebody has to find the data, clean it, ask whether it is representative, check what it is missing, build the pipeline, and explain the result to a decision-maker who does not care about gradient descent. That work needed a name.</p>
+<div class="important admonition">
+<p class="admonition-title">A distinction that matters for your capstone</p>
+<p>Machine learning is a <em>method</em>. Data science is a <em>process</em> that often uses that method.
+A data science project can succeed with no ML at all, sometimes the answer is a well-constructed chart and an honest caveat.</p>
+</div>
+</section>
+<section id="deep-learning">
+<h3>3.7 Deep Learning<a class="headerlink" href="#deep-learning" title="Link to this heading">#</a></h3>
+<p><strong>Proposed:</strong> term used in this sense from ~2000–2006 · mainstream from 2012</p>
+<p><strong>The short version:</strong> neural networks with many layers, made practical.</p>
+<p>The word “deep” refers simply to the number of layers between input and output. Rina Dechter used “deep learning” in a different machine-learning context in 1986; Igor Aizenberg applied it to neural networks around 2000; Geoffrey Hinton and colleagues popularized it from 2006 with methods for training deep networks that previously would not train.</p>
+<p>The moment everything changed was 2012, when a deep network called <strong>AlexNet</strong> won the ImageNet image-recognition competition by a margin so wide it ended the debate.
+Within two years, essentially the whole field had switched.</p>
+<p><strong>Why the term exists:</strong> partly as rebranding. “Neural networks” carried the stigma of two failed hype cycles. But it also names something real: depth is what lets a network build up concepts in stages, from edges to shapes to objects, without anyone specifying those stages.</p>
+<div class="note admonition">
+<p class="admonition-title">What actually changed in 2012</p>
+<p>Not the theory. The core ideas were decades old. What changed was <strong>GPUs</strong> (graphics chips repurposed for the math) and <strong>ImageNet</strong> (a labeled dataset of 14 million images).
+Old ideas plus new data plus new hardware. Keep this pattern in mind, as it recurs.</p>
+</div>
+</section>
+<section id="generative-ai">
+<h3>3.8 Generative AI<a class="headerlink" href="#generative-ai" title="Link to this heading">#</a></h3>
+<p><strong>Proposed:</strong> techniques from 2013–2017 · the term entered common use in 2022–2023</p>
+<p><strong>The short version:</strong> systems that produce new content rather than simply performing inferences over existing content.</p>
+<p>Most AI before this was <em>discriminative</em>: is this spam or not, is this a tumor or not, which of these ten digits is this.
+Generative systems produce the artifact itself, such as text, images, audio, and code.</p>
+<p>Key milestones:</p>
+<ul class="simple">
+<li><p><strong>2013</strong> — variational autoencoders</p></li>
+<li><p><strong>2014</strong> — Generative Adversarial Networks (Ian Goodfellow), which pit two networks against each other, one generating and one detecting fakes</p></li>
+<li><p><strong>2017</strong> — the <strong>Transformer</strong> architecture (“Attention Is All You Need”), the foundation of every major language model since</p></li>
+<li><p><strong>2022</strong> — ChatGPT launches in November and reaches an estimated 100 million users within two months</p></li>
+</ul>
+<p><strong>Why the term exists:</strong> because the shift is real, not cosmetic. When a system infers (e.g. classifies), you can check whether it was right.
+When a system <em>generates</em>, “right” is often undefined, which is why questions of authorship, accuracy, and accountability suddenly became urgent for everyone rather than for specialists.</p>
+<p>Note the five-year gap between the Transformer paper and ChatGPT. The technology was public and published the entire time.</p>
+</section>
+<section id="putting-it-together">
+<h3>📅 Putting It Together<a class="headerlink" href="#putting-it-together" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Term</p></th>
+<th class="head"><p>Anchor year</p></th>
+<th class="head"><p>Named in response to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Artificial neural networks</p></td>
+<td><p>1943 / 1958</p></td>
+<td><p>Can we compute the way brains do?</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fuzzy logic → soft computing</p></td>
+<td><p>1965 / early 1990s</p></td>
+<td><p>Exact answers to inexact questions are useless</p></td>
+</tr>
+<tr class="row-even"><td><p>Natural computing</p></td>
+<td><p>1990s–2000s</p></td>
+<td><p>Nature already solved hard problems</p></td>
+</tr>
+<tr class="row-odd"><td><p>Machine learning</p></td>
+<td><p>1959 / 1997</p></td>
+<td><p>Hand-written rules do not scale / T. Mitchel’s book</p></td>
+</tr>
+<tr class="row-even"><td><p>Computational Intelligence</p></td>
+<td><p>1994</p></td>
+<td><p>World Congress on Computational Intelligence (WCCI)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data science</p></td>
+<td><p>2001 / 2008</p></td>
+<td><p>The algorithm is the easy part</p></td>
+</tr>
+<tr class="row-even"><td><p>Deep learning</p></td>
+<td><p>~2006 / 2012</p></td>
+<td><p>Depth works, given data and hardware</p></td>
+</tr>
+<tr class="row-odd"><td><p>Generative AI</p></td>
+<td><p>2014–2017 / 2022</p></td>
+<td><p>Systems that create, not just classify</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">How they nest — approximately</p>
+<p>You will often see a tidy diagram: AI contains ML contains deep learning contains generative AI.
+It is a useful first approximation and it is not quite right.
+Natural computing overlaps AI without being contained by it.
+Data science overlaps ML but extends well outside it.
+Plenty of generative techniques are not deep learning.
+Treat the nesting as a rough map, not a taxonomy.</p>
+</div>
+</section>
+</section>
+<section id="hands-on-mapping-the-vocabulary">
+<h2>⚙️ Hands-On: Mapping the Vocabulary<a class="headerlink" href="#hands-on-mapping-the-vocabulary" title="Link to this heading">#</a></h2>
+<p>The first hands-on plotted <em>events</em>. This one plots <em>names</em> — when each term in Part III entered the vocabulary, and what argument it was making at the time.</p>
+<p><strong>Copy this into Colab (or any Python environment) and run it.</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># --- When each term entered the vocabulary, and what it was named against ---</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">1943</span><span class="p">,</span> <span class="s2">"Artificial Neural Networks"</span><span class="p">,</span>  <span class="s2">"Can we compute the way brains do?"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1959</span><span class="p">,</span> <span class="s2">"Machine Learning"</span><span class="p">,</span>            <span class="s2">"Hand-written rules do not scale"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1965</span><span class="p">,</span> <span class="s2">"Fuzzy Logic / Soft Computing"</span><span class="p">,</span><span class="s2">"Exact answers to vague questions"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1977</span><span class="p">,</span> <span class="s2">"Exploratory Data Analysis"</span><span class="p">,</span>   <span class="s2">"Look at the data before modelling"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1989</span><span class="p">,</span> <span class="s2">"Data Mining"</span><span class="p">,</span>                 <span class="s2">"What is in here I did not ask about?"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="s2">"Natural Computing"</span><span class="p">,</span>           <span class="s2">"Nature already solved hard problems"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2001</span><span class="p">,</span> <span class="s2">"Data Science"</span><span class="p">,</span>                <span class="s2">"The algorithm is the easy part"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2006</span><span class="p">,</span> <span class="s2">"Deep Learning"</span><span class="p">,</span>               <span class="s2">"Depth works, given data and hardware"</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="s2">"Generative AI"</span><span class="p">,</span>               <span class="s2">"Systems that create, not just sort"</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">winters</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1974</span><span class="p">,</span> <span class="mi">1980</span><span class="p">,</span> <span class="s2">"First AI Winter"</span><span class="p">),</span> <span class="p">(</span><span class="mi">1987</span><span class="p">,</span> <span class="mi">1993</span><span class="p">,</span> <span class="s2">"Second AI Winter"</span><span class="p">)]</span>
+<span class="n">TODAY</span> <span class="o">=</span> <span class="mi">2026</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Shade the AI winters, exactly as in the first hands-on</span>
+<span class="k">for</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">winters</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"lightsteelblue"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">start</span> <span class="o">+</span> <span class="n">end</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mf">8.5</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"italic"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"navy"</span><span class="p">)</span>
+
+<span class="c1"># One bar per term, running from the year it was coined to today</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">terms</span><span class="p">):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">TODAY</span> <span class="o">-</span> <span class="n">year</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="n">year</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s2">"darkgreen"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"darkgreen"</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">year</span> <span class="o">-</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">year</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">row</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mf">9.5</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1935</span><span class="p">,</span> <span class="n">TODAY</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Year"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"The Many Faces of AI: when each name entered the vocabulary"</span><span class="p">,</span>
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s2">"left"</span><span class="p">,</span> <span class="s2">"right"</span><span class="p">,</span> <span class="s2">"top"</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Nothing on this chart has ended. Every bar runs to today.</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">against</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;30</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">against</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Look at the shape the bars make: a staircase, each step starting later than the last and none of them stopping. <strong>The terms accumulated; they did not replace one another.</strong> Machine learning did not retire neural networks, and generative AI has not retired data mining. All nine are in active use today, which is precisely why the vocabulary feels so crowded when you first encounter it.</p>
+<p>Then notice what crosses the shaded bands. Artificial neural networks, machine learning, and fuzzy logic were all named <em>before</em> the first AI winter and were all still being worked on during both. Winters are periods when funding and attention collapse, not periods when the ideas disappear.</p>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>The date for Natural Computing is the softest on this chart — its components arrived separately (evolutionary computation in the 1960s, swarm intelligence around 1990, DNA computing in 1994). Pick the date you think is most defensible, change it, and be ready to say why. Which other rows could reasonably move?</p></li>
+<li><p>Add a row for <strong>Symbolic AI</strong>, which Part I covered but Part III did not list. What year do you give it, and does its bar run to today like the others, or does it stop?</p></li>
+<li><p>Three terms sit close together between 1977 and 2001 — EDA, data mining, and data science. What was happening in the world during those years that would cause three names for working with data to appear in such quick succession?</p></li>
+</ol>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Every era of AI believed it had found the right approach, and every era was partly right and partly wrong.
+Which of today’s assumptions do you think will look naive in twenty years?</p>
+<p>The Dartmouth proposal estimated that a summer would suffice. What makes intelligence so much harder to build than its pioneers expected?</p>
+</div></blockquote>
+<p><strong>Connecting to HW1 (Reflection: AI in Your Daily Life, due Sep 02):</strong> as you inventory the AI systems you interact with daily, try to identify for each whether it is closer to the <strong>rule-based</strong> or the <strong>learning-based</strong> tradition. Some are genuinely hybrids.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Russell, S., &amp; Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em>, 4th Ed., Ch. 1. Pearson.</p></li>
+<li><p>Mitchell, M. (2020). <em>Artificial Intelligence: A Guide for Thinking Humans</em>, Part I. Penguin Books.</p></li>
+<li><p>de Castro, L. N. (2026). <em>Exploratory Data Analysis: Descriptive Statistics, Visualization, and Dashboard Design</em>, CRC Press.</p></li>
+<li><p>Turing, A. M. (1950). Computing Machinery and Intelligence. <em>Mind</em>, 59(236), 433–460.</p></li>
+<li><p>McCulloch, W. &amp; Pitts, W. (1943). <em>A Logical Calculus of the Ideas Immanent in Nervous Activity.</em></p></li>
+<li><p>Samuel, A. (1959). <em>Some Studies in Machine Learning Using the Game of Checkers.</em></p></li>
+<li><p>Zadeh, L. (1965). <em>Fuzzy Sets.</em></p></li>
+<li><p>Rumelhart, D., Hinton, G. &amp; Williams, R. (1986). <em>Learning representations by back-propagating errors.</em></p></li>
+<li><p>Cleveland, W. (2001). <em>Data Science: An Action Plan for Expanding the Technical Areas of the Field of Statistics.</em></p></li>
+<li><p>de Castro, L. N. (2006). <em>Fundamentals of Natural Computing.</em> Chapman &amp; Hall/CRC.</p></li>
+<li><p>Goodfellow, I. et al. (2014). <em>Generative Adversarial Networks.</em></p></li>
+<li><p>Vaswani, A. et al. (2017). <em>Attention Is All You Need.</em></p></li>
+<li><p>Mitchell, M. (2019). <em>Artificial Intelligence: A Guide for Thinking Humans.</em></p></li>
+<li><p>Dendritic Institute (2025). <em>AI Literacy Series — Module 1: A Brief History of AI.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Foundations of AI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_02_Goals_and_Foundations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 2: Goals and Foundations of AI</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-the-origins">Part I — The Origins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-the-name">1.1 Before the Name</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-symbolic-era-1956-1974">1.2 The Symbolic Era (1956 – 1974)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-ai-winter-1974-1980">1.3 The First AI Winter (1974 – 1980)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expert-systems-and-the-second-winter-1980-1993">1.4 Expert Systems and the Second Winter (1980 – 1993)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-the-statistical-learning-turn">Part II — The Statistical (Learning) Turn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-instead-of-programming">2.1 Learning Instead of Programming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#milestones-of-the-modern-era">2.2 Milestones of the Modern Era</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-plotting-the-arc-of-ai">⚙️ Hands-On: Plotting the Arc of AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rules-vs-learning-side-by-side">💡 Example: Rules vs. Learning, Side by Side</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-the-many-faces-of-ai">Part III — The Many Faces of AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#artificial-neural-networks-ann">3.1 Artificial Neural Networks (ANN)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soft-computing">3.2 Soft Computing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-computing">3.3 Natural Computing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">3.4 Machine Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-mining">3.5 Data Mining</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science">3.6 Data Science</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning">3.7 Deep Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai">3.8 Generative AI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-together">📅 Putting It Together</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-mapping-the-vocabulary">⚙️ Hands-On: Mapping the Vocabulary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
