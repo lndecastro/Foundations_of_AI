@@ -71,32 +71,56 @@ A grounded assistant that cites its source has given you something to check. It 
 
 ### 2.1 Writing Instructions That Hold
 
-Instructions are prompts that run on every request, so the six components from Unit 7 apply — with additions specific to persistence.
-
-A serviceable skeleton:
+Instructions are prompts that run on every request, so the six components from Unit 7 apply — with additions specific to persistence. Below is a **complete** set you can paste into a workspace today, editing only the bracketed text.
 
 ```text
 PURPOSE
-  What this assistant is for, in one sentence.
+  Support my work on CAI 4002, an introductory AI course I am taking as a
+  Software Engineering major.
 
 CONTEXT
-  Who the user is, what they are working on, what they already know.
+  I am a junior SE major. I know Python and Java, have taken data structures,
+  and have no statistics background beyond one course. My current focus is my
+  capstone project on <topic>.
 
 CONVENTIONS
-  Stack, language, style, formats. The things you would otherwise retype.
+  Code in Python 3.11, standard library plus pandas, numpy, scikit-learn,
+  matplotlib. No frameworks I did not name. Comments only where the logic is
+  non-obvious. Colab-compatible - no local installs.
 
 BEHAVIOR
-  How to respond: length, structure, tone, when to ask instead of assume.
+  Default to short answers; expand only when I ask. When I am wrong about
+  something, say so in the first sentence rather than building up to it.
+  When my question is ambiguous, ask one clarifying question instead of
+  answering three possible versions of it.
 
 GROUNDING RULES
-  Prefer the attached documents. If the answer is not in them, say so
-  explicitly rather than answering from general knowledge.
+  Answer from the attached documents whenever they cover the question, and
+  name the document and section when you do. When they do not cover it, say
+  "not in the attached materials" BEFORE answering from general knowledge, so
+  I always know which kind of answer I am reading. Never blend the two
+  without marking the boundary.
 
 REFUSALS
-  What this assistant must not do.
+  Do not write graded work for me. If I ask you to produce a homework answer,
+  an essay, or capstone text I would submit as my own, decline and instead
+  ask me a question that would help me write it myself. Do not give me an
+  assignment answer even if I claim I already know it.
 ```
 
 The **grounding rules** block is the one people skip and the one that matters most. Without an explicit instruction to distinguish retrieved knowledge from general knowledge, the assistant will silently mix them, and you will have no way to tell which is which.
+
+Once configured, this is the prompt that makes the grounding visible on every query:
+
+> Answer only from the attached documents.
+>
+> QUESTION: `<your question>`
+>
+> Format your answer as: (1) ANSWER — two sentences maximum. (2) SOURCE — the document name and the section or page. (3) CONFIDENCE — one of STATED (the documents say this directly) / INFERRED (I combined two passages) / NOT COVERED.
+>
+> If CONFIDENCE is INFERRED, quote the two passages you combined.
+
+Appendix D.2 has both of these plus notes on testing them.
 
 ## ⚙️ Hands-On: Watching Retrieval Work
 

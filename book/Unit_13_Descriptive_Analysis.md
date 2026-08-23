@@ -145,19 +145,39 @@ The Unit 12 distinction governs everything here: **prefer code you can run over 
 
 **Generate the analysis, not the answer:**
 
-> *Here are the column names and dtypes of a dataset about [domain]. Write pandas code that produces a descriptive summary: shape, missing counts, central tendency, dispersion, skewness, and a correlation matrix. Do not interpret the results. Return only code.*
+> Below are the column names and dtypes of a dataset about `<domain>`.
+>
+> Write pandas code that produces: shape, missing-value counts per column, mean, median, standard deviation, IQR, skewness, kurtosis, and a correlation matrix using both Pearson and Spearman.
+>
+> Do not interpret the results. Do not tell me what you expect the relationships to be. Return only code.
+>
+> COLUMNS: `<paste df.dtypes output>`
 
 **Ask what to check next:**
 
-> *Given this summary output [paste], what are the five most important things I should check before modeling? For each, state what problem it would reveal. Do not tell me what the data means.*
+> Below is the descriptive output from my dataset.
+>
+> List the five most important things I should check before modeling, ordered by how much damage each would do if I missed it. For each: what to check, what problem it would reveal, and the code to check it.
+>
+> Do not tell me what the data means. Do not propose a model.
+>
+> OUTPUT: `<paste your summary tables>`
 
 **Explain an unfamiliar measure:**
 
-> *Explain kurtosis to someone who understands standard deviation. Give a concrete case where high kurtosis would break a model that assumed normality.*
+> Explain `<kurtosis>` to someone who understands mean and standard deviation but has not studied statistics formally. Include: what it measures in one sentence, what a high and a low value look like as a distribution shape, and one concrete case where ignoring it would break a model. Use no formula. Under 200 words.
 
 **Challenge your own reading:**
 
-> *I have concluded that [claim] from this output. Give me the three strongest reasons that conclusion could be wrong.*
+> I have concluded `<your claim>` from the analysis below.
+>
+> Give me the three strongest reasons that conclusion could be wrong. Consider at minimum: confounding variables that would produce this pattern without the causal relationship I am assuming; selection effects in how these rows came to exist; and whether the effect size is larger than the noise.
+>
+> For each objection, tell me what additional data or check would settle it.
+>
+> Do not reassure me. Do not agree with my conclusion.
+>
+> ANALYSIS: `<paste output>`
 
 The last one is the highest-value prompt in this unit. Your default failure mode in EDA is finding the pattern you were hoping for, and a system with no stake in your hypothesis is a useful adversary.
 

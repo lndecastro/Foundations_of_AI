@@ -146,11 +146,26 @@ AI is strong at chart **implementation** and weak at chart **judgment**, which m
 
 **Effective prompts:**
 
-> *Write matplotlib code to compare the distribution of resolution time across four severity levels. I have ~800 rows, heavily right-skewed, with outliers I want visible rather than clipped. Label axes with units. Return only code.*
+> Write matplotlib code for the following.
+>
+> Question the chart must answer: `<do resolution times differ across severity levels?>`
+> Data: `<~800 rows; "severity" is one of four ordered categories; "minutes" is heavily right-skewed with outliers I want visible, not clipped>`
+>
+> Rules: label both axes with units. Do not truncate the y-axis. Do not add a title that merely restates the axis labels. Return only code.
 
-> *Here is my chart's code. I am claiming [X] from it. What could a skeptical reader legitimately object to about how this is drawn?*
+> Below is the code for a chart I built. I am claiming `<your claim>` from it.
+>
+> You are a skeptical reviewer. What could you legitimately object to about how this is drawn? Check specifically: axis truncation, missing baseline, unlabeled units, a selected date range, aggregation that hides variance, and colour choices that imply a judgment.
+>
+> For each objection, say how I would fix it and what I would lose by fixing it.
+>
+> CODE: `<paste>`
 
-> *I want to answer [question] from data with [these columns]. Suggest three chart types and state what each would reveal that the others would hide.*
+> I want to answer `<your question>` from data with columns `<list them>`.
+>
+> Suggest three different chart types. For each: what it would reveal, what it would hide, and which audience it suits.
+>
+> Do not recommend one. I will choose.
 
 **Ineffective prompts:**
 

@@ -172,6 +172,20 @@ The final block is not decoration. **Cleaning code fails silently** — a date i
 2. Add `"1h20m"` handling for `"1:20"`. Does your fix break any existing case?
 3. Ask an assistant to write this cleaner from the messy data alone. Compare its handling of edge cases against this version. What did it silently drop?
 
+## Part III — Prompts for Spreadsheet Work
+
+Every prompt below is written to produce **Mode 1** output. Complete versions with verification steps are in Appendix D.6; these are the two you will use most.
+
+**Get the formula, never the answer:**
+
+> Write a Google Sheets formula for the following. My data: columns A = ticket id, B = status, C = closed date, D = minutes to resolve, rows 2 through 847. What I want: the median resolution time for tickets whose status is "closed" and whose closed date is on or after 1 September 2026. Return the formula and a one-line explanation of each argument. Do not tell me the answer — I will run it. If the calculation requires an assumption about my data that I have not stated (blank cells, text in a numeric column, date format), state the assumption instead of picking one silently.
+
+**Audit a number you were given** — use this the moment any tool states a figure:
+
+> You told me the average resolution time is 4.2 days. Give me the exact formula or code that produces that number from my data, written so I can run it myself. Then tell me: how many rows did your calculation include, and were any excluded for any reason? If you did not compute this figure from the data I provided, say so directly.
+
+The second prompt is the one that catches fabrications. Run the returned code; if the result differs from the stated number, you have your HW10 evidence.
+
 ## 💡 Example: The Estimate That Was Never Computed
 
 A team lead asked an assistant to review a project spreadsheet and got: *"Based on the data, the team is averaging 1.4x their estimates, so the Q4 milestone should be pushed by approximately three weeks."*

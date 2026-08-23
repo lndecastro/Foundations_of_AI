@@ -56,3 +56,5 @@ parts:
         title: "Appendix B: Capstone Project Guide"
       - file: Appendix_C_AI_Use_and_Disclosure.md
         title: "Appendix C: AI Use and Disclosure"
+      - file: Appendix_D_Prompt_Library.md
+        title: "Appendix D: The Course Prompt Library"

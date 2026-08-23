@@ -32,54 +32,98 @@ Each entry below is a prompt skeleton in the Unit 7 six-component form. These be
 
 ### 2.1 Design Document
 
-> **Role:** Senior engineer writing a design doc for team review.
-> **Task:** Turn the notes below into a design document.
-> **Context:** [the actual notes — your constraints, your options, your leaning]
-> **Constraints:** Do not invent requirements I did not state. Where I have been vague, mark it `[UNRESOLVED]` rather than filling it in.
-> **Format:** Problem · Constraints · Options considered · Recommendation · Risks · Open questions.
-> **Criteria:** A reviewer should be able to disagree with the recommendation on specific grounds.
+> You are a senior engineer turning rough notes into a design document for team review.
+>
+> Below are my notes. Convert them into a design document.
+>
+> Rules: Do not invent requirements, constraints, or options I did not state. Wherever my notes are vague, incomplete, or contradictory, insert `[UNRESOLVED: what is missing]` rather than filling the gap. I would rather have a document with eight unresolved markers than a smooth document that hides where my thinking stopped.
+>
+> Format: Problem · Constraints · Options considered · Recommendation · Risks · Open questions.
+>
+> Criteria: A reviewer should be able to disagree with the recommendation on specific technical grounds. If my notes do not contain enough to support a recommendation, say so instead of producing one.
+>
+> MY NOTES: `<paste your notes, however rough>`
 
-The `[UNRESOLVED]` instruction is the important one. Left alone, the model will smooth over every gap in your thinking, producing a document that reads as finished and hides exactly the places where you needed help.
+**Verify:** count the `[UNRESOLVED]` markers. If there are none, it smoothed over your gaps — ask again, more forcefully.
+
+The `[UNRESOLVED]` instruction is the important one. Left alone, the model will close every gap in your thinking, producing a document that reads as finished and hides exactly the places where you needed help.
 
 ### 2.2 Pull Request Description
 
-> **Role:** Engineer writing a PR description for a reviewer with no context on this change.
-> **Task:** Write the description from the diff summary below.
-> **Constraints:** Describe what changed and why. Do not claim the change is tested unless I said so.
-> **Format:** What · Why · How to review · What is *not* covered.
-> **Criteria:** A reviewer should know where to look first.
+> You are writing a PR description for a reviewer with no context on this change.
+>
+> Rules: Describe only what the diff shows. Do not claim the change is tested, benchmarked, or backwards-compatible unless I stated it. Do not describe the change as "simple," "minor," or "straightforward" — the reviewer decides that.
+>
+> Format:
+> **What changed** — two or three sentences.
+> **Why** — the problem this solves.
+> **How to review** — where to look first, and what to check.
+> **Not covered** — what this PR deliberately does not do.
+>
+> Criteria: A reviewer should know within fifteen seconds where to start reading.
+>
+> DIFF SUMMARY: `<files changed and a description of each>`
+> CONTEXT THE DIFF DOES NOT SHOW: `<issue number, prior discussion, the constraint you worked under>`
+
+**Verify:** read "Not covered" against your own knowledge of the change. It is the section most likely to come back thin, and the one that saves a reviewer an hour.
 
 ### 2.3 Incident Post-Mortem
 
-> **Role:** Engineer writing a blameless post-mortem.
-> **Task:** Structure the timeline below into a post-mortem.
-> **Constraints:** No individual is named. Distinguish *what happened* from *why it was possible*. Do not propose action items I did not list.
-> **Format:** Impact · Timeline · Contributing factors · What went well · Action items.
-> **Criteria:** Every contributing factor should point at a system, not a person.
+> You are structuring a blameless post-mortem from a raw incident timeline.
+>
+> Rules, and these are strict:
+> - Name no individual. Refer to roles.
+> - Include only causes the timeline actually supports. If you can see a likely cause the timeline does not establish, put it under "Hypotheses requiring investigation" — never under contributing factors.
+> - Distinguish *what happened* from *why it was possible*.
+> - Propose no action items I did not list. If you think one is missing, say so at the end under "Action items you may be missing."
+>
+> Format: Impact · Timeline · Contributing factors · Hypotheses requiring investigation · What went well · Action items · Action items you may be missing.
+>
+> Criteria: every contributing factor must point at a system or a process, not a person or a decision someone made under pressure.
+>
+> RAW TIMELINE: `<paste your Slack log, ticket history, or notes>`
+
+**Verify:** for each contributing factor, find the line in the raw timeline that establishes it. Any factor you cannot trace is a fabrication.
 
 ```{warning}
-Post-mortems are the highest-risk document in this list for AI assistance. The model will readily generate plausible-sounding root causes that were never established, and a fabricated contributing factor in an incident review is worse than a gap — it sends remediation effort in the wrong direction. Use it for structure and clarity. Never for causation.
+Post-mortems are the highest-risk document in this list for AI assistance. The model will readily generate plausible-sounding root causes that were never established, and a fabricated contributing factor sends remediation effort in the wrong direction. The "Hypotheses requiring investigation" section exists to give those guesses somewhere to go that is not the causes list.
 ```
 
 ### 2.4 Technical Documentation
 
-> **Role:** Engineer documenting a module for someone who has never seen this codebase.
-> **Task:** Draft reference documentation for the code below.
-> **Constraints:** Document only behavior visible in the code. Mark anything you inferred as `[INFERRED]`.
-> **Format:** Purpose · Parameters · Returns · Raises · Example · Caveats.
-> **Criteria:** Name every assumption the code makes about its inputs.
+> You are documenting a module for an engineer who knows the language but has never seen this codebase.
+>
+> Rules: Document only behavior visible in the code below. Where you infer intent from a name rather than from logic, mark it `[INFERRED]`. Where the code's behavior on an edge case is genuinely unclear from reading it, mark it `[UNCLEAR]` rather than guessing.
+>
+> Format: Purpose · Parameters · Returns · Raises · Example call · Caveats.
+>
+> Criteria: name every assumption the code makes about its inputs — encoding, ordering, nullability, size, type. These are what break for the next person.
+>
+> CODE: `<paste the function or module>`
+
+**Verify:** check each `[INFERRED]` against the actual logic, and run the example call.
 
 ### 2.5 Difficult Email
 
-> **Role:** Professional writing to a colleague.
-> **Task:** [state the outcome you want, not the words you want]
-> **Context:** Relationship, history, what has already been tried.
-> **Constraints:** Do not apologize for things that are not my fault. Do not overstate certainty.
-> **Format:** Under 150 words.
-> **Criteria:** The recipient should know exactly what I am asking for.
+> You are helping me write a professional email.
+>
+> Rules: Do not apologize for anything that is not my fault. Do not overstate certainty. Do not use "I just wanted to," "circling back," or "per my last email." Do not invent an excuse or a reason I did not give you.
+>
+> Format: subject line, then under 150 words of body.
+>
+> Criteria: the recipient should finish reading knowing exactly what I am asking them to do and by when.
+>
+> SITUATION: `<what has happened>`
+> RELATIONSHIP: `<who they are to you, and the history>`
+> WHAT I WANT TO HAPPEN: `<the outcome, not the words>`
+> WHAT I DO NOT WANT: `<e.g. I do not want to escalate to their manager yet>`
+
+**Verify:** read it as the recipient. If you would feel managed rather than addressed, the register is wrong.
 
 ```{note}
-Note the structural difference in 2.5: the **Task** states an *outcome*, not a text. "Write an email declining this" produces something generic. "I need to decline without closing the door on future collaboration, and I do not want to invent an excuse" produces something usable, because you have specified the constraint that was actually hard.
+Note the structural difference in 2.5: the field is WHAT I WANT TO HAPPEN, not what I want it to say. "Write an email declining this" produces something generic. "I need to decline without closing the door on future collaboration, and I do not want to invent an excuse" produces something usable, because you have specified the constraint that was actually hard.
+
+All five prompts above appear in **Appendix D.4** alongside a sixth for interrogating long documents.
 ```
 
 ## Part III — Interrogating a Long Document

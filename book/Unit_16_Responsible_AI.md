@@ -246,7 +246,32 @@ render(model_card)
 2. The `baseline` field is the one most often omitted. Why does 0.78 accuracy mean something different once you know the trivial baseline is 0.64?
 3. Add a `monitoring` section: what would you measure after deployment, and what result would trigger retraining?
 
-### 3.3 The Regulatory Landscape
+### 3.3 Prompts for Responsible AI Work
+
+These three do most of the work on HW12. Full versions with verification steps are in Appendix D.10.
+
+**Leakage audit** — run this on your capstone's feature list before you model anything:
+
+> Below is a list of the features in my dataset and a description of the outcome I am predicting. For each feature, tell me: could this value be unavailable, incomplete, or different at the moment a real prediction would be made? Consider fields that are populated after the outcome, fields derived from the outcome, and fields whose meaning changes over the record's lifecycle. Flag anything suspicious even if you are unsure — I would rather check five clean features than miss one leak.
+> OUTCOME: «what you are predicting, and when the prediction happens»
+> FEATURES: «list with a one-line description of each»
+
+**Bias by mechanism** — the phrasing matters, because a vague prompt returns vague risks:
+
+> Identify sources of bias by mechanism, using these categories: historical, representation, measurement, aggregation, deployment. For each one you identify, state the specific mechanism — not that bias "could exist," but what in this particular pipeline would produce it, and which group would be affected how. If a category does not apply here, say so rather than inventing an instance.
+> DATASET: «source, collection period, population, label definition»
+> DECISION: «what the output is used for, and by whom»
+
+**Fairness trade-off:**
+
+> For the system described below, walk through what each of these fairness criteria would require: demographic parity, equal opportunity, predictive parity, individual fairness. Then tell me which pairs cannot hold simultaneously given the base rates I describe, and what each choice sacrifices. Do not recommend one — state what a person choosing each would be prioritizing.
+> SYSTEM: «what it decides, for whom» · BASE RATES: «outcome rates across groups» · ERROR COSTS: «what each error costs, and to whom»
+
+```{note}
+Note the shape shared by all three: they forbid the reassuring answer. "Could be biased," "seems reasonable," and "no major concerns" are the statistically typical continuations, and they are worth nothing on this assignment. Constraining the output away from them is the whole technique.
+```
+
+### 3.4 The Regulatory Landscape
 
 - **EU AI Act** — risk-tiered. Unacceptable-risk uses prohibited; high-risk uses (employment, credit, education, law enforcement) face conformity, documentation, and human-oversight requirements. Extraterritorial in effect.
 - **United States** — sectoral rather than comprehensive. FTC authority over unfair practices, sector regulators in finance and health, plus state laws — Colorado's AI Act and Illinois's biometric statute among the most consequential.
