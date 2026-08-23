@@ -1,8 +1,8 @@
 # Unit 2: Goals and Foundations of AI
 
-> **Sessions 5–6** · Aug 31, Sep 02 · **HW2 assigned Sep 02, due Sep 09**
+> **Sessions 3–4** · Aug 24, 26 · **HW2 assigned Aug 24, due Aug 30**
 
-Before you can evaluate an AI system, you need to know **what it is trying to do**. This unit builds the vocabulary you will use for the rest of the semester — and the vocabulary matters more than it might seem. Most public confusion about AI comes from mixing up categories: calling a chatbot "intelligent," calling a classifier "biased," calling a prediction a "decision." Precision here pays off everywhere later.
+Before you can evaluate an AI system, you need to know **what it is trying to do**. This unit builds the vocabulary you will use for the rest of the semester, and the vocabulary matters more than it might seem. Most public confusion about AI comes from mixing up categories: calling a chatbot "intelligent," calling a classifier "biased," calling a prediction a "decision." Precision here pays off everywhere later.
 
 ## Learning Objectives
 
@@ -11,7 +11,7 @@ After completing this unit, you will be able to:
 - Distinguish the **four goals** AI has historically pursued and explain which ones dominate today.
 - Define the **rational agent** framework and use it to describe any AI system.
 - Classify a real-world problem into the correct **task type** (classification, regression, clustering, generation, and others).
-- Use core terminology — model, feature, label, training, inference — correctly and precisely.
+- Use core terminology, such as model, feature, label, training, and inference, correctly and precisely.
 
 ## Part I — What Is AI Trying to Do?
 
@@ -21,12 +21,12 @@ Russell and Norvig organize the field's ambitions along two axes: whether the sy
 
 | | **Humanly** | **Rationally** |
 | :--- | :--- | :--- |
-| **Thinking** | Cognitive modeling — replicate human reasoning | Laws of thought — reason correctly by logic |
-| **Acting** | Turing Test — behave indistinguishably from a person | **Rational agents** — do the right thing given the goal |
+| **Thinking** | Cognitive modeling: replicate human reasoning | Laws of thought: reason correctly by logic |
+| **Acting** | Turing Test: behave indistinguishably from a person | **Rational agents**: do the right thing given the goal |
 
 Modern AI overwhelmingly pursues the bottom-right quadrant: **rational action**. A spam filter is not trying to think like a person about email. It is trying to make the correct sorting decision as often as possible.
 
-> This is why "does the machine really understand?" is often the wrong question for practical purposes — and simultaneously the right question for ethical ones. Hold both.
+> This is why "does the machine really understand?" is often the wrong question for practical purposes and simultaneously the right question for ethical ones. Hold both.
 
 ### 1.2 The Agent Framework
 
@@ -38,7 +38,7 @@ Nearly any AI system can be described with four elements:
 - **Performance measure** → how we score whether it did well
 
 ```{note}
-The **performance measure** is where most real-world AI failures originate. A system optimizes exactly what you measure — not what you meant. A recommendation engine measured on "watch time" will learn to maximize watch time, even if that means promoting outrage. Unit 10 and Unit 11 return to this repeatedly.
+The **performance measure** is where most real-world AI failures originate. A system optimizes exactly what you measure, not what you meant. A recommendation engine measured on "watch time" will learn to maximize watch time. Future units return to this repeatedly.
 ```
 
 ### 1.3 Types of Environments
@@ -51,35 +51,37 @@ The **performance measure** is where most real-world AI failures originate. A sy
 | **Time** | Episodic (each case independent) | Sequential (actions have consequences) |
 | **Change** | Static | Dynamic |
 
-Chess is fully observable, deterministic, and static — which is why it fell to computers first. Driving is none of those things, which is why it remains hard.
+Chess is fully observable, deterministic, and static, which is why it fell to computers first. Driving is none of those things, which is why it remains hard.
 
 ## Part II — Core Terminology
 
-These six terms will appear in every remaining unit. Learn them now.
+These terms below will appear in every remaining unit. 
 
-| Term | Meaning | Everyday analogy |
+| Term | Meaning | Example |
 | :--- | :--- | :--- |
-| **Feature** | An input variable the system observes | The symptoms a doctor notes |
-| **Label** | The correct answer for a given example | The confirmed diagnosis |
+| **Feature or Characteristic** | An input variable the system observes | The symptoms a doctor notes |
+| **Label or Desired output** | The correct answer for a given example | The confirmed diagnosis |
 | **Model** | The learned mapping from features to output | The doctor's accumulated judgment |
 | **Training** | The process of fitting the model to data | Years of medical residency |
 | **Inference** | Using the trained model on new input | Seeing a new patient today |
 | **Parameters** | The internal numbers adjusted during training | What actually changed in the doctor's head |
+| **Hyperparameters** | The numbers of values that have to be defined to train or run the model | Model architecture |
+| **Generalization** | Capability of the model to respond appropriately to inputs not previously seen | A new case the doctor has to deal with |
 
-> A **model** is not a program someone wrote. It is a set of numbers that were *discovered* by a training process. Nobody chose them, and often nobody can fully explain them. That distinction drives the interpretability problems of Unit 10.
+> A **model** is not a program someone wrote. It is a set of numbers or parameters that were *discovered* by a training process. Nobody chose them, and often nobody can fully explain them. That distinction drives the interpretability problems of some AI solutions.
 
 ### 2.1 Task Types
 
-Most AI problems reduce to a handful of shapes:
+Most AI problems reduce to a handful of types:
 
-- **Classification** → predict a category. *Is this transaction fraudulent?*
-- **Regression** → predict a number. *What will this house sell for?*
-- **Clustering** → group similar items with no labels given. *What customer segments exist?*
-- **Ranking** → order items by relevance. *Which results go on page one?*
-- **Generation** → produce new content. *Write a summary of this report.*
-- **Sequential decision-making** → choose actions over time. *Route this delivery fleet.*
+- **Classification**: predict a category. *Is this transaction fraudulent?*
+- **Regression**: predict a number. *What will this house sell for?*
+- **Clustering**: group similar items with no labels given. *What customer segments exist?*
+- **Ranking**: order items by relevance. *Which results go on page one?*
+- **Generation**: produce new content. *Write a summary of this report.*
+- **Sequential decision-making**: choose actions over time. *Route this delivery fleet.*
 
-Correctly identifying the task type is the first step in every project — including your capstone.
+Correctly identifying the task type is one of the first steps in every AI project.
 
 ## ⚙️ Hands-On: Building a Rational Agent
 
