@@ -1,6 +1,6 @@
 # Unit 2: Goals and Foundations of AI
 
-> **Sessions 3–4** · Aug 24, 26 · **HW2 assigned Aug 24, due Aug 30**
+> **Session 3** · Aug 24 · **HW2 assigned Aug 24, due Aug 30**
 
 Before you can evaluate an AI system, you need to know **what it is trying to do**. This unit builds the vocabulary you will use for the rest of the semester, and the vocabulary matters more than it might seem. Most public confusion about AI comes from mixing up categories: calling a chatbot "intelligent," calling a classifier "biased," calling a prediction a "decision." Precision here pays off everywhere later.
 
@@ -85,7 +85,7 @@ Correctly identifying the task type is one of the first steps in every AI projec
 
 ## ⚙️ Hands-On: Building a Rational Agent
 
-Here is a complete rational agent in about twenty lines. It lives in a small grid world, cannot see the whole map, and must find its way to a goal. Watch how the four elements — environment, percepts, actions, performance measure — appear explicitly in the code.
+Here is a complete rational agent in about twenty lines. It lives in a small grid world, cannot see the whole map, and must find its way to a goal. Watch how the four elements (environment, sensors, actions, performance measure) appear explicitly in the code.
 
 ```python
 from collections import deque
@@ -101,7 +101,7 @@ grid = [
 start, goal = (0, 0), (4, 4)
 
 def neighbors(cell):
-    """The agent's PERCEPTS: which adjacent squares are open?"""
+    """The agent's SENSORS: which adjacent squares are open?"""
     r, c = cell
     for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:   # its ACTIONS
         nr, nc = r + dr, c + dc
@@ -140,11 +140,11 @@ for r in range(len(grid)):
 **Try changing it:**
 
 1. Add a wall that blocks the path entirely. What does the agent do? Is failing gracefully a form of rational behavior?
-2. Change the performance measure. What if diagonal moves were allowed but cost twice as much? Would the shortest path still be the *best* path?
-3. This agent has **no learning whatsoever** — it searches fresh every time. Is it still "intelligent"? Defend your answer using the four goals from Part I.
+2. This agent has **no learning whatsoever**, it searches fresh every time. Is it still "intelligent"? Defend your answer using the four goals from Part I.
+3. **Challenge:** Alter the agent snippet such that random grids (variable sizes and walls) can be generated. Run your code a number of times and analyze the agent behavior.
 
 ```{important}
-This agent is **entirely symbolic** — the rules of movement were written by a human. It is a direct descendant of 1970s AI, and it works perfectly here because the environment is small, fully observable, deterministic, and static. Change any one of those and it breaks. That is the boundary line where machine learning becomes necessary.
+This agent is **entirely symbolic**, that is, the rules of movement were written by a human. It is a direct descendant of 1970s AI, and it works perfectly here because the environment is small, fully observable, deterministic, and static. Change any one of those and it breaks. That is the boundary line where machine learning becomes necessary.
 ```
 
 ## 💡 Example: Naming the Task Type
@@ -164,10 +164,8 @@ That last row is deliberate. **Framing a human decision as a ranking task is its
 
 ## 🧭 Reflection
 
-> Pick an AI system you used this week. Write out its environment, percepts, actions, and performance measure.
+> Pick an AI system you used this week. Write out its environment, sensors, actions, and performance measure.
 > Now ask: is the performance measure it optimizes the same as the outcome *you* wanted? Where do they diverge?
-
-**Connecting to HW2 (Vocabulary & Concept Review, due Sep 09):** the six terms in Part II and the six task types in Part 2.1 form the core of this assignment. Practice using them on systems you encounter, not just on the definitions.
 
 ## 📘 Further Reading
 
