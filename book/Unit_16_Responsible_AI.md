@@ -1,6 +1,8 @@
 # Unit 16: Responsible AI
 
-> **Sessions 24–25** · Nov 09, 16 · **HW12 assigned Nov 09, due Nov 16**
+```text
+Sessions 24–25 | Nov 09, 16 | HW12 assigned Nov 09, due Nov 16
+```
 
 This unit closes the course, and it is a synthesis rather than a new topic. Data quality, privacy, bias, fairness, ethics, and governance have appeared throughout Parts IV and V — confidentiality in Unit 10, fabricated numbers in Unit 12, confounding in Unit 13, honest axes in Unit 14, licensing and security in Unit 15. Here they become a single framework you can apply deliberately.
 
@@ -252,20 +254,26 @@ These three do most of the work on HW12. Full versions with verification steps a
 
 **Leakage audit** — run this on your capstone's feature list before you model anything:
 
-> Below is a list of the features in my dataset and a description of the outcome I am predicting. For each feature, tell me: could this value be unavailable, incomplete, or different at the moment a real prediction would be made? Consider fields that are populated after the outcome, fields derived from the outcome, and fields whose meaning changes over the record's lifecycle. Flag anything suspicious even if you are unsure — I would rather check five clean features than miss one leak.
-> OUTCOME: «what you are predicting, and when the prediction happens»
-> FEATURES: «list with a one-line description of each»
+```text
+Below is a list of the features in my dataset and a description of the outcome I am predicting. For each feature, tell me: could this value be unavailable, incomplete, or different at the moment a real prediction would be made? Consider fields that are populated after the outcome, fields derived from the outcome, and fields whose meaning changes over the record's lifecycle. Flag anything suspicious even if you are unsure — I would rather check five clean features than miss one leak.
+OUTCOME: <what you are predicting, and when the prediction happens>
+FEATURES: <list with a one-line description of each>
+```
 
 **Bias by mechanism** — the phrasing matters, because a vague prompt returns vague risks:
 
-> Identify sources of bias by mechanism, using these categories: historical, representation, measurement, aggregation, deployment. For each one you identify, state the specific mechanism — not that bias "could exist," but what in this particular pipeline would produce it, and which group would be affected how. If a category does not apply here, say so rather than inventing an instance.
-> DATASET: «source, collection period, population, label definition»
-> DECISION: «what the output is used for, and by whom»
+```text
+Identify sources of bias by mechanism, using these categories: historical, representation, measurement, aggregation, deployment. For each one you identify, state the specific mechanism — not that bias "could exist," but what in this particular pipeline would produce it, and which group would be affected how. If a category does not apply here, say so rather than inventing an instance.
+DATASET: <source, collection period, population, label definition>
+DECISION: <what the output is used for, and by whom>
+```
 
 **Fairness trade-off:**
 
-> For the system described below, walk through what each of these fairness criteria would require: demographic parity, equal opportunity, predictive parity, individual fairness. Then tell me which pairs cannot hold simultaneously given the base rates I describe, and what each choice sacrifices. Do not recommend one — state what a person choosing each would be prioritizing.
-> SYSTEM: «what it decides, for whom» · BASE RATES: «outcome rates across groups» · ERROR COSTS: «what each error costs, and to whom»
+```text
+For the system described below, walk through what each of these fairness criteria would require: demographic parity, equal opportunity, predictive parity, individual fairness. Then tell me which pairs cannot hold simultaneously given the base rates I describe, and what each choice sacrifices. Do not recommend one — state what a person choosing each would be prioritizing.
+SYSTEM: <what it decides, for whom> | BASE RATES: <outcome rates across groups> | ERROR COSTS: <what each error costs, and to whom>
+```
 
 ```{note}
 Note the shape shared by all three: they forbid the reassuring answer. "Could be biased," "seems reasonable," and "no major concerns" are the statistically typical continuations, and they are worth nothing on this assignment. Constraining the output away from them is the whole technique.

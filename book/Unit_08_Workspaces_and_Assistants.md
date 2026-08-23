@@ -1,6 +1,8 @@
 # Unit 8: AI Workspaces and Assistants
 
-> **Sessions 13–14** · Sep 30, Oct 05 · **HW8 assigned Oct 05, due Oct 12**
+```text
+Sessions 13–14 | Sep 30, Oct 05 | HW8 assigned Oct 05, due Oct 12
+```
 
 Unit 7 ended on context engineering: the observation that what the model can *see* matters more than what you *type*. This unit is about the tools built to control that, and about the shift they represent — from asking an assistant questions to **configuring** one.
 
@@ -112,13 +114,15 @@ The **grounding rules** block is the one people skip and the one that matters mo
 
 Once configured, this is the prompt that makes the grounding visible on every query:
 
-> Answer only from the attached documents.
->
-> QUESTION: `<your question>`
->
-> Format your answer as: (1) ANSWER — two sentences maximum. (2) SOURCE — the document name and the section or page. (3) CONFIDENCE — one of STATED (the documents say this directly) / INFERRED (I combined two passages) / NOT COVERED.
->
-> If CONFIDENCE is INFERRED, quote the two passages you combined.
+```text
+Answer only from the attached documents.
+
+QUESTION: <your question>
+
+Format your answer as: (1) ANSWER — two sentences maximum. (2) SOURCE — the document name and the section or page. (3) CONFIDENCE — one of STATED (the documents say this directly) / INFERRED (I combined two passages) / NOT COVERED.
+
+If CONFIDENCE is INFERRED, quote the two passages you combined.
+```
 
 Appendix D.2 has both of these plus notes on testing them.
 

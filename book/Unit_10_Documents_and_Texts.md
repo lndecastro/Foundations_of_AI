@@ -1,6 +1,8 @@
 # Unit 10: Documents and Texts
 
-> **Session 16** · Oct 12 · **HW10 (Office Portfolio) assigned Oct 12, due Oct 21**
+```text
+Session 16 | Oct 12 | HW10 (Office Portfolio) assigned Oct 12, due Oct 21
+```
 
 Part IV covers the three document types that consume most professional working hours: text, slides, and spreadsheets. This is the part of the course students most often expect to be trivial, and it is where the largest immediate time savings actually live.
 
@@ -32,17 +34,19 @@ Each entry below is a prompt skeleton in the Unit 7 six-component form. These be
 
 ### 2.1 Design Document
 
-> You are a senior engineer turning rough notes into a design document for team review.
->
-> Below are my notes. Convert them into a design document.
->
-> Rules: Do not invent requirements, constraints, or options I did not state. Wherever my notes are vague, incomplete, or contradictory, insert `[UNRESOLVED: what is missing]` rather than filling the gap. I would rather have a document with eight unresolved markers than a smooth document that hides where my thinking stopped.
->
-> Format: Problem · Constraints · Options considered · Recommendation · Risks · Open questions.
->
-> Criteria: A reviewer should be able to disagree with the recommendation on specific technical grounds. If my notes do not contain enough to support a recommendation, say so instead of producing one.
->
-> MY NOTES: `<paste your notes, however rough>`
+```text
+You are a senior engineer turning rough notes into a design document for team review.
+
+Below are my notes. Convert them into a design document.
+
+Rules: Do not invent requirements, constraints, or options I did not state. Wherever my notes are vague, incomplete, or contradictory, insert [UNRESOLVED: what is missing] rather than filling the gap. I would rather have a document with eight unresolved markers than a smooth document that hides where my thinking stopped.
+
+Format: Problem | Constraints | Options considered | Recommendation | Risks | Open questions.
+
+Criteria: A reviewer should be able to disagree with the recommendation on specific technical grounds. If my notes do not contain enough to support a recommendation, say so instead of producing one.
+
+MY NOTES: <paste your notes, however rough>
+```
 
 **Verify:** count the `[UNRESOLVED]` markers. If there are none, it smoothed over your gaps — ask again, more forcefully.
 
@@ -50,38 +54,42 @@ The `[UNRESOLVED]` instruction is the important one. Left alone, the model will 
 
 ### 2.2 Pull Request Description
 
-> You are writing a PR description for a reviewer with no context on this change.
->
-> Rules: Describe only what the diff shows. Do not claim the change is tested, benchmarked, or backwards-compatible unless I stated it. Do not describe the change as "simple," "minor," or "straightforward" — the reviewer decides that.
->
-> Format:
-> **What changed** — two or three sentences.
-> **Why** — the problem this solves.
-> **How to review** — where to look first, and what to check.
-> **Not covered** — what this PR deliberately does not do.
->
-> Criteria: A reviewer should know within fifteen seconds where to start reading.
->
-> DIFF SUMMARY: `<files changed and a description of each>`
-> CONTEXT THE DIFF DOES NOT SHOW: `<issue number, prior discussion, the constraint you worked under>`
+```text
+You are writing a PR description for a reviewer with no context on this change.
+
+Rules: Describe only what the diff shows. Do not claim the change is tested, benchmarked, or backwards-compatible unless I stated it. Do not describe the change as "simple," "minor," or "straightforward" — the reviewer decides that.
+
+Format:
+What changed — two or three sentences.
+Why — the problem this solves.
+How to review — where to look first, and what to check.
+Not covered — what this PR deliberately does not do.
+
+Criteria: A reviewer should know within fifteen seconds where to start reading.
+
+DIFF SUMMARY: <files changed and a description of each>
+CONTEXT THE DIFF DOES NOT SHOW: <issue number, prior discussion, the constraint you worked under>
+```
 
 **Verify:** read "Not covered" against your own knowledge of the change. It is the section most likely to come back thin, and the one that saves a reviewer an hour.
 
 ### 2.3 Incident Post-Mortem
 
-> You are structuring a blameless post-mortem from a raw incident timeline.
->
-> Rules, and these are strict:
-> - Name no individual. Refer to roles.
-> - Include only causes the timeline actually supports. If you can see a likely cause the timeline does not establish, put it under "Hypotheses requiring investigation" — never under contributing factors.
-> - Distinguish *what happened* from *why it was possible*.
-> - Propose no action items I did not list. If you think one is missing, say so at the end under "Action items you may be missing."
->
-> Format: Impact · Timeline · Contributing factors · Hypotheses requiring investigation · What went well · Action items · Action items you may be missing.
->
-> Criteria: every contributing factor must point at a system or a process, not a person or a decision someone made under pressure.
->
-> RAW TIMELINE: `<paste your Slack log, ticket history, or notes>`
+```text
+You are structuring a blameless post-mortem from a raw incident timeline.
+
+Rules, and these are strict:
+- Name no individual. Refer to roles.
+- Include only causes the timeline actually supports. If you can see a likely cause the timeline does not establish, put it under "Hypotheses requiring investigation" — never under contributing factors.
+- Distinguish *what happened* from *why it was possible*.
+- Propose no action items I did not list. If you think one is missing, say so at the end under "Action items you may be missing."
+
+Format: Impact | Timeline | Contributing factors | Hypotheses requiring investigation | What went well | Action items | Action items you may be missing.
+
+Criteria: every contributing factor must point at a system or a process, not a person or a decision someone made under pressure.
+
+RAW TIMELINE: <paste your Slack log, ticket history, or notes>
+```
 
 **Verify:** for each contributing factor, find the line in the raw timeline that establishes it. Any factor you cannot trace is a fabrication.
 
@@ -91,32 +99,36 @@ Post-mortems are the highest-risk document in this list for AI assistance. The m
 
 ### 2.4 Technical Documentation
 
-> You are documenting a module for an engineer who knows the language but has never seen this codebase.
->
-> Rules: Document only behavior visible in the code below. Where you infer intent from a name rather than from logic, mark it `[INFERRED]`. Where the code's behavior on an edge case is genuinely unclear from reading it, mark it `[UNCLEAR]` rather than guessing.
->
-> Format: Purpose · Parameters · Returns · Raises · Example call · Caveats.
->
-> Criteria: name every assumption the code makes about its inputs — encoding, ordering, nullability, size, type. These are what break for the next person.
->
-> CODE: `<paste the function or module>`
+```text
+You are documenting a module for an engineer who knows the language but has never seen this codebase.
+
+Rules: Document only behavior visible in the code below. Where you infer intent from a name rather than from logic, mark it [INFERRED]. Where the code's behavior on an edge case is genuinely unclear from reading it, mark it [UNCLEAR] rather than guessing.
+
+Format: Purpose | Parameters | Returns | Raises | Example call | Caveats.
+
+Criteria: name every assumption the code makes about its inputs — encoding, ordering, nullability, size, type. These are what break for the next person.
+
+CODE: <paste the function or module>
+```
 
 **Verify:** check each `[INFERRED]` against the actual logic, and run the example call.
 
 ### 2.5 Difficult Email
 
-> You are helping me write a professional email.
->
-> Rules: Do not apologize for anything that is not my fault. Do not overstate certainty. Do not use "I just wanted to," "circling back," or "per my last email." Do not invent an excuse or a reason I did not give you.
->
-> Format: subject line, then under 150 words of body.
->
-> Criteria: the recipient should finish reading knowing exactly what I am asking them to do and by when.
->
-> SITUATION: `<what has happened>`
-> RELATIONSHIP: `<who they are to you, and the history>`
-> WHAT I WANT TO HAPPEN: `<the outcome, not the words>`
-> WHAT I DO NOT WANT: `<e.g. I do not want to escalate to their manager yet>`
+```text
+You are helping me write a professional email.
+
+Rules: Do not apologize for anything that is not my fault. Do not overstate certainty. Do not use "I just wanted to," "circling back," or "per my last email." Do not invent an excuse or a reason I did not give you.
+
+Format: subject line, then under 150 words of body.
+
+Criteria: the recipient should finish reading knowing exactly what I am asking them to do and by when.
+
+SITUATION: <what has happened>
+RELATIONSHIP: <who they are to you, and the history>
+WHAT I WANT TO HAPPEN: <the outcome, not the words>
+WHAT I DO NOT WANT: <e.g. I do not want to escalate to their manager yet>
+```
 
 **Verify:** read it as the recipient. If you would feel managed rather than addressed, the register is wrong.
 

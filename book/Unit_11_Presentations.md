@@ -1,6 +1,8 @@
 # Unit 11: Presentations
 
-> **Session 17** · Oct 14 · **Part of HW10 (Office Portfolio), due Oct 21**
+```text
+Session 17 | Oct 14 | Part of HW10 (Office Portfolio), due Oct 21
+```
 
 Six weeks from now you will each deliver a capstone presentation. This session is therefore not incidental — it is direct preparation for a graded deliverable, and you should treat the techniques here as tools you will use in November.
 
@@ -128,11 +130,13 @@ Working in pairs, roughly 30 minutes.
 1. **Write an outline** in the form above for a topic from Units 4–9. Ten minutes, no tools.
 2. **Generate a deck.** Paste the slide plan into an AI presentation tool with this instruction:
 
-   > Below is a slide plan. Each entry has a headline, which is a complete-sentence claim, and a description of the evidence that belongs on that slide. Build these slides.
-   >
-   > Rules, and these matter more than the design: Do not change my headlines. Do not shorten them into topic phrases — "Accuracy hides the error that matters" must not become "Model Evaluation." Do not add slides. Do not add content to fill empty space; a sparse slide is finished. Do not add any number, statistic, date, or citation that is not in my plan.
-   >
-   > SLIDE PLAN: `<paste>`
+   ```text
+   Below is a slide plan. Each entry has a headline, which is a complete-sentence claim, and a description of the evidence that belongs on that slide. Build these slides.
+
+   Rules, and these matter more than the design: Do not change my headlines. Do not shorten them into topic phrases — "Accuracy hides the error that matters" must not become "Model Evaluation." Do not add slides. Do not add content to fill empty space; a sparse slide is finished. Do not add any number, statistic, date, or citation that is not in my plan.
+
+   SLIDE PLAN: <paste>
+   ```
 3. **Audit the output against this checklist:**
    - Which headlines were changed from claims into topics? (This is the most common regression.)
    - What content appeared that you did not supply? Every instance is fabricated.
@@ -149,24 +153,28 @@ Step 3's second question is the one that matters. AI presentation tools fill emp
 
 The most undervalued use of AI in presentations is not building slides. It is **adversarial rehearsal**.
 
-> You are a skeptical engineering professor attending an 11-minute presentation. You are not hostile, but you will not accept a claim that is not supported.
->
-> Below is my slide plan. Generate the eight hardest questions you would ask, ordered by how much damage each would do to my argument if I could not answer it.
->
-> For each question, state in one line what a weak answer would sound like, so I can recognize myself giving one.
->
-> Do not answer the questions.
->
-> SLIDE PLAN: `<paste the output of the hands-on cell above>`
+```text
+You are a skeptical engineering professor attending an 11-minute presentation. You are not hostile, but you will not accept a claim that is not supported.
+
+Below is my slide plan. Generate the eight hardest questions you would ask, ordered by how much damage each would do to my argument if I could not answer it.
+
+For each question, state in one line what a weak answer would sound like, so I can recognize myself giving one.
+
+Do not answer the questions.
+
+SLIDE PLAN: <paste the output of the hands-on cell above>
+```
 
 This works because the questions come from statistical regularity — the model produces the questions *usually* asked of arguments shaped like yours. That is precisely the set you should be prepared for.
 
 Then, separately, on your own answer:
 
-> Here is my answer to question 3. Tell me where a follow-up question would break it, and what I would need to know to survive that follow-up. Do not improve my answer for me.
->
-> QUESTION: `<paste>`
-> MY ANSWER: `<paste>`
+```text
+Here is my answer to question 3. Tell me where a follow-up question would break it, and what I would need to know to survive that follow-up. Do not improve my answer for me.
+
+QUESTION: <paste>
+MY ANSWER: <paste>
+```
 
 ```{warning}
 Do not ask it to write your answers. In the capstone Q&A you will be answering live, and a memorized answer collapses under one follow-up. Use it to find the questions; find the answers yourself, in the material.

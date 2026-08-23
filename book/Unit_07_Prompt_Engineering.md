@@ -1,6 +1,8 @@
 # Unit 7: Prompt Engineering
 
-> **Sessions 11–12** · Sep 23, 28 · **HW7 assigned Sep 28, due Oct 05**
+```text
+Sessions 11–12 | Sep 23, 28 | HW7 assigned Sep 28, due Oct 05
+```
 
 Part III begins here. For six units you have been taking these systems apart; from now on you are operating them. Everything you build in Units 8 through 15 rests on the skill in this unit.
 
