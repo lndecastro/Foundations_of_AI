@@ -1,6 +1,6 @@
 # Unit 3: How AI Works
 
-> **Session 4** · Aug 26 · **HW3 assigned Aug 26, due Aug 31**
+> **Sessions 4-5** · Aug 26, 31 · **HW3 assigned Aug 26, due Sep 06**
 
 This unit answers the question students ask most often: **what actually happens when someone "builds an AI solution"?** The honest answer is that it is a pipeline of steps, most of which involve data rather than algorithms. By the end of this unit you will have run that entire pipeline yourself in a few number of lines of code.
 
@@ -52,6 +52,8 @@ The goal is never to fit the data you have. It is to perform well on data you ha
 
 ## ⚙️ Hands-On: Your First Complete AI System
 
+In this example we are going to build a Machine Learning Classifier for a dataset about wine quality. This dataset is available at the University of Irvine ML Repository: https://archive.ics.uci.edu/dataset/109/wine. Before running the code, visit the dataset webpage and analyze its main characteristics such that you understand the solution we are going to build.
+
 This is the whole pipeline with all six stages in one snippet. Copy it into Colab and run it.
 
 ```python
@@ -92,11 +94,9 @@ print("\nConfusion matrix (rows = actual, columns = predicted):")
 print(confusion_matrix(y_test, model.predict(X_test)))
 ```
 
-Notice how short Stage 4 is. **One line.** The mystique of "training an AI" is, mechanically, a single function call. Everything difficult lives on either side of it.
-
 ### Reading What You Just Produced
 
-The **confusion matrix** is more informative than accuracy alone. Each row is the true class, each column what the model predicted. Values off the diagonal are mistakes — and *which* mistakes matter enormously in practice.
+The **confusion matrix** is more informative than accuracy alone. Each row is the true class, each column what the model predicted. Values off the diagonal are mistakes, and *which* mistakes matter enormously in practice.
 
 ```python
 import matplotlib.pyplot as plt
@@ -112,11 +112,11 @@ plt.tight_layout()
 plt.show()
 ```
 
-> **Why accuracy lies.** Imagine a disease affecting 1 in 1000 people. A model that always predicts "healthy" is 99.9% accurate and medically worthless. It never catches a single case. Accuracy alone cannot tell you this — the confusion matrix can. In medicine, missing a sick patient (a false negative) and alarming a healthy one (a false positive) carry wildly different costs, and no single number captures both.
+> **Why accuracy lies.** Imagine a disease affecting 1 in 1000 people. A model that always predicts "healthy" is 99.9% accurate and medically worthless. It never catches a single case. Accuracy alone cannot tell you this, but the confusion matrix can. In medicine, missing a sick patient (a false negative) and alarming a healthy one (a false positive) carry wildly different costs, and no single number captures both.
 
 ## ⚙️ Hands-On: Seeing Inside the Model
 
-Decision trees have a rare property: you can read them. Most models cannot be inspected this directly, which is exactly the interpretability problem of Unit 10.
+Decision trees have a rare property: you can read them. Most models cannot be inspected this directly, which is exactly the interpretability (explainability) problem we will discuss later.
 
 ```python
 from sklearn.tree import plot_tree
@@ -132,13 +132,17 @@ plt.show()
 
 **Try changing it:**
 
-1. Set `max_depth=1`. Accuracy drops — but is the model easier to trust? This is the **accuracy/interpretability trade-off** in miniature.
-2. Set `max_depth=None` (unlimited). Watch the training accuracy hit 100% while the test accuracy does *not* improve. **You have just produced overfitting** — Unit 4 explains exactly what went wrong.
+1. Set `max_depth=1`. Accuracy drops, but is the model easier to trust? This is the **accuracy/interpretability trade-off** in miniature.
+2. Set `max_depth=None` (unlimited). Watch the training accuracy hit 100% while the test accuracy does *not* improve. **You have just produced overfitting**. Unit 4 explains exactly what went wrong.
 3. Change `random_state=42` to another number. The accuracy moves. What does that instability tell you about trusting a single reported number?
+
+```{note}
+The Gini value (also known as Gini impurity) inside each node of a decision tree is a measure of the purity or impurity of the samples at that node. It quantifies how often a randomly chosen element from the set would be incorrectly labeled if it were randomly labeled according to the distribution of labels in the subset. It indicates the likelihood of a new, randomly selected data point being misclassified if it were assigned a label based on the distribution of labels in that node.
+```
 
 ## 💡 Example: Rules vs. Learning, Revisited
 
-In Unit 1 you wrote a rule-based spam filter that failed on *"Free coffee in the break room."* Here is the learned version.
+In Unit 1 you wrote a rule-based spam filter that failed on *"Free coffee in the break room."* Here is the learned version. This code snippet demonstrates a simple spam detection system. It first trains a Multinomial Naive Bayes classifier on a small set of predefined emails and their corresponding labels (spam or legitimate), converting the text into numerical features using CountVectorizer. Subsequently, it uses this trained model to predict whether a list of new_emails are spam or not, printing the classification for each.
 
 ```python
 from sklearn.feature_extraction.text import CountVectorizer
@@ -178,15 +182,15 @@ for email, p in zip(new_emails, preds):
 The model was never told that "free" is ambiguous. It **inferred** from examples that *free* alongside *click* and *urgent* signals spam, while *free* alongside *coffee* does not. Nobody wrote that rule.
 
 ```{warning}
-Eight training examples is absurdly few — this model is fragile and will fail on anything unusual. It is a demonstration, not a product. Real spam filters train on millions of messages and are retrained constantly, because spammers adapt. That adaptation problem is called **distribution shift**, and it is why Stage 6 (monitoring) never ends.
+Eight training examples is absurdly few. This model is fragile and will fail on anything unusual. It is a demonstration, not a product. Real spam filters train on millions of messages and are retrained constantly, because spammers adapt. That adaptation problem is called **distribution shift**, and it is why Stage 6 (monitoring) never ends.
 ```
 
 ## 🧭 Reflection
 
-> You just built a working classifier in fifteen lines. Did it feel like building intelligence?
+> You just built a working classifier in a few lines. Did it feel like building intelligence?
 > If a model can classify wines better than most humans while having no concept of wine, what exactly has been achieved?
 
-**Connecting to HW3 (How AI Works — Summary & Questions, due Sep 16):** walk through the six stages for an AI system in a domain that interests you. Be specific about where the data would come from and what could go wrong at Stage 3.
+**Connecting to HW3 (How AI Works — Summary & Questions):** walk through the six stages for an AI system in a domain that interests you. Be specific about where the data would come from and what could go wrong at Stage 3.
 
 ## 📘 Further Reading
 
