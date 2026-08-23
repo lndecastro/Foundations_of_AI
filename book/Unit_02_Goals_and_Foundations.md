@@ -78,6 +78,7 @@ Most AI problems reduce to a handful of types:
 - **Regression**: predict a number. *What will this house sell for?*
 - **Clustering**: group similar items with no labels given. *What customer segments exist?*
 - **Ranking**: order items by relevance. *Which results go on page one?*
+- **Recommendation**: match items likely to be of interest. *What should this viewer watch next?*
 - **Generation**: produce new content. *Write a summary of this report.*
 - **Sequential decision-making**: choose actions over time. *Route this delivery fleet.*
 
