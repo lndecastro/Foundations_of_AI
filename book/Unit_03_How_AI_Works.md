@@ -1,9 +1,8 @@
 # Unit 3: How AI Works
 
-> **Sessions 7–8** · Sep 09, Sep 14 · **HW3 assigned Sep 09, due Sep 16**
-> *(Note: Sep 07 is Labor Day — no class.)*
+> **Session 4** · Aug 26 · **HW3 assigned Aug 26, due Aug 31**
 
-This unit answers the question students ask most often: **what actually happens when someone "builds an AI"?** The honest answer is that it is a pipeline of unglamorous steps, most of which involve data rather than algorithms. By the end of this unit you will have run that entire pipeline yourself in about fifteen lines of code.
+This unit answers the question students ask most often: **what actually happens when someone "builds an AI solution"?** The honest answer is that it is a pipeline of steps, most of which involve data rather than algorithms. By the end of this unit you will have run that entire pipeline yourself in a few number of lines of code.
 
 ## Learning Objectives
 
@@ -18,17 +17,18 @@ After completing this unit, you will be able to:
 
 Every real AI system, from a small classifier to a frontier language model, passes through the same six stages.
 
-| Stage | What happens | Share of effort |
+| Stage | What happens | Share of effort* |
 | :--- | :--- | :---: |
-| **1. Problem framing** | Decide what to predict and how success is measured | 10% |
+| **1. Problem framing** | Decide what to do and how success is measured | 10% |
 | **2. Data collection** | Gather raw examples from sensors, records, text, users | 25% |
 | **3. Preprocessing** | Clean, normalize, handle missing values, extract features | **35%** |
 | **4. Training** | Fit model parameters to the data | 10% |
-| **5. Evaluation** | Measure performance on data the model has never seen | 15% |
+| **5. Evaluation (Test)** | Measure performance on data the model has never seen | 15% |
 | **6. Deployment & monitoring** | Ship it, watch it, retrain as the world changes | 5% |
+* Varies depending on the context. These are just to illustrate how work could be distributed over the steps.
 
 ```{note}
-Those percentages surprise people. **Stages 2 and 3 dominate.** The algorithm — the part that gets the headlines — is a small slice. Practitioners have a saying for this: *most of machine learning is data cleaning wearing a lab coat.* Unit 9 is devoted entirely to why.
+Those percentages surprise people. **Stages 2 and 3 dominate.** The algorithm, the part that usually gets the headlines, is a small slice. Practitioners have a saying for this: *most of machine learning is data cleaning wearing a lab coat.* We will discuss that later in our program.
 ```
 
 ### 1.1 The Golden Rule: Never Test on Training Data
@@ -42,13 +42,17 @@ A model that has memorized its training examples will score perfectly on them an
 
 The gap between training accuracy and test accuracy is the single most diagnostic number in machine learning. Unit 4 makes you watch that gap open up in real time.
 
+```{Note}
+There are other ways of splitting the data into training and testing, including *k*-fold crossvalidation that splits the data into k partitions, uses *k*-1 for training and 1 for testing, repeating this process *k* times until all data has been used to train and test, but at different runs. The result is usually taken as the average of the performances observes at each iteration. 
+```
+
 ### 1.2 Generalization
 
-The goal is never to fit the data you have. It is to perform well on data you have not yet seen. This is **generalization**, and it is the entire point.
+The goal is never to fit the data you have. It is to perform well on data you have not yet seen. This is called **generalization**, and it is the main goal of training a model.
 
 ## ⚙️ Hands-On: Your First Complete AI System
 
-This is the whole pipeline — all six stages — in one snippet. Copy it into Colab and run it.
+This is the whole pipeline with all six stages in one snippet. Copy it into Colab and run it.
 
 ```python
 from sklearn.datasets import load_wine
