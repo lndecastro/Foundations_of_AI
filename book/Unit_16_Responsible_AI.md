@@ -1,6 +1,6 @@
 # Unit 16: Responsible AI
 
-```text
+```
 Sessions 24–25 | Nov 09, 16 | HW12 assigned Nov 09, due Nov 16
 ```
 
@@ -254,25 +254,25 @@ These three do most of the work on HW12. Full versions with verification steps a
 
 **Leakage audit** — run this on your capstone's feature list before you model anything:
 
-```text
+```
 Below is a list of the features in my dataset and a description of the outcome I am predicting. For each feature, tell me: could this value be unavailable, incomplete, or different at the moment a real prediction would be made? Consider fields that are populated after the outcome, fields derived from the outcome, and fields whose meaning changes over the record's lifecycle. Flag anything suspicious even if you are unsure — I would rather check five clean features than miss one leak.
-OUTCOME: <what you are predicting, and when the prediction happens>
-FEATURES: <list with a one-line description of each>
+OUTCOME: [what you are predicting, and when the prediction happens]
+FEATURES: [list with a one-line description of each]
 ```
 
 **Bias by mechanism** — the phrasing matters, because a vague prompt returns vague risks:
 
-```text
+```
 Identify sources of bias by mechanism, using these categories: historical, representation, measurement, aggregation, deployment. For each one you identify, state the specific mechanism — not that bias "could exist," but what in this particular pipeline would produce it, and which group would be affected how. If a category does not apply here, say so rather than inventing an instance.
-DATASET: <source, collection period, population, label definition>
-DECISION: <what the output is used for, and by whom>
+DATASET: [source, collection period, population, label definition]
+DECISION: [what the output is used for, and by whom]
 ```
 
 **Fairness trade-off:**
 
-```text
+```
 For the system described below, walk through what each of these fairness criteria would require: demographic parity, equal opportunity, predictive parity, individual fairness. Then tell me which pairs cannot hold simultaneously given the base rates I describe, and what each choice sacrifices. Do not recommend one — state what a person choosing each would be prioritizing.
-SYSTEM: <what it decides, for whom> | BASE RATES: <outcome rates across groups> | ERROR COSTS: <what each error costs, and to whom>
+SYSTEM: [what it decides, for whom] | BASE RATES: [outcome rates across groups] | ERROR COSTS: [what each error costs, and to whom]
 ```
 
 ```{note}
@@ -315,7 +315,7 @@ Every one of these is a real objection, and none is resolved by improving the mo
 
 - Russell, S., & Norvig, P. (2022). _Artificial Intelligence: A Modern Approach_, 4th Ed., Ch. 27. Pearson.
 - Mitchell, M. (2020). _Artificial Intelligence: A Guide for Thinking Humans_, Ch. 7, Part V. Penguin Books.
-- Barocas, S., Hardt, M., & Narayanan, A. (2023). _Fairness and Machine Learning_. MIT Press. <https://fairmlbook.org>
+- Barocas, S., Hardt, M., & Narayanan, A. (2023). _Fairness and Machine Learning_. MIT Press. [https://fairmlbook.org]
 - Mitchell, M., et al. (2019). _Model Cards for Model Reporting._ ACM FAccT.
 - Sweeney, L. (2002). _k-Anonymity: A Model for Protecting Privacy._ IJUFKS 10(5).
 - NIST (2023). _AI Risk Management Framework 1.0._

@@ -1,6 +1,6 @@
 # Unit 11: Presentations
 
-```text
+```
 Session 17 | Oct 14 | Part of HW10 (Office Portfolio), due Oct 21
 ```
 
@@ -130,12 +130,12 @@ Working in pairs, roughly 30 minutes.
 1. **Write an outline** in the form above for a topic from Units 4–9. Ten minutes, no tools.
 2. **Generate a deck.** Paste the slide plan into an AI presentation tool with this instruction:
 
-   ```text
+   ```
    Below is a slide plan. Each entry has a headline, which is a complete-sentence claim, and a description of the evidence that belongs on that slide. Build these slides.
 
    Rules, and these matter more than the design: Do not change my headlines. Do not shorten them into topic phrases — "Accuracy hides the error that matters" must not become "Model Evaluation." Do not add slides. Do not add content to fill empty space; a sparse slide is finished. Do not add any number, statistic, date, or citation that is not in my plan.
 
-   SLIDE PLAN: <paste>
+   SLIDE PLAN: [PASTE]
    ```
 3. **Audit the output against this checklist:**
    - Which headlines were changed from claims into topics? (This is the most common regression.)
@@ -153,7 +153,7 @@ Step 3's second question is the one that matters. AI presentation tools fill emp
 
 The most undervalued use of AI in presentations is not building slides. It is **adversarial rehearsal**.
 
-```text
+```
 You are a skeptical engineering professor attending an 11-minute presentation. You are not hostile, but you will not accept a claim that is not supported.
 
 Below is my slide plan. Generate the eight hardest questions you would ask, ordered by how much damage each would do to my argument if I could not answer it.
@@ -162,18 +162,18 @@ For each question, state in one line what a weak answer would sound like, so I c
 
 Do not answer the questions.
 
-SLIDE PLAN: <paste the output of the hands-on cell above>
+SLIDE PLAN: [PASTE THE OUTPUT OF THE HANDS-ON CELL ABOVE]
 ```
 
 This works because the questions come from statistical regularity — the model produces the questions *usually* asked of arguments shaped like yours. That is precisely the set you should be prepared for.
 
 Then, separately, on your own answer:
 
-```text
+```
 Here is my answer to question 3. Tell me where a follow-up question would break it, and what I would need to know to survive that follow-up. Do not improve my answer for me.
 
-QUESTION: <paste>
-MY ANSWER: <paste>
+QUESTION: [PASTE]
+MY ANSWER: [PASTE]
 ```
 
 ```{warning}

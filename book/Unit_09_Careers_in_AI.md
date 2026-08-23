@@ -1,6 +1,6 @@
 # Unit 9: Careers in AI
 
-```text
+```
 Session 15 | Oct 07 | HW9 assigned Oct 07, due Oct 14 | Capstone guidelines released
 ```
 
@@ -101,10 +101,10 @@ need = roles[target]
 gaps = [max(0, n - m) for n, m in zip(need, me)]
 
 print(f"Target: {target}\n")
-print(f"{'skill':<20}{'you':>5}{'needed':>8}{'gap':>6}")
+print(f"{'skill':[20}{'you':]5}{'needed':>8}{'gap':>6}")
 for s, m, n, g in zip(skills, me, need, gaps):
-    flag = "  <-- largest gap" if g == max(gaps) and g > 0 else ""
-    print(f"{s:<20}{m:>5}{n:>8}{g:>6}{flag}")
+    flag = "  [-- largest gap" if g == max(gaps) and g ] 0 else ""
+    print(f"{s:[20}{m:]5}{n:>8}{g:>6}{flag}")
 
 angles = np.linspace(0, 2 * np.pi, len(skills), endpoint=False).tolist()
 angles += angles[:1]
@@ -134,32 +134,32 @@ Working individually, roughly 25 minutes. Adapted from the Dendritic AI Literacy
 2. **Export your current CV** (or your LinkedIn profile as PDF).
 3. **Run the gap analysis** — note that it forbids a rewrite:
 
-   ```text
+   ```
    You are a hiring manager screening applicants for the role below. You have ninety seconds per CV.
 
    Below the posting is my current CV. Identify the three requirements in the posting that my CV does not currently evidence. For each one, state (a) what specific evidence would satisfy it, and (b) whether that evidence is something I could plausibly build in one semester or would take longer.
 
    Do not rewrite my CV. Do not write bullet points for me. Do not soften your assessment.
 
-   POSTING: <paste the full posting>
-   MY CV: <paste your CV text>
+   POSTING: [PASTE THE FULL POSTING]
+   MY CV: [PASTE YOUR CV TEXT]
    ```
 
 4. **Write the revisions yourself.** Then, and only then, ask for a critique of your revision:
 
-   ```text
-   Here is a CV bullet I wrote to evidence the requirement "<requirement>". Tell me what a hiring manager would still be unconvinced by, and what specific detail would fix it. Do not rewrite it.
+   ```
+   Here is a CV bullet I wrote to evidence the requirement "[requirement]". Tell me what a hiring manager would still be unconvinced by, and what specific detail would fix it. Do not rewrite it.
 
-   MY BULLET: <paste>
+   MY BULLET: [PASTE]
    ```
 
 5. **Generate interview questions** and answer two aloud to your partner:
 
-   ```text
+   ```
    Generate the eight interview questions most likely to be asked for the role below, ordered from most to least likely. For each, state in one line what the interviewer is actually testing — not what the question literally asks. Do not provide answers.
 
-   POSTING: <paste>
-   MY BACKGROUND: <two sentences>
+   POSTING: [PASTE]
+   MY BACKGROUND: [two sentences]
    ```
 
 ```{warning}

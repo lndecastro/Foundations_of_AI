@@ -1,6 +1,6 @@
 # Unit 8: AI Workspaces and Assistants
 
-```text
+```
 Sessions 13–14 | Sep 30, Oct 05 | HW8 assigned Oct 05, due Oct 12
 ```
 
@@ -75,7 +75,7 @@ A grounded assistant that cites its source has given you something to check. It 
 
 Instructions are prompts that run on every request, so the six components from Unit 7 apply — with additions specific to persistence. Below is a **complete** set you can paste into a workspace today, editing only the bracketed text.
 
-```text
+```
 PURPOSE
   Support my work on CAI 4002, an introductory AI course I am taking as a
   Software Engineering major.
@@ -83,7 +83,7 @@ PURPOSE
 CONTEXT
   I am a junior SE major. I know Python and Java, have taken data structures,
   and have no statistics background beyond one course. My current focus is my
-  capstone project on <topic>.
+  capstone project on [topic].
 
 CONVENTIONS
   Code in Python 3.11, standard library plus pandas, numpy, scikit-learn,
@@ -114,10 +114,10 @@ The **grounding rules** block is the one people skip and the one that matters mo
 
 Once configured, this is the prompt that makes the grounding visible on every query:
 
-```text
+```
 Answer only from the attached documents.
 
-QUESTION: <your question>
+QUESTION: [your question]
 
 Format your answer as: (1) ANSWER — two sentences maximum. (2) SOURCE — the document name and the section or page. (3) CONFIDENCE — one of STATED (the documents say this directly) / INFERRED (I combined two passages) / NOT COVERED.
 

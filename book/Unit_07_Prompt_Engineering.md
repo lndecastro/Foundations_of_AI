@@ -1,6 +1,6 @@
 # Unit 7: Prompt Engineering
 
-```text
+```
 Sessions 11–12 | Sep 23, 28 | HW7 assigned Sep 28, due Oct 05
 ```
 
@@ -175,7 +175,7 @@ If there are no correctness bugs, say "No correctness bugs found" and stop.
 Do not pad the table to seem thorough.
 
 CODE:
-<paste code here>""",
+[PASTE CODE HERE]""",
 "verify": "Reproduce each claimed bug with a test before believing it. "
           "A plausible bug report is not a bug report."},
 
@@ -194,7 +194,7 @@ nullability, size, type. Mark anything you inferred from a name rather than
 from the logic as [INFERRED].
 
 CODE:
-<paste code here>""",
+[PASTE CODE HERE]""",
 "verify": "Check the walkthrough against the code line by line. "
           "Verify every [INFERRED] claim separately."},
 
@@ -207,11 +207,11 @@ it in or out.
 
 Do not propose a fix until I tell you which test result I got.
 
-SYMPTOM: <what you observe>
-EXPECTED: <what should happen>
-WHAT I HAVE ALREADY RULED OUT: <list, so it does not repeat your work>
-RELEVANT CODE: <paste>
-ERROR OUTPUT: <paste verbatim, do not summarize>""",
+SYMPTOM: [what you observe]
+EXPECTED: [what should happen]
+WHAT I HAVE ALREADY RULED OUT: [list, so it does not repeat your work]
+RELEVANT CODE: [PASTE]
+ERROR OUTPUT: [PASTE VERBATIM, DO NOT SUMMARIZE]""",
 "verify": "Run the tests in the order given. Stop at the first that "
           "changes your picture; do not run all five."},
 
@@ -229,16 +229,16 @@ objection. If someone proposed something and nobody responded, that belongs
 under OPEN QUESTIONS, not DECISIONS MADE.
 
 THREAD:
-<paste>""",
+[PASTE]""",
 "verify": "Check every DECISION against the thread - the most common error "
           "is promoting a proposal nobody objected to into a decision."},
 
 "stress_test_my_reasoning": {
 "prompt": """I have reached a conclusion and I want it attacked, not confirmed.
 
-MY CONCLUSION: <state it plainly>
-MY REASONING: <how you got there>
-EVIDENCE I AM RELYING ON: <list>
+MY CONCLUSION: [state it plainly]
+MY REASONING: [how you got there]
+EVIDENCE I AM RELYING ON: [list]
 
 Give me the three strongest objections. For each: what specifically is wrong
 or unsupported, and what evidence would settle it.
@@ -294,5 +294,5 @@ Every added clause removes a guess. That is all prompt engineering is.
 
 - Russell, S., & Norvig, P. (2022). _Artificial Intelligence: A Modern Approach_, 4th Ed., Ch. 24. Pearson.
 - Mitchell, M. (2020). _Artificial Intelligence: A Guide for Thinking Humans_, Ch. 11–13. Penguin Books.
-- Anthropic (2025). _Prompt Engineering Overview._ <https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview>
+- Anthropic (2025). _Prompt Engineering Overview._ [https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview]
 - Dendritic Institute (2025). _AI Literacy Series — Module 2, Part VII: Your Prompt Library._
