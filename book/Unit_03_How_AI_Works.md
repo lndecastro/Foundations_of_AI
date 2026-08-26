@@ -25,7 +25,7 @@ Every real AI system, from a small classifier to a frontier language model, pass
 | **4. Training** | Fit model parameters to the data | 10% |
 | **5. Evaluation (Test)** | Measure performance on data the model has never seen | 15% |
 | **6. Deployment & monitoring** | Ship it, watch it, retrain as the world changes | 5% |
-* Varies depending on the context. These are just to illustrate how work could be distributed over the steps.
+** Varies depending on the context. These are just to illustrate how work could be distributed over the steps.
 
 ```{note}
 Those percentages surprise people. **Stages 2 and 3 dominate.** The algorithm, the part that usually gets the headlines, is a small slice. Practitioners have a saying for this: *most of machine learning is data cleaning wearing a lab coat.* We will discuss that later in our program.
@@ -43,12 +43,12 @@ A model that has memorized its training examples will score perfectly on them an
 The gap between training accuracy and test accuracy is the single most diagnostic number in machine learning. Unit 4 makes you watch that gap open up in real time.
 
 ```{Note}
-There are other ways of splitting the data into training and testing, including *k*-fold crossvalidation that splits the data into k partitions, uses *k*-1 for training and 1 for testing, repeating this process *k* times until all data has been used to train and test, but at different runs. The result is usually taken as the average of the performances observes at each iteration. 
+There are other ways of splitting the data into training and testing, including *k*-fold cross-validation that splits the data into *k* partitions, uses *k*-1 for training and 1 for testing, repeating this process *k* times until all data has been used to train and test, but at different runs. The result is usually taken as the average of the performances observes at each iteration. 
 ```
 
 ### 1.2 Generalization
 
-The goal is never to fit the data you have. It is to perform well on data you have not yet seen. This is called **generalization**, and it is the main goal of training a model.
+The goal is not to fit the data you have. It is to perform well on data you have not yet seen. This is called **generalization**, and it is the main goal of training a model.
 
 ## ⚙️ Hands-On: Your First Complete AI System
 
@@ -73,7 +73,7 @@ print(f"Examples: {X.shape[0]}   Features: {X.shape[1]}   Classes: {len(data.tar
 print(f"Feature names: {list(data.feature_names[:4])} ...")
 
 # --- STAGE 3: Preprocessing ---------------------------------------
-# This dataset is already clean. Real data almost never is (Unit 9).
+# This dataset is already clean. Real data almost never is.
 
 # --- STAGE 4: Training --------------------------------------------
 X_train, X_test, y_train, y_test = train_test_split(
@@ -140,6 +140,18 @@ plt.show()
 The Gini value (also known as Gini impurity) inside each node of a decision tree is a measure of the purity or impurity of the samples at that node. It quantifies how often a randomly chosen element from the set would be incorrectly labeled if it were randomly labeled according to the distribution of labels in the subset. It indicates the likelihood of a new, randomly selected data point being misclassified if it were assigned a label based on the distribution of labels in that node.
 ```
 
+In addition to the tree itself, it is also possible to extract rules from the tree constructed and build a rule-based system.
+
+```python
+from sklearn.tree import export_text
+
+# Extract and print the rules from the trained decision tree
+tree_rules = export_text(model, feature_names=data.feature_names, class_names=data.target_names)
+print("Decision Tree Rules:\n", tree_rules)
+```
+
+Look at the rules and find them at the decision tree by searching its nodes from root (top) to the leaves (bottom). Each leave builds a rule from the root of the tree.
+
 ## 💡 Example: Rules vs. Learning, Revisited
 
 In Unit 1 you wrote a rule-based spam filter that failed on *"Free coffee in the break room."* Here is the learned version. This code snippet demonstrates a simple spam detection system. It first trains a Multinomial Naive Bayes classifier on a small set of predefined emails and their corresponding labels (spam or legitimate), converting the text into numerical features using CountVectorizer. Subsequently, it uses this trained model to predict whether a list of new_emails are spam or not, printing the classification for each.
@@ -182,7 +194,7 @@ for email, p in zip(new_emails, preds):
 The model was never told that "free" is ambiguous. It **inferred** from examples that *free* alongside *click* and *urgent* signals spam, while *free* alongside *coffee* does not. Nobody wrote that rule.
 
 ```{warning}
-Eight training examples is absurdly few. This model is fragile and will fail on anything unusual. It is a demonstration, not a product. Real spam filters train on millions of messages and are retrained constantly, because spammers adapt. That adaptation problem is called **distribution shift**, and it is why Stage 6 (monitoring) never ends.
+Eight training examples is absurdly few. This model is fragile and may fail on anything unusual. It is a demonstration, not a product. Real spam filters train on millions of messages and are retrained constantly, because spammers adapt. That adaptation problem is called **distribution shift**, and it is why Stage 6 (monitoring) never ends.
 ```
 
 ## 🧭 Reflection
