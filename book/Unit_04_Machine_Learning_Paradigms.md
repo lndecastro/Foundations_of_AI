@@ -1,16 +1,16 @@
 # Unit 4: Machine Learning Paradigms
 
-> **Sessions 6–7** · Sep 02, 09 · **HW4 assigned Sep 09, due Sep 16**
+> **Session 7** · Sep 09 · **HW4 assigned Sep 09, due Sep 16**
 
-Machine learning is not one technique. It is a family of approaches distinguished by **what kind of information the machine receives** and **what it is asked to do with it**. Unit 3 gave you one working pipeline. This unit shows you that the pipeline changes shape depending on what you have and what you want.
+Machine learning is a family of approaches distinguished by **what kind of information the machine receives**, **what it is asked to do with it**, and **how it works**. Unit 3 gave you one working pipeline. This unit shows you that the pipeline changes shape depending on what you have and what you want.
 
-The practical question this unit answers is the one you will actually face on the job: *someone hands you a problem and a pile of data — which kind of learning does this situation call for?*
+The practical question this unit answers is the one you will actually face on the job: *someone hands you a problem and a pile of data and you will have to decide which kind of learning this situation calls for?*
 
 ## Learning Objectives
 
 After completing this unit, you will be able to:
 
-- Distinguish the four main **learning paradigms** — supervised, unsupervised, semi-supervised, and reinforcement — and identify which fits a given problem.
+- Distinguish the four main **learning paradigms** (supervised, unsupervised, semi-supervised, and reinforcement) and identify which fits a given problem.
 - Explain the difference between **classification** and **clustering** by applying both to the same data.
 - Describe the **exploration/exploitation trade-off** and demonstrate it in code.
 - Recognize **overfitting** by watching the training/test gap open up.
@@ -21,28 +21,28 @@ After completing this unit, you will be able to:
 
 The most common and best-understood paradigm.
 
-- The model learns from **labeled data** — examples where the correct output is known.
+- The model learns from **labeled data**, that is, examples where the correct output is known.
 - Objective: find a function mapping inputs (features) to outputs (labels).
 - Examples: predicting house prices (**regression**); classifying email as spam (**classification**).
 
 **Common algorithms:** Linear/Logistic Regression, Decision Trees, Random Forests, Support Vector Machines, Neural Networks.
 
-> Supervised learning mirrors **learning by example** — the machine imitates patterns it has been shown.
+> Supervised learning mirrors **learning by example**; the machine imitates patterns it has been shown.
 
 The hidden cost is the labels. Someone had to produce them, and that someone was almost always a human being. When you read that a model needed a million labeled examples, read it as: *a million human decisions were purchased, outsourced, or scraped from people who did not know they were labeling.*
 
 ### 1.2 Unsupervised Learning
 
-- Works with **unlabeled data** — the algorithm must discover structure on its own.
+- Works with **unlabeled data**; the algorithm must discover structure on its own.
 - Objective: reveal hidden relationships or group similar points.
 - Examples: customer segmentation, topic discovery, dimensionality reduction, anomaly detection in server logs.
 
 **Common techniques:** Clustering (K-Means, DBSCAN, hierarchical), Association Rules, Principal Component Analysis.
 
-> Unsupervised learning is about **exploration** — letting the data reveal its own organization.
+> Unsupervised learning is about **exploration**; letting the data reveal its own organization.
 
 ```{note}
-Unsupervised learning has no answer key, which means it has no accuracy score either. You cannot ask "was it right?" You can only ask "is this useful?" — and that is a judgment call made by a person, not a number computed by a machine. This is the first place in the course where evaluation stops being arithmetic.
+Unsupervised learning has no answer key, which means it has no accuracy score either. You cannot ask "was it right?" You can only ask "is this useful?" There are many performance measures for clustering algorithms and they are usually based on the representation structure of the model generated.
 ```
 
 ### 1.3 Semi-Supervised Learning
@@ -56,12 +56,14 @@ The realistic middle ground. Labels are expensive; raw data is cheap.
 ### 1.4 Reinforcement Learning
 
 - No labeled examples at all. An **agent** takes **actions** in an **environment** and receives **rewards**.
-- Objective: learn a **policy** — a strategy mapping situations to actions — that maximizes cumulative reward.
+- Objective: learn a **policy**, that is, a strategy mapping situations to actions, that maximizes cumulative reward.
 - Examples: game playing (AlphaGo), robotic control, A/B-testing infrastructure, data-center cooling.
 
-> Reinforcement learning mirrors **learning by trial and error** — the machine discovers behavior no one demonstrated.
+> Reinforcement learning mirrors **learning by trial and error** in which the machine discovers behavior no one demonstrated.
 
 The core difficulty is the **exploration/exploitation trade-off**. Exploit what you already know works, and you may never discover something better. Explore constantly, and you waste effort on options you have already shown to be bad. You will see this play out numerically later in this unit.
+
+![Learning Paradigms](../Data/four_learning_paradigms_infographic.png)
 
 ### 1.5 Choosing a Paradigm
 
