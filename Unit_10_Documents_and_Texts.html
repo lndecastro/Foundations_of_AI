@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 10: Documents and Texts &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_10_Documents_and_Texts';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 11: Presentations" href="Unit_11_Presentations.html" />
+    <link rel="prev" title="Unit 9: Careers in AI" href="Unit_09_Careers_in_AI.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Presentations.html">Unit 11: Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Spreadsheets.html">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_Descriptive_Analysis.html">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_14_Data_Visualization.html">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_15_Vibe_Coding_Tools.html">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_16_Responsible_AI.html">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_D_Prompt_Library.html">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_10_Documents_and_Texts.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_10_Documents_and_Texts.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 10: Documents and Texts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-what-ai-does-well-with-text-and-what-it-does-not">Part I — What AI Does Well with Text, and What It Does Not</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-five-recurring-engineering-documents">Part II — Five Recurring Engineering Documents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-document">2.1 Design Document</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-request-description">2.2 Pull Request Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incident-post-mortem">2.3 Incident Post-Mortem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-documentation">2.4 Technical Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difficult-email">2.5 Difficult Email</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-interrogating-a-long-document">Part III — Interrogating a Long Document</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-five-scenarios">⚙️ In-Class Activity: Five Scenarios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iv-confidentiality">Part IV — Confidentiality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-a-summary-that-cost-a-sprint">💡 Example: A Summary That Cost a Sprint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-10-documents-and-texts">
+<h1>Unit 10: Documents and Texts<a class="headerlink" href="#unit-10-documents-and-texts" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Session</span> <span class="mi">16</span> <span class="o">|</span> <span class="n">Oct</span> <span class="mi">12</span> <span class="o">|</span> <span class="n">HW10</span> <span class="p">(</span><span class="n">Office</span> <span class="n">Portfolio</span><span class="p">)</span> <span class="n">assigned</span> <span class="n">Oct</span> <span class="mi">12</span><span class="p">,</span> <span class="n">due</span> <span class="n">Oct</span> <span class="mi">21</span>
+</pre></div>
+</div>
+<p>Part IV covers the three document types that consume most professional working hours: text, slides, and spreadsheets. This is the part of the course students most often expect to be trivial, and it is where the largest immediate time savings actually live.</p>
+<p>For software engineers specifically, writing is not a side activity. Design documents, pull request descriptions, incident post-mortems, API documentation, and commit messages are the artifacts through which engineering work becomes legible to other people. They are also, uniformly, the thing engineers report disliking most. That combination — high volume, high value, low enthusiasm — is exactly where these tools earn their place.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Apply Unit 7’s prompt structure to five recurring professional document types.</p></li>
+<li><p>Use AI to <strong>interrogate</strong> a long document rather than merely summarize it.</p></li>
+<li><p>Apply a verification standard proportional to each document’s error cost.</p></li>
+<li><p>Identify what must never be pasted into a third-party tool.</p></li>
+</ul>
+</section>
+<section id="part-i-what-ai-does-well-with-text-and-what-it-does-not">
+<h2>Part I — What AI Does Well with Text, and What It Does Not<a class="headerlink" href="#part-i-what-ai-does-well-with-text-and-what-it-does-not" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Genuinely useful</p></th>
+<th class="head text-left"><p>Requires care</p></th>
+<th class="head text-left"><p>Do not delegate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Restructuring your rough draft</p></td>
+<td class="text-left"><p>Summarizing something you have not read</p></td>
+<td class="text-left"><p>Deciding what the document should claim</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Adjusting register for an audience</p></td>
+<td class="text-left"><p>Any output containing numbers or citations</p></td>
+<td class="text-left"><p>Judgments about people</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Generating a first outline</p></td>
+<td class="text-left"><p>Technical accuracy on unfamiliar material</p></td>
+<td class="text-left"><p>Anything you will sign your name to unread</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Finding what a long document says about X</p></td>
+<td class="text-left"><p>Tone in emotionally loaded situations</p></td>
+<td class="text-left"><p>The actual analysis in an incident review</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The organizing principle: <strong>AI is strong at transformation and weak at commitment.</strong> Give it your thinking and ask it to reshape that, and it performs well. Ask it to supply the thinking, and you get the most statistically typical version of the document — which is by definition unremarkable, and possibly wrong.</p>
+</section>
+<section id="part-ii-five-recurring-engineering-documents">
+<h2>Part II — Five Recurring Engineering Documents<a class="headerlink" href="#part-ii-five-recurring-engineering-documents" title="Link to this heading">#</a></h2>
+<p>Each prompt below is complete and follows the Unit 7 six-component form. Copy it, replace the [square brackets], and add it to your prompt library.</p>
+<section id="design-document">
+<h3>2.1 Design Document<a class="headerlink" href="#design-document" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">a</span> <span class="n">senior</span> <span class="n">engineer</span> <span class="n">turning</span> <span class="n">rough</span> <span class="n">notes</span> <span class="n">into</span> <span class="n">a</span> <span class="n">design</span> <span class="n">document</span> <span class="k">for</span> <span class="n">team</span> <span class="n">review</span><span class="o">.</span>
+
+<span class="n">Below</span> <span class="n">are</span> <span class="n">my</span> <span class="n">notes</span><span class="o">.</span> <span class="n">Convert</span> <span class="n">them</span> <span class="n">into</span> <span class="n">a</span> <span class="n">design</span> <span class="n">document</span><span class="o">.</span>
+
+<span class="n">Rules</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">invent</span> <span class="n">requirements</span><span class="p">,</span> <span class="n">constraints</span><span class="p">,</span> <span class="ow">or</span> <span class="n">options</span> <span class="n">I</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">state</span><span class="o">.</span> <span class="n">Wherever</span> <span class="n">my</span> <span class="n">notes</span> <span class="n">are</span> <span class="n">vague</span><span class="p">,</span> <span class="n">incomplete</span><span class="p">,</span> <span class="ow">or</span> <span class="n">contradictory</span><span class="p">,</span> <span class="n">insert</span> <span class="p">[</span><span class="n">UNRESOLVED</span><span class="p">:</span> <span class="n">what</span> <span class="ow">is</span> <span class="n">missing</span><span class="p">]</span> <span class="n">rather</span> <span class="n">than</span> <span class="n">filling</span> <span class="n">the</span> <span class="n">gap</span><span class="o">.</span> <span class="n">I</span> <span class="n">would</span> <span class="n">rather</span> <span class="n">have</span> <span class="n">a</span> <span class="n">document</span> <span class="k">with</span> <span class="n">eight</span> <span class="n">unresolved</span> <span class="n">markers</span> <span class="n">than</span> <span class="n">a</span> <span class="n">smooth</span> <span class="n">document</span> <span class="n">that</span> <span class="n">hides</span> <span class="n">where</span> <span class="n">my</span> <span class="n">thinking</span> <span class="n">stopped</span><span class="o">.</span>
+
+<span class="n">Format</span><span class="p">:</span> <span class="n">Problem</span> <span class="o">|</span> <span class="n">Constraints</span> <span class="o">|</span> <span class="n">Options</span> <span class="n">considered</span> <span class="o">|</span> <span class="n">Recommendation</span> <span class="o">|</span> <span class="n">Risks</span> <span class="o">|</span> <span class="n">Open</span> <span class="n">questions</span><span class="o">.</span>
+
+<span class="n">Criteria</span><span class="p">:</span> <span class="n">A</span> <span class="n">reviewer</span> <span class="n">should</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">disagree</span> <span class="k">with</span> <span class="n">the</span> <span class="n">recommendation</span> <span class="n">on</span> <span class="n">specific</span> <span class="n">technical</span> <span class="n">grounds</span><span class="o">.</span> <span class="n">If</span> <span class="n">my</span> <span class="n">notes</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">contain</span> <span class="n">enough</span> <span class="n">to</span> <span class="n">support</span> <span class="n">a</span> <span class="n">recommendation</span><span class="p">,</span> <span class="n">say</span> <span class="n">so</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">producing</span> <span class="n">one</span><span class="o">.</span>
+
+<span class="n">MY</span> <span class="n">NOTES</span><span class="p">:</span> <span class="p">[</span><span class="n">PASTE</span> <span class="n">YOUR</span> <span class="n">NOTES</span><span class="p">,</span> <span class="n">HOWEVER</span> <span class="n">ROUGH</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Verify:</strong> count the <code class="docutils literal notranslate"><span class="pre">[UNRESOLVED]</span></code> markers. If there are none, it smoothed over your gaps — ask again, more forcefully.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">[UNRESOLVED]</span></code> instruction is the important one. Left alone, the model will close every gap in your thinking, producing a document that reads as finished and hides exactly the places where you needed help.</p>
+</section>
+<section id="pull-request-description">
+<h3>2.2 Pull Request Description<a class="headerlink" href="#pull-request-description" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You are writing a PR description for a reviewer with no context on this change.
+
+Rules: Describe only what the diff shows. Do not claim the change is tested, benchmarked, or backwards-compatible unless I stated it. Do not describe the change as "simple," "minor," or "straightforward" — the reviewer decides that.
+
+Format:
+What changed — two or three sentences.
+Why — the problem this solves.
+How to review — where to look first, and what to check.
+Not covered — what this PR deliberately does not do.
+
+Criteria: A reviewer should know within fifteen seconds where to start reading.
+
+DIFF SUMMARY: [files changed and a description of each]
+CONTEXT THE DIFF DOES NOT SHOW: [issue number, prior discussion, the constraint you worked under]
+</pre></div>
+</div>
+<p><strong>Verify:</strong> read “Not covered” against your own knowledge of the change. It is the section most likely to come back thin, and the one that saves a reviewer an hour.</p>
+</section>
+<section id="incident-post-mortem">
+<h3>2.3 Incident Post-Mortem<a class="headerlink" href="#incident-post-mortem" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You are structuring a blameless post-mortem from a raw incident timeline.
+
+Rules, and these are strict:
+- Name no individual. Refer to roles.
+- Include only causes the timeline actually supports. If you can see a likely cause the timeline does not establish, put it under "Hypotheses requiring investigation" — never under contributing factors.
+- Distinguish *what happened* from *why it was possible*.
+- Propose no action items I did not list. If you think one is missing, say so at the end under "Action items you may be missing."
+
+Format: Impact | Timeline | Contributing factors | Hypotheses requiring investigation | What went well | Action items | Action items you may be missing.
+
+Criteria: every contributing factor must point at a system or a process, not a person or a decision someone made under pressure.
+
+RAW TIMELINE: [PASTE YOUR SLACK LOG, TICKET HISTORY, OR NOTES]
+</pre></div>
+</div>
+<p><strong>Verify:</strong> for each contributing factor, find the line in the raw timeline that establishes it. Any factor you cannot trace is a fabrication.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Post-mortems are the highest-risk document in this list for AI assistance. The model will readily generate plausible-sounding root causes that were never established, and a fabricated contributing factor sends remediation effort in the wrong direction. The “Hypotheses requiring investigation” section exists to give those guesses somewhere to go that is not the causes list.</p>
+</div>
+</section>
+<section id="technical-documentation">
+<h3>2.4 Technical Documentation<a class="headerlink" href="#technical-documentation" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You are documenting a module for an engineer who knows the language but has never seen this codebase.
+
+Rules: Document only behavior visible in the code below. Where you infer intent from a name rather than from logic, mark it [INFERRED]. Where the code's behavior on an edge case is genuinely unclear from reading it, mark it [UNCLEAR] rather than guessing.
+
+Format: Purpose | Parameters | Returns | Raises | Example call | Caveats.
+
+Criteria: name every assumption the code makes about its inputs — encoding, ordering, nullability, size, type. These are what break for the next person.
+
+CODE: [PASTE THE FUNCTION OR MODULE]
+</pre></div>
+</div>
+<p><strong>Verify:</strong> check each <code class="docutils literal notranslate"><span class="pre">[INFERRED]</span></code> against the actual logic, and run the example call.</p>
+</section>
+<section id="difficult-email">
+<h3>2.5 Difficult Email<a class="headerlink" href="#difficult-email" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">helping</span> <span class="n">me</span> <span class="n">write</span> <span class="n">a</span> <span class="n">professional</span> <span class="n">email</span><span class="o">.</span>
+
+<span class="n">Rules</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">apologize</span> <span class="k">for</span> <span class="n">anything</span> <span class="n">that</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">my</span> <span class="n">fault</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">overstate</span> <span class="n">certainty</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">use</span> <span class="s2">"I just wanted to,"</span> <span class="s2">"circling back,"</span> <span class="ow">or</span> <span class="s2">"per my last email."</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">invent</span> <span class="n">an</span> <span class="n">excuse</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">reason</span> <span class="n">I</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">give</span> <span class="n">you</span><span class="o">.</span>
+
+<span class="n">Format</span><span class="p">:</span> <span class="n">subject</span> <span class="n">line</span><span class="p">,</span> <span class="n">then</span> <span class="n">under</span> <span class="mi">150</span> <span class="n">words</span> <span class="n">of</span> <span class="n">body</span><span class="o">.</span>
+
+<span class="n">Criteria</span><span class="p">:</span> <span class="n">the</span> <span class="n">recipient</span> <span class="n">should</span> <span class="n">finish</span> <span class="n">reading</span> <span class="n">knowing</span> <span class="n">exactly</span> <span class="n">what</span> <span class="n">I</span> <span class="n">am</span> <span class="n">asking</span> <span class="n">them</span> <span class="n">to</span> <span class="n">do</span> <span class="ow">and</span> <span class="n">by</span> <span class="n">when</span><span class="o">.</span>
+
+<span class="n">SITUATION</span><span class="p">:</span> <span class="p">[</span><span class="n">what</span> <span class="n">has</span> <span class="n">happened</span><span class="p">]</span>
+<span class="n">RELATIONSHIP</span><span class="p">:</span> <span class="p">[</span><span class="n">who</span> <span class="n">they</span> <span class="n">are</span> <span class="n">to</span> <span class="n">you</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">history</span><span class="p">]</span>
+<span class="n">WHAT</span> <span class="n">I</span> <span class="n">WANT</span> <span class="n">TO</span> <span class="n">HAPPEN</span><span class="p">:</span> <span class="p">[</span><span class="n">the</span> <span class="n">outcome</span><span class="p">,</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">words</span><span class="p">]</span>
+<span class="n">WHAT</span> <span class="n">I</span> <span class="n">DO</span> <span class="n">NOT</span> <span class="n">WANT</span><span class="p">:</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">I</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">want</span> <span class="n">to</span> <span class="n">escalate</span> <span class="n">to</span> <span class="n">their</span> <span class="n">manager</span> <span class="n">yet</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Verify:</strong> read it as the recipient. If you would feel managed rather than addressed, the register is wrong.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note the structural difference in 2.5: the field is WHAT I WANT TO HAPPEN, not what I want it to say. “Write an email declining this” produces something generic. “I need to decline without closing the door on future collaboration, and I do not want to invent an excuse” produces something usable, because you have specified the constraint that was actually hard.</p>
+<p>All five prompts above appear in <strong>Appendix D.4</strong> alongside a sixth for interrogating long documents.</p>
+</div>
+</section>
+</section>
+<section id="part-iii-interrogating-a-long-document">
+<h2>Part III — Interrogating a Long Document<a class="headerlink" href="#part-iii-interrogating-a-long-document" title="Link to this heading">#</a></h2>
+<p>Most people ask for a summary. Summaries are the least useful thing to ask for, because they discard exactly the specificity you needed and you have no way to tell what was dropped.</p>
+<p>Better patterns:</p>
+<ul class="simple">
+<li><p><strong>Targeted extraction.</strong> <em>“What does this specification say about error handling? Quote the relevant passages and give section numbers. If it says nothing, say so.”</em></p></li>
+<li><p><strong>Contradiction hunting.</strong> <em>“Identify places where this document contradicts itself or leaves a requirement ambiguous.”</em></p></li>
+<li><p><strong>Question answering with refusal.</strong> <em>“Answer only from this document. If the answer is not present, say ‘not addressed’ and stop.”</em></p></li>
+<li><p><strong>Comparison.</strong> <em>“What changed between v1 and v2 that would require a code change?”</em></p></li>
+</ul>
+<p>Each of these produces something checkable. A summary does not.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Never forward a summary of a document you have not read. If the summary is wrong, you have laundered a fabrication into your team’s shared understanding with your name on it. Ask targeted questions, verify the answers against the source, and read the sections that matter.</p>
+</div>
+</section>
+<section id="in-class-activity-five-scenarios">
+<h2>⚙️ In-Class Activity: Five Scenarios<a class="headerlink" href="#in-class-activity-five-scenarios" title="Link to this heading">#</a></h2>
+<p>Working in groups of three, roughly 35 minutes. Each group takes one scenario, produces the document, then hands it to another group to critique.</p>
+<p><strong>Scenario 1 — The vague design doc.</strong> You have twelve lines of notes about choosing between polling and webhooks for a integration. Produce a design document that makes your uncertainty <em>visible</em> rather than hidden.</p>
+<p><strong>Scenario 2 — The unreviewable PR.</strong> A 400-line diff touching four files with the description “fixes bug.” Write the description that should have been there.</p>
+<p><strong>Scenario 3 — The incident.</strong> A service was down for 40 minutes. You have a raw Slack timeline. Produce a blameless post-mortem — and identify at least one place where the AI proposed a cause the timeline does not support.</p>
+<p><strong>Scenario 4 — The undocumented module.</strong> A function with no docstring and non-obvious input assumptions. Document it, marking every <code class="docutils literal notranslate"><span class="pre">[INFERRED]</span></code> claim, then verify each one against the code.</p>
+<p><strong>Scenario 5 — The hard email.</strong> Your teammate has missed three agreed deadlines and the sprint is at risk. You need this addressed without escalating to a manager yet.</p>
+<p><strong>Critique round.</strong> The receiving group answers three questions: What in this document is asserted but not established? What did the author probably not know that the document conceals? Would you act on this?</p>
+</section>
+<section id="part-iv-confidentiality">
+<h2>Part IV — Confidentiality<a class="headerlink" href="#part-iv-confidentiality" title="Link to this heading">#</a></h2>
+<p>This is the responsibility beat for Unit 10, and it is the one most likely to matter to you during an internship.</p>
+<p>Documents are the highest-risk category for accidental disclosure, because the useful thing to do with a document is paste the whole thing.</p>
+<p><strong>Before pasting any document, ask:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Whose document is it?</strong> Employer, client, and university documents are frequently not yours to share, regardless of whether you wrote them.</p></li>
+<li><p><strong>Does it name people?</strong> Names plus any attached fact — performance, health, grades, conduct — is personal data.</p></li>
+<li><p><strong>Does it contain credentials?</strong> Config files, connection strings, and stack traces routinely embed secrets. Stack traces in particular are pasted constantly and are full of internal paths and hostnames.</p></li>
+<li><p><strong>What is the retention policy of the tool I am about to use?</strong></p></li>
+</ol>
+<p>The safe habit is <strong>redact before paste</strong>: replace names, keys, hostnames, and identifiers with placeholders. It takes thirty seconds and it converts an irreversible mistake into a non-event.</p>
+</section>
+<section id="example-a-summary-that-cost-a-sprint">
+<h2>💡 Example: A Summary That Cost a Sprint<a class="headerlink" href="#example-a-summary-that-cost-a-sprint" title="Link to this heading">#</a></h2>
+<p>An engineer asked an assistant to summarize a 60-page client specification and reported to the team that authentication was “OAuth 2.0 with standard scopes.” The specification did say that — in section 4. Section 11, in a table the retrieval never surfaced, added a mandatory client-certificate requirement.</p>
+<p>The summary was not false. It was <strong>incomplete in a way the summary itself could not disclose</strong>, because a summary’s job is to omit and it has no way to tell you whether what it omitted mattered.</p>
+<p>Targeted extraction — <em>“list every authentication requirement in this document with section numbers”</em> — would have surfaced both. The difference is not the model. It is the question.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>You can now produce a competent design document in four minutes instead of forty. The four-minute version reads better than what you would have written.</p>
+<p>The forty-minute version had a property the four-minute one lacks: writing it forced you to discover what you did not yet know. What is your plan for keeping that, now that the friction that produced it is gone?</p>
+</div></blockquote>
+<p><strong>Connecting to HW10 (Office Portfolio, Units 10–12):</strong> this homework spans all three Part IV units and is due Oct 21. For Unit 10, submit <strong>two documents</strong> from the scenario list, each with: your prompt, the raw output, your edited final version, and a note on what you changed and why. The edits are what is graded.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Russell, S., &amp; Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em>, 4th Ed., Ch. 24. Pearson.</p></li>
+<li><p>Google (2024). <em>Site Reliability Engineering: Postmortem Culture.</em> [<a class="reference external" href="https://sre.google/sre-book/postmortem-culture/">https://sre.google/sre-book/postmortem-culture/</a>]</p></li>
+<li><p>Dendritic Institute (2025). <em>AI Literacy Series — Module 2, Part I: AI for Emails and Written Communication.</em></p></li>
+<li><p>Dendritic Institute (2025). <em>AI Literacy Series — Appendix: In-Class Group Scenarios.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_09_Careers_in_AI.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 9: Careers in AI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_11_Presentations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 11: Presentations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-what-ai-does-well-with-text-and-what-it-does-not">Part I — What AI Does Well with Text, and What It Does Not</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-five-recurring-engineering-documents">Part II — Five Recurring Engineering Documents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-document">2.1 Design Document</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-request-description">2.2 Pull Request Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incident-post-mortem">2.3 Incident Post-Mortem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-documentation">2.4 Technical Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difficult-email">2.5 Difficult Email</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-interrogating-a-long-document">Part III — Interrogating a Long Document</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-five-scenarios">⚙️ In-Class Activity: Five Scenarios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iv-confidentiality">Part IV — Confidentiality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-a-summary-that-cost-a-sprint">💡 Example: A Summary That Cost a Sprint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

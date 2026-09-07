@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 13: AI for Descriptive Analysis &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_13_Descriptive_Analysis';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 14: AI for Data Visualization" href="Unit_14_Data_Visualization.html" />
+    <link rel="prev" title="Unit 12: Spreadsheets" href="Unit_12_Spreadsheets.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Documents_and_Texts.html">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Presentations.html">Unit 11: Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Spreadsheets.html">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_14_Data_Visualization.html">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_15_Vibe_Coding_Tools.html">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_16_Responsible_AI.html">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_D_Prompt_Library.html">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_13_Descriptive_Analysis.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_13_Descriptive_Analysis.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 13: AI for Descriptive Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-what-eda-is-and-is-not">Part I — What EDA Is and Is Not</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-it-fits">1.1 Where It Fits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-the-measures-and-what-they-hide">Part II — The Measures, and What They Hide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#central-tendency">2.1 Central Tendency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion">2.2 Dispersion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape">2.3 Shape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#association">2.4 Association</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-a-complete-descriptive-pass">⚙️ Hands-On: A Complete Descriptive Pass</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-what-you-just-produced">Reading What You Just Produced</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-using-ai-in-eda-without-losing-the-plot">Part III — Using AI in EDA Without Losing the Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompts-that-work">3.1 Prompts That Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompts-that-fail">3.2 Prompts That Fail</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-the-adversarial-reading">⚙️ Hands-On: The Adversarial Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-analysis-that-should-not-have-proceeded">💡 Example: The Analysis That Should Not Have Proceeded</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-13-ai-for-descriptive-analysis">
+<h1>Unit 13: AI for Descriptive Analysis<a class="headerlink" href="#unit-13-ai-for-descriptive-analysis" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sessions 19–20 | Oct 21, 26 | HW11 assigned Oct 28, due Nov 04
+</pre></div>
+</div>
+<p>Part V is where the course turns back toward computing. Units 10 through 12 used AI on documents; Units 13 through 15 use it on data and code. The skills are related but the stakes rise, because a wrong number in an analysis propagates into every conclusion drawn from it.</p>
+<p><strong>Exploratory data analysis</strong> is what you do before modeling: look at the data, understand its shape, find what is broken. Unit 3 told you preprocessing consumes the largest share of effort in an AI project. This unit is that share.</p>
+<p>The specific opportunity is that AI is genuinely excellent at the mechanical parts of EDA — generating the right summary code, suggesting what to check next, explaining an unfamiliar statistic — and genuinely poor at the part that matters, which is deciding what the numbers mean.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Describe where EDA fits in the data science workflow and why it precedes modeling.</p></li>
+<li><p>Compute and <strong>interpret</strong> distributions, central tendency, dispersion, and association.</p></li>
+<li><p>Use AI to accelerate EDA while retaining responsibility for every claim.</p></li>
+<li><p>Recognize when a summary statistic conceals more than it reveals.</p></li>
+</ul>
+</section>
+<section id="part-i-what-eda-is-and-is-not">
+<h2>Part I — What EDA Is and Is Not<a class="headerlink" href="#part-i-what-eda-is-and-is-not" title="Link to this heading">#</a></h2>
+<p>Exploratory data analysis, in Tukey’s original framing, is detective work: you approach data without a hypothesis to confirm, looking for what is there.</p>
+<p><strong>EDA is:</strong> examining distributions, spotting anomalies and missing values, discovering relationships, forming hypotheses, and deciding whether the data can answer the question at all.</p>
+<p><strong>EDA is not:</strong> confirming what you already believe, generating charts to decorate a report, or a step to skip when the deadline is close.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The most valuable outcome of EDA is sometimes the conclusion that <strong>the data cannot answer the question</strong>. This is a real result and a professionally difficult one to deliver. It is also the outcome an AI assistant is least likely to volunteer, because “here is an analysis” is a far more typical continuation than “you should not proceed.”</p>
+</div>
+<section id="where-it-fits">
+<h3>1.1 Where It Fits<a class="headerlink" href="#where-it-fits" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Stage</p></th>
+<th class="head text-left"><p>Question</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Problem definition</p></td>
+<td class="text-left"><p>What are we actually trying to decide?</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Data collection</p></td>
+<td class="text-left"><p>What do we have, and where did it come from?</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>EDA</strong></p></td>
+<td class="text-left"><p><strong>What is in this data, and what is wrong with it?</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Preprocessing</p></td>
+<td class="text-left"><p>Clean, transform, engineer features</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Modeling</p></td>
+<td class="text-left"><p>Fit and evaluate (Units 3–5)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Communication</p></td>
+<td class="text-left"><p>Make the result actionable (Unit 14)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="part-ii-the-measures-and-what-they-hide">
+<h2>Part II — The Measures, and What They Hide<a class="headerlink" href="#part-ii-the-measures-and-what-they-hide" title="Link to this heading">#</a></h2>
+<section id="central-tendency">
+<h3>2.1 Central Tendency<a class="headerlink" href="#central-tendency" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Mean</strong> — the balance point. Sensitive to extreme values.</p></li>
+<li><p><strong>Median</strong> — the middle. Robust to extremes.</p></li>
+<li><p><strong>Mode</strong> — the most frequent. The only one that works for nominal data.</p></li>
+</ul>
+<p>When mean and median diverge substantially, the distribution is skewed, and reporting the mean alone is a choice with consequences. Salary data is the standard example: the mean is pulled upward by a few large values, so “average salary” and “typical salary” are different numbers, and which one gets reported is often a decision about what the reader should conclude.</p>
+</section>
+<section id="dispersion">
+<h3>2.2 Dispersion<a class="headerlink" href="#dispersion" title="Link to this heading">#</a></h3>
+<p>Central tendency without dispersion is nearly useless. Two datasets with identical means can be entirely different.</p>
+<ul class="simple">
+<li><p><strong>Range</strong> — max minus min. One outlier controls it.</p></li>
+<li><p><strong>IQR</strong> — the middle 50%. Robust.</p></li>
+<li><p><strong>Variance / Standard deviation</strong> — average squared / typical deviation from the mean.</p></li>
+<li><p><strong>Coefficient of variation</strong> — standard deviation relative to the mean, which permits comparison across different units.</p></li>
+</ul>
+</section>
+<section id="shape">
+<h3>2.3 Shape<a class="headerlink" href="#shape" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Skewness</strong> — asymmetry. Positive means a long right tail.</p></li>
+<li><p><strong>Kurtosis</strong> — tail weight. High kurtosis means extreme values are more common than a normal distribution would predict.</p></li>
+</ul>
+<p>Kurtosis matters more than its obscurity suggests: a model built assuming normally distributed errors will be surprised, expensively, by a heavy-tailed reality.</p>
+</section>
+<section id="association">
+<h3>2.4 Association<a class="headerlink" href="#association" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Covariance</strong> — do two variables move together? Unbounded and unit-dependent, therefore hard to interpret directly.</p></li>
+<li><p><strong>Pearson correlation</strong> — covariance normalized to [-1, 1]. Measures <strong>linear</strong> association only.</p></li>
+<li><p><strong>Spearman correlation</strong> — the same on ranks. Catches monotonic but non-linear relationships.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A Pearson correlation near zero does <strong>not</strong> mean no relationship. It means no <em>linear</em> relationship. A perfect parabola has a correlation of approximately zero. Unit 14 shows you four datasets with identical correlations and utterly different structures.</p>
+</div>
+</section>
+</section>
+<section id="hands-on-a-complete-descriptive-pass">
+<h2>⚙️ Hands-On: A Complete Descriptive Pass<a class="headerlink" href="#hands-on-a-complete-descriptive-pass" title="Link to this heading">#</a></h2>
+<p>We use the diabetes dataset bundled with scikit-learn — 442 patients, ten baseline measurements, and a quantitative disease-progression score one year later.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_diabetes</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">load_diabetes</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"target"</span><span class="p">:</span> <span class="s2">"progression"</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Shape: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows × </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> columns"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Missing values: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># --- Central tendency, dispersion, shape --------------------------</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"mean"</span><span class="p">:</span>     <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="s2">"median"</span><span class="p">:</span>   <span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span>
+    <span class="s2">"std"</span><span class="p">:</span>      <span class="n">df</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+    <span class="s2">"IQR"</span><span class="p">:</span>      <span class="n">df</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.25</span><span class="p">),</span>
+    <span class="s2">"skew"</span><span class="p">:</span>     <span class="n">df</span><span class="o">.</span><span class="n">skew</span><span class="p">(),</span>
+    <span class="s2">"kurtosis"</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">(),</span>
+<span class="p">})</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+
+<span class="c1"># --- Where mean and median disagree most --------------------------</span>
+<span class="n">gap</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">())</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">std</span><span class="p">())</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Largest mean-median divergence: </span><span class="si">{</span><span class="n">gap</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">gap</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> SDs)"</span><span class="p">)</span>
+
+<span class="c1"># --- Association: linear vs. monotonic ----------------------------</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Correlation with progression:"</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">"progression"</span><span class="p">):</span>
+    <span class="n">r</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">progression</span><span class="p">)</span>
+    <span class="n">rho</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">spearmanr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">progression</span><span class="p">)</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">col</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">rho</span> <span class="o">-</span> <span class="n">r</span><span class="p">))</span>
+<span class="n">assoc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"variable"</span><span class="p">,</span> <span class="s2">"pearson"</span><span class="p">,</span> <span class="s2">"spearman"</span><span class="p">,</span> <span class="s2">"diff"</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">assoc</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"pearson"</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">abs</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+<section id="reading-what-you-just-produced">
+<h3>Reading What You Just Produced<a class="headerlink" href="#reading-what-you-just-produced" title="Link to this heading">#</a></h3>
+<p>Three things are worth noticing in this output.</p>
+<p><strong>The features are pre-standardized.</strong> Every mean is essentially zero and every standard deviation nearly identical. That is not a property of the patients; it is a preprocessing decision made by whoever prepared this dataset. <strong>You cannot recover the original units from this file.</strong> A blood pressure of <code class="docutils literal notranslate"><span class="pre">0.021</span></code> is meaningless to a clinician, and any analysis you present in these units is uninterpretable to the people who would act on it.</p>
+<p>This is the kind of thing EDA exists to catch, and it is invisible if you go straight to modeling.</p>
+<p><strong>The <code class="docutils literal notranslate"><span class="pre">diff</span></code> column</strong> shows where Spearman and Pearson disagree. A large gap signals a monotonic but non-linear relationship — the variable matters, but not in a straight line.</p>
+<p><strong>Nothing here tells you what to do.</strong> The numbers are facts about the file. Whether the strongest correlate is clinically actionable, confounded, or an artifact of how patients entered this study is not in the data, and no amount of further computation will put it there.</p>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Which variable has the largest <code class="docutils literal notranslate"><span class="pre">|skew|</span></code>? Plot its histogram. Would you report its mean?</p></li>
+<li><p>Compute the coefficient of variation for each column. Why is it useless here, and what does that tell you about the standardization?</p></li>
+<li><p>Take the top correlate and compute its correlation with <strong>every other feature</strong>. If it correlates strongly with several, what does that do to a claim that it “drives” progression?</p></li>
+</ol>
+</section>
+</section>
+<section id="part-iii-using-ai-in-eda-without-losing-the-plot">
+<h2>Part III — Using AI in EDA Without Losing the Plot<a class="headerlink" href="#part-iii-using-ai-in-eda-without-losing-the-plot" title="Link to this heading">#</a></h2>
+<p>The Unit 12 distinction governs everything here: <strong>prefer code you can run over numbers you are told.</strong></p>
+<section id="prompts-that-work">
+<h3>3.1 Prompts That Work<a class="headerlink" href="#prompts-that-work" title="Link to this heading">#</a></h3>
+<p><strong>Generate the analysis, not the answer:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Below</span> <span class="n">are</span> <span class="n">the</span> <span class="n">column</span> <span class="n">names</span> <span class="ow">and</span> <span class="n">dtypes</span> <span class="n">of</span> <span class="n">a</span> <span class="n">dataset</span> <span class="n">about</span> <span class="p">[</span><span class="n">domain</span><span class="p">]</span><span class="o">.</span>
+
+<span class="n">Write</span> <span class="n">pandas</span> <span class="n">code</span> <span class="n">that</span> <span class="n">produces</span><span class="p">:</span> <span class="n">shape</span><span class="p">,</span> <span class="n">missing</span><span class="o">-</span><span class="n">value</span> <span class="n">counts</span> <span class="n">per</span> <span class="n">column</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">standard</span> <span class="n">deviation</span><span class="p">,</span> <span class="n">IQR</span><span class="p">,</span> <span class="n">skewness</span><span class="p">,</span> <span class="n">kurtosis</span><span class="p">,</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">correlation</span> <span class="n">matrix</span> <span class="n">using</span> <span class="n">both</span> <span class="n">Pearson</span> <span class="ow">and</span> <span class="n">Spearman</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">interpret</span> <span class="n">the</span> <span class="n">results</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">what</span> <span class="n">you</span> <span class="n">expect</span> <span class="n">the</span> <span class="n">relationships</span> <span class="n">to</span> <span class="n">be</span><span class="o">.</span> <span class="n">Return</span> <span class="n">only</span> <span class="n">code</span><span class="o">.</span>
+
+<span class="n">COLUMNS</span><span class="p">:</span> <span class="p">[</span><span class="n">PASTE</span> <span class="n">DF</span><span class="o">.</span><span class="n">DTYPES</span> <span class="n">OUTPUT</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Ask what to check next:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Below</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">descriptive</span> <span class="n">output</span> <span class="kn">from</span><span class="w"> </span><span class="nn">my</span> <span class="n">dataset</span><span class="o">.</span>
+
+<span class="n">List</span> <span class="n">the</span> <span class="n">five</span> <span class="n">most</span> <span class="n">important</span> <span class="n">things</span> <span class="n">I</span> <span class="n">should</span> <span class="n">check</span> <span class="n">before</span> <span class="n">modeling</span><span class="p">,</span> <span class="n">ordered</span> <span class="n">by</span> <span class="n">how</span> <span class="n">much</span> <span class="n">damage</span> <span class="n">each</span> <span class="n">would</span> <span class="n">do</span> <span class="k">if</span> <span class="n">I</span> <span class="n">missed</span> <span class="n">it</span><span class="o">.</span> <span class="n">For</span> <span class="n">each</span><span class="p">:</span> <span class="n">what</span> <span class="n">to</span> <span class="n">check</span><span class="p">,</span> <span class="n">what</span> <span class="n">problem</span> <span class="n">it</span> <span class="n">would</span> <span class="n">reveal</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">code</span> <span class="n">to</span> <span class="n">check</span> <span class="n">it</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">what</span> <span class="n">the</span> <span class="n">data</span> <span class="n">means</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">propose</span> <span class="n">a</span> <span class="n">model</span><span class="o">.</span>
+
+<span class="n">OUTPUT</span><span class="p">:</span> <span class="p">[</span><span class="n">PASTE</span> <span class="n">YOUR</span> <span class="n">SUMMARY</span> <span class="n">TABLES</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Explain an unfamiliar measure:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Explain</span> <span class="p">[</span><span class="n">kurtosis</span><span class="p">]</span> <span class="n">to</span> <span class="n">someone</span> <span class="n">who</span> <span class="n">understands</span> <span class="n">mean</span> <span class="ow">and</span> <span class="n">standard</span> <span class="n">deviation</span> <span class="n">but</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">studied</span> <span class="n">statistics</span> <span class="n">formally</span><span class="o">.</span> <span class="n">Include</span><span class="p">:</span> <span class="n">what</span> <span class="n">it</span> <span class="n">measures</span> <span class="ow">in</span> <span class="n">one</span> <span class="n">sentence</span><span class="p">,</span> <span class="n">what</span> <span class="n">a</span> <span class="n">high</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">low</span> <span class="n">value</span> <span class="n">look</span> <span class="n">like</span> <span class="k">as</span> <span class="n">a</span> <span class="n">distribution</span> <span class="n">shape</span><span class="p">,</span> <span class="ow">and</span> <span class="n">one</span> <span class="n">concrete</span> <span class="n">case</span> <span class="n">where</span> <span class="n">ignoring</span> <span class="n">it</span> <span class="n">would</span> <span class="k">break</span> <span class="n">a</span> <span class="n">model</span><span class="o">.</span> <span class="n">Use</span> <span class="n">no</span> <span class="n">formula</span><span class="o">.</span> <span class="n">Under</span> <span class="mi">200</span> <span class="n">words</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Challenge your own reading:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">have</span> <span class="n">concluded</span> <span class="p">[</span><span class="n">your</span> <span class="n">claim</span><span class="p">]</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">analysis</span> <span class="n">below</span><span class="o">.</span>
+
+<span class="n">Give</span> <span class="n">me</span> <span class="n">the</span> <span class="n">three</span> <span class="n">strongest</span> <span class="n">reasons</span> <span class="n">that</span> <span class="n">conclusion</span> <span class="n">could</span> <span class="n">be</span> <span class="n">wrong</span><span class="o">.</span> <span class="n">Consider</span> <span class="n">at</span> <span class="n">minimum</span><span class="p">:</span> <span class="n">confounding</span> <span class="n">variables</span> <span class="n">that</span> <span class="n">would</span> <span class="n">produce</span> <span class="n">this</span> <span class="n">pattern</span> <span class="n">without</span> <span class="n">the</span> <span class="n">causal</span> <span class="n">relationship</span> <span class="n">I</span> <span class="n">am</span> <span class="n">assuming</span><span class="p">;</span> <span class="n">selection</span> <span class="n">effects</span> <span class="ow">in</span> <span class="n">how</span> <span class="n">these</span> <span class="n">rows</span> <span class="n">came</span> <span class="n">to</span> <span class="n">exist</span><span class="p">;</span> <span class="ow">and</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">effect</span> <span class="n">size</span> <span class="ow">is</span> <span class="n">larger</span> <span class="n">than</span> <span class="n">the</span> <span class="n">noise</span><span class="o">.</span>
+
+<span class="n">For</span> <span class="n">each</span> <span class="n">objection</span><span class="p">,</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">what</span> <span class="n">additional</span> <span class="n">data</span> <span class="ow">or</span> <span class="n">check</span> <span class="n">would</span> <span class="n">settle</span> <span class="n">it</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">reassure</span> <span class="n">me</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">agree</span> <span class="k">with</span> <span class="n">my</span> <span class="n">conclusion</span><span class="o">.</span>
+
+<span class="n">ANALYSIS</span><span class="p">:</span> <span class="p">[</span><span class="n">PASTE</span> <span class="n">OUTPUT</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The last one is the highest-value prompt in this unit. Your default failure mode in EDA is finding the pattern you were hoping for, and a system with no stake in your hypothesis is a useful adversary.</p>
+</section>
+<section id="prompts-that-fail">
+<h3>3.2 Prompts That Fail<a class="headerlink" href="#prompts-that-fail" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p><em>“Analyze this data and tell me what’s interesting.”</em></p>
+</div></blockquote>
+<p>You will get something. It will be fluent, it will be structured, and it will be the analysis that is <em>typical</em> for data shaped like yours rather than the analysis of your data. Worse, it will not distinguish claims it computed from claims it inferred from the column names.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>An assistant given column names alone will readily produce plausible findings about relationships in data it has never seen. “Age likely correlates positively with progression” is a statement about the world, not about your file, and it will be phrased identically to a statement about your file.</p>
+<p>When an AI reports a finding, ask one question: <strong>what computation produced this?</strong> If there is no answer, it is a prior, not a result.</p>
+</div>
+</section>
+</section>
+<section id="hands-on-the-adversarial-reading">
+<h2>⚙️ Hands-On: The Adversarial Reading<a class="headerlink" href="#hands-on-the-adversarial-reading" title="Link to this heading">#</a></h2>
+<p>Every EDA conclusion should survive a challenge. This cell builds one for you to run against your own claims.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="c1"># Two groups measured by an instrument that was recalibrated mid-study</span>
+<span class="n">group</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">],</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">])</span>
+<span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">,</span> <span class="s2">"before"</span><span class="p">,</span> <span class="s2">"after"</span><span class="p">)</span>
+<span class="n">true_effect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">group</span> <span class="o">==</span> <span class="s2">"A"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)</span>
+<span class="n">calibration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">phase</span> <span class="o">==</span> <span class="s2">"before"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>      <span class="c1"># the confound</span>
+<span class="n">value</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">true_effect</span> <span class="o">+</span> <span class="n">calibration</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.4</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"group"</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span> <span class="s2">"phase"</span><span class="p">:</span> <span class="n">phase</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"NAIVE READING"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"group"</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">"mean"</span><span class="p">,</span> <span class="s2">"std"</span><span class="p">,</span> <span class="s2">"count"</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">STRATIFIED BY PHASE"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"phase"</span><span class="p">,</span> <span class="s2">"group"</span><span class="p">])</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">"mean"</span><span class="p">,</span> <span class="s2">"count"</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">GROUP BALANCE ACROSS PHASES"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">phase</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">group</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The naive reading shows a difference between groups. The stratified reading shows that almost all of it comes from the recalibration, not the group — and the crosstab shows whether the groups were balanced across phases in the first place.</p>
+<p>This is <strong>Simpson’s paradox</strong> territory, and it is not exotic. It is what happens whenever a variable you did not think to record is doing the work. No summary statistic can warn you; only the question <em>“what else changed?”</em> can, and asking it is your job.</p>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">true_effect</span></code> to zero for both groups. The naive reading still shows a difference. What produced it?</p></li>
+<li><p>Change the group assignment so that group B is over-represented in the “after” phase. How much worse does the naive reading get?</p></li>
+<li><p>Ask an AI assistant to interpret only the <strong>naive</strong> output. Does it warn you about confounding, or does it explain the difference?</p></li>
+</ol>
+<p>Question 3 is the exercise. An assistant shown one table will interpret that table.</p>
+</section>
+<section id="example-the-analysis-that-should-not-have-proceeded">
+<h2>💡 Example: The Analysis That Should Not Have Proceeded<a class="headerlink" href="#example-the-analysis-that-should-not-have-proceeded" title="Link to this heading">#</a></h2>
+<p>A student analyzing course-evaluation data found a correlation of 0.61 between class size and average rating, and prepared a recommendation to cap enrollment.</p>
+<p>EDA would have surfaced three things first. Large classes in this dataset were disproportionately introductory courses. Introductory courses were disproportionately taught by first-year instructors. And response rates fell from 68% in small classes to 31% in large ones — meaning the large-class ratings represented a self-selected third of students.</p>
+<p>The correlation was real. The recommendation did not follow from it. Nothing in the summary statistics would have stopped the student; only the habit of asking what else varies alongside the variable of interest.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>You can now generate a complete descriptive summary of an unfamiliar dataset in under a minute, and ask an assistant to explain any statistic in it.</p>
+<p>Which of the three failures in the example above could that speed have caught — and which required knowing something that was not in the file at all?</p>
+</div></blockquote>
+<p><strong>Connecting to HW11 (Data Analysis, Units 13–14):</strong> assigned Oct 28, due Nov 04. Perform a full descriptive pass on a dataset of your choosing. Submit: the code (Mode 1 throughout), your summary output, three findings, and — carrying equal weight — <strong>one confound or limitation you identified that the statistics alone would not have revealed</strong>. State every prompt used and disclose all AI assistance.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Tukey, J. W. (1977). <em>Exploratory Data Analysis</em>. Addison-Wesley.</p></li>
+<li><p>de Castro, L. N., &amp; Ferrari, D. G. (2016). <em>Introdução à Mineração de Dados</em>, Cap. 3. Saraiva.</p></li>
+<li><p>Wickham, H., &amp; Grolemund, G. (2023). <em>R for Data Science</em>, 2nd Ed., Ch. 10–12. O’Reilly.</p></li>
+<li><p>Dendritic Institute (2025). <em>Data Analysis with AI — Module 3: Descriptive Analysis.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_12_Spreadsheets.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 12: Spreadsheets</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_14_Data_Visualization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 14: AI for Data Visualization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-what-eda-is-and-is-not">Part I — What EDA Is and Is Not</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-it-fits">1.1 Where It Fits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-the-measures-and-what-they-hide">Part II — The Measures, and What They Hide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#central-tendency">2.1 Central Tendency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion">2.2 Dispersion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shape">2.3 Shape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#association">2.4 Association</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-a-complete-descriptive-pass">⚙️ Hands-On: A Complete Descriptive Pass</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-what-you-just-produced">Reading What You Just Produced</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-using-ai-in-eda-without-losing-the-plot">Part III — Using AI in EDA Without Losing the Plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompts-that-work">3.1 Prompts That Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompts-that-fail">3.2 Prompts That Fail</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-the-adversarial-reading">⚙️ Hands-On: The Adversarial Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-analysis-that-should-not-have-proceeded">💡 Example: The Analysis That Should Not Have Proceeded</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
