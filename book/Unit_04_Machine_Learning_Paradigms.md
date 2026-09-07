@@ -1,6 +1,6 @@
 # Unit 4: Machine Learning Paradigms
 
-> **Session 7** · Sep 09 · **HW4 assigned Sep 09, due Sep 16**
+> **Sessions 7 and 8** · Sep 09, 14 · **HW4 assigned Sep 14, due Sep 20**
 
 Machine learning is a family of approaches distinguished by **what kind of information the machine receives**, **what it is asked to do with it**, and **how it works**. Unit 3 gave you one working pipeline. This unit shows you that the pipeline changes shape depending on what you have and what you want.
 
@@ -75,12 +75,12 @@ The core difficulty is the **exploration/exploitation trade-off**. Exploit what 
 | An environment and a reward signal | A strategy for acting | **Reinforcement** |
 
 ```{warning}
-The most common mistake beginners make is reaching for supervised learning by reflex and then inventing labels to justify it. If the labels are guesses, the model learns your guesses — confidently and at scale. Deciding you have no labels is a legitimate, often correct, engineering conclusion.
+The most common mistake beginners make is reaching for supervised learning by reflex and then inventing labels to justify it. If the labels are guesses, the model learns your guesses, confidently and at scale. Deciding you have no labels is a legitimate, often correct, engineering conclusion.
 ```
 
 ## ⚙️ Hands-On: The Same Data, Two Paradigms
 
-We return to the wine dataset from Unit 3 (<https://archive.ics.uci.edu/dataset/109/wine>), but this time we run it **twice** — once telling the algorithm the answers, once hiding them. The comparison is the whole point of this unit.
+We return to the wine dataset from Unit 3 (<https://archive.ics.uci.edu/dataset/109/wine>), but this time we run it **twice**, once telling the algorithm the answers, once hiding them. The comparison is the whole point of this unit.
 
 ```python
 import numpy as np
@@ -123,19 +123,19 @@ plt.tight_layout(); plt.show()
 
 ### Reading What You Just Produced
 
-The **Adjusted Rand Index (ARI)** measures how well two groupings agree, corrected for chance. It runs from 0 (no better than random) to 1 (identical). You should see roughly **0.90** — K-Means recovered the three cultivars almost exactly **without ever being told they existed**.
+The **Adjusted Rand Index (ARI)** measures how well two groupings agree, corrected for chance. It runs from 0 (no better than random) to 1 (identical). You should see roughly **0.90**; K-Means recovered the three cultivars almost exactly **without ever being told they existed**.
 
 Note carefully what did *not* happen. K-Means did not learn that these are wines, that there are three cultivars, or that cultivar is the interesting variable. It found three dense blobs. That those blobs correspond to something a botanist cares about is a fact about the world, not an achievement of the algorithm. Run the same code on data where the dense blobs correspond to nothing meaningful and you will get three equally confident clusters of nonsense.
 
 **Try changing it:**
 
-1. Set `n_clusters=5`. K-Means will happily produce five clusters. What does that tell you about whether the algorithm "knows" how many groups exist?
+1. Set `n_clusters=5`. K-Means will produce five clusters. What does that tell you about whether the algorithm "knows" how many groups exist?
 2. Remove the `StandardScaler` line and pass raw `X` to K-Means. Accuracy collapses. Why does scaling matter for distance-based methods but not for the decision tree?
 3. Change `random_state` on `KMeans`. How stable is the result? What would you have to do before reporting a clustering to a stakeholder?
 
 ## ⚙️ Hands-On: Watching Overfitting Happen
 
-Unit 3 mentioned overfitting. Here you produce it deliberately. We add thirty columns of pure random noise to the wine data — features that carry no information whatsoever — and then let the tree grow deeper and deeper.
+Unit 3 mentioned overfitting. Here you produce it deliberately. We add thirty columns of pure random noise to the wine data (features that carry no information whatsoever) and then let the tree grow deeper and deeper.
 
 ```python
 import numpy as np
@@ -171,21 +171,21 @@ plt.title("The gap that opens is overfitting")
 plt.legend(); plt.grid(alpha=0.3); plt.tight_layout(); plt.show()
 ```
 
-Training accuracy climbs to a perfect 100% and stays there. Test accuracy rises, peaks, and then flattens several points below. **That gap is the model memorizing noise.** It found patterns in thirty columns of random numbers — patterns that exist in the training set and nowhere else in the universe.
+Training accuracy climbs to a perfect 100% and stays there. Test accuracy rises, peaks, and then flattens several points below. **That gap is the model memorizing noise.** It found patterns in thirty columns of random numbers, patterns that exist in the training set.
 
 ```{warning}
-This is the single most important diagnostic in applied machine learning, and the one most often skipped under deadline pressure. A model reported with only one accuracy number is a model whose gap you have not been shown. Ask for both.
+This is the most important diagnostic in applied machine learning, and the one most often skipped under deadline pressure. A model reported with only one accuracy number is a model whose gap you have not been shown. Ask for both.
 ```
 
 **Try changing it:**
 
 1. Increase the noise columns from 30 to 100. Does the gap widen? What does that say about datasets with many irrelevant features?
 2. Change `test_size=0.4` to `0.15`. The test set is now tiny. Does the reported test accuracy become more or less trustworthy?
-3. Replace `DecisionTreeClassifier` with `RandomForestClassifier(n_estimators=100)`. The gap shrinks. Averaging many overfit trees produces something that generalizes — why might that be?
+3. Replace `DecisionTreeClassifier` with `RandomForestClassifier(n_estimators=100)`. The gap shrinks. Averaging many overfit trees produces something that generalizes. Why might that be?
 
 ## ⚙️ Hands-On: Exploration vs. Exploitation
 
-Three versions of a feature are live. Each converts users at some unknown rate. You have a fixed number of visitors. Every visitor you send to a bad version is wasted — but you cannot know which version is bad without sending some visitors there.
+Three versions of a feature are live. Each converts users at some unknown rate. You have a fixed number of visitors. Every visitor you send to a bad version is wasted, but you cannot know which version is bad without sending some visitors there.
 
 This is the **multi-armed bandit**, the smallest complete reinforcement learning problem.
 
