@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 7: Prompt Engineering &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_07_Prompt_Engineering';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 8: AI Workspaces and Assistants" href="Unit_08_Workspaces_and_Assistants.html" />
+    <link rel="prev" title="Unit 6: AI Applications Across Domains" href="Unit_06_AI_Applications.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Documents_and_Texts.html">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Presentations.html">Unit 11: Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Spreadsheets.html">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_Descriptive_Analysis.html">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_14_Data_Visualization.html">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_15_Vibe_Coding_Tools.html">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_16_Responsible_AI.html">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_D_Prompt_Library.html">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_07_Prompt_Engineering.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_07_Prompt_Engineering.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 7: Prompt Engineering</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-why-prompting-is-not-conversation">Part I — Why Prompting Is Not Conversation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-an-effective-prompt">1.1 Anatomy of an Effective Prompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-techniques">1.2 Core Techniques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration-is-the-method">1.3 Iteration Is the Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-1-comparing-prompts-systematically">⚙️ Hands-On 1: Comparing Prompts Systematically</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-context-engineering">Part II — Context Engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-verification-is-part-of-the-prompt">Part III — Verification Is Part of the Prompt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-2-building-your-prompt-library">⚙️ Hands-On 2: Building Your Prompt Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-weak-prompt-vs-strong-prompt">💡 Example: Weak Prompt vs. Strong Prompt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-7-prompt-engineering">
+<h1>Unit 7: Prompt Engineering<a class="headerlink" href="#unit-7-prompt-engineering" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sessions 11–12 | Sep 23, 28 | HW7 assigned Sep 28, due Oct 05
+</pre></div>
+</div>
+<p>Part III begins here. For six units you have been taking these systems apart; from now on you are operating them. Everything you build in Units 8 through 15 rests on the skill in this unit.</p>
+<p>Prompting has a bad reputation among engineers, and some of it is deserved — the genre of “10 magic prompts” content is worthless. But the underlying skill is real and it is not mysterious. <strong>A prompt is a specification.</strong> You already know how to write specifications; you know that vague requirements produce wrong software, and that the fix is precision about inputs, outputs, constraints, and acceptance criteria. Prompting is the same discipline applied to a nondeterministic executor.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Decompose a prompt into its functional components and write each deliberately.</p></li>
+<li><p>Apply <strong>role, few-shot, chain-of-thought, and output-format</strong> techniques and say when each helps.</p></li>
+<li><p>Distinguish <strong>prompt engineering</strong> from <strong>context engineering</strong> and explain why the second matters more at scale.</p></li>
+<li><p>Design a <strong>verification step</strong> appropriate to the task’s error cost.</p></li>
+<li><p>Build and maintain a reusable <strong>prompt library</strong>.</p></li>
+</ul>
+</section>
+<section id="part-i-why-prompting-is-not-conversation">
+<h2>Part I — Why Prompting Is Not Conversation<a class="headerlink" href="#part-i-why-prompting-is-not-conversation" title="Link to this heading">#</a></h2>
+<p>The failure mode for new users is treating the model as a colleague who shares your context. It does not. It has no access to your repository, your team’s conventions, last week’s meeting, or what you actually meant. It has the text in front of it and a very large statistical prior over what usually follows such text.</p>
+<section id="anatomy-of-an-effective-prompt">
+<h3>1.1 Anatomy of an Effective Prompt<a class="headerlink" href="#anatomy-of-an-effective-prompt" title="Link to this heading">#</a></h3>
+<p>Six components. Not all are needed every time, but knowing which you omitted is the point.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Component</p></th>
+<th class="head text-left"><p>Question it answers</p></th>
+<th class="head text-left"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Role</strong></p></td>
+<td class="text-left"><p>From what perspective?</p></td>
+<td class="text-left"><p>“You are a senior backend engineer reviewing a pull request.”</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Task</strong></p></td>
+<td class="text-left"><p>What action, exactly?</p></td>
+<td class="text-left"><p>“Identify race conditions in this function.”</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Context</strong></p></td>
+<td class="text-left"><p>What must it know?</p></td>
+<td class="text-left"><p>“This runs in a multi-threaded request handler. <code class="docutils literal notranslate"><span class="pre">cache</span></code> is shared.”</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Constraints</strong></p></td>
+<td class="text-left"><p>What are the limits?</p></td>
+<td class="text-left"><p>“Python 3.11, standard library only, no external dependencies.”</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Format</strong></p></td>
+<td class="text-left"><p>What shape is the output?</p></td>
+<td class="text-left"><p>“A markdown table: line number, issue, severity, suggested fix.”</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Criteria</strong></p></td>
+<td class="text-left"><p>What makes it good?</p></td>
+<td class="text-left"><p>“Flag only issues that could produce incorrect data, not style.”</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The component that beginners omit most often is <strong>Criteria</strong>, and it is the one that changes the output most. Without it, the model optimizes for what usually satisfies such a request — which is <em>thoroughness</em>. That is why unconstrained prompts return twelve suggestions when you wanted the two that matter.</p>
+</div>
+</section>
+<section id="core-techniques">
+<h3>1.2 Core Techniques<a class="headerlink" href="#core-techniques" title="Link to this heading">#</a></h3>
+<p><strong>Role prompting.</strong> Assigning a perspective narrows the statistical territory the model draws from. “Explain OAuth” and “Explain OAuth to a backend developer who has implemented session auth but never a token flow” produce genuinely different text, because the second describes a much narrower region of the training distribution.</p>
+<p><strong>Few-shot prompting.</strong> Give two or three worked examples of input → output. This is by far the most reliable technique for enforcing a format, and it usually beats describing the format in words. If you need commit messages in a house style, showing three real ones works better than a paragraph of rules.</p>
+<p><strong>Chain-of-thought.</strong> Asking the model to work through steps before answering improves multi-step reasoning. The mechanism is worth understanding: the intermediate tokens become part of the context for the tokens that follow, so the model is conditioning on its own partial work. It is not “thinking harder” — it is giving itself more relevant context.</p>
+<p><strong>Output format specification.</strong> Ask for JSON, a table, or a fixed template when the output will be consumed by anything other than a human reading prose. This is the technique that makes AI output composable with the rest of your tooling.</p>
+<p><strong>Negative constraints.</strong> “Do not include explanations.” “If the answer is not in the provided text, say so.” The second is one of the highest-value instructions you can write, for reasons Unit 5 made clear.</p>
+</section>
+<section id="iteration-is-the-method">
+<h3>1.3 Iteration Is the Method<a class="headerlink" href="#iteration-is-the-method" title="Link to this heading">#</a></h3>
+<p>The first prompt is a draft. Professionals do not write one good prompt; they run a short loop:</p>
+<ol class="arabic simple">
+<li><p>Write the prompt with all six components.</p></li>
+<li><p>Run it. Read the output <strong>against your criteria</strong>, not for general quality.</p></li>
+<li><p>Identify the single largest gap.</p></li>
+<li><p>Change one thing. Run again.</p></li>
+</ol>
+<p>Changing one thing at a time is not fussiness. If you change four things and the output improves, you have learned nothing transferable.</p>
+</section>
+</section>
+<section id="hands-on-1-comparing-prompts-systematically">
+<h2>⚙️ Hands-On 1: Comparing Prompts Systematically<a class="headerlink" href="#hands-on-1-comparing-prompts-systematically" title="Link to this heading">#</a></h2>
+<p>This cell prints four variants of the same request, from bare to fully specified. Paste each into an AI assistant <strong>in a separate conversation</strong> — a fresh one each time, so earlier context does not leak — and score the results.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="s2">"Explain database indexing."</span>
+
+<span class="n">variants</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"V1 — bare"</span><span class="p">:</span> <span class="n">task</span><span class="p">,</span>
+
+    <span class="s2">"V2 — + role and audience"</span><span class="p">:</span>
+        <span class="s2">"You are a database engineer explaining to a junior developer who "</span>
+        <span class="s2">"knows SQL but has never tuned a query. "</span> <span class="o">+</span> <span class="n">task</span><span class="p">,</span>
+
+    <span class="s2">"V3 — + context and constraints"</span><span class="p">:</span>
+        <span class="s2">"You are a database engineer explaining to a junior developer who "</span>
+        <span class="s2">"knows SQL but has never tuned a query. "</span> <span class="o">+</span> <span class="n">task</span> <span class="o">+</span> <span class="s2">" "</span>
+        <span class="s2">"Focus on B-tree indexes in PostgreSQL. Assume tables of ~10 million "</span>
+        <span class="s2">"rows. Do not discuss full-text or geospatial indexes."</span><span class="p">,</span>
+
+    <span class="s2">"V4 — + format and criteria"</span><span class="p">:</span>
+        <span class="s2">"You are a database engineer explaining to a junior developer who "</span>
+        <span class="s2">"knows SQL but has never tuned a query. "</span> <span class="o">+</span> <span class="n">task</span> <span class="o">+</span> <span class="s2">" "</span>
+        <span class="s2">"Focus on B-tree indexes in PostgreSQL. Assume tables of ~10 million "</span>
+        <span class="s2">"rows. Do not discuss full-text or geospatial indexes.</span><span class="se">\n\n</span><span class="s2">"</span>
+        <span class="s2">"Format: (1) a two-sentence intuition, (2) one concrete SELECT that "</span>
+        <span class="s2">"is slow without an index, (3) the CREATE INDEX that fixes it, "</span>
+        <span class="s2">"(4) one case where adding an index makes things worse.</span><span class="se">\n</span><span class="s2">"</span>
+        <span class="s2">"Criteria: a reader should be able to decide whether to add an index "</span>
+        <span class="s2">"to their own table after reading this. Under 300 words."</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">variants</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">72</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prompt</span><span class="o">.</span><span class="n">split</span><span class="p">())</span><span class="si">}</span><span class="s2"> words)"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">72</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">72</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"""SCORING RUBRIC — rate each output 1-5, then total</span>
+
+<span class="s2">  Accuracy      Is everything stated actually true?</span>
+<span class="s2">  Relevance     Does it address the audience described?</span>
+<span class="s2">  Actionability Could the reader do something differently after reading?</span>
+<span class="s2">  Concision     Is anything present that earns no place?</span>
+<span class="s2">"""</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Score all four. Where is the largest jump — V1→V2, V2→V3, or V3→V4? The answer varies by task, which is exactly the point.</p></li>
+<li><p>Write a V5 that adds one few-shot example. Does it beat V4 on <strong>Concision</strong>?</p></li>
+<li><p>Replace the task with something from your own coursework and rebuild all four variants. Which component did you find hardest to write? That is your weak spot.</p></li>
+</ol>
+</section>
+<section id="part-ii-context-engineering">
+<h2>Part II — Context Engineering<a class="headerlink" href="#part-ii-context-engineering" title="Link to this heading">#</a></h2>
+<p>Prompt engineering is what you write in the box. <strong>Context engineering</strong> is the management of everything the model can see: system instructions, retrieved documents, conversation history, tool outputs, and files.</p>
+<p>This distinction matters because in real deployments the prompt is a small fraction of the context, and the failures come from the rest of it.</p>
+<ul class="simple">
+<li><p><strong>Context is finite.</strong> Every model has a limit. Exceeding it means something gets dropped, and you rarely control what.</p></li>
+<li><p><strong>Position matters.</strong> Material at the very beginning and very end of a long context is attended to more reliably than material buried in the middle. This is a measured, reproducible effect, not folklore.</p></li>
+<li><p><strong>Irrelevant context actively harms.</strong> Padding a prompt with loosely related documents makes output worse, not better. More is not more.</p></li>
+<li><p><strong>Stale context persists.</strong> In a long conversation, a correction you made twenty turns ago competes with the original error, which is still sitting there in the context.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The practical consequence: <strong>start a fresh conversation more often than feels necessary.</strong> When a thread has gone badly wrong, patching it with “no, I meant…” is usually worse than restating the task cleanly in a new one. Half of what looks like model stubbornness is context contamination.</p>
+</div>
+<p>Unit 8 takes this further — workspaces and assistants are, mechanically, tools for controlling context deliberately instead of accidentally.</p>
+</section>
+<section id="part-iii-verification-is-part-of-the-prompt">
+<h2>Part III — Verification Is Part of the Prompt<a class="headerlink" href="#part-iii-verification-is-part-of-the-prompt" title="Link to this heading">#</a></h2>
+<p>Unit 5 established the mechanism: fluency is optimized, truth is incidental, and confidence is uncorrelated with correctness. That fact has an operational consequence, and this is where the course’s AI policy actually comes from.</p>
+<p><strong>Match your verification effort to the error cost.</strong> Not everything needs the same scrutiny.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Error cost</p></th>
+<th class="head text-left"><p>Example</p></th>
+<th class="head text-left"><p>Verification</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Trivial</strong></p></td>
+<td class="text-left"><p>Brainstorming names, rephrasing a sentence</p></td>
+<td class="text-left"><p>Read it. Done.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Low</strong></p></td>
+<td class="text-left"><p>Draft email, first outline</p></td>
+<td class="text-left"><p>Skim for anything factual; check those.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Moderate</strong></p></td>
+<td class="text-left"><p>Code you will run, a summary you will forward</p></td>
+<td class="text-left"><p>Execute it, or check against the source.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>High</strong></p></td>
+<td class="text-left"><p>Anything with a citation, number, API, or legal claim</p></td>
+<td class="text-left"><p>Verify every one, independently.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Severe</strong></p></td>
+<td class="text-left"><p>Anything affecting a person’s money, health, safety, or record</p></td>
+<td class="text-left"><p>Do not delegate the judgment at all.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Three specific habits worth building now:</p>
+<ul class="simple">
+<li><p><strong>Citations are guilty until proven innocent.</strong> Fabricated references are the single most common serious failure. They look right — plausible authors, plausible journals, plausible years. Open them.</p></li>
+<li><p><strong>Numbers are guilty until proven innocent.</strong> A model asked to compute will often produce a well-formatted answer with no arithmetic behind it. Unit 12 makes you catch this in a spreadsheet.</p></li>
+<li><p><strong>Ask it to mark its own uncertainty, then distrust the marking.</strong> “Flag anything you are not confident about” surfaces some errors and misses others, because the model has no reliable access to its own uncertainty. It is a filter, not a guarantee.</p></li>
+</ul>
+</section>
+<section id="hands-on-2-building-your-prompt-library">
+<h2>⚙️ Hands-On 2: Building Your Prompt Library<a class="headerlink" href="#hands-on-2-building-your-prompt-library" title="Link to this heading">#</a></h2>
+<p>A prompt library is a set of prompts you have refined and can reuse. Professionals keep one. This cell ships with <strong>five complete entries</strong> — not fragments, but the full text you would actually send. Run it, read them, then start replacing them with your own.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span> <span class="o">=</span> <span class="p">{</span>
+
+<span class="s2">"code_review"</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">"prompt"</span><span class="p">:</span> <span class="s2">"""You are a senior engineer reviewing a pull request.</span>
+
+<span class="s2">Identify correctness bugs in the code below.</span>
+
+<span class="s2">Ignore formatting, naming, and style. Flag only issues that could produce</span>
+<span class="s2">incorrect behavior at runtime: race conditions, off-by-one errors, unhandled</span>
+<span class="s2">None, incorrect boundary conditions, resource leaks.</span>
+
+<span class="s2">Format as a table: line | issue | why it breaks | minimal fix.</span>
+
+<span class="s2">If there are no correctness bugs, say "No correctness bugs found" and stop.</span>
+<span class="s2">Do not pad the table to seem thorough.</span>
+
+<span class="s2">CODE:</span>
+<span class="s2">[PASTE CODE HERE]"""</span><span class="p">,</span>
+<span class="s2">"verify"</span><span class="p">:</span> <span class="s2">"Reproduce each claimed bug with a test before believing it. "</span>
+          <span class="s2">"A plausible bug report is not a bug report."</span><span class="p">},</span>
+
+<span class="s2">"explain_unfamiliar_code"</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">"prompt"</span><span class="p">:</span> <span class="s2">"""You are helping a new teammate onboard to a codebase you know well.</span>
+
+<span class="s2">Explain what the code below does and why it exists.</span>
+
+<span class="s2">The reader knows the language but has never seen this codebase. Do not explain</span>
+<span class="s2">language features. Do explain anything specific to this system.</span>
+
+<span class="s2">Format: one paragraph of purpose, then a bulleted walkthrough of the logic.</span>
+
+<span class="s2">Name every assumption the code makes about its inputs - encoding, ordering,</span>
+<span class="s2">nullability, size, type. Mark anything you inferred from a name rather than</span>
+<span class="s2">from the logic as [INFERRED].</span>
+
+<span class="s2">CODE:</span>
+<span class="s2">[PASTE CODE HERE]"""</span><span class="p">,</span>
+<span class="s2">"verify"</span><span class="p">:</span> <span class="s2">"Check the walkthrough against the code line by line. "</span>
+          <span class="s2">"Verify every [INFERRED] claim separately."</span><span class="p">},</span>
+
+<span class="s2">"debug_with_context"</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">"prompt"</span><span class="p">:</span> <span class="s2">"""I have a bug I cannot locate. Do not guess at the cause.</span>
+
+<span class="s2">First, list the five most likely causes given the symptoms, ordered by</span>
+<span class="s2">probability, and for each one state the single cheapest test that would rule</span>
+<span class="s2">it in or out.</span>
+
+<span class="s2">Do not propose a fix until I tell you which test result I got.</span>
+
+<span class="s2">SYMPTOM: [what you observe]</span>
+<span class="s2">EXPECTED: [what should happen]</span>
+<span class="s2">WHAT I HAVE ALREADY RULED OUT: [list, so it does not repeat your work]</span>
+<span class="s2">RELEVANT CODE: [PASTE]</span>
+<span class="s2">ERROR OUTPUT: [PASTE VERBATIM, DO NOT SUMMARIZE]"""</span><span class="p">,</span>
+<span class="s2">"verify"</span><span class="p">:</span> <span class="s2">"Run the tests in the order given. Stop at the first that "</span>
+          <span class="s2">"changes your picture; do not run all five."</span><span class="p">},</span>
+
+<span class="s2">"summarize_a_thread"</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">"prompt"</span><span class="p">:</span> <span class="s2">"""Below is a long discussion thread. I need to act on it.</span>
+
+<span class="s2">Extract, in this order:</span>
+<span class="s2">1. DECISIONS MADE - only ones explicitly agreed, with who agreed.</span>
+<span class="s2">2. OPEN QUESTIONS - things raised and not resolved.</span>
+<span class="s2">3. ACTION ITEMS - with owner and deadline where stated, [NO OWNER] where not.</span>
+<span class="s2">4. DISAGREEMENTS - positions still in conflict, stated fairly for both sides.</span>
+
+<span class="s2">Do not summarize the discussion. Do not infer agreement from the absence of</span>
+<span class="s2">objection. If someone proposed something and nobody responded, that belongs</span>
+<span class="s2">under OPEN QUESTIONS, not DECISIONS MADE.</span>
+
+<span class="s2">THREAD:</span>
+<span class="s2">[PASTE]"""</span><span class="p">,</span>
+<span class="s2">"verify"</span><span class="p">:</span> <span class="s2">"Check every DECISION against the thread - the most common error "</span>
+          <span class="s2">"is promoting a proposal nobody objected to into a decision."</span><span class="p">},</span>
+
+<span class="s2">"stress_test_my_reasoning"</span><span class="p">:</span> <span class="p">{</span>
+<span class="s2">"prompt"</span><span class="p">:</span> <span class="s2">"""I have reached a conclusion and I want it attacked, not confirmed.</span>
+
+<span class="s2">MY CONCLUSION: [state it plainly]</span>
+<span class="s2">MY REASONING: [how you got there]</span>
+<span class="s2">EVIDENCE I AM RELYING ON: [list]</span>
+
+<span class="s2">Give me the three strongest objections. For each: what specifically is wrong</span>
+<span class="s2">or unsupported, and what evidence would settle it.</span>
+
+<span class="s2">Do not begin by telling me the reasoning is sound. Do not soften. If the</span>
+<span class="s2">conclusion survives all three objections, say so at the end - but find the</span>
+<span class="s2">three first."""</span><span class="p">,</span>
+<span class="s2">"verify"</span><span class="p">:</span> <span class="s2">"Take the strongest objection and actually check it. An objection "</span>
+          <span class="s2">"you read and dismissed is not a check."</span><span class="p">},</span>
+
+<span class="c1"># ADD YOUR OWN - at least five, for tasks you genuinely repeat.</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">library</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">72</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">]</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="s2">"prompt"</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">  -&gt; VERIFY: </span><span class="si">{</span><span class="n">entry</span><span class="p">[</span><span class="s1">'verify'</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">72</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">library</span><span class="p">)</span><span class="si">}</span><span class="s2"> entries. Appendix D has ~40 more, organized by unit."</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that every entry carries a <code class="docutils literal notranslate"><span class="pre">verify</span></code> field, and note what the prompts have in common: each one <strong>forbids the reassuring answer</strong>. <em>Do not pad the table. Do not infer agreement from absence of objection. Do not begin by telling me the reasoning is sound.</em> The statistically typical continuation is the smooth, complete-looking, agreeable one — so constraining the output away from it is most of the technique.</p>
+<p><strong>Appendix D</strong> contains the full course library — roughly forty complete prompts organized by unit, plus universal add-ons you can append to any of them. Use it as the model for your own entries.</p>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Add three entries for tasks you genuinely repeat. Vague ones (“write better”) do not count.</p></li>
+<li><p>For one entry, deliberately omit <code class="docutils literal notranslate"><span class="pre">criteria</span></code> and compare outputs. Was the difference what you predicted?</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">failure_modes</span></code> field recording what went wrong when you used it. After a month this field is the most valuable part of the library.</p></li>
+</ol>
+</section>
+<section id="example-weak-prompt-vs-strong-prompt">
+<h2>💡 Example: Weak Prompt vs. Strong Prompt<a class="headerlink" href="#example-weak-prompt-vs-strong-prompt" title="Link to this heading">#</a></h2>
+<p><strong>Weak.</strong> <em>“Write tests for my function.”</em></p>
+<p>The model does not know the language, the test framework, what the function does, what edge cases matter, or whether you want unit or integration tests. It will guess all six, plausibly, and you will get pytest when your repository uses unittest.</p>
+<p><strong>Strong.</strong> <em>“You are writing unit tests for a Python 3.11 codebase that uses pytest. Below is a function that parses ISO 8601 duration strings into <code class="docutils literal notranslate"><span class="pre">timedelta</span></code>. Write tests covering: valid input, malformed input, empty string, and the boundary where weeks and days are both present. Use <code class="docutils literal notranslate"><span class="pre">pytest.mark.parametrize</span></code>. Do not test the standard library’s behavior — only this function’s. Return only the test file, no commentary.”</em></p>
+<p>Every added clause removes a guess. That is all prompt engineering is.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>You just spent a session getting better at writing specifications for a system that cannot tell you when it has misunderstood you.</p>
+<p>Does a well-engineered prompt make the output more likely to be <em>correct</em>, or only more likely to be <em>what you asked for</em>? Are those the same thing, and does the difference matter for the verification habits you plan to adopt?</p>
+</div></blockquote>
+<p><strong>Connecting to HW7 (Prompt Iteration Log):</strong> take one real task and document five successive prompt revisions. For each, record what you changed, why, and what improved or degraded. Submit the log and the final prompt as a library entry — including its <code class="docutils literal notranslate"><span class="pre">verify</span></code> field. The log is graded, not the final prompt.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Russell, S., &amp; Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em>, 4th Ed., Ch. 24. Pearson.</p></li>
+<li><p>Mitchell, M. (2020). <em>Artificial Intelligence: A Guide for Thinking Humans</em>, Ch. 11–13. Penguin Books.</p></li>
+<li><p>Anthropic (2025). <em>Prompt Engineering Overview.</em> [<a class="reference external" href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview">https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview</a>]</p></li>
+<li><p>Dendritic Institute (2025). <em>AI Literacy Series — Module 2, Part VII: Your Prompt Library.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_06_AI_Applications.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 6: AI Applications Across Domains</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_08_Workspaces_and_Assistants.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 8: AI Workspaces and Assistants</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-why-prompting-is-not-conversation">Part I — Why Prompting Is Not Conversation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-an-effective-prompt">1.1 Anatomy of an Effective Prompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-techniques">1.2 Core Techniques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration-is-the-method">1.3 Iteration Is the Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-1-comparing-prompts-systematically">⚙️ Hands-On 1: Comparing Prompts Systematically</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-context-engineering">Part II — Context Engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-verification-is-part-of-the-prompt">Part III — Verification Is Part of the Prompt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-2-building-your-prompt-library">⚙️ Hands-On 2: Building Your Prompt Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-weak-prompt-vs-strong-prompt">💡 Example: Weak Prompt vs. Strong Prompt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

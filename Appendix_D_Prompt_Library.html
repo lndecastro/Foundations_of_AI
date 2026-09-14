@@ -1,0 +1,1354 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Appendix D: The Course Prompt Library &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Appendix_D_Prompt_Library';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Appendix C: AI Use and Disclosure" href="Appendix_C_AI_Use_and_Disclosure.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Documents_and_Texts.html">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Presentations.html">Unit 11: Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Spreadsheets.html">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_Descriptive_Analysis.html">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_14_Data_Visualization.html">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_15_Vibe_Coding_Tools.html">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_16_Responsible_AI.html">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Appendix_D_Prompt_Library.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Appendix_D_Prompt_Library.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Appendix D: The Course Prompt Library</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-1-prompting-about-prompts-unit-7">D.1 — Prompting About Prompts (Unit 7)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-1-1-improve-a-prompt-you-already-wrote">D.1.1 Improve a prompt you already wrote</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-1-2-force-a-refusal-when-the-answer-is-not-available">D.1.2 Force a refusal when the answer is not available</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-2-workspaces-and-assistants-unit-8">D.2 — Workspaces and Assistants (Unit 8)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-2-1-complete-workspace-instructions">D.2.1 Complete workspace instructions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-2-2-interrogate-your-own-document-base">D.2.2 Interrogate your own document base</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3-careers-unit-9">D.3 — Careers (Unit 9)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3-1-gap-analysis-against-a-real-posting">D.3.1 Gap analysis against a real posting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3-2-interview-question-generation">D.3.2 Interview question generation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-documents-and-texts-unit-10">D.4 — Documents and Texts (Unit 10)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-1-design-document">D.4.1 Design document</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-2-pull-request-description">D.4.2 Pull request description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-3-blameless-incident-post-mortem">D.4.3 Blameless incident post-mortem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-4-technical-documentation">D.4.4 Technical documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-5-targeted-extraction-from-a-long-document">D.4.5 Targeted extraction from a long document</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-6-difficult-email">D.4.6 Difficult email</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-5-presentations-unit-11">D.5 — Presentations (Unit 11)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-5-1-outline-to-slide-plan">D.5.1 Outline to slide plan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-5-2-adversarial-rehearsal">D.5.2 Adversarial rehearsal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-5-3-translate-depth-for-a-non-technical-audience">D.5.3 Translate depth for a non-technical audience</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-6-spreadsheets-unit-12">D.6 — Spreadsheets (Unit 12)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-6-1-formula-generation">D.6.1 Formula generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-6-2-ask-for-the-computation-behind-a-number">D.6.2 Ask for the computation behind a number</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-6-3-cleaning-script-with-a-failure-report">D.6.3 Cleaning script with a failure report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-6-4-refuse-an-unsupported-judgment">D.6.4 Refuse an unsupported judgment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-7-descriptive-analysis-unit-13">D.7 — Descriptive Analysis (Unit 13)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-7-1-generate-the-summary-not-the-interpretation">D.7.1 Generate the summary, not the interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-7-2-what-to-check-next">D.7.2 What to check next</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-7-3-challenge-your-own-conclusion">D.7.3 Challenge your own conclusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-7-4-explain-an-unfamiliar-measure">D.7.4 Explain an unfamiliar measure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-8-data-visualization-unit-14">D.8 — Data Visualization (Unit 14)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-8-1-chart-implementation">D.8.1 Chart implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-8-2-three-chart-types-three-trade-offs">D.8.2 Three chart types, three trade-offs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-8-3-object-to-your-own-chart">D.8.3 Object to your own chart</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-9-vibe-coding-tools-unit-15">D.9 — Vibe Coding Tools (Unit 15)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-9-1-the-group-benchmark-prompt">D.9.1 The group benchmark prompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-9-2-interrogate-generated-code-you-did-not-write">D.9.2 Interrogate generated code you did not write</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-9-3-licensing-posture-check">D.9.3 Licensing posture check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-10-responsible-ai-unit-16">D.10 — Responsible AI (Unit 16)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-10-1-leakage-audit">D.10.1 Leakage audit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-10-2-bias-mechanism-not-bias-vibes">D.10.2 Bias mechanism, not bias vibes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-10-3-fairness-criterion-trade-off">D.10.3 Fairness criterion trade-off</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-10-4-model-card-draft">D.10.4 Model card draft</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-11-universal-add-ons">D.11 — Universal Add-Ons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-12-the-verification-ladder">D.12 — The Verification Ladder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-13-your-own-entries">D.13 — Your Own Entries</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="appendix-d-the-course-prompt-library">
+<h1>Appendix D: The Course Prompt Library<a class="headerlink" href="#appendix-d-the-course-prompt-library" title="Link to this heading">#</a></h1>
+<p>Every prompt in this appendix sits in a copyable cell. Hover over it, click the copy button in the top-right corner, paste it into your AI tool, and replace only the text in <code class="docutils literal notranslate"><span class="pre">[angle</span> <span class="pre">brackets]</span></code> with your own material.</p>
+<p>These cells are prompts, not code — nothing here is meant to be run in Colab. The fenced formatting exists so you can copy a prompt in one click.</p>
+<p>Note that some square brackets are <strong>markers the assistant should produce</strong>, not blanks for you to fill: <code class="docutils literal notranslate"><span class="pre">[UNRESOLVED]</span></code>, <code class="docutils literal notranslate"><span class="pre">[INFERRED]</span></code>, <code class="docutils literal notranslate"><span class="pre">[UNCLEAR]</span></code>, <code class="docutils literal notranslate"><span class="pre">[NOT</span> <span class="pre">PROVIDED]</span></code>. Those stay exactly as written.</p>
+<p><strong>How to use this appendix.</strong> Each entry follows the six-component structure from Unit 7 — role, task, context, constraints, format, criteria — and ends with a <strong>VERIFY</strong> line stating how to check the output. A prompt without a verification step is half a tool. The verification lines are not optional politeness; they are the compensating control for the limitation established in Unit 5.</p>
+<p><strong>Building your own.</strong> HW7 asks you to produce five entries of your own in this format. This appendix is the model, not the finished product. By the end of the semester your library should contain prompts for the tasks <em>you</em> actually repeat, and the most valuable field in it will be the one recording what went wrong.</p>
+<hr class="docutils" />
+<section id="d-1-prompting-about-prompts-unit-7">
+<h2>D.1 — Prompting About Prompts (Unit 7)<a class="headerlink" href="#d-1-prompting-about-prompts-unit-7" title="Link to this heading">#</a></h2>
+<section id="d-1-1-improve-a-prompt-you-already-wrote">
+<h3>D.1.1 Improve a prompt you already wrote<a class="headerlink" href="#d-1-1-improve-a-prompt-you-already-wrote" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">am</span> <span class="n">going</span> <span class="n">to</span> <span class="n">give</span> <span class="n">you</span> <span class="n">a</span> <span class="n">prompt</span> <span class="n">I</span> <span class="n">wrote</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">output</span> <span class="n">it</span> <span class="n">produced</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">rewrite</span> <span class="n">the</span> <span class="n">prompt</span> <span class="n">yet</span><span class="o">.</span>
+
+<span class="n">First</span><span class="p">,</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">which</span> <span class="n">of</span> <span class="n">these</span> <span class="n">six</span> <span class="n">components</span> <span class="n">my</span> <span class="n">prompt</span> <span class="ow">is</span> <span class="n">missing</span> <span class="ow">or</span> <span class="n">leaves</span> <span class="n">ambiguous</span><span class="p">:</span> <span class="n">role</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">output</span> <span class="nb">format</span><span class="p">,</span> <span class="n">success</span> <span class="n">criteria</span><span class="o">.</span>
+
+<span class="n">Second</span><span class="p">,</span> <span class="k">for</span> <span class="n">each</span> <span class="n">missing</span> <span class="n">component</span><span class="p">,</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">what</span> <span class="n">question</span> <span class="n">you</span> <span class="n">had</span> <span class="n">to</span> <span class="n">guess</span> <span class="n">the</span> <span class="n">answer</span> <span class="n">to</span><span class="o">.</span>
+
+<span class="n">Only</span> <span class="n">after</span> <span class="n">that</span><span class="p">,</span> <span class="n">propose</span> <span class="n">one</span> <span class="n">revised</span> <span class="n">version</span><span class="o">.</span>
+
+<span class="n">MY</span> <span class="n">PROMPT</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span> <span class="n">YOUR</span> <span class="n">PROMPT</span><span class="p">]</span>
+
+<span class="n">THE</span> <span class="n">OUTPUT</span> <span class="n">I</span> <span class="n">GOT</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span> <span class="n">THE</span> <span class="n">OUTPUT</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Run the revised prompt yourself. If the output is better, you should be able to name which added component caused the improvement. If you cannot, you changed too many things at once.</p>
+</section>
+<section id="d-1-2-force-a-refusal-when-the-answer-is-not-available">
+<h3>D.1.2 Force a refusal when the answer is not available<a class="headerlink" href="#d-1-2-force-a-refusal-when-the-answer-is-not-available" title="Link to this heading">#</a></h3>
+<p>Append this to any prompt where a fabricated answer would cost you something:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>If the information needed to answer this is not present in the material I provided, respond with exactly: NOT IN PROVIDED MATERIAL — and then state what you would need. Do not answer from general knowledge. Do not infer. Do not fill gaps with what is typically true.
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Test it deliberately. Ask a question you know is not covered and confirm you get the refusal. An instruction you have never seen fire is an instruction you cannot rely on.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-2-workspaces-and-assistants-unit-8">
+<h2>D.2 — Workspaces and Assistants (Unit 8)<a class="headerlink" href="#d-2-workspaces-and-assistants-unit-8" title="Link to this heading">#</a></h2>
+<section id="d-2-1-complete-workspace-instructions">
+<h3>D.2.1 Complete workspace instructions<a class="headerlink" href="#d-2-1-complete-workspace-instructions" title="Link to this heading">#</a></h3>
+<p>Paste this into the custom-instructions field of a workspace and edit the guillemets.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PURPOSE</span>
+<span class="n">Support</span> <span class="n">my</span> <span class="n">work</span> <span class="n">on</span> <span class="p">[</span><span class="n">CAI</span> <span class="mi">4002</span><span class="p">,</span> <span class="n">an</span> <span class="n">introductory</span> <span class="n">AI</span> <span class="n">course</span> <span class="n">I</span> <span class="n">am</span> <span class="n">taking</span> <span class="k">as</span> <span class="n">a</span> <span class="n">Software</span> <span class="n">Engineering</span> <span class="n">major</span><span class="p">]</span><span class="o">.</span>
+
+<span class="n">CONTEXT</span>
+<span class="n">I</span> <span class="n">am</span> <span class="p">[</span><span class="n">a</span> <span class="n">junior</span> <span class="n">SE</span> <span class="n">major</span><span class="o">.</span> <span class="n">I</span> <span class="n">know</span> <span class="n">Python</span> <span class="ow">and</span> <span class="n">Java</span><span class="p">,</span> <span class="n">have</span> <span class="n">taken</span> <span class="n">data</span> <span class="n">structures</span><span class="p">,</span> <span class="ow">and</span> <span class="n">have</span> <span class="n">no</span> <span class="n">statistics</span> <span class="n">background</span> <span class="n">beyond</span> <span class="n">one</span> <span class="n">course</span><span class="p">]</span><span class="o">.</span> <span class="n">My</span> <span class="n">current</span> <span class="n">focus</span> <span class="ow">is</span> <span class="p">[</span><span class="n">my</span> <span class="n">capstone</span> <span class="n">project</span> <span class="n">on</span> <span class="n">TOPIC</span><span class="p">]</span><span class="o">.</span>
+
+<span class="n">CONVENTIONS</span>
+<span class="n">Code</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Python</span> <span class="mf">3.11</span><span class="p">,</span> <span class="n">standard</span> <span class="n">library</span> <span class="n">plus</span> <span class="n">pandas</span><span class="p">,</span> <span class="n">numpy</span><span class="p">,</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="p">,</span> <span class="n">matplotlib</span><span class="p">]</span><span class="o">.</span> <span class="n">No</span> <span class="n">frameworks</span> <span class="n">I</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span> <span class="n">Comments</span> <span class="n">only</span> <span class="n">where</span> <span class="n">the</span> <span class="n">logic</span> <span class="ow">is</span> <span class="n">non</span><span class="o">-</span><span class="n">obvious</span><span class="o">.</span>
+
+<span class="n">BEHAVIOR</span>
+<span class="n">Default</span> <span class="n">to</span> <span class="n">short</span> <span class="n">answers</span><span class="o">.</span> <span class="n">Expand</span> <span class="n">only</span> <span class="n">when</span> <span class="n">I</span> <span class="n">ask</span><span class="o">.</span> <span class="n">When</span> <span class="n">I</span> <span class="n">am</span> <span class="n">wrong</span> <span class="n">about</span> <span class="n">something</span><span class="p">,</span> <span class="n">say</span> <span class="n">so</span> <span class="n">directly</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">first</span> <span class="n">sentence</span> <span class="n">rather</span> <span class="n">than</span> <span class="n">building</span> <span class="n">up</span> <span class="n">to</span> <span class="n">it</span><span class="o">.</span> <span class="n">When</span> <span class="n">my</span> <span class="n">question</span> <span class="ow">is</span> <span class="n">ambiguous</span><span class="p">,</span> <span class="n">ask</span> <span class="n">one</span> <span class="n">clarifying</span> <span class="n">question</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">answering</span> <span class="n">three</span> <span class="n">possible</span> <span class="n">versions</span><span class="o">.</span>
+
+<span class="n">GROUNDING</span> <span class="n">RULES</span>
+<span class="n">Answer</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">attached</span> <span class="n">documents</span> <span class="n">whenever</span> <span class="n">they</span> <span class="n">cover</span> <span class="n">the</span> <span class="n">question</span><span class="o">.</span> <span class="n">When</span> <span class="n">you</span> <span class="n">use</span> <span class="n">them</span><span class="p">,</span> <span class="n">name</span> <span class="n">the</span> <span class="n">document</span> <span class="ow">and</span> <span class="n">section</span><span class="o">.</span> <span class="n">When</span> <span class="n">they</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">cover</span> <span class="n">it</span><span class="p">,</span> <span class="n">say</span> <span class="s2">"not in the attached materials"</span> <span class="n">before</span> <span class="n">answering</span> <span class="kn">from</span><span class="w"> </span><span class="nn">general</span> <span class="n">knowledge</span><span class="p">,</span> <span class="n">so</span> <span class="n">I</span> <span class="n">always</span> <span class="n">know</span> <span class="n">which</span> <span class="n">kind</span> <span class="n">of</span> <span class="n">answer</span> <span class="n">I</span> <span class="n">am</span> <span class="n">reading</span><span class="o">.</span> <span class="n">Never</span> <span class="n">blend</span> <span class="n">the</span> <span class="n">two</span> <span class="n">without</span> <span class="n">marking</span> <span class="n">the</span> <span class="n">boundary</span><span class="o">.</span>
+
+<span class="n">REFUSALS</span>
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">write</span> <span class="n">graded</span> <span class="n">work</span> <span class="k">for</span> <span class="n">me</span><span class="o">.</span> <span class="n">If</span> <span class="n">I</span> <span class="n">ask</span> <span class="n">you</span> <span class="n">to</span> <span class="n">produce</span> <span class="n">a</span> <span class="n">homework</span> <span class="n">answer</span><span class="p">,</span> <span class="n">an</span> <span class="n">essay</span><span class="p">,</span> <span class="ow">or</span> <span class="n">capstone</span> <span class="n">text</span> <span class="n">I</span> <span class="n">would</span> <span class="n">submit</span> <span class="k">as</span> <span class="n">my</span> <span class="n">own</span><span class="p">,</span> <span class="n">decline</span> <span class="ow">and</span> <span class="n">instead</span> <span class="n">ask</span> <span class="n">me</span> <span class="n">a</span> <span class="n">question</span> <span class="n">that</span> <span class="n">would</span> <span class="n">help</span> <span class="n">me</span> <span class="n">write</span> <span class="n">it</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">an</span> <span class="n">assignment</span> <span class="n">answer</span> <span class="n">even</span> <span class="k">if</span> <span class="n">I</span> <span class="n">claim</span> <span class="n">I</span> <span class="n">already</span> <span class="n">know</span> <span class="n">it</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Test all four question types from the Unit 8 activity — covered, adjacent-but-uncovered, cross-document synthesis, and policy-violating. Note which block you had to revise.</p>
+</section>
+<section id="d-2-2-interrogate-your-own-document-base">
+<h3>D.2.2 Interrogate your own document base<a class="headerlink" href="#d-2-2-interrogate-your-own-document-base" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Answer only from the attached documents.
+
+QUESTION: [your question]
+
+Format your answer as:
+1. ANSWER — two sentences maximum.
+2. SOURCE — the document name and the section or page.
+3. CONFIDENCE — one of: STATED (the documents say this directly) / INFERRED (I combined two passages) / NOT COVERED.
+
+If CONFIDENCE is INFERRED, quote the two passages you combined.
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Open the cited section. Every INFERRED answer needs the inference checked by you, not by the assistant.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-3-careers-unit-9">
+<h2>D.3 — Careers (Unit 9)<a class="headerlink" href="#d-3-careers-unit-9" title="Link to this heading">#</a></h2>
+<section id="d-3-1-gap-analysis-against-a-real-posting">
+<h3>D.3.1 Gap analysis against a real posting<a class="headerlink" href="#d-3-1-gap-analysis-against-a-real-posting" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">a</span> <span class="n">hiring</span> <span class="n">manager</span> <span class="n">screening</span> <span class="n">applicants</span> <span class="k">for</span> <span class="n">the</span> <span class="n">role</span> <span class="n">below</span><span class="o">.</span> <span class="n">You</span> <span class="n">have</span> <span class="n">ninety</span> <span class="n">seconds</span> <span class="n">per</span> <span class="n">CV</span><span class="o">.</span>
+
+<span class="n">Below</span> <span class="n">the</span> <span class="n">posting</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">current</span> <span class="n">CV</span><span class="o">.</span> <span class="n">Identify</span> <span class="n">the</span> <span class="n">three</span> <span class="n">requirements</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">posting</span> <span class="n">that</span> <span class="n">my</span> <span class="n">CV</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">currently</span> <span class="n">evidence</span><span class="o">.</span> <span class="n">For</span> <span class="n">each</span> <span class="n">one</span><span class="p">,</span> <span class="n">state</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="n">what</span> <span class="n">specific</span> <span class="n">evidence</span> <span class="n">would</span> <span class="n">satisfy</span> <span class="n">it</span><span class="p">,</span> <span class="ow">and</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="n">whether</span> <span class="n">that</span> <span class="n">evidence</span> <span class="ow">is</span> <span class="n">something</span> <span class="n">I</span> <span class="n">could</span> <span class="n">plausibly</span> <span class="n">build</span> <span class="ow">in</span> <span class="n">one</span> <span class="n">semester</span> <span class="ow">or</span> <span class="n">would</span> <span class="n">take</span> <span class="n">longer</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">rewrite</span> <span class="n">my</span> <span class="n">CV</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">write</span> <span class="n">bullet</span> <span class="n">points</span> <span class="k">for</span> <span class="n">me</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">soften</span> <span class="n">your</span> <span class="n">assessment</span><span class="o">.</span>
+
+<span class="n">POSTING</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span> <span class="n">THE</span> <span class="n">FULL</span> <span class="n">POSTING</span> <span class="n">TEXT</span><span class="p">]</span>
+
+<span class="n">MY</span> <span class="n">CV</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span> <span class="n">YOUR</span> <span class="n">CV</span> <span class="n">TEXT</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Nothing to verify against a source here — but note that under the course AI policy this use must be disclosed on HW9, and every bullet you subsequently write must be one you can expand into two minutes of specific detail under questioning.</p>
+</section>
+<section id="d-3-2-interview-question-generation">
+<h3>D.3.2 Interview question generation<a class="headerlink" href="#d-3-2-interview-question-generation" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Generate the eight interview questions most likely to be asked for the role below, ordered from most to least likely.
+
+For each question, state in one line what the interviewer is actually testing — not what the question literally asks.
+
+Do not provide answers.
+
+POSTING:
+[PASTE THE POSTING]
+
+MY BACKGROUND:
+[two sentences on your experience]
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Answer the three hardest aloud, to a person, before you believe you can answer them.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-4-documents-and-texts-unit-10">
+<h2>D.4 — Documents and Texts (Unit 10)<a class="headerlink" href="#d-4-documents-and-texts-unit-10" title="Link to this heading">#</a></h2>
+<section id="d-4-1-design-document">
+<h3>D.4.1 Design document<a class="headerlink" href="#d-4-1-design-document" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">a</span> <span class="n">senior</span> <span class="n">engineer</span> <span class="n">turning</span> <span class="n">rough</span> <span class="n">notes</span> <span class="n">into</span> <span class="n">a</span> <span class="n">design</span> <span class="n">document</span> <span class="k">for</span> <span class="n">team</span> <span class="n">review</span><span class="o">.</span>
+
+<span class="n">Below</span> <span class="n">are</span> <span class="n">my</span> <span class="n">notes</span><span class="o">.</span> <span class="n">Convert</span> <span class="n">them</span> <span class="n">into</span> <span class="n">a</span> <span class="n">design</span> <span class="n">document</span><span class="o">.</span>
+
+<span class="n">Rules</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">invent</span> <span class="n">requirements</span><span class="p">,</span> <span class="n">constraints</span><span class="p">,</span> <span class="ow">or</span> <span class="n">options</span> <span class="n">I</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">state</span><span class="o">.</span> <span class="n">Wherever</span> <span class="n">my</span> <span class="n">notes</span> <span class="n">are</span> <span class="n">vague</span><span class="p">,</span> <span class="n">incomplete</span><span class="p">,</span> <span class="ow">or</span> <span class="n">contradictory</span><span class="p">,</span> <span class="n">insert</span> <span class="p">[</span><span class="n">UNRESOLVED</span><span class="p">:</span> <span class="n">what</span> <span class="ow">is</span> <span class="n">missing</span><span class="p">]</span> <span class="n">rather</span> <span class="n">than</span> <span class="n">filling</span> <span class="n">the</span> <span class="n">gap</span><span class="o">.</span> <span class="n">I</span> <span class="n">would</span> <span class="n">rather</span> <span class="n">have</span> <span class="n">a</span> <span class="n">document</span> <span class="k">with</span> <span class="n">eight</span> <span class="n">unresolved</span> <span class="n">markers</span> <span class="n">than</span> <span class="n">a</span> <span class="n">smooth</span> <span class="n">document</span> <span class="n">that</span> <span class="n">hides</span> <span class="n">where</span> <span class="n">my</span> <span class="n">thinking</span> <span class="n">stopped</span><span class="o">.</span>
+
+<span class="n">Format</span><span class="p">:</span> <span class="n">Problem</span> <span class="o">|</span> <span class="n">Constraints</span> <span class="o">|</span> <span class="n">Options</span> <span class="n">considered</span> <span class="o">|</span> <span class="n">Recommendation</span> <span class="o">|</span> <span class="n">Risks</span> <span class="o">|</span> <span class="n">Open</span> <span class="n">questions</span><span class="o">.</span>
+
+<span class="n">Criteria</span><span class="p">:</span> <span class="n">A</span> <span class="n">reviewer</span> <span class="n">should</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">disagree</span> <span class="k">with</span> <span class="n">the</span> <span class="n">recommendation</span> <span class="n">on</span> <span class="n">specific</span> <span class="n">technical</span> <span class="n">grounds</span><span class="o">.</span> <span class="n">If</span> <span class="n">my</span> <span class="n">notes</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">contain</span> <span class="n">enough</span> <span class="n">to</span> <span class="n">support</span> <span class="n">a</span> <span class="n">recommendation</span><span class="p">,</span> <span class="n">say</span> <span class="n">so</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">producing</span> <span class="n">one</span><span class="o">.</span>
+
+<span class="n">MY</span> <span class="n">NOTES</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span> <span class="n">YOUR</span> <span class="n">NOTES</span><span class="p">,</span> <span class="n">HOWEVER</span> <span class="n">ROUGH</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Count the <code class="docutils literal notranslate"><span class="pre">[UNRESOLVED]</span></code> markers. If there are none, the model smoothed over your gaps — ask it again, more forcefully. Resolve each one yourself before circulating.</p>
+</section>
+<section id="d-4-2-pull-request-description">
+<h3>D.4.2 Pull request description<a class="headerlink" href="#d-4-2-pull-request-description" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You are writing a PR description for a reviewer with no context on this change.
+
+Below is a summary of the diff. Write the description.
+
+Rules: Describe only what the diff shows. Do not claim the change is tested, benchmarked, or backwards-compatible unless I stated it. Do not describe the change as "simple," "minor," or "straightforward" — the reviewer decides that.
+
+Format:
+What changed — two or three sentences.
+Why — the problem this solves.
+How to review — where to look first, and what to check.
+Not covered — what this PR deliberately does not do.
+
+Criteria: A reviewer should know within fifteen seconds where to start reading.
+
+DIFF SUMMARY:
+[PASTE FILES CHANGED AND A DESCRIPTION OF EACH CHANGE]
+
+CONTEXT I HAVE THAT THE DIFF DOES NOT SHOW:
+[the issue number, the prior discussion, the constraint you were working under]
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Read the “Not covered” section against your own knowledge of the change. This is the section the model is most likely to leave thin, and it is the one that prevents a reviewer’s wasted hour.</p>
+</section>
+<section id="d-4-3-blameless-incident-post-mortem">
+<h3>D.4.3 Blameless incident post-mortem<a class="headerlink" href="#d-4-3-blameless-incident-post-mortem" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You are structuring a blameless post-mortem from a raw incident timeline.
+
+Rules, and these are strict:
+- Name no individual. Refer to roles.
+- Include only causes that the timeline actually supports. If you can see a likely cause that the timeline does not establish, put it under "Hypotheses requiring investigation" — never under contributing factors.
+- Distinguish *what happened* from *why it was possible*.
+- Propose no action items I did not list. If you think one is missing, say so at the end under "Action items you may be missing" rather than adding it to the list.
+
+Format: Impact | Timeline | Contributing factors | Hypotheses requiring investigation | What went well | Action items | Action items you may be missing.
+
+Criteria: Every contributing factor must point at a system or a process, not a person or a decision someone made under pressure.
+
+RAW TIMELINE:
+[PASTE YOUR SLACK LOG, TICKET HISTORY, OR NOTES]
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> For each contributing factor, find the line in the raw timeline that establishes it. Any factor you cannot trace to a line is a fabrication, and a fabricated cause in a post-mortem sends remediation in the wrong direction.</p>
+</section>
+<section id="d-4-4-technical-documentation">
+<h3>D.4.4 Technical documentation<a class="headerlink" href="#d-4-4-technical-documentation" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You are documenting a module for an engineer who knows the language but has never seen this codebase.
+
+Rules: Document only behavior visible in the code below. Where you infer intent from a name rather than from logic, mark it [INFERRED]. Where the code's behavior on an edge case is genuinely unclear from reading it, mark it [UNCLEAR] rather than guessing.
+
+Format: Purpose | Parameters | Returns | Raises | Example call | Caveats.
+
+Criteria: Name every assumption the code makes about its inputs — encoding, ordering, nullability, size, type. These are what break for the next person.
+
+CODE:
+[PASTE THE FUNCTION OR MODULE]
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Check each <code class="docutils literal notranslate"><span class="pre">[INFERRED]</span></code> against the actual logic. Run the example call.</p>
+</section>
+<section id="d-4-5-targeted-extraction-from-a-long-document">
+<h3>D.4.5 Targeted extraction from a long document<a class="headerlink" href="#d-4-5-targeted-extraction-from-a-long-document" title="Link to this heading">#</a></h3>
+<p>Use this instead of asking for a summary.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Answer only from the document below.
+
+Extract every statement in this document about [your topic — e.g. authentication requirements]. For each one, give the section number or heading it appears under, and a one-line paraphrase.
+
+If a requirement appears in more than one place and the statements differ, flag the discrepancy explicitly.
+
+If the document says nothing about this topic, respond only: NOT ADDRESSED.
+
+Do not summarize the document. Do not add context from general knowledge about [topic].
+
+DOCUMENT:
+[PASTE OR ATTACH]
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Open two of the cited sections at random. A summary you have not verified is not something to forward with your name on it.</p>
+</section>
+<section id="d-4-6-difficult-email">
+<h3>D.4.6 Difficult email<a class="headerlink" href="#d-4-6-difficult-email" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">helping</span> <span class="n">me</span> <span class="n">write</span> <span class="n">a</span> <span class="n">professional</span> <span class="n">email</span><span class="o">.</span> <span class="n">Below</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">situation</span><span class="o">.</span>
+
+<span class="n">Rules</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">apologize</span> <span class="k">for</span> <span class="n">anything</span> <span class="n">that</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">my</span> <span class="n">fault</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">overstate</span> <span class="n">certainty</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">use</span> <span class="s2">"I just wanted to,"</span> <span class="s2">"circling back,"</span> <span class="ow">or</span> <span class="s2">"per my last email."</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">invent</span> <span class="n">an</span> <span class="n">excuse</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">reason</span> <span class="n">I</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">give</span> <span class="n">you</span><span class="o">.</span>
+
+<span class="n">Format</span><span class="p">:</span> <span class="n">Subject</span> <span class="n">line</span><span class="p">,</span> <span class="n">then</span> <span class="n">under</span> <span class="mi">150</span> <span class="n">words</span> <span class="n">of</span> <span class="n">body</span><span class="o">.</span>
+
+<span class="n">Criteria</span><span class="p">:</span> <span class="n">The</span> <span class="n">recipient</span> <span class="n">should</span> <span class="n">finish</span> <span class="n">reading</span> <span class="n">knowing</span> <span class="n">exactly</span> <span class="n">what</span> <span class="n">I</span> <span class="n">am</span> <span class="n">asking</span> <span class="n">them</span> <span class="n">to</span> <span class="n">do</span> <span class="ow">and</span> <span class="n">by</span> <span class="n">when</span><span class="o">.</span>
+
+<span class="n">SITUATION</span><span class="p">:</span> <span class="p">[</span><span class="n">what</span> <span class="n">has</span> <span class="n">happened</span><span class="p">]</span>
+<span class="n">RELATIONSHIP</span><span class="p">:</span> <span class="p">[</span><span class="n">who</span> <span class="n">they</span> <span class="n">are</span> <span class="n">to</span> <span class="n">you</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">history</span><span class="p">]</span>
+<span class="n">WHAT</span> <span class="n">I</span> <span class="n">WANT</span> <span class="n">TO</span> <span class="n">HAPPEN</span><span class="p">:</span> <span class="p">[</span><span class="n">the</span> <span class="n">outcome</span><span class="p">,</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">words</span><span class="p">]</span>
+<span class="n">WHAT</span> <span class="n">I</span> <span class="n">DO</span> <span class="n">NOT</span> <span class="n">WANT</span><span class="p">:</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">I</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">want</span> <span class="n">to</span> <span class="n">escalate</span> <span class="n">to</span> <span class="n">their</span> <span class="n">manager</span> <span class="n">yet</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Read it as the recipient. If you would feel managed rather than addressed, the register is wrong.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-5-presentations-unit-11">
+<h2>D.5 — Presentations (Unit 11)<a class="headerlink" href="#d-5-presentations-unit-11" title="Link to this heading">#</a></h2>
+<section id="d-5-1-outline-to-slide-plan">
+<h3>D.5.1 Outline to slide plan<a class="headerlink" href="#d-5-1-outline-to-slide-plan" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Below</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">slide</span> <span class="n">plan</span><span class="o">.</span> <span class="n">Each</span> <span class="n">entry</span> <span class="n">has</span> <span class="n">a</span> <span class="n">headline</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">complete</span><span class="o">-</span><span class="n">sentence</span> <span class="n">claim</span><span class="p">,</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">description</span> <span class="n">of</span> <span class="n">the</span> <span class="n">evidence</span> <span class="n">that</span> <span class="n">belongs</span> <span class="n">on</span> <span class="n">that</span> <span class="n">slide</span><span class="o">.</span>
+
+<span class="n">Build</span> <span class="n">these</span> <span class="n">slides</span><span class="o">.</span>
+
+<span class="n">Rules</span><span class="p">,</span> <span class="ow">and</span> <span class="n">these</span> <span class="n">matter</span> <span class="n">more</span> <span class="n">than</span> <span class="n">the</span> <span class="n">design</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">change</span> <span class="n">my</span> <span class="n">headlines</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">shorten</span> <span class="n">them</span> <span class="n">into</span> <span class="n">topic</span> <span class="n">phrases</span><span class="o">.</span> <span class="s2">"Accuracy hides the error that matters"</span> <span class="n">must</span> <span class="ow">not</span> <span class="n">become</span> <span class="s2">"Model Evaluation."</span>
+<span class="o">-</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">add</span> <span class="n">slides</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">add</span> <span class="n">content</span> <span class="n">to</span> <span class="n">fill</span> <span class="n">empty</span> <span class="n">space</span><span class="o">.</span> <span class="n">A</span> <span class="n">sparse</span> <span class="n">slide</span> <span class="ow">is</span> <span class="n">finished</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">add</span> <span class="nb">any</span> <span class="n">number</span><span class="p">,</span> <span class="n">statistic</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="ow">or</span> <span class="n">citation</span> <span class="n">that</span> <span class="ow">is</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">my</span> <span class="n">plan</span><span class="o">.</span>
+
+<span class="n">SLIDE</span> <span class="n">PLAN</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span> <span class="n">THE</span> <span class="n">OUTPUT</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">UNIT</span> <span class="mi">11</span> <span class="n">HANDS</span><span class="o">-</span><span class="n">ON</span> <span class="n">CELL</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Read only your headlines, in order, ignoring everything else. If they still form an argument, the deck works. Then check every number on every slide against your plan — anything new is fabricated.</p>
+</section>
+<section id="d-5-2-adversarial-rehearsal">
+<h3>D.5.2 Adversarial rehearsal<a class="headerlink" href="#d-5-2-adversarial-rehearsal" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">a</span> <span class="n">skeptical</span> <span class="n">engineering</span> <span class="n">professor</span> <span class="n">attending</span> <span class="n">an</span> <span class="mi">11</span><span class="o">-</span><span class="n">minute</span> <span class="n">presentation</span><span class="o">.</span> <span class="n">You</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">hostile</span><span class="p">,</span> <span class="n">but</span> <span class="n">you</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">accept</span> <span class="n">a</span> <span class="n">claim</span> <span class="n">that</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">supported</span><span class="o">.</span>
+
+<span class="n">Below</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">slide</span> <span class="n">plan</span><span class="o">.</span> <span class="n">Generate</span> <span class="n">the</span> <span class="n">eight</span> <span class="n">hardest</span> <span class="n">questions</span> <span class="n">you</span> <span class="n">would</span> <span class="n">ask</span><span class="p">,</span> <span class="n">ordered</span> <span class="n">by</span> <span class="n">how</span> <span class="n">much</span> <span class="n">damage</span> <span class="n">each</span> <span class="n">would</span> <span class="n">do</span> <span class="n">to</span> <span class="n">my</span> <span class="n">argument</span> <span class="k">if</span> <span class="n">I</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">answer</span> <span class="n">it</span><span class="o">.</span>
+
+<span class="n">For</span> <span class="n">each</span> <span class="n">question</span><span class="p">,</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">one</span> <span class="n">line</span> <span class="n">what</span> <span class="n">a</span> <span class="n">weak</span> <span class="n">answer</span> <span class="n">would</span> <span class="n">sound</span> <span class="n">like</span><span class="p">,</span> <span class="n">so</span> <span class="n">I</span> <span class="n">can</span> <span class="n">recognize</span> <span class="n">myself</span> <span class="n">giving</span> <span class="n">one</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">answer</span> <span class="n">the</span> <span class="n">questions</span><span class="o">.</span>
+
+<span class="n">SLIDE</span> <span class="n">PLAN</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Find your answers in your own material, not from the assistant. A memorized answer collapses on the first follow-up, and the Q&amp;A is live.</p>
+</section>
+<section id="d-5-3-translate-depth-for-a-non-technical-audience">
+<h3>D.5.3 Translate depth for a non-technical audience<a class="headerlink" href="#d-5-3-translate-depth-for-a-non-technical-audience" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Rewrite</span> <span class="n">the</span> <span class="n">explanation</span> <span class="n">below</span> <span class="k">for</span> <span class="p">[</span><span class="n">hospital</span> <span class="n">administrators</span> <span class="k">with</span> <span class="n">no</span> <span class="n">technical</span> <span class="n">background</span><span class="p">]</span><span class="o">.</span>
+
+<span class="n">Rules</span><span class="p">:</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">simplify</span> <span class="n">by</span> <span class="n">removing</span> <span class="n">the</span> <span class="n">caveat</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="n">original</span> <span class="n">says</span> <span class="n">the</span> <span class="n">model</span> <span class="ow">is</span> <span class="mi">78</span><span class="o">%</span> <span class="n">accurate</span> <span class="k">with</span> <span class="n">a</span> <span class="n">known</span> <span class="n">gap</span> <span class="ow">in</span> <span class="n">subgroup</span> <span class="n">evaluation</span><span class="p">,</span> <span class="n">the</span> <span class="n">rewrite</span> <span class="n">must</span> <span class="n">still</span> <span class="n">convey</span> <span class="n">that</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">known</span> <span class="n">gap</span><span class="o">.</span> <span class="n">Losing</span> <span class="n">precision</span> <span class="n">about</span> <span class="n">capability</span> <span class="ow">is</span> <span class="n">acceptable</span><span class="p">;</span> <span class="n">losing</span> <span class="n">the</span> <span class="n">limitation</span> <span class="ow">is</span> <span class="ow">not</span><span class="o">.</span>
+
+<span class="n">Use</span> <span class="n">no</span> <span class="n">analogy</span> <span class="n">that</span> <span class="n">would</span> <span class="n">mislead</span> <span class="k">if</span> <span class="n">pushed</span> <span class="n">one</span> <span class="n">step</span> <span class="n">further</span><span class="o">.</span>
+
+<span class="n">Length</span><span class="p">:</span> <span class="n">under</span> <span class="mi">120</span> <span class="n">words</span><span class="o">.</span>
+
+<span class="n">ORIGINAL</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span> <span class="n">YOUR</span> <span class="n">TECHNICAL</span> <span class="n">EXPLANATION</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Give it to someone in the target audience and ask them what the system cannot do. If they cannot tell you, the caveat did not survive.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-6-spreadsheets-unit-12">
+<h2>D.6 — Spreadsheets (Unit 12)<a class="headerlink" href="#d-6-spreadsheets-unit-12" title="Link to this heading">#</a></h2>
+<p>Every prompt in this section is written to produce <strong>Mode 1</strong> output — a formula or code you can inspect and re-run — never a stated number. This is the central discipline of Unit 12.</p>
+<section id="d-6-1-formula-generation">
+<h3>D.6.1 Formula generation<a class="headerlink" href="#d-6-1-formula-generation" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Write a [Google Sheets / Excel] formula for the following.
+
+My data: columns [A = ticket id, B = status, C = closed date, D = minutes to resolve], rows 2 through [847].
+
+What I want: [the median resolution time for tickets whose status is "closed" and whose closed date is on or after 1 September 2026].
+
+Rules: Return the formula and a one-line explanation of what each argument does. Do not tell me the answer — I will run it. If the calculation requires an assumption about my data that I have not stated (blank cells, text in a numeric column, date formats), state the assumption instead of picking one silently.
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Run it on a subset of ten rows where you can check the answer by hand.</p>
+</section>
+<section id="d-6-2-ask-for-the-computation-behind-a-number">
+<h3>D.6.2 Ask for the computation behind a number<a class="headerlink" href="#d-6-2-ask-for-the-computation-behind-a-number" title="Link to this heading">#</a></h3>
+<p>Use this the moment any tool gives you a figure.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You told me [the average resolution time is 4.2 days].
+
+Give me the exact formula or code that produces that number from my data, written so I can run it myself. Then tell me: how many rows did your calculation include, and were any excluded for any reason?
+
+If you did not compute this figure from the data I provided, say so directly.
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Run the returned code. If the result differs from the stated number, you have just caught a fabrication — and per HW10, that is the instance you should submit.</p>
+</section>
+<section id="d-6-3-cleaning-script-with-a-failure-report">
+<h3>D.6.3 Cleaning script with a failure report<a class="headerlink" href="#d-6-3-cleaning-script-with-a-failure-report" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Write pandas code to clean the dataframe described below.
+
+Rules: after every transformation, count and print how many values failed to parse or fell outside the expected set. I need to see what your code silently dropped — a date that will not parse, a category not in my mapping, a numeric field that was text.
+
+Do not fill missing values with a default unless I asked. Do not drop rows.
+
+Return only code.
+
+COLUMNS AND PROBLEMS:
+[e.g. "opened" mixes ISO, US, and written date formats; "severity" has High/high/HIGH/Sev-1; "minutes" has bare integers, "1h20m", and "2 hours"]
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Read the failure counts before you read the cleaned data. Cleaning code fails silently, and an analysis over a quietly reduced dataset is an analysis of a different population.</p>
+</section>
+<section id="d-6-4-refuse-an-unsupported-judgment">
+<h3>D.6.4 Refuse an unsupported judgment<a class="headerlink" href="#d-6-4-refuse-an-unsupported-judgment" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Below</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">table</span> <span class="n">of</span> <span class="p">[</span><span class="n">five</span> <span class="n">engineers</span> <span class="n">across</span> <span class="n">twelve</span> <span class="n">sprints</span><span class="p">,</span> <span class="k">with</span> <span class="n">story</span> <span class="n">points</span> <span class="n">committed</span> <span class="ow">and</span> <span class="n">completed</span><span class="p">]</span><span class="o">.</span>
+
+<span class="n">Before</span> <span class="n">answering</span> <span class="nb">any</span> <span class="n">question</span> <span class="n">about</span> <span class="n">it</span><span class="p">,</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">what</span> <span class="n">conclusions</span> <span class="n">this</span> <span class="n">data</span> <span class="n">cannot</span> <span class="n">support</span> <span class="ow">and</span> <span class="n">why</span><span class="o">.</span> <span class="n">Consider</span><span class="p">:</span> <span class="n">what</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">recorded</span><span class="p">,</span> <span class="n">what</span> <span class="n">would</span> <span class="n">confound</span> <span class="n">a</span> <span class="n">comparison</span><span class="p">,</span> <span class="ow">and</span> <span class="n">what</span> <span class="n">sample</span> <span class="n">size</span> <span class="n">would</span> <span class="n">be</span> <span class="n">needed</span><span class="o">.</span>
+
+<span class="n">Only</span> <span class="n">after</span> <span class="n">that</span><span class="p">,</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">what</span> <span class="n">it</span> <span class="n">can</span> <span class="n">support</span><span class="o">.</span>
+
+<span class="n">DATA</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> If it names an underperforming individual, it has produced a judgment about a person from insufficient evidence. That is the failure to report.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-7-descriptive-analysis-unit-13">
+<h2>D.7 — Descriptive Analysis (Unit 13)<a class="headerlink" href="#d-7-descriptive-analysis-unit-13" title="Link to this heading">#</a></h2>
+<section id="d-7-1-generate-the-summary-not-the-interpretation">
+<h3>D.7.1 Generate the summary, not the interpretation<a class="headerlink" href="#d-7-1-generate-the-summary-not-the-interpretation" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Below</span> <span class="n">are</span> <span class="n">the</span> <span class="n">column</span> <span class="n">names</span> <span class="ow">and</span> <span class="n">dtypes</span> <span class="n">of</span> <span class="n">a</span> <span class="n">dataset</span> <span class="n">about</span> <span class="p">[</span><span class="n">domain</span><span class="p">]</span><span class="o">.</span>
+
+<span class="n">Write</span> <span class="n">pandas</span> <span class="n">code</span> <span class="n">that</span> <span class="n">produces</span><span class="p">:</span> <span class="n">shape</span><span class="p">,</span> <span class="n">missing</span><span class="o">-</span><span class="n">value</span> <span class="n">counts</span> <span class="n">per</span> <span class="n">column</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">median</span><span class="p">,</span> <span class="n">standard</span> <span class="n">deviation</span><span class="p">,</span> <span class="n">IQR</span><span class="p">,</span> <span class="n">skewness</span><span class="p">,</span> <span class="n">kurtosis</span><span class="p">,</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">correlation</span> <span class="n">matrix</span> <span class="n">using</span> <span class="n">both</span> <span class="n">Pearson</span> <span class="ow">and</span> <span class="n">Spearman</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">interpret</span> <span class="n">the</span> <span class="n">results</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">what</span> <span class="n">you</span> <span class="n">expect</span> <span class="n">the</span> <span class="n">relationships</span> <span class="n">to</span> <span class="n">be</span><span class="o">.</span> <span class="n">Return</span> <span class="n">only</span> <span class="n">code</span><span class="o">.</span>
+
+<span class="n">COLUMNS</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span> <span class="n">DF</span><span class="o">.</span><span class="n">DTYPES</span> <span class="n">OUTPUT</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Run it. Every number in your report should come from this cell, not from prose an assistant wrote about your data.</p>
+</section>
+<section id="d-7-2-what-to-check-next">
+<h3>D.7.2 What to check next<a class="headerlink" href="#d-7-2-what-to-check-next" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Below</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">descriptive</span> <span class="n">output</span> <span class="kn">from</span><span class="w"> </span><span class="nn">my</span> <span class="n">dataset</span><span class="o">.</span>
+
+<span class="n">List</span> <span class="n">the</span> <span class="n">five</span> <span class="n">most</span> <span class="n">important</span> <span class="n">things</span> <span class="n">I</span> <span class="n">should</span> <span class="n">check</span> <span class="n">before</span> <span class="n">modeling</span><span class="p">,</span> <span class="n">ordered</span> <span class="n">by</span> <span class="n">how</span> <span class="n">much</span> <span class="n">damage</span> <span class="n">each</span> <span class="n">would</span> <span class="n">do</span> <span class="k">if</span> <span class="n">I</span> <span class="n">missed</span> <span class="n">it</span><span class="o">.</span> <span class="n">For</span> <span class="n">each</span><span class="p">:</span> <span class="n">what</span> <span class="n">to</span> <span class="n">check</span><span class="p">,</span> <span class="n">what</span> <span class="n">problem</span> <span class="n">it</span> <span class="n">would</span> <span class="n">reveal</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">code</span> <span class="n">to</span> <span class="n">check</span> <span class="n">it</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">what</span> <span class="n">the</span> <span class="n">data</span> <span class="n">means</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">propose</span> <span class="n">a</span> <span class="n">model</span><span class="o">.</span>
+
+<span class="n">OUTPUT</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span> <span class="n">YOUR</span> <span class="n">SUMMARY</span> <span class="n">TABLES</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Run each suggested check. A suggestion you did not act on is not a check.</p>
+</section>
+<section id="d-7-3-challenge-your-own-conclusion">
+<h3>D.7.3 Challenge your own conclusion<a class="headerlink" href="#d-7-3-challenge-your-own-conclusion" title="Link to this heading">#</a></h3>
+<p>The highest-value prompt in Part V.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">have</span> <span class="n">concluded</span> <span class="p">[</span><span class="n">your</span> <span class="n">claim</span><span class="p">]</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">analysis</span> <span class="n">below</span><span class="o">.</span>
+
+<span class="n">Give</span> <span class="n">me</span> <span class="n">the</span> <span class="n">three</span> <span class="n">strongest</span> <span class="n">reasons</span> <span class="n">that</span> <span class="n">conclusion</span> <span class="n">could</span> <span class="n">be</span> <span class="n">wrong</span><span class="o">.</span> <span class="n">Consider</span> <span class="n">at</span> <span class="n">minimum</span><span class="p">:</span> <span class="n">confounding</span> <span class="n">variables</span> <span class="n">that</span> <span class="n">would</span> <span class="n">produce</span> <span class="n">this</span> <span class="n">pattern</span> <span class="n">without</span> <span class="n">the</span> <span class="n">causal</span> <span class="n">relationship</span> <span class="n">I</span> <span class="n">am</span> <span class="n">assuming</span><span class="p">;</span> <span class="n">selection</span> <span class="n">effects</span> <span class="ow">in</span> <span class="n">how</span> <span class="n">these</span> <span class="n">rows</span> <span class="n">came</span> <span class="n">to</span> <span class="n">exist</span><span class="p">;</span> <span class="ow">and</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">effect</span> <span class="n">size</span> <span class="ow">is</span> <span class="n">larger</span> <span class="n">than</span> <span class="n">the</span> <span class="n">noise</span><span class="o">.</span>
+
+<span class="n">For</span> <span class="n">each</span> <span class="n">objection</span><span class="p">,</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">what</span> <span class="n">additional</span> <span class="n">data</span> <span class="ow">or</span> <span class="n">check</span> <span class="n">would</span> <span class="n">settle</span> <span class="n">it</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">reassure</span> <span class="n">me</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">agree</span> <span class="k">with</span> <span class="n">my</span> <span class="n">conclusion</span><span class="o">.</span>
+
+<span class="n">ANALYSIS</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span> <span class="n">OUTPUT</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> This is the prompt whose output you should least want to be right. Take the strongest objection and check it.</p>
+</section>
+<section id="d-7-4-explain-an-unfamiliar-measure">
+<h3>D.7.4 Explain an unfamiliar measure<a class="headerlink" href="#d-7-4-explain-an-unfamiliar-measure" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Explain</span> <span class="p">[</span><span class="n">kurtosis</span><span class="p">]</span> <span class="n">to</span> <span class="n">someone</span> <span class="n">who</span> <span class="n">understands</span> <span class="n">mean</span> <span class="ow">and</span> <span class="n">standard</span> <span class="n">deviation</span> <span class="n">but</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">studied</span> <span class="n">statistics</span> <span class="n">formally</span><span class="o">.</span>
+
+<span class="n">Include</span><span class="p">:</span> <span class="n">what</span> <span class="n">it</span> <span class="n">measures</span> <span class="ow">in</span> <span class="n">one</span> <span class="n">sentence</span><span class="p">,</span> <span class="n">what</span> <span class="n">a</span> <span class="n">high</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">low</span> <span class="n">value</span> <span class="n">look</span> <span class="n">like</span> <span class="k">as</span> <span class="n">a</span> <span class="n">distribution</span> <span class="n">shape</span><span class="p">,</span> <span class="ow">and</span> <span class="n">one</span> <span class="n">concrete</span> <span class="n">case</span> <span class="n">where</span> <span class="n">ignoring</span> <span class="n">it</span> <span class="n">would</span> <span class="k">break</span> <span class="n">a</span> <span class="n">model</span><span class="o">.</span> <span class="n">Use</span> <span class="n">no</span> <span class="n">formula</span><span class="o">.</span>
+
+<span class="n">Under</span> <span class="mi">200</span> <span class="n">words</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Cross-check the concrete case against a textbook. Statistical explanations are exactly where a plausible-but-wrong intuition is hardest to detect.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-8-data-visualization-unit-14">
+<h2>D.8 — Data Visualization (Unit 14)<a class="headerlink" href="#d-8-data-visualization-unit-14" title="Link to this heading">#</a></h2>
+<section id="d-8-1-chart-implementation">
+<h3>D.8.1 Chart implementation<a class="headerlink" href="#d-8-1-chart-implementation" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Write matplotlib code for the following.
+
+Question the chart must answer: [do resolution times differ across severity levels?]
+Data: &lt;~800 rows; "severity" is one of four ordered categories; "minutes" is heavily right-skewed with outliers I want visible, not clipped&gt;.
+
+Rules: label both axes with units. Do not truncate the y-axis. Do not add a title that merely restates the axis labels. Return only code.
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Plot it, then check that the visual magnitude of any difference matches its statistical size.</p>
+</section>
+<section id="d-8-2-three-chart-types-three-trade-offs">
+<h3>D.8.2 Three chart types, three trade-offs<a class="headerlink" href="#d-8-2-three-chart-types-three-trade-offs" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">want</span> <span class="n">to</span> <span class="n">answer</span> <span class="p">[</span><span class="n">your</span> <span class="n">question</span><span class="p">]</span> <span class="kn">from</span><span class="w"> </span><span class="nn">data</span> <span class="k">with</span> <span class="n">columns</span> <span class="p">[</span><span class="nb">list</span> <span class="n">them</span><span class="p">]</span><span class="o">.</span>
+
+<span class="n">Suggest</span> <span class="n">three</span> <span class="n">different</span> <span class="n">chart</span> <span class="n">types</span><span class="o">.</span> <span class="n">For</span> <span class="n">each</span><span class="p">:</span> <span class="n">what</span> <span class="n">it</span> <span class="n">would</span> <span class="n">reveal</span><span class="p">,</span> <span class="n">what</span> <span class="n">it</span> <span class="n">would</span> <span class="n">hide</span><span class="p">,</span> <span class="ow">and</span> <span class="n">which</span> <span class="n">audience</span> <span class="n">it</span> <span class="n">suits</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">recommend</span> <span class="n">one</span><span class="o">.</span> <span class="n">I</span> <span class="n">will</span> <span class="n">choose</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Build two of the three. The one you did not expect to prefer is often the honest one.</p>
+</section>
+<section id="d-8-3-object-to-your-own-chart">
+<h3>D.8.3 Object to your own chart<a class="headerlink" href="#d-8-3-object-to-your-own-chart" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Below is the code for a chart I built. I am claiming [your claim] from it.
+
+You are a skeptical reviewer. What could you legitimately object to about how this is drawn? Check specifically: axis truncation, missing baseline, unlabeled units, a selected date range, aggregation that hides variance, and colour choices that imply a judgment.
+
+For each objection, say how I would fix it and what I would lose by fixing it.
+
+CODE:
+[PASTE]
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Apply the fixes. If your claim does not survive them, the claim was drawn rather than found.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-9-vibe-coding-tools-unit-15">
+<h2>D.9 — Vibe Coding Tools (Unit 15)<a class="headerlink" href="#d-9-vibe-coding-tools-unit-15" title="Link to this heading">#</a></h2>
+<section id="d-9-1-the-group-benchmark-prompt">
+<h3>D.9.1 The group benchmark prompt<a class="headerlink" href="#d-9-1-the-group-benchmark-prompt" title="Link to this heading">#</a></h3>
+<p>Every group uses this exact wording with its assigned tool, so the tutorials are comparable.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Build</span> <span class="n">a</span> <span class="n">single</span><span class="o">-</span><span class="n">page</span> <span class="n">web</span> <span class="n">application</span> <span class="n">that</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Loads</span> <span class="n">a</span> <span class="n">CSV</span> <span class="n">file</span> <span class="n">chosen</span> <span class="n">by</span> <span class="n">the</span> <span class="n">user</span> <span class="k">with</span> <span class="n">columns</span> <span class="n">date</span><span class="p">,</span> <span class="n">severity</span><span class="p">,</span> <span class="n">minutes_to_resolve</span><span class="o">.</span>
+<span class="mf">2.</span> <span class="n">Displays</span> <span class="n">the</span> <span class="n">distribution</span> <span class="n">of</span> <span class="n">minutes_to_resolve</span> <span class="n">broken</span> <span class="n">down</span> <span class="n">by</span> <span class="n">severity</span><span class="o">.</span>
+<span class="mf">3.</span> <span class="n">Lets</span> <span class="n">the</span> <span class="n">user</span> <span class="nb">set</span> <span class="n">a</span> <span class="n">threshold</span><span class="p">,</span> <span class="ow">and</span> <span class="n">flags</span> <span class="nb">any</span> <span class="n">severity</span> <span class="n">level</span> <span class="n">whose</span> <span class="n">median</span> <span class="n">exceeds</span> <span class="n">it</span><span class="o">.</span>
+
+<span class="n">Constraints</span><span class="p">:</span> <span class="n">runs</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">browser</span> <span class="k">with</span> <span class="n">no</span> <span class="n">backend</span><span class="o">.</span> <span class="n">No</span> <span class="n">paid</span> <span class="n">services</span><span class="o">.</span> <span class="n">Handle</span> <span class="n">a</span> <span class="n">CSV</span> <span class="k">with</span> <span class="n">quoted</span> <span class="n">commas</span><span class="p">,</span> <span class="n">blank</span> <span class="n">rows</span><span class="p">,</span> <span class="ow">and</span> <span class="n">mixed</span> <span class="n">date</span> <span class="n">formats</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>RECORD:</strong> prompts to something runnable; prompts to something <em>correct</em>; every assumption it made that you never specified; the first thing that broke.</p>
+</section>
+<section id="d-9-2-interrogate-generated-code-you-did-not-write">
+<h3>D.9.2 Interrogate generated code you did not write<a class="headerlink" href="#d-9-2-interrogate-generated-code-you-did-not-write" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Below is code generated by an AI tool. I did not write it and have not reviewed it.
+
+Tell me, in this order:
+1. Every assumption it makes about its inputs — encoding, format, ordering, nullability, size.
+2. Every external dependency it imports, and for each, whether that package actually exists on the public registry.
+3. Every place where untrusted input reaches a query, a file path, a shell command, or the DOM.
+4. Every error path that is silently swallowed.
+
+Do not tell me the code is good. Do not summarize what it does.
+
+CODE:
+[PASTE]
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Check each named dependency on the registry yourself before installing anything. Hallucinated package names are an active attack surface — see Unit 15 §2.3.</p>
+</section>
+<section id="d-9-3-licensing-posture-check">
+<h3>D.9.3 Licensing posture check<a class="headerlink" href="#d-9-3-licensing-posture-check" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">code</span> <span class="n">below</span> <span class="n">was</span> <span class="n">generated</span> <span class="n">by</span> <span class="n">an</span> <span class="n">AI</span> <span class="n">coding</span> <span class="n">tool</span><span class="o">.</span>
+
+<span class="n">Tell</span> <span class="n">me</span> <span class="n">which</span> <span class="n">portions</span> <span class="n">implement</span> <span class="n">a</span> <span class="n">well</span><span class="o">-</span><span class="n">known</span> <span class="n">standard</span> <span class="n">algorithm</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">common</span> <span class="n">idiom</span><span class="p">,</span> <span class="ow">and</span> <span class="n">which</span> <span class="n">portions</span> <span class="n">are</span> <span class="n">distinctive</span> <span class="n">enough</span> <span class="n">that</span> <span class="n">they</span> <span class="n">might</span> <span class="n">closely</span> <span class="n">resemble</span> <span class="n">a</span> <span class="n">specific</span> <span class="n">existing</span> <span class="n">implementation</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">give</span> <span class="n">me</span> <span class="n">a</span> <span class="n">legal</span> <span class="n">opinion</span><span class="o">.</span> <span class="n">I</span> <span class="n">want</span> <span class="n">to</span> <span class="n">know</span> <span class="n">where</span> <span class="n">to</span> <span class="n">look</span><span class="o">.</span>
+
+<span class="n">CODE</span><span class="p">:</span>
+<span class="p">[</span><span class="n">PASTE</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Search a distinctive line or two of the flagged sections. This is a pointer, not a clearance.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-10-responsible-ai-unit-16">
+<h2>D.10 — Responsible AI (Unit 16)<a class="headerlink" href="#d-10-responsible-ai-unit-16" title="Link to this heading">#</a></h2>
+<section id="d-10-1-leakage-audit">
+<h3>D.10.1 Leakage audit<a class="headerlink" href="#d-10-1-leakage-audit" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Below is a list of the features in my dataset and a description of the outcome I am predicting.
+
+For each feature, tell me: could this value be unavailable, incomplete, or different at the moment a real prediction would be made? Consider fields that are populated after the outcome, fields derived from the outcome, and fields whose meaning changes over the record's lifecycle.
+
+Flag anything suspicious even if you are unsure. I would rather check five clean features than miss one leak.
+
+OUTCOME: [what you are predicting, and when the prediction happens]
+FEATURES: [list with a one-line description of each]
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> For each flagged feature, find out when it is actually populated in the source system. Then check feature importances — implausible dominance by one feature is the second signal.</p>
+</section>
+<section id="d-10-2-bias-mechanism-not-bias-vibes">
+<h3>D.10.2 Bias mechanism, not bias vibes<a class="headerlink" href="#d-10-2-bias-mechanism-not-bias-vibes" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Below is a description of a dataset and the decision a model trained on it would inform.
+
+Identify sources of bias by mechanism, using these categories: historical, representation, measurement, aggregation, deployment. For each one you identify, state the specific mechanism — not that bias "could exist," but what in this particular pipeline would produce it, and which group would be affected how.
+
+If a category does not apply here, say so rather than inventing an instance.
+
+DATASET: [describe source, collection period, population, and label definition]
+DECISION: [what the output is used for, and by whom]
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> “Could be biased” earns no credit on HW12. Every mechanism you report should be traceable to a specific fact about how the data was collected or the label defined.</p>
+</section>
+<section id="d-10-3-fairness-criterion-trade-off">
+<h3>D.10.3 Fairness criterion trade-off<a class="headerlink" href="#d-10-3-fairness-criterion-trade-off" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">For</span> <span class="n">the</span> <span class="n">system</span> <span class="n">described</span> <span class="n">below</span><span class="p">,</span> <span class="n">walk</span> <span class="n">through</span> <span class="n">what</span> <span class="n">each</span> <span class="n">of</span> <span class="n">these</span> <span class="n">fairness</span> <span class="n">criteria</span> <span class="n">would</span> <span class="n">require</span><span class="p">:</span> <span class="n">demographic</span> <span class="n">parity</span><span class="p">,</span> <span class="n">equal</span> <span class="n">opportunity</span><span class="p">,</span> <span class="n">predictive</span> <span class="n">parity</span><span class="p">,</span> <span class="n">individual</span> <span class="n">fairness</span><span class="o">.</span>
+
+<span class="n">Then</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">which</span> <span class="n">pairs</span> <span class="n">of</span> <span class="n">these</span> <span class="n">cannot</span> <span class="n">hold</span> <span class="n">simultaneously</span> <span class="n">given</span> <span class="n">the</span> <span class="n">base</span> <span class="n">rates</span> <span class="n">I</span> <span class="n">describe</span><span class="p">,</span> <span class="ow">and</span> <span class="n">what</span> <span class="n">each</span> <span class="n">choice</span> <span class="n">sacrifices</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">recommend</span> <span class="n">one</span><span class="o">.</span> <span class="n">State</span> <span class="n">what</span> <span class="n">a</span> <span class="n">person</span> <span class="n">choosing</span> <span class="n">each</span> <span class="n">would</span> <span class="n">be</span> <span class="n">prioritizing</span><span class="o">.</span>
+
+<span class="n">SYSTEM</span><span class="p">:</span> <span class="p">[</span><span class="n">what</span> <span class="n">it</span> <span class="n">decides</span><span class="p">,</span> <span class="k">for</span> <span class="n">whom</span><span class="p">]</span>
+<span class="n">BASE</span> <span class="n">RATES</span><span class="p">:</span> <span class="p">[</span><span class="n">what</span> <span class="n">you</span> <span class="n">know</span> <span class="n">about</span> <span class="n">outcome</span> <span class="n">rates</span> <span class="n">across</span> <span class="n">groups</span><span class="p">]</span>
+<span class="n">ERROR</span> <span class="n">COSTS</span><span class="p">:</span> <span class="p">[</span><span class="n">what</span> <span class="n">a</span> <span class="n">false</span> <span class="n">positive</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">false</span> <span class="n">negative</span> <span class="n">each</span> <span class="n">cost</span><span class="p">,</span> <span class="ow">and</span> <span class="n">to</span> <span class="n">whom</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> The criterion you pick is a normative decision, not a technical one. Whatever you choose, name it explicitly in your model card and record what you gave up.</p>
+</section>
+<section id="d-10-4-model-card-draft">
+<h3>D.10.4 Model card draft<a class="headerlink" href="#d-10-4-model-card-draft" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Draft</span> <span class="n">a</span> <span class="n">model</span> <span class="n">card</span> <span class="k">for</span> <span class="n">the</span> <span class="n">system</span> <span class="n">described</span> <span class="n">below</span> <span class="n">using</span> <span class="n">this</span> <span class="n">structure</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">intended</span> <span class="n">use</span><span class="p">,</span> <span class="n">out</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">scope</span> <span class="n">uses</span><span class="p">,</span> <span class="n">training</span> <span class="n">data</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">known</span> <span class="n">gaps</span><span class="p">,</span> <span class="n">consent</span><span class="p">),</span> <span class="n">performance</span> <span class="p">(</span><span class="n">overall</span><span class="p">,</span> <span class="n">by</span> <span class="n">subgroup</span><span class="p">,</span> <span class="ow">and</span> <span class="n">against</span> <span class="n">a</span> <span class="n">trivial</span> <span class="n">baseline</span><span class="p">),</span> <span class="n">known</span> <span class="n">limitations</span><span class="p">,</span> <span class="n">fairness</span> <span class="n">criterion</span> <span class="n">chosen</span> <span class="ow">and</span> <span class="n">why</span><span class="p">,</span> <span class="n">accountable</span> <span class="n">party</span><span class="o">.</span>
+
+<span class="n">Rules</span><span class="p">:</span> <span class="n">leave</span> <span class="nb">any</span> <span class="n">field</span> <span class="n">I</span> <span class="n">have</span> <span class="ow">not</span> <span class="n">given</span> <span class="n">you</span> <span class="n">information</span> <span class="k">for</span> <span class="k">as</span> <span class="p">[</span><span class="n">NOT</span> <span class="n">PROVIDED</span><span class="p">]</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">estimate</span> <span class="n">performance</span> <span class="n">numbers</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">invent</span> <span class="n">an</span> <span class="n">accountable</span> <span class="n">party</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">soften</span> <span class="n">a</span> <span class="n">limitation</span> <span class="n">into</span> <span class="n">a</span> <span class="s2">"consideration."</span>
+
+<span class="n">SYSTEM</span><span class="p">:</span> <span class="p">[</span><span class="n">everything</span> <span class="n">you</span> <span class="n">know</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>VERIFY:</strong> Count the <code class="docutils literal notranslate"><span class="pre">[NOT</span> <span class="pre">PROVIDED]</span></code> fields. Each one is either something you need to find out or something you need to admit you do not know. The <code class="docutils literal notranslate"><span class="pre">baseline</span></code> field is the one most often left empty, and the one that determines whether your headline accuracy means anything.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-11-universal-add-ons">
+<h2>D.11 — Universal Add-Ons<a class="headerlink" href="#d-11-universal-add-ons" title="Link to this heading">#</a></h2>
+<p>Append any of these to any prompt in this appendix.</p>
+<p><strong>Force the uncertainty to surface</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Before</span> <span class="n">your</span> <span class="n">answer</span><span class="p">,</span> <span class="nb">list</span> <span class="n">every</span> <span class="n">place</span> <span class="n">where</span> <span class="n">you</span> <span class="n">had</span> <span class="n">to</span> <span class="n">guess</span> <span class="n">what</span> <span class="n">I</span> <span class="n">meant</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Force a shorter answer</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Answer</span> <span class="ow">in</span> <span class="n">under</span> <span class="mi">100</span> <span class="n">words</span><span class="o">.</span> <span class="n">If</span> <span class="n">that</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">possible</span><span class="p">,</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">why</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">exceeding</span> <span class="n">it</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Prevent invented specifics</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Do</span> <span class="ow">not</span> <span class="n">include</span> <span class="nb">any</span> <span class="n">number</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">citation</span><span class="p">,</span> <span class="ow">or</span> <span class="n">URL</span> <span class="n">unless</span> <span class="n">it</span> <span class="n">appears</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">material</span> <span class="n">I</span> <span class="n">provided</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Prevent agreement by default</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Do</span> <span class="ow">not</span> <span class="n">begin</span> <span class="n">by</span> <span class="n">telling</span> <span class="n">me</span> <span class="n">my</span> <span class="n">question</span> <span class="ow">is</span> <span class="n">good</span><span class="p">,</span> <span class="n">my</span> <span class="n">approach</span> <span class="ow">is</span> <span class="n">reasonable</span><span class="p">,</span> <span class="ow">or</span> <span class="n">my</span> <span class="n">analysis</span> <span class="ow">is</span> <span class="n">solid</span><span class="o">.</span> <span class="n">Start</span> <span class="k">with</span> <span class="n">the</span> <span class="n">substance</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Get options rather than a decision</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Give</span> <span class="n">me</span> <span class="n">three</span> <span class="n">options</span> <span class="k">with</span> <span class="n">their</span> <span class="n">trade</span><span class="o">-</span><span class="n">offs</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">recommend</span> <span class="n">one</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="d-12-the-verification-ladder">
+<h2>D.12 — The Verification Ladder<a class="headerlink" href="#d-12-the-verification-ladder" title="Link to this heading">#</a></h2>
+<p>From Unit 7 §III. Match your effort to the cost of being wrong.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Error cost</p></th>
+<th class="head text-left"><p>Example</p></th>
+<th class="head text-left"><p>What you do</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Trivial</p></td>
+<td class="text-left"><p>Rephrasing, brainstorming names</p></td>
+<td class="text-left"><p>Read it</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Low</p></td>
+<td class="text-left"><p>Draft email, first outline</p></td>
+<td class="text-left"><p>Check anything factual</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Moderate</p></td>
+<td class="text-left"><p>Code you will run, a summary you will forward</p></td>
+<td class="text-left"><p>Execute it, or check the source</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>High</p></td>
+<td class="text-left"><p>Any citation, number, API, or legal claim</p></td>
+<td class="text-left"><p>Verify every one independently</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Severe</p></td>
+<td class="text-left"><p>Money, health, safety, or someone’s record</p></td>
+<td class="text-left"><p>Do not delegate the judgment</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Two rules that hold at every rung of this ladder, because they are the two failure modes that look most like success:</p>
+<p><strong>Citations are guilty until proven innocent.</strong> Fabricated references have plausible authors, plausible journals, plausible years. Open them.</p>
+<p><strong>Numbers are guilty until proven innocent.</strong> A model asked to compute will produce a well-formatted answer with no arithmetic behind it. Ask for the formula.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="d-13-your-own-entries">
+<h2>D.13 — Your Own Entries<a class="headerlink" href="#d-13-your-own-entries" title="Link to this heading">#</a></h2>
+<p>HW7 requires five. Use this template, and add a <code class="docutils literal notranslate"><span class="pre">FAILURE</span> <span class="pre">MODES</span></code> line as soon as you have one — after a month, that line is the most valuable part of the entry.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NAME</span><span class="p">:</span>        <span class="n">short</span> <span class="n">identifier</span> <span class="k">for</span> <span class="n">the</span> <span class="n">task</span>
+<span class="n">ROLE</span><span class="p">:</span>        <span class="n">who</span> <span class="n">the</span> <span class="n">assistant</span> <span class="n">should</span> <span class="n">be</span>
+<span class="n">TASK</span><span class="p">:</span>        <span class="n">the</span> <span class="n">action</span><span class="p">,</span> <span class="n">stated</span> <span class="n">precisely</span>
+<span class="n">CONTEXT</span><span class="p">:</span>     <span class="n">what</span> <span class="n">it</span> <span class="n">must</span> <span class="n">know</span> <span class="n">that</span> <span class="n">it</span> <span class="n">cannot</span> <span class="n">infer</span>
+<span class="n">CONSTRAINTS</span><span class="p">:</span> <span class="n">what</span> <span class="n">it</span> <span class="n">must</span> <span class="ow">not</span> <span class="n">do</span>
+<span class="n">FORMAT</span><span class="p">:</span>      <span class="n">the</span> <span class="n">shape</span> <span class="n">of</span> <span class="n">the</span> <span class="n">output</span>
+<span class="n">CRITERIA</span><span class="p">:</span>    <span class="n">what</span> <span class="n">makes</span> <span class="n">the</span> <span class="n">output</span> <span class="n">good</span><span class="p">,</span> <span class="ow">and</span> <span class="n">when</span> <span class="n">to</span> <span class="n">refuse</span>
+<span class="n">VERIFY</span><span class="p">:</span>      <span class="n">how</span> <span class="n">you</span> <span class="n">check</span> <span class="n">the</span> <span class="n">output</span>
+<span class="n">FAILURE</span> <span class="n">MODES</span><span class="p">:</span> <span class="n">what</span> <span class="n">went</span> <span class="n">wrong</span> <span class="n">when</span> <span class="n">you</span> <span class="n">used</span> <span class="n">this</span><span class="p">,</span> <span class="ow">and</span> <span class="n">what</span> <span class="n">you</span> <span class="n">changed</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Appendix_C_AI_Use_and_Disclosure.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Appendix C: AI Use and Disclosure</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-1-prompting-about-prompts-unit-7">D.1 — Prompting About Prompts (Unit 7)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-1-1-improve-a-prompt-you-already-wrote">D.1.1 Improve a prompt you already wrote</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-1-2-force-a-refusal-when-the-answer-is-not-available">D.1.2 Force a refusal when the answer is not available</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-2-workspaces-and-assistants-unit-8">D.2 — Workspaces and Assistants (Unit 8)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-2-1-complete-workspace-instructions">D.2.1 Complete workspace instructions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-2-2-interrogate-your-own-document-base">D.2.2 Interrogate your own document base</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3-careers-unit-9">D.3 — Careers (Unit 9)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3-1-gap-analysis-against-a-real-posting">D.3.1 Gap analysis against a real posting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3-2-interview-question-generation">D.3.2 Interview question generation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-documents-and-texts-unit-10">D.4 — Documents and Texts (Unit 10)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-1-design-document">D.4.1 Design document</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-2-pull-request-description">D.4.2 Pull request description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-3-blameless-incident-post-mortem">D.4.3 Blameless incident post-mortem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-4-technical-documentation">D.4.4 Technical documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-5-targeted-extraction-from-a-long-document">D.4.5 Targeted extraction from a long document</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-4-6-difficult-email">D.4.6 Difficult email</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-5-presentations-unit-11">D.5 — Presentations (Unit 11)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-5-1-outline-to-slide-plan">D.5.1 Outline to slide plan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-5-2-adversarial-rehearsal">D.5.2 Adversarial rehearsal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-5-3-translate-depth-for-a-non-technical-audience">D.5.3 Translate depth for a non-technical audience</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-6-spreadsheets-unit-12">D.6 — Spreadsheets (Unit 12)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-6-1-formula-generation">D.6.1 Formula generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-6-2-ask-for-the-computation-behind-a-number">D.6.2 Ask for the computation behind a number</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-6-3-cleaning-script-with-a-failure-report">D.6.3 Cleaning script with a failure report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-6-4-refuse-an-unsupported-judgment">D.6.4 Refuse an unsupported judgment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-7-descriptive-analysis-unit-13">D.7 — Descriptive Analysis (Unit 13)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-7-1-generate-the-summary-not-the-interpretation">D.7.1 Generate the summary, not the interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-7-2-what-to-check-next">D.7.2 What to check next</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-7-3-challenge-your-own-conclusion">D.7.3 Challenge your own conclusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-7-4-explain-an-unfamiliar-measure">D.7.4 Explain an unfamiliar measure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-8-data-visualization-unit-14">D.8 — Data Visualization (Unit 14)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-8-1-chart-implementation">D.8.1 Chart implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-8-2-three-chart-types-three-trade-offs">D.8.2 Three chart types, three trade-offs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-8-3-object-to-your-own-chart">D.8.3 Object to your own chart</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-9-vibe-coding-tools-unit-15">D.9 — Vibe Coding Tools (Unit 15)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-9-1-the-group-benchmark-prompt">D.9.1 The group benchmark prompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-9-2-interrogate-generated-code-you-did-not-write">D.9.2 Interrogate generated code you did not write</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-9-3-licensing-posture-check">D.9.3 Licensing posture check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-10-responsible-ai-unit-16">D.10 — Responsible AI (Unit 16)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-10-1-leakage-audit">D.10.1 Leakage audit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-10-2-bias-mechanism-not-bias-vibes">D.10.2 Bias mechanism, not bias vibes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-10-3-fairness-criterion-trade-off">D.10.3 Fairness criterion trade-off</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-10-4-model-card-draft">D.10.4 Model card draft</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-11-universal-add-ons">D.11 — Universal Add-Ons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-12-the-verification-ladder">D.12 — The Verification Ladder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-13-your-own-entries">D.13 — Your Own Entries</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,763 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 6: AI Applications Across Domains &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_06_AI_Applications';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 7: Prompt Engineering" href="Unit_07_Prompt_Engineering.html" />
+    <link rel="prev" title="Unit 5: Deep Learning and Neural Networks" href="Unit_05_Deep_Learning_and_Neural_Networks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Documents_and_Texts.html">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Presentations.html">Unit 11: Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Spreadsheets.html">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_Descriptive_Analysis.html">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_14_Data_Visualization.html">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_15_Vibe_Coding_Tools.html">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_16_Responsible_AI.html">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_D_Prompt_Library.html">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_06_AI_Applications.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_06_AI_Applications.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 6: AI Applications Across Domains</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-the-short-list-underneath">Part I — The Short List Underneath</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-same-task-different-stakes">1.1 The Same Task, Different Stakes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-ai-actually-landed">1.2 Where AI Actually Landed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#software-engineering-as-a-domain">1.3 Software Engineering as a Domain</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-reading-four-products">💡 Example: Reading Four Products</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-6-ai-applications-across-domains">
+<h1>Unit 6: AI Applications Across Domains<a class="headerlink" href="#unit-6-ai-applications-across-domains" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Session 10</strong> · Sep 21 · <strong>HW6 assigned Sep 21, due Sep 28</strong></p>
+</div></blockquote>
+<p>This is a single session, and it is a hinge. Behind you are five units on how these systems work. Ahead of you are ten units on using them — in the office, on data, in code. This session connects the two.</p>
+<p>The organizing claim is simple and worth stating plainly: <strong>AI applications look wildly different across domains and are, underneath, a very short list of the same tasks.</strong> Once you can see the task through the application, an unfamiliar AI product stops being a mystery and becomes a known quantity with known failure modes.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Reduce any AI application to one of a small set of <strong>underlying task types</strong>.</p></li>
+<li><p>Explain why the same task type carries different risk in different domains.</p></li>
+<li><p>Identify what a deployed system’s <strong>error costs</strong> are, and who bears them.</p></li>
+<li><p>Assess whether a proposed AI application is solving a problem worth solving.</p></li>
+</ul>
+</section>
+<section id="part-i-the-short-list-underneath">
+<h2>Part I — The Short List Underneath<a class="headerlink" href="#part-i-the-short-list-underneath" title="Link to this heading">#</a></h2>
+<p>Almost every AI product you will meet is one of these, or a chain of them.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Task type</p></th>
+<th class="head text-left"><p>What it does</p></th>
+<th class="head text-left"><p>Seen in</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Classification</strong></p></td>
+<td class="text-left"><p>Assign a category</p></td>
+<td class="text-left"><p>Spam filters, triage, fraud flags, content moderation</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Regression</strong></p></td>
+<td class="text-left"><p>Predict a number</p></td>
+<td class="text-left"><p>Demand forecasts, risk scores, delivery estimates</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Clustering</strong></p></td>
+<td class="text-left"><p>Find groups</p></td>
+<td class="text-left"><p>Customer segments, log anomaly detection</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Ranking</strong></p></td>
+<td class="text-left"><p>Order a list</p></td>
+<td class="text-left"><p>Search, feeds, recommendations</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Generation</strong></p></td>
+<td class="text-left"><p>Produce content</p></td>
+<td class="text-left"><p>Chat assistants, code completion, image tools</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Extraction</strong></p></td>
+<td class="text-left"><p>Pull structure from mess</p></td>
+<td class="text-left"><p>Invoice parsing, résumé screening, medical coding</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Control</strong></p></td>
+<td class="text-left"><p>Choose actions over time</p></td>
+<td class="text-left"><p>Routing, scheduling, robotics, autoscaling</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You have already built the first three yourself. The remaining four are the ones you will be <em>using</em> rather than building for the rest of this course.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This table is a professional tool, not a taxonomy to memorize. When a vendor demonstrates something impressive, the useful question is not “how does it work?” but <strong>“which row is this?”</strong> — because the row tells you what its errors will look like and what evaluation you should be asking to see.</p>
+</div>
+<section id="the-same-task-different-stakes">
+<h3>1.1 The Same Task, Different Stakes<a class="headerlink" href="#the-same-task-different-stakes" title="Link to this heading">#</a></h3>
+<p>Consider binary classification — the simplest thing on the list — deployed in four places.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Application</p></th>
+<th class="head text-left"><p>A false positive means…</p></th>
+<th class="head text-left"><p>A false negative means…</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Spam filter</p></td>
+<td class="text-left"><p>A real email lands in junk</p></td>
+<td class="text-left"><p>Junk lands in the inbox</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Cancer screening</p></td>
+<td class="text-left"><p>An unnecessary biopsy, and fear</p></td>
+<td class="text-left"><p>A missed tumor</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Loan approval</p></td>
+<td class="text-left"><p>A safe borrower is denied credit</p></td>
+<td class="text-left"><p>A default</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Code vulnerability scanner</p></td>
+<td class="text-left"><p>An engineer wastes an hour</p></td>
+<td class="text-left"><p>A shipped exploit</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Identical mathematics. Radically different consequences. The spam filter can tolerate errors in either direction; the screening system cannot, and the <em>asymmetry</em> between its two error types is the entire design problem.</p>
+<p>This is why Unit 3 insisted on the confusion matrix. A single accuracy number erases the distinction that matters most in every row of this table.</p>
+</section>
+<section id="where-ai-actually-landed">
+<h3>1.2 Where AI Actually Landed<a class="headerlink" href="#where-ai-actually-landed" title="Link to this heading">#</a></h3>
+<p>A realistic map of deployment, as of the mid-2020s:</p>
+<ul class="simple">
+<li><p><strong>Healthcare</strong> — imaging support (detection, not diagnosis), documentation, drug candidate screening. Adoption is slowest where liability is highest.</p></li>
+<li><p><strong>Finance</strong> — fraud detection, credit scoring, algorithmic trading, compliance monitoring. Heavily regulated, and increasingly required to be explainable.</p></li>
+<li><p><strong>Software engineering</strong> — code completion, test generation, log analysis, review assistance. The domain with the fastest adoption and the least established practice.</p></li>
+<li><p><strong>Education</strong> — tutoring, feedback, content generation, and an unresolved argument about assessment.</p></li>
+<li><p><strong>Creative industries</strong> — drafting, iteration, asset generation, alongside live litigation over training data.</p></li>
+<li><p><strong>Logistics and operations</strong> — forecasting, routing, scheduling, maintenance prediction. Unglamorous, and where much of the real economic value has accumulated.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Notice the pattern. AI concentrates where errors are <strong>cheap, detectable, and reversible</strong>, and struggles to gain ground where they are none of those. That constraint is not a temporary limitation of current models. It is a permanent feature of deploying systems whose confidence is uncorrelated with their correctness — which is exactly what Unit 5 established.</p>
+</div>
+</section>
+<section id="software-engineering-as-a-domain">
+<h3>1.3 Software Engineering as a Domain<a class="headerlink" href="#software-engineering-as-a-domain" title="Link to this heading">#</a></h3>
+<p>Most of you are in this domain, so it deserves specific treatment. The applications you will encounter:</p>
+<ul class="simple">
+<li><p><strong>Code generation and completion</strong> — generation, with correctness that is checkable by compilation and tests. This checkability is the reason adoption moved so fast here relative to medicine or law.</p></li>
+<li><p><strong>Code review assistance</strong> — classification plus generation. Flags issues, drafts comments.</p></li>
+<li><p><strong>Test generation</strong> — generation, evaluated by coverage and mutation score.</p></li>
+<li><p><strong>Log and incident analysis</strong> — clustering and anomaly detection over high-volume, unlabeled data.</p></li>
+<li><p><strong>Documentation</strong> — generation and extraction, which you will practice directly in Unit 10.</p></li>
+</ul>
+<p>The professionally interesting fact is that this domain has an unusually good verification story — compilers, type checkers, test suites, and linters are all truth oracles that other fields lack — and has still produced a serious problem: <strong>review burden</strong>. Generated code arrives faster than humans can meaningfully read it. The bottleneck moved from writing to reviewing, and the reviewing was never the part that scaled.</p>
+</section>
+</section>
+<section id="example-reading-four-products">
+<h2>💡 Example: Reading Four Products<a class="headerlink" href="#example-reading-four-products" title="Link to this heading">#</a></h2>
+<p>For each, identify the task type, then the error asymmetry.</p>
+<ol class="arabic simple">
+<li><p>A tool that reads support tickets and routes them to the right team.</p></li>
+<li><p>A tool that scans a repository and reports likely security vulnerabilities.</p></li>
+<li><p>A tool that suggests the next line while you type code.</p></li>
+<li><p>A tool that reads a résumé and predicts whether a candidate will be hired.</p></li>
+</ol>
+<p><strong>Discussion.</strong> (1) Classification; misroutes cost delay, symmetric and cheap. (2) Classification with brutal asymmetry — a missed vulnerability is catastrophic, a false alarm costs an hour, so it should be tuned to over-report and everyone will complain about the noise. (3) Generation; errors are caught by the compiler and the developer, cheap and detectable, which is why it works. (4) Classification, and the one to refuse — the “label” is a record of past human hiring decisions, so the model learns to reproduce whatever bias produced them. Unit 16 returns to this.</p>
+<p>The fourth case is the one to sit with. Technically it is the <em>same</em> problem as the first. What differs is that the labels encode a contested human judgment rather than a fact about the world.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Pick an AI product you have personally used in the last month. Which row of the task table is it? What do its errors look like, and who pays for them — you, or someone else?</p>
+<p>If the answer is “someone else,” what would change about the product’s design if the cost landed on the people who built it?</p>
+</div></blockquote>
+<p><strong>Connecting to HW6 (AI Application Analysis — Choose a Domain):</strong> select one deployed AI application in a domain that interests you. Identify its task type, map its two error modes and their costs, and state who bears each. Then argue whether the application is well-matched to its domain — and if not, what would have to be true for it to become so.</p>
+<p><strong>Looking ahead.</strong> Part III moves from analysis to use. Starting next session you will be operating these systems rather than describing them, and everything from Unit 5’s Part II applies to every tool you touch.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Russell, S., &amp; Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em>, 4th Ed., Ch. 1, 27. Pearson.</p></li>
+<li><p>Mitchell, M. (2020). <em>Artificial Intelligence: A Guide for Thinking Humans</em>, Part V. Penguin Books.</p></li>
+<li><p>Brynjolfsson, E., &amp; McAfee, A. (2017). <em>Machine, Platform, Crowd</em>. W. W. Norton.</p></li>
+<li><p>Dendritic Institute (2025). <em>AI Literacy Series — Module 2: AI as Your Daily Assistant.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_05_Deep_Learning_and_Neural_Networks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 5: Deep Learning and Neural Networks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_07_Prompt_Engineering.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 7: Prompt Engineering</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-the-short-list-underneath">Part I — The Short List Underneath</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-same-task-different-stakes">1.1 The Same Task, Different Stakes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-ai-actually-landed">1.2 Where AI Actually Landed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#software-engineering-as-a-domain">1.3 Software Engineering as a Domain</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-reading-four-products">💡 Example: Reading Four Products</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
