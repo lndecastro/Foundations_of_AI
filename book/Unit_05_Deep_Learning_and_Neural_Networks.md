@@ -1,8 +1,8 @@
 # Unit 5: Deep Learning and Neural Networks
 
-> **Sessions 8–9** · Sep 14, 16 · **HW5 assigned Sep 16, due Sep 23**
+> **Sessions 8–9** · Sep 16, 21 · **HW5 assigned Sep 16, due Sep 25**
 
-Every tool you will use in Parts III, IV, and V of this course — the chat assistants, the presentation generators, the coding tools — is a neural network underneath. This unit is the last time we open the box before we start using what is inside it.
+Every tool you will use in Parts III, IV, and V of this course (the chat assistants, the presentation generators, the coding tools) has a neural network underneath. This unit is the last time we open the box before we start using what is inside it.
 
 You do not need the mathematics. You do need three things: **what a neuron computes**, **why depth changed everything**, and **why these systems fail the specific way they do**. That last one is what separates a professional user of AI tools from a credulous one.
 
@@ -23,30 +23,30 @@ An artificial neuron performs three operations, in order:
 
 1. **Weight** each input by a number that expresses how much that input matters.
 2. **Sum** the weighted inputs and add a **bias** term.
-3. **Activate** — pass the sum through a nonlinear function that decides the output.
+3. **Activate**: pass the sum through a nonlinear function that decides the output.
 
-That is the entire computation. The intelligence, such as it is, lives in the weights, and the weights are **learned** — adjusted repeatedly so that the network's outputs move closer to the desired ones. Training a neural network is nothing more than searching for a good set of numbers.
+That is the entire computation. The intelligence, such as it is, lives in the weights, and the weights are **learned**, adjusted repeatedly so that the network's outputs move closer to the desired ones. Training a neural network is usually searching for a good set of parameters (numbers).
 
 ```{note}
-The **activation function** is the step that matters most and gets explained least. Without it, stacking layers is pointless: a chain of linear operations collapses algebraically into a single linear operation, so a hundred-layer network would have exactly the expressive power of one layer. The nonlinearity is what makes depth mean something.
+The **activation function** is an important component that leads to the network processing capability. Without it, stacking layers is pointless: a chain of linear operations collapses algebraically into a single linear operation, so a hundred-layer network would have exactly the expressive power of one layer. The nonlinearity is what makes depth mean something.
 ```
 
-### 1.2 What Training Adjusts
+### 1.2 What Supervised Training in Multilayer Networks Adjusts
 
-- **Forward pass** — data flows in, a prediction comes out.
-- **Loss** — a single number measuring how wrong the prediction was.
-- **Backpropagation** — the loss is traced backwards to determine how much each weight contributed to the error.
-- **Update** — every weight moves a small step in the direction that reduces the loss.
+- **Forward pass**: data flows in, from input to output.
+- **Loss**: a single number measuring how wrong the prediction was.
+- **Backpropagation**: the loss is traced backwards to determine how much each weight contributed to the error.
+- **Update**: every weight moves a small step in the direction that reduces the loss.
 
-Repeat several million times. There is no moment of insight anywhere in this process.
+Repeat several times.
 
 ### 1.3 The Failure That Caused a Winter
 
 In Unit 1 you discussed the AI winters. Here is the technical event behind the first one.
 
-The **perceptron** (Rosenblatt, 1958) was a single-layer network, and it generated enormous excitement. In 1969, Minsky and Papert proved it could not learn the XOR function — a problem so small it fits in four rows. Funding collapsed. The field lost roughly fifteen years.
+The **perceptron** (Rosenblatt, 1958) was a single-layer network, and it generated enormous excitement. In 1969, Minsky and Papert proved it could not learn the XOR function, a problem so small it fits in four rows. Funding collapsed. 
 
-The solution turned out to be adding one hidden layer. The mathematics for training such networks efficiently (backpropagation) took until the 1980s to become widely known. You are about to reproduce both halves of this history in about twenty lines.
+The solution turned out to be adding one hidden layer. The mathematics for training such networks efficiently (backpropagation) took until the 1980s to become widely known. You are about to reproduce both halves of this history in a few lines of code.
 
 ## ⚙️ Hands-On: The Problem That Broke the Perceptron
 
@@ -73,12 +73,12 @@ print(f"\nPerceptron accuracy:      {accuracy_score(y, single.predict(X)):.0%}")
 print(f"MLP (1 hidden layer):     {accuracy_score(y, multi.predict(X)):.0%}")
 ```
 
-The perceptron scores **50%** — it predicts a single class for all four inputs and cannot do better, no matter how long it trains. Adding four hidden neurons takes it to **100%**.
+The perceptron scores **50%**; it predicts a single class for all four inputs and cannot do better, no matter how long it trains. Adding four hidden neurons takes it to **100%**.
 
 The reason is geometric. A single-layer network can only separate points with one straight line, and no straight line puts `[0,1]` and `[1,0]` on one side with `[0,0]` and `[1,1]` on the other. A hidden layer lets the network bend the space first, and in the bent space a single line suffices.
 
 ```{warning}
-Fifteen years of funding disappeared over a limitation that one extra layer removes. It is worth asking, whenever you read a confident claim that AI "cannot" do something, whether the claim is about a fundamental limit or about the specific architecture someone happened to test.
+Many years of funding disappeared over a limitation that one extra layer removes. It is worth asking, whenever you read a confident claim that AI "cannot" do something, whether the claim is about a fundamental limit or about the specific architecture someone happened to test.
 ```
 
 **Try changing it:**
@@ -132,7 +132,7 @@ if wrong:
 plt.tight_layout(); plt.show()
 ```
 
-Four hidden neurons reach about **87%**. Thirty-two reach about **97%**. Going all the way to 128+64 — roughly seven times more weights — buys well under one additional point.
+Four hidden neurons reach about **87%**. Thirty-two reach about **97%**. Going all the way to 128+64, roughly seven times more weights, buys well under one additional point.
 
 That shape is the story of modern AI in miniature: **large early gains from capacity, then sharply diminishing returns.** The frontier language models are on the far right of this curve, which is why each new generation costs enormously more to train and feels only somewhat better to use.
 
@@ -153,10 +153,10 @@ Everything that follows is a consequence of that objective.
 - **Fluency is guaranteed.** Producing text that reads naturally is precisely what was optimized. The output will be well-formed whether or not it is correct.
 - **Truth is incidental.** True statements appear frequently in training data, so they are often the likely continuation. That is a correlation, not a mechanism. Nothing checks.
 - **Confidence is not calibrated.** The model has no representation of "I am unsure." It produces the most likely next token either way. A fabricated citation and a real one are generated by identical machinery.
-- **Plausible errors are the dangerous ones.** Fabrications tend to be *typical* — a paper title that sounds like a real paper, an API method that ought to exist. These are the hardest errors for a reader to catch, and they are hard precisely *because* the system is good at its job.
+- **Plausible errors are the dangerous ones.** Fabrications tend to be *typical*, a paper title that sounds like a real paper, an API method that ought to exist. These are the hardest errors for a reader to catch, and they are hard precisely *because* the system is good at its job.
 
 ```{warning}
-"Hallucination" is a misleading word. It suggests a malfunction. Fluent falsehood is the system operating exactly as designed — the design simply never included a truth-checking step. Expecting one is a category error, and building a workflow that assumes one is a professional risk.
+"Hallucination" is a misleading word. It suggests a malfunction. Fluent falsehood is the system operating exactly as designed, as the design simply never included a truth-checking step. Expecting one is a category error, and building a workflow that assumes one is a professional risk.
 
 Every AI tool you use from Unit 7 onward has this property. The verification habits you build in Part III are not optional politeness. They are the compensating control for a known and permanent limitation.
 ```
