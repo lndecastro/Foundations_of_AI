@@ -2,7 +2,7 @@
 
 > **Session 10** · Sep 21 · **HW6 assigned Sep 21, due Sep 28**
 
-This is a single session, and it is a hinge. Behind you are five units on how these systems work. Ahead of you are ten units on using them — in the office, on data, in code. This session connects the two.
+This is a single session, and it is a hinge. Behind you are five units on how these systems work. Ahead of you are ten units on using them, in the office, on data, in code. This session connects the two.
 
 The organizing claim is simple and worth stating plainly: **AI applications look wildly different across domains and are, underneath, a very short list of the same tasks.** Once you can see the task through the application, an unfamiliar AI product stops being a mystery and becomes a known quantity with known failure modes.
 
@@ -28,6 +28,7 @@ Almost every AI product you will meet is one of these, or a chain of them.
 | **Generation** | Produce content | Chat assistants, code completion, image tools |
 | **Extraction** | Pull structure from mess | Invoice parsing, résumé screening, medical coding |
 | **Control** | Choose actions over time | Routing, scheduling, robotics, autoscaling |
+| **Recommendation** | Find related items | Retail, social media, online apps, services |
 
 You have already built the first three yourself. The remaining four are the ones you will be *using* rather than building for the rest of this course.
 
@@ -37,7 +38,7 @@ This table is a professional tool, not a taxonomy to memorize. When a vendor dem
 
 ### 1.1 The Same Task, Different Stakes
 
-Consider binary classification — the simplest thing on the list — deployed in four places.
+Consider binary classification, a typical task on the list, deployed in four places.
 
 | Application | A false positive means… | A false negative means… |
 | :--- | :--- | :--- |
@@ -46,7 +47,7 @@ Consider binary classification — the simplest thing on the list — deployed i
 | Loan approval | A safe borrower is denied credit | A default |
 | Code vulnerability scanner | An engineer wastes an hour | A shipped exploit |
 
-Identical mathematics. Radically different consequences. The spam filter can tolerate errors in either direction; the screening system cannot, and the *asymmetry* between its two error types is the entire design problem.
+Same type of model with radically different consequences. The spam filter can tolerate errors in either direction; the screening system cannot, and the *asymmetry* between its two error types is the entire design problem.
 
 This is why Unit 3 insisted on the confusion matrix. A single accuracy number erases the distinction that matters most in every row of this table.
 
@@ -54,15 +55,15 @@ This is why Unit 3 insisted on the confusion matrix. A single accuracy number er
 
 A realistic map of deployment, as of the mid-2020s:
 
-- **Healthcare** — imaging support (detection, not diagnosis), documentation, drug candidate screening. Adoption is slowest where liability is highest.
-- **Finance** — fraud detection, credit scoring, algorithmic trading, compliance monitoring. Heavily regulated, and increasingly required to be explainable.
-- **Software engineering** — code completion, test generation, log analysis, review assistance. The domain with the fastest adoption and the least established practice.
-- **Education** — tutoring, feedback, content generation, and an unresolved argument about assessment.
-- **Creative industries** — drafting, iteration, asset generation, alongside live litigation over training data.
-- **Logistics and operations** — forecasting, routing, scheduling, maintenance prediction. Unglamorous, and where much of the real economic value has accumulated.
+- **Healthcare**: imaging support (detection, not diagnosis), documentation, drug candidate screening. Adoption is slowest where liability is highest.
+- **Finance**: fraud detection, credit scoring, algorithmic trading, compliance monitoring. Heavily regulated, and increasingly required to be explainable.
+- **Software engineering**: code completion, test generation, log analysis, review assistance. The domain with the fastest adoption and the least established practice.
+- **Education**: tutoring, feedback, content generation, and an unresolved argument about assessment.
+- **Creative industries**: drafting, iteration, asset generation, alongside live litigation over training data.
+- **Logistics and operations**: forecasting, routing, scheduling, maintenance prediction. Unglamorous, and where much of the real economic value has accumulated.
 
 ```{warning}
-Notice the pattern. AI concentrates where errors are **cheap, detectable, and reversible**, and struggles to gain ground where they are none of those. That constraint is not a temporary limitation of current models. It is a permanent feature of deploying systems whose confidence is uncorrelated with their correctness — which is exactly what Unit 5 established.
+Notice the pattern. AI concentrates where errors are **cheap, detectable, and reversible**, and struggles to gain ground where they are none of those. That constraint is not a temporary limitation of current models. It is a permanent feature of deploying systems whose confidence is uncorrelated with their correctness, which is what Unit 5 established.
 ```
 
 ### 1.3 Software Engineering as a Domain
