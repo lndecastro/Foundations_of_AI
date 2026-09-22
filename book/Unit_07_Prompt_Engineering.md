@@ -4,9 +4,9 @@
 Sessions 11–12 | Sep 23, 28 | HW7 assigned Sep 28, due Oct 05
 ```
 
-Part III begins here. For six units you have been taking these systems apart; from now on you are operating them. Everything you build in Units 8 through 15 rests on the skill in this unit.
+Part III begins here. For six units you have been studying the basic concepts of artificial intelligence and neural networks; from now on we are going to focus on generative systems. Most of what you build in Units 8 through 15 rests on the skills developed in this unit.
 
-Prompting has a bad reputation among engineers, and some of it is deserved — the genre of "10 magic prompts" content is worthless. But the underlying skill is real and it is not mysterious. **A prompt is a specification.** You already know how to write specifications; you know that vague requirements produce wrong software, and that the fix is precision about inputs, outputs, constraints, and acceptance criteria. Prompting is the same discipline applied to a nondeterministic executor.
+**A prompt is a specification.** You already know how to write specifications; you know that vague requirements produce wrong software, and that the fix is precision about inputs, outputs, constraints, and acceptance criteria. Prompting is the same discipline applied to a nondeterministic executor.
 
 ## Learning Objectives
 
@@ -20,11 +20,11 @@ After completing this unit, you will be able to:
 
 ## Part I — Why Prompting Is Not Conversation
 
-The failure mode for new users is treating the model as a colleague who shares your context. It does not. It has no access to your repository, your team's conventions, last week's meeting, or what you actually meant. It has the text in front of it and a very large statistical prior over what usually follows such text.
+The failure mode for new users is treating the model as a colleague who shares your context. It does not. It has no access to your repository, your team's conventions, last week's meeting, or what you actually meant, unless you provide all this context to the model. 
 
 ### 1.1 Anatomy of an Effective Prompt
 
-Six components. Not all are needed every time, but knowing which you omitted is the point.
+Six components. Not all are needed every time, but knowing which you omitted is important.
 
 | Component | Question it answers | Example |
 | :--- | :--- | :--- |
@@ -36,7 +36,7 @@ Six components. Not all are needed every time, but knowing which you omitted is 
 | **Criteria** | What makes it good? | "Flag only issues that could produce incorrect data, not style." |
 
 ```{note}
-The component that beginners omit most often is **Criteria**, and it is the one that changes the output most. Without it, the model optimizes for what usually satisfies such a request — which is *thoroughness*. That is why unconstrained prompts return twelve suggestions when you wanted the two that matter.
+The component that beginners omit most often is **Criteria**, and it is the one that changes the output most. Without it, the model optimizes for what usually satisfies such a request, which is *thoroughness*. That is why unconstrained prompts return twelve suggestions when you wanted the two that matter.
 ```
 
 ### 1.2 Core Techniques
@@ -45,7 +45,7 @@ The component that beginners omit most often is **Criteria**, and it is the one 
 
 **Few-shot prompting.** Give two or three worked examples of input → output. This is by far the most reliable technique for enforcing a format, and it usually beats describing the format in words. If you need commit messages in a house style, showing three real ones works better than a paragraph of rules.
 
-**Chain-of-thought.** Asking the model to work through steps before answering improves multi-step reasoning. The mechanism is worth understanding: the intermediate tokens become part of the context for the tokens that follow, so the model is conditioning on its own partial work. It is not "thinking harder" — it is giving itself more relevant context.
+**Chain-of-thought.** Asking the model to work through steps before answering improves multi-step reasoning. The mechanism is worth understanding: the intermediate tokens become part of the context for the tokens that follow, so the model is conditioning on its own partial work. It is not "thinking harder", it is giving itself more relevant context.
 
 **Output format specification.** Ask for JSON, a table, or a fixed template when the output will be consumed by anything other than a human reading prose. This is the technique that makes AI output composable with the rest of your tooling.
 
@@ -64,7 +64,7 @@ Changing one thing at a time is not fussiness. If you change four things and the
 
 ## ⚙️ Hands-On 1: Comparing Prompts Systematically
 
-This cell prints four variants of the same request, from bare to fully specified. Paste each into an AI assistant **in a separate conversation** — a fresh one each time, so earlier context does not leak — and score the results.
+This cell prints four variants of the same request, from bare to fully specified. Paste each into an AI assistant **in a separate conversation**, a fresh one each time, so earlier context does not leak, and score the results.
 
 ```python
 task = "Explain database indexing."
