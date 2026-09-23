@@ -38,7 +38,8 @@ Write something about hurricanes.
 ```
 
 ```
-Write a one-paragraph explanation of how to prepare a home for a hurricane, for a family that has just moved to Florida from a state without hurricanes. Use plain language and end with the single most important action to take before June 1.
+Write a one-paragraph explanation of how to prepare a home for a hurricane, for a family that has just moved to Florida from a state without hurricanes.
+Use plain language and end with the single most important action to take before June 1.
 ```
 
 The first prompt forces the model to guess the topic, the audience, the length, and the purpose. The second removes all four guesses. Neither prompt uses special syntax; the difference is entirely in how clearly the request is described.
@@ -83,7 +84,8 @@ Present the answer as a two-column table with the headings Player and Practices 
 
 Notes:
 Ana missed March 3 and March 10. Ben missed March 3.
-Carla missed March 3, March 10, and March 17. Diego attended every practice. Emma missed March 17.
+Carla missed March 3, March 10, and March 17.
+Diego attended every practice. Emma missed March 17.
 ```
 
 ```{admonition} Check your answer
@@ -126,7 +128,7 @@ They will split the fuel cost equally with another family.
 Work through the calculation step by step, then state how much each family pays.
 ```
 
-The correct answer is $30.60 (18 gallons × $3.40 = $61.20, divided by 2). Showing the steps lets you check each one, which is the main practical benefit of this pattern.
+The correct answer is \$30.60 (18 gallons × \$3.40 = \$61.20, divided by 2). Showing the steps lets you check each one, which is the main practical benefit of this pattern.
 
 **4. Zero-shot prompt.** Give only the instruction and the input, with no examples.
 
@@ -283,7 +285,7 @@ Laptops may be borrowed for up to 7 days and cannot be renewed. Late returns are
 The program is funded by a two-year state grant.
 ```
 
-**Step 1, before running:** a good answer must contain (a) weekday hours, (b) weekend hours, (c) who can borrow laptops, (d) loan length and no renewal, (e) the $5 daily late fee, in three bullets.
+**Step 1, before running:** a good answer must contain (a) weekday hours, (b) weekend hours, (c) who can borrow laptops, (d) loan length and no renewal, (e) the \$5 daily late fee, in three bullets.
 
 **The output (an illustrative example):**
 
@@ -312,7 +314,7 @@ The program is funded by a two-year state grant.
 | Factual Accuracy | **1** | Two errors and one invented claim. |
 | Format | 5 | Exactly three bullets. |
 
-The total is 18 out of 25, which sounds acceptable. It is not. A reader following this newsletter would arrive on a Saturday evening to a closed library, keep a laptop for two weeks, and be surprised by a $35 fine. **The accuracy gate fails, so the output fails.**
+The total is 18 out of 25, which sounds acceptable. It is not. A reader following this newsletter would arrive on a Saturday evening to a closed library, keep a laptop for two weeks, and be surprised by a \$35 fine. **The accuracy gate fails, so the output fails.**
 
 Notice also that the prompt already said "use only the information in the announcement". The model still added a claim. Instructions reduce errors; they do not eliminate them. That is why step 4 exists.
 
@@ -474,7 +476,7 @@ A language model has no memory of you, your class, or your job. Each time it ans
 
 Nothing outside that window influences the answer. This has four practical consequences.
 
-1. **What you do not include, the model does not know.** If your budget is $60, and you do not say so, the model plans for an average budget.
+1. **What you do not include, the model does not know.** If your budget is \$60, and you do not say so, the model plans for an average budget.
 2. **Relevant material improves answers.** Supplying the actual document reduces hallucination, because the model can draw on the text instead of on vague patterns.
 3. **Irrelevant material makes answers worse.** Pasting in five loosely related documents "just in case" gives the model more to be distracted by. More context is not automatically better context.
 4. **Earlier messages stay in the window.** Suppose that ten messages ago you asked for recipes that include peanuts, and later you say you are cooking for a friend with a peanut allergy. The earlier request is still in the context, competing with the correction. When a conversation has gone wrong, **starting a new conversation with a clean, complete prompt usually works better than correcting it message by message.**
