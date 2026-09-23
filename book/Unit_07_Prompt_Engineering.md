@@ -382,13 +382,19 @@ It works because the model has seen a great many instructions and requests, so i
 **Use 1: Draft a prompt from a goal.** Describe what you want to achieve and ask the model to write the prompt.
 
 ```
-I volunteer at an animal shelter. Every week I write short online profiles for dogs available for adoption, and I want an AI assistant to draft them for me from my notes. Write a prompt I can reuse for this task. The prompt must contain the four components of a prompt: an instruction, context, a place for the input data, and an output format. Explain in one sentence why you chose each component.
+I volunteer at an animal shelter.
+Every week I write short online profiles for dogs available for adoption, and I want an AI assistant to draft them for me from my notes.
+Write a prompt I can reuse for this task.
+The prompt must contain the four components of a prompt: an instruction, context, a place for the input data, and an output format.
+Explain in one sentence why you chose each component.
 ```
 
 **Use 2: Let the model interview you first.** Ask the model to question you before it writes anything. This is the most effective way to discover the context you forgot to give.
 
 ```
-I want to write a prompt that helps me prepare for a job interview for a part-time position at a local bank. Before you write the prompt, ask me up to five questions about anything you would need to know to make it effective. Ask the questions one at a time and wait for my answer to each. After the last answer, write the complete prompt.
+I want to write a prompt that helps me prepare for a job interview for a part-time position at a local bank.
+Before you write the prompt, ask me up to five questions about anything you would need to know to make it effective.
+Ask the questions one at a time and wait for my answer to each. After the last answer, write the complete prompt.
 ```
 
 **Use 3: Critique and improve an existing prompt.** Paste a prompt and ask the model to evaluate it against the criteria from Section 2.2 before you run it.
@@ -396,9 +402,14 @@ I want to write a prompt that helps me prepare for a job interview for a part-ti
 ```
 Here is a prompt I plan to use:
 
-"Summarize the library announcement below for a neighborhood newsletter. Use exactly three bullet points. Include the new hours, the laptop rules, and the cost of late returns. Use only the information in the announcement."
+"Summarize the library announcement below for a neighborhood newsletter.
+Use exactly three bullet points.
+Include the new hours, the laptop rules, and the cost of late returns.
+Use only the information in the announcement."
 
-Do not answer the prompt. Instead, evaluate it as a prompt. For each of these criteria, explain how the prompt could lead to a weak output: relevance, completeness, clarity, factual accuracy, and format. Then write an improved version and list each change you made with the reason for it.
+Do not answer the prompt. Instead, evaluate it as a prompt.
+For each of these criteria, explain how the prompt could lead to a weak output: relevance, completeness, clarity, factual accuracy, and format.
+Then write an improved version and list each change you made with the reason for it.
 ```
 
 This is the first prompt from the worked example in Section 2.4. Compare the model's critique with what actually went wrong there: the merged weekday and weekend hours, the wrong loan period, and the invented "free" claim. Did the critique anticipate those failures, or only generic ones?
@@ -440,10 +451,16 @@ This table is also the reasoning behind the course AI Use Statement: you may use
 Paste the prompt below into a new conversation. Before reading the output, write down what a good answer must contain (step 1 of the procedure). Then complete steps 3 and 4: score the five criteria and build a claim-check table.
 
 ```
-You are a student-services advisor. Read the scholarship notice below and turn it into a checklist a student can follow to apply. Present a numbered checklist, then one line stating the deadline. Use only the information in the notice. If a student would need to know something that the notice does not state, list it under the heading "Not stated: ask the Fund".
+You are a student-services advisor.
+Read the scholarship notice below and turn it into a checklist a student can follow to apply.
+Present a numbered checklist, then one line stating the deadline. Use only the information in the notice.
+If a student would need to know something that the notice does not state, list it under the heading "Not stated: ask the Fund".
 
 Notice:
-The Harbor Valley Community Fund Scholarship awards $2,500 to one student each year. Applicants must be enrolled full time at a public college or university in Florida and have a cumulative GPA of at least 3.0. Applicants must submit a 500-word essay describing a problem in their local community and how they would address it, plus two letters of recommendation, at least one of which must come from a faculty member. Applications are due November 15 at 5:00 p.m. Finalists will be interviewed in December, and the recipient will be announced on January 20.
+The Harbor Valley Community Fund Scholarship awards $2,500 to one student each year.
+Applicants must be enrolled full time at a public college or university in Florida and have a cumulative GPA of at least 3.0.
+Applicants must submit a 500-word essay describing a problem in their local community and how they would address it, plus two letters of recommendation, at least one of which must come from a faculty member.
+Applications are due November 15 at 5:00 p.m. Finalists will be interviewed in December, and the recipient will be announced on January 20.
 ```
 
 **Try changing it:**
