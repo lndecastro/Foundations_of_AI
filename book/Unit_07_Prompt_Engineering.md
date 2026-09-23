@@ -6,7 +6,7 @@ Sessions 11–12 | Sep 23, 28 | HW7 assigned Sep 28, due Oct 05
 
 Part III begins here. For six units you have studied what artificial intelligence is and how machines learn. From now on we focus on **using** generative AI well. Most of what you do in Units 8 through 15 rests on the skills developed in this unit.
 
-The skill is simple to state and hard to master: an AI model only knows what you tell it. It does not know who you are, who the answer is for, what you already tried, or what "good" means to you. **Prompt engineering** is the practice of saying clearly what you want. **Context engineering** is the practice of giving the model everything it needs to know in order to deliver it.
+The skill is simple to state and hard to master: an AI model responds based on what you tell it. Initially it does not know who you are, who the answer is for, what you already tried, or what "good" means to you. **Prompt engineering** is the practice of saying clearly what you want. **Context engineering** is the practice of giving the model everything it needs to know in order to deliver it.
 
 This unit follows the same concepts and terminology as **Modules 5 and 6 of the Dendritic Institute AI Literacy Program**. If you complete that program, you will recognize every term used here.
 
@@ -28,7 +28,7 @@ After completing this unit, you will be able to:
 
 Prompt engineering is the practice of crafting effective inputs (prompts) for large language models (LLMs) so that they produce accurate, relevant, and useful outputs.
 
-It is not programming. You communicate in ordinary language, but you do it **strategically**: every word you add either removes a guess the model would otherwise make, or it adds noise.
+It is not programming. You communicate in natural language, but you do it **strategically**: every word you add either removes a guess the model would otherwise make, or it adds noise.
 
 Compare these two requests:
 
@@ -50,16 +50,21 @@ A good prompt typically has four components. Only the first is always required, 
 | :--- | :--- | :--- |
 | **1. Instruction** | What should the model do? | "Rewrite the instructions below in plain language." |
 | **2. Context** (optional) | What background or perspective should it use? | "They are for my 82-year-old grandmother, who is not familiar with medical terms." |
-| **3. Input Data** | What text, question, or file should it work on? | The pharmacy label text pasted below the request. |
+| **3. Input Data** (optional) | What text, question, or file should it work on? | The pharmacy label text pasted below the request. |
 | **4. Output Format** (optional) | What shape should the answer take? | "A numbered list of no more than five items, each under 12 words." |
 
 Here is the complete prompt built from those four components:
 
 ```
-Rewrite the pharmacy instructions below in plain language. They are for my 82-year-old grandmother, who is not familiar with medical terms. Present them as a numbered list of no more than five items, each under 12 words.
+Rewrite the pharmacy instructions below in plain language.
+They are for my 82-year-old grandmother, who is not familiar with medical terms.
+Present them as a numbered list of no more than five items, each under 12 words.
 
 Instructions:
-Take 1 tablet by mouth twice daily with food. Do not crush or chew. Avoid grapefruit juice while taking this medication. May cause drowsiness; use caution when driving or operating machinery. Complete the full course even if symptoms improve.
+Take 1 tablet by mouth twice daily with food. Do not crush or chew.
+Avoid grapefruit juice while taking this medication.
+May cause drowsiness; use caution when driving or operating machinery.
+Complete the full course even if symptoms improve.
 ```
 
 ```{note}
@@ -71,10 +76,13 @@ The component that beginners omit most often is **Context**. Without it, the mod
 Identify the four components in the prompt below.
 
 ```
-You are an assistant coach for a youth soccer team. Using the attendance notes below, list the players who missed more than one practice this month. Present the answer as a two-column table with the headings Player and Practices Missed.
+You are an assistant coach for a youth soccer team.
+Using the attendance notes below, list the players who missed more than one practice this month.
+Present the answer as a two-column table with the headings Player and Practices Missed.
 
 Notes:
-Ana missed March 3 and March 10. Ben missed March 3. Carla missed March 3, March 10, and March 17. Diego attended every practice. Emma missed March 17.
+Ana missed March 3 and March 10. Ben missed March 3.
+Carla missed March 3, March 10, and March 17. Diego attended every practice. Emma missed March 17.
 ```
 
 ```{admonition} Check your answer
@@ -96,19 +104,25 @@ Prompt types (also called prompt patterns) are reusable structures. Knowing them
 ```
 Summarize the following paragraph in two sentences for a general audience.
 
-The Atlantic hurricane season officially runs from June 1 to November 30. Most storms form between August and October, when ocean temperatures are highest, and the statistical peak of the season is around September 10. Forecasters issue a hurricane watch when hurricane conditions are possible within 48 hours and a hurricane warning when they are expected within 36 hours.
+The Atlantic hurricane season officially runs from June 1 to November 30.
+Most storms form between August and October, when ocean temperatures are highest, and the statistical peak of the season is around September 10.
+Forecasters issue a hurricane watch when hurricane conditions are possible within 48 hours and a hurricane warning when they are expected within 36 hours.
 ```
 
 **2. Role-based prompt.** Assign the model a role or identity that shapes its tone and the knowledge it draws on.
 
 ```
-You are a financial counselor at a university. A first-year student asks how to start building credit without getting into debt. Give practical advice in five bullet points.
+You are a financial counselor at a university.
+A first-year student asks how to start building credit without getting into debt.
+Give practical advice in five bullet points.
 ```
 
 **3. Chain-of-thought prompt.** Ask the model to work through the problem step by step before answering.
 
 ```
-A family is driving 540 miles. Their car averages 30 miles per gallon, and gas costs $3.40 per gallon. They will split the fuel cost equally with another family. Work through the calculation step by step, then state how much each family pays.
+A family is driving 540 miles. Their car averages 30 miles per gallon, and gas costs $3.40 per gallon.
+They will split the fuel cost equally with another family.
+Work through the calculation step by step, then state how much each family pays.
 ```
 
 The correct answer is $30.60 (18 gallons × $3.40 = $61.20, divided by 2). Showing the steps lets you check each one, which is the main practical benefit of this pattern.
@@ -135,11 +149,13 @@ Comment: "The delivery came a day late, but the flowers were beautiful." →
 Notice what the few-shot version did: the examples introduced a category, **Mixed**, that the zero-shot version never offered. Examples communicate things that are hard to describe in words, such as a label set, a tone, or a format.
 
 ```{note}
-A prompt can belong to more than one type at the same time. The instructional prompt above is also a zero-shot prompt, and the role-based prompt could become few-shot by adding examples of good advice.
+A prompt can belong to more than one type at the same time.
+The instructional prompt above is also a zero-shot prompt, and the role-based prompt could become few-shot by adding examples of good advice.
 ```
 
 ```{note}
-Many recent models reason step by step on their own before answering, so asking for chain-of-thought improves their answers less than it did with earlier models. It is still valuable for a different reason: it makes the reasoning **visible**, so you can check it.
+Many recent models reason step by step on their own before answering, so asking for chain-of-thought improves their answers less than it did with earlier models.
+It is still valuable for a different reason: it makes the reasoning **visible**, so you can check it.
 ```
 
 | Type | Best used for | Example |
@@ -184,7 +200,8 @@ Explain what a credit score is.
 2. **Add Output Format.** In a new conversation, paste:
 
    ```
-   Explain what a credit score is to a first-year college student who has never had a credit card. Use exactly four bullet points, then end with one everyday analogy. Keep the whole answer under 150 words.
+   Explain what a credit score is to a first-year college student who has never had a credit card.
+   Use exactly four bullet points, then end with one everyday analogy. Keep the whole answer under 150 words.
    ```
 
    Did the model follow every format instruction? Count the bullet points and the words yourself; do not assume.
@@ -192,7 +209,10 @@ Explain what a credit score is.
 3. **Add a role and chain-of-thought.** In a new conversation, paste:
 
    ```
-   You are a financial counselor at a university. Explain what a credit score is to a first-year college student who has never had a credit card. First, list the factors that make up a credit score. Then explain which of those factors a student can control during the first year of college, and give one concrete action for each. Keep the whole answer under 200 words.
+   You are a financial counselor at a university. Explain what a credit score is to a first-year college student who has never had a credit card.
+   First, list the factors that make up a credit score.
+   Then explain which of those factors a student can control during the first year of college, and give one concrete action for each.
+   Keep the whole answer under 200 words.
    ```
 
    Which of the three changes produced the largest improvement for this student? Do you think the same change would matter most for a different task?
@@ -250,10 +270,16 @@ A student asks an AI assistant to summarize a library announcement for a neighbo
 **The prompt:**
 
 ```
-Summarize the library announcement below for a neighborhood newsletter. Use exactly three bullet points. Include the new hours, the laptop rules, and the cost of late returns. Use only the information in the announcement.
+Summarize the library announcement below for a neighborhood newsletter.
+Use exactly three bullet points.
+Include the new hours, the laptop rules, and the cost of late returns.
+Use only the information in the announcement.
 
 Announcement:
-Starting March 1, the Riverside Public Library will extend its weekday hours to 9 a.m. to 8 p.m. Weekend hours remain 10 a.m. to 5 p.m. The library will also begin lending laptops to cardholders aged 18 and older. Laptops may be borrowed for up to 7 days and cannot be renewed. Late returns are charged $5 per day. The program is funded by a two-year state grant.
+Starting March 1, the Riverside Public Library will extend its weekday hours to 9 a.m. to 8 p.m.
+Weekend hours remain 10 a.m. to 5 p.m. The library will also begin lending laptops to cardholders aged 18 and older.
+Laptops may be borrowed for up to 7 days and cannot be renewed. Late returns are charged $5 per day.
+The program is funded by a two-year state grant.
 ```
 
 **Step 1, before running:** a good answer must contain (a) weekday hours, (b) weekend hours, (c) who can borrow laptops, (d) loan length and no renewal, (e) the $5 daily late fee, in three bullets.
@@ -292,10 +318,15 @@ Notice also that the prompt already said "use only the information in the announ
 **Step 6, refining the prompt.** The weakest criterion is accuracy, and the errors cluster around hours and loan rules. One change:
 
 ```
-Summarize the library announcement below for a neighborhood newsletter. Use exactly three bullet points: one for the hours (list weekday and weekend hours separately), one for the laptop rules (who, how long, renewals), and one for late returns. Use only the information in the announcement. Do not add benefits, prices, or rules that are not stated.
+Summarize the library announcement below for a neighborhood newsletter.
+Use exactly three bullet points: one for the hours (list weekday and weekend hours separately), one for the laptop rules (who, how long, renewals), and one for late returns.
+Use only the information in the announcement. Do not add benefits, prices, or rules that are not stated.
 
 Announcement:
-Starting March 1, the Riverside Public Library will extend its weekday hours to 9 a.m. to 8 p.m. Weekend hours remain 10 a.m. to 5 p.m. The library will also begin lending laptops to cardholders aged 18 and older. Laptops may be borrowed for up to 7 days and cannot be renewed. Late returns are charged $5 per day. The program is funded by a two-year state grant.
+Starting March 1, the Riverside Public Library will extend its weekday hours to 9 a.m. to 8 p.m.
+Weekend hours remain 10 a.m. to 5 p.m. The library will also begin lending laptops to cardholders aged 18 and older.
+Laptops may be borrowed for up to 7 days and cannot be renewed. Late returns are charged $5 per day.
+The program is funded by a two-year state grant.
 ```
 
 The revision assigns each bullet a job, which makes omissions obvious, and it names the kind of addition that is forbidden. You would now run it, in a new conversation, and evaluate again.
