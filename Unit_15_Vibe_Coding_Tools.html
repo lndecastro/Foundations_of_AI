@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 15: Vibe Coding Tools &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_15_Vibe_Coding_Tools';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 16: Responsible AI" href="Unit_16_Responsible_AI.html" />
+    <link rel="prev" title="Unit 14: AI for Data Visualization" href="Unit_14_Data_Visualization.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Documents_and_Texts.html">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Presentations.html">Unit 11: Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Spreadsheets.html">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_Descriptive_Analysis.html">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_14_Data_Visualization.html">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_16_Responsible_AI.html">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_D_Prompt_Library.html">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_15_Vibe_Coding_Tools.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_15_Vibe_Coding_Tools.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 15: Vibe Coding Tools</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-what-vibe-coding-is">Part I — What Vibe Coding Is</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spectrum">1.1 The Spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-it-genuinely-works">1.2 Where It Genuinely Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-it-fails">1.3 Where It Fails</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-three-risks-specific-to-generated-code">Part II — Three Risks Specific to Generated Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-burden">2.1 Review Burden</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#license-and-provenance">2.2 License and Provenance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security">2.3 Security</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-22-instructor-led-the-shared-baseline">⚙️ Session 22 — Instructor-Led: The Shared Baseline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-the-group-tutorial-session-23">Part III — The Group Tutorial (Session 23)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">3.1 Assignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#format">3.2 Format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-common-task">3.3 The Common Task</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grading">3.4 Grading</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-two-evaluations-of-the-same-tool">💡 Example: Two Evaluations of the Same Tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-15-vibe-coding-tools">
+<h1>Unit 15: Vibe Coding Tools<a class="headerlink" href="#unit-15-vibe-coding-tools" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sessions 22–23 | Nov 02, 04 | Assessed as SE (Seminar): group tutorial, delivered in Session 23
+</pre></div>
+</div>
+<p>This unit works differently from every other unit in the course. Session 22 is a shared foundation delivered by the instructor; <strong>Session 23 is taught by you.</strong> Each group investigates one tool and delivers a short tutorial to the class.</p>
+<p>The format is deliberate. There are more of these tools than any one person can evaluate, they change every few months, and the durable skill is not knowing one of them — it is being able to assess an unfamiliar one quickly and honestly. You practice that by doing it.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Define what “vibe coding” describes and where it sits on a spectrum of AI coding assistance.</p></li>
+<li><p>Evaluate an AI coding tool against a structured rubric rather than an impression.</p></li>
+<li><p>Identify the license, security, and maintainability risks specific to generated code.</p></li>
+<li><p>Deliver a concise technical tutorial and defend your evaluation.</p></li>
+</ul>
+</section>
+<section id="part-i-what-vibe-coding-is">
+<h2>Part I — What Vibe Coding Is<a class="headerlink" href="#part-i-what-vibe-coding-is" title="Link to this heading">#</a></h2>
+<p>The term was coined in early 2025 to describe a way of working in which you describe what you want in natural language, accept what the system produces, and iterate by describing changes — without reading the generated code closely, or at all.</p>
+<p>Note what is distinctive. This is not “AI helps me write code.” It is <strong>not reading the code</strong> that defines the practice.</p>
+<section id="the-spectrum">
+<h3>1.1 The Spectrum<a class="headerlink" href="#the-spectrum" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Level</p></th>
+<th class="head text-left"><p>What you do</p></th>
+<th class="head text-left"><p>What you read</p></th>
+<th class="head text-left"><p>Appropriate for</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Completion</strong></p></td>
+<td class="text-left"><p>Type; accept suggestions</p></td>
+<td class="text-left"><p>Every line</p></td>
+<td class="text-left"><p>Production code</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Assisted</strong></p></td>
+<td class="text-left"><p>Describe a function; review carefully</p></td>
+<td class="text-left"><p>Every line</p></td>
+<td class="text-left"><p>Production code</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Delegated</strong></p></td>
+<td class="text-left"><p>Describe a feature; review the diff</p></td>
+<td class="text-left"><p>The diff</p></td>
+<td class="text-left"><p>Internal tools, with tests</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Vibe</strong></p></td>
+<td class="text-left"><p>Describe an outcome; accept and iterate</p></td>
+<td class="text-left"><p>Little or none</p></td>
+<td class="text-left"><p>Prototypes, throwaways, exploration</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each level is legitimate <strong>for its row</strong>. The professional failure is not using vibe coding; it is using it for the wrong row and not noticing you have. Code written at the vibe level and shipped to production is not a stylistic choice — it is unreviewed code in a system that someone depends on.</p>
+</div>
+</section>
+<section id="where-it-genuinely-works">
+<h3>1.2 Where It Genuinely Works<a class="headerlink" href="#where-it-genuinely-works" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Prototypes to be thrown away.</strong> If the artifact’s purpose is answering “would this be worth building?”, reading the code is wasted effort.</p></li>
+<li><p><strong>Exploratory analysis</strong> you will rewrite once you know what you are looking for.</p></li>
+<li><p><strong>Personal tools</strong> with one user and no consequences for failure.</p></li>
+<li><p><strong>Unfamiliar territory.</strong> Getting something running in a stack you do not know, before learning it properly.</p></li>
+</ul>
+</section>
+<section id="where-it-fails">
+<h3>1.3 Where It Fails<a class="headerlink" href="#where-it-fails" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Anything handling other people’s data.</strong> You cannot assess a security property of code you did not read.</p></li>
+<li><p><strong>Anything you will maintain.</strong> Unread code becomes legacy code the day it is written, without ever having been understood.</p></li>
+<li><p><strong>Anything with correctness requirements you cannot test.</strong> Tests are the only substitute for reading, and they only cover what you thought to test.</p></li>
+<li><p><strong>Anything with licensing exposure.</strong> Discussed below.</p></li>
+</ul>
+</section>
+</section>
+<section id="part-ii-three-risks-specific-to-generated-code">
+<h2>Part II — Three Risks Specific to Generated Code<a class="headerlink" href="#part-ii-three-risks-specific-to-generated-code" title="Link to this heading">#</a></h2>
+<p>This is the responsibility beat for Unit 15, and each risk is one your group must address in its tutorial.</p>
+<section id="review-burden">
+<h3>2.1 Review Burden<a class="headerlink" href="#review-burden" title="Link to this heading">#</a></h3>
+<p>Unit 6 named this: generation is fast, review is not, and review is the part that never scaled. A tool that produces 400 lines in ten seconds has not saved you time if reviewing 400 lines takes two hours — it has moved the work and made it less pleasant.</p>
+<p>The honest question for any tool is not “how fast does it generate?” but <strong>“what is the total time to a change I would defend in review?”</strong></p>
+</section>
+<section id="license-and-provenance">
+<h3>2.2 License and Provenance<a class="headerlink" href="#license-and-provenance" title="Link to this heading">#</a></h3>
+<p>Generated code is produced by models trained on public repositories, including copyleft-licensed ones. When a tool emits a substantial block closely resembling GPL-licensed source, the legal position is unsettled and actively litigated.</p>
+<p>Practical posture:</p>
+<ul class="simple">
+<li><p>Assume anything distinctive and non-trivial may have a provenance you cannot see.</p></li>
+<li><p>For anything commercial, check your organization’s policy — most now have one.</p></li>
+<li><p>Treat a generated implementation of a <em>well-known algorithm</em> differently from a generated implementation of <em>something oddly specific</em>. The second is likelier to be a near-copy of something particular.</p></li>
+</ul>
+</section>
+<section id="security">
+<h3>2.3 Security<a class="headerlink" href="#security" title="Link to this heading">#</a></h3>
+<p>Generated code reproduces the security properties of its training data, and public repositories are full of insecure patterns. The recurring ones: string-concatenated SQL, missing input validation, permissive CORS, secrets in source, outdated cryptographic choices, and dependencies that no longer exist or were never real.</p>
+<p>That last one has a name — <strong>slopsquatting</strong> — where an attacker registers a package name that models frequently hallucinate, so the fabricated import resolves to hostile code. Every generated dependency should be verified to exist before it is installed.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The security risk compounds with vibe coding specifically. At the completion or assisted level, you read the SQL string and see the concatenation. At the vibe level, nobody does — by definition. The practice that maximizes speed is the practice that removes the review step which would have caught the vulnerability.</p>
+</div>
+</section>
+</section>
+<section id="session-22-instructor-led-the-shared-baseline">
+<h2>⚙️ Session 22 — Instructor-Led: The Shared Baseline<a class="headerlink" href="#session-22-instructor-led-the-shared-baseline" title="Link to this heading">#</a></h2>
+<p>We build one small thing together at the delegated level, then examine what we got. The task is deliberately modest: a command-line tool that reads the sprint CSV from Unit 12 and reports completion rate by sprint with a threshold warning.</p>
+<p>Working through it, we will note:</p>
+<ol class="arabic simple">
+<li><p>How many prompts were needed to reach something runnable.</p></li>
+<li><p>What the generated code assumed that we never specified.</p></li>
+<li><p>Every dependency it introduced, and whether each actually exists.</p></li>
+<li><p>What a security review would flag.</p></li>
+<li><p>Whether the total time beat writing it directly.</p></li>
+</ol>
+<p>Item 2 is the one that repays attention. Generated code is full of unstated assumptions — encodings, date formats, error behavior, edge cases — and each one is a decision made on your behalf by a system optimizing for typicality.</p>
+</section>
+<section id="part-iii-the-group-tutorial-session-23">
+<h2>Part III — The Group Tutorial (Session 23)<a class="headerlink" href="#part-iii-the-group-tutorial-session-23" title="Link to this heading">#</a></h2>
+<section id="assignment">
+<h3>3.1 Assignment<a class="headerlink" href="#assignment" title="Link to this heading">#</a></h3>
+<p>Groups of three or four. <strong>Your tool will be assigned</strong>, not chosen — part of the exercise is evaluating something you did not pick. Assignments are posted in Canvas on Oct 28.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Verify access before you plan.</strong> Several of these tools have credit caps or trial limits that expire mid-project. Confirm your whole group can use the assigned tool within the free tier during the first 48 hours, and tell me immediately if not. Do not pay for anything for this assignment.</p>
+</div>
+</section>
+<section id="format">
+<h3>3.2 Format<a class="headerlink" href="#format" title="Link to this heading">#</a></h3>
+<p><strong>Seven minutes per group. Strictly enforced</strong> — three groups per session-half plus discussion, and the schedule has no slack.</p>
+<p>Every tutorial covers, in this order:</p>
+<ol class="arabic simple">
+<li><p><strong>What it is</strong> (1 min) — what the tool does, where it sits on the §1.1 spectrum, what it costs.</p></li>
+<li><p><strong>Live demo</strong> (2 min) — one task, start to finish. Pre-record as a fallback; live demos fail.</p></li>
+<li><p><strong>Where it broke</strong> (2 min) — the most valuable segment. What did you ask for that it got wrong? Show the actual output.</p></li>
+<li><p><strong>The three risks</strong> (1 min) — review burden, licensing posture, one security observation.</p></li>
+<li><p><strong>Verdict</strong> (1 min) — which row of the §1.1 table would you use this for, and which would you refuse?</p></li>
+</ol>
+</section>
+<section id="the-common-task">
+<h3>3.3 The Common Task<a class="headerlink" href="#the-common-task" title="Link to this heading">#</a></h3>
+<p>So the tutorials are comparable, every group gives its assigned tool this exact prompt, unmodified, as its opening request:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Build</span> <span class="n">a</span> <span class="n">single</span><span class="o">-</span><span class="n">page</span> <span class="n">web</span> <span class="n">application</span> <span class="n">that</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Loads</span> <span class="n">a</span> <span class="n">CSV</span> <span class="n">file</span> <span class="n">chosen</span> <span class="n">by</span> <span class="n">the</span> <span class="n">user</span> <span class="k">with</span> <span class="n">columns</span> <span class="n">date</span><span class="p">,</span> <span class="n">severity</span><span class="p">,</span> <span class="n">minutes_to_resolve</span><span class="o">.</span>
+<span class="mf">2.</span> <span class="n">Displays</span> <span class="n">the</span> <span class="n">distribution</span> <span class="n">of</span> <span class="n">minutes_to_resolve</span> <span class="n">broken</span> <span class="n">down</span> <span class="n">by</span> <span class="n">severity</span><span class="o">.</span>
+<span class="mf">3.</span> <span class="n">Lets</span> <span class="n">the</span> <span class="n">user</span> <span class="nb">set</span> <span class="n">a</span> <span class="n">threshold</span><span class="p">,</span> <span class="ow">and</span> <span class="n">flags</span> <span class="nb">any</span> <span class="n">severity</span> <span class="n">level</span> <span class="n">whose</span> <span class="n">median</span> <span class="n">exceeds</span> <span class="n">it</span><span class="o">.</span>
+
+<span class="n">Constraints</span><span class="p">:</span> <span class="n">runs</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">browser</span> <span class="k">with</span> <span class="n">no</span> <span class="n">backend</span><span class="o">.</span> <span class="n">No</span> <span class="n">paid</span> <span class="n">services</span><span class="o">.</span> <span class="n">Handle</span> <span class="n">a</span> <span class="n">CSV</span> <span class="k">with</span> <span class="n">quoted</span> <span class="n">commas</span><span class="p">,</span> <span class="n">blank</span> <span class="n">rows</span><span class="p">,</span> <span class="ow">and</span> <span class="n">mixed</span> <span class="n">date</span> <span class="n">formats</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Record: prompts needed to reach something <strong>runnable</strong>, prompts needed to reach something <strong>correct</strong>, every assumption it made that you never specified, and what broke first.</p>
+<p>Then run this against whatever it produced — it is the prompt that generates most of your §3.2 segment 3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Below is code generated by an AI tool. I did not write it and have not reviewed it. Tell me, in this order: (1) every assumption it makes about its inputs — encoding, format, ordering, nullability, size; (2) every external dependency it imports, and for each, whether that package actually exists on the public registry; (3) every place where untrusted input reaches a query, a file path, a shell command, or the DOM; (4) every error path that is silently swallowed. Do not tell me the code is good. Do not summarize what it does.
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Check each named dependency on the registry <strong>yourself</strong>. An assistant asked whether a package exists will often say yes, because packages usually do exist — which is exactly the slopsquatting failure from §2.3, reproduced one level up.</p>
+</div>
+<p>Appendix D.9 has both of these plus a licensing-posture prompt.</p>
+</section>
+<section id="grading">
+<h3>3.4 Grading<a class="headerlink" href="#grading" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Criterion</p></th>
+<th class="head text-left"><p>Weight</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Failure analysis — specific, reproduced, explained</p></td>
+<td class="text-left"><p><strong>35%</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Risk assessment — licensing, security, maintenance</p></td>
+<td class="text-left"><p>25%</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Demonstration quality and clarity</p></td>
+<td class="text-left"><p>20%</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Verdict, defended against questions</p></td>
+<td class="text-left"><p>20%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Note the weighting. <strong>A tutorial that only shows the tool working scores poorly.</strong> Every one of these tools has a demo that goes well; that is what the vendor’s marketing is for. Your contribution is the part the marketing omits.</p>
+</section>
+</section>
+<section id="example-two-evaluations-of-the-same-tool">
+<h2>💡 Example: Two Evaluations of the Same Tool<a class="headerlink" href="#example-two-evaluations-of-the-same-tool" title="Link to this heading">#</a></h2>
+<p><strong>Group A</strong> demonstrates a working app built in four minutes. Impressive. Verdict: “great tool, we’d use it for everything.”</p>
+<p><strong>Group B</strong> demonstrates the same app, then shows that the CSV parser silently drops rows with quoted commas, that the threshold config was hard-coded despite being asked for as configurable, that one suggested dependency did not exist on the registry, and that the date parsing assumed US format with no way to tell. Verdict: “delegated level for internal tools with tests; would not use for anything parsing untrusted input.”</p>
+<p>Group B used the tool less successfully and understood it far better. Group B scores higher, and Group B’s verdict is the one a team could actually act on.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>You can now produce a working application faster than you can read one.</p>
+<p>For your capstone — and for the first job you take — where will you draw the line between the rows of the §1.1 table? Write the rule down now, before you are under deadline pressure, because that is when the line moves.</p>
+</div></blockquote>
+<p><strong>Assessment.</strong> This unit is graded as the <strong>SE (Seminar)</strong> component. Submit slides plus a one-page written evaluation by Nov 04. Individual contribution is peer-assessed within the group.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Russell, S., &amp; Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em>, 4th Ed., Ch. 24. Pearson.</p></li>
+<li><p>Chen, M., et al. (2021). <em>Evaluating Large Language Models Trained on Code.</em> arXiv:2107.03374.</p></li>
+<li><p>Perry, N., et al. (2023). <em>Do Users Write More Insecure Code with AI Assistants?</em> ACM CCS.</p></li>
+<li><p>OWASP (2025). <em>Top 10 for Large Language Model Applications.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_14_Data_Visualization.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 14: AI for Data Visualization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_16_Responsible_AI.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 16: Responsible AI</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-what-vibe-coding-is">Part I — What Vibe Coding Is</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spectrum">1.1 The Spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-it-genuinely-works">1.2 Where It Genuinely Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-it-fails">1.3 Where It Fails</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-three-risks-specific-to-generated-code">Part II — Three Risks Specific to Generated Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#review-burden">2.1 Review Burden</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#license-and-provenance">2.2 License and Provenance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security">2.3 Security</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-22-instructor-led-the-shared-baseline">⚙️ Session 22 — Instructor-Led: The Shared Baseline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-the-group-tutorial-session-23">Part III — The Group Tutorial (Session 23)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">3.1 Assignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#format">3.2 Format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-common-task">3.3 The Common Task</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grading">3.4 Grading</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-two-evaluations-of-the-same-tool">💡 Example: Two Evaluations of the Same Tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
