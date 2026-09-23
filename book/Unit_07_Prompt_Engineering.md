@@ -18,6 +18,7 @@ After completing this unit, you will be able to:
 - Recognize and apply five common prompt types: instructional, role-based, chain-of-thought, zero-shot, and few-shot.
 - Improve a prompt through iteration, changing one thing at a time.
 - **Evaluate** a prompt-output pair using five quality criteria and check its factual claims.
+- Use reverse prompting and meta-prompting to analyze, write, and improve prompts.
 - Explain what context engineering is, how it differs from prompt engineering, and apply its main techniques.
 
 ---
@@ -353,7 +354,7 @@ The revision assigns each bullet a job, which makes omissions obvious, and it na
 
 Reverse prompting starts from an **output** and asks: *what prompt would have produced this?* It is not a prompt type; it is an analysis method. It trains you to see which features of a prompt produce which features of an answer.
 
-You can do it yourself, or ask the model to do it with a **meta-prompt** (a prompt about prompts):
+You can do it yourself, or ask the model to do it with a **meta-prompt** (a prompt about prompts; Section 2.8 covers meta-prompting in full):
 
 ```
 Here is an AI-generated output:
@@ -362,12 +363,63 @@ Here is an AI-generated output:
 2. Photograph your belongings and store the photos online.
 3. Pack a go-bag with medications, documents, water, and chargers.
 
-Your task is to reverse prompt this output. Propose three different prompts that could have generated it. For each one, explain which words in the prompt would produce the numbered format, the practical tone, and the focus on preparation before a storm. Then explain how changing the audience in each prompt would change the output.
+Your task is to reverse prompt this output.
+Propose three different prompts that could have generated it.
+For each one, explain which words in the prompt would produce the numbered format, the practical tone, and the focus on preparation before a storm.
+Then explain how changing the audience in each prompt would change the output.
 ```
 
 Compare the model's reconstructed prompts with your own guesses. Did either include a role? An audience? A number of items? Each feature you can explain is a feature you can now produce deliberately.
 
-### 2.8 How Much Checking Is Enough?
+### 2.8 Meta-Prompting: Using AI to Write and Improve Prompts
+
+A **meta-prompt** is a prompt whose subject is another prompt. Reverse prompting is one use of it: you give the model an output and ask for the prompt behind it. **Meta-prompting** is the broader practice of asking the model to help you **write, question, critique, or improve** a prompt before you use it.
+
+It works because the model has seen a great many instructions and requests, so it is good at noticing what a request leaves unsaid. It cannot, however, know facts about your situation that you have not given it. Meta-prompting helps you find the gaps; only you can fill them.
+
+**Use 1: Draft a prompt from a goal.** Describe what you want to achieve and ask the model to write the prompt.
+
+```
+I volunteer at an animal shelter. Every week I write short online profiles for dogs available for adoption, and I want an AI assistant to draft them for me from my notes. Write a prompt I can reuse for this task. The prompt must contain the four components of a prompt: an instruction, context, a place for the input data, and an output format. Explain in one sentence why you chose each component.
+```
+
+**Use 2: Let the model interview you first.** Ask the model to question you before it writes anything. This is the most effective way to discover the context you forgot to give.
+
+```
+I want to write a prompt that helps me prepare for a job interview for a part-time position at a local bank. Before you write the prompt, ask me up to five questions about anything you would need to know to make it effective. Ask the questions one at a time and wait for my answer to each. After the last answer, write the complete prompt.
+```
+
+**Use 3: Critique and improve an existing prompt.** Paste a prompt and ask the model to evaluate it against the criteria from Section 2.2 before you run it.
+
+```
+Here is a prompt I plan to use:
+
+"Summarize the library announcement below for a neighborhood newsletter. Use exactly three bullet points. Include the new hours, the laptop rules, and the cost of late returns. Use only the information in the announcement."
+
+Do not answer the prompt. Instead, evaluate it as a prompt. For each of these criteria, explain how the prompt could lead to a weak output: relevance, completeness, clarity, factual accuracy, and format. Then write an improved version and list each change you made with the reason for it.
+```
+
+This is the first prompt from the worked example in Section 2.4. Compare the model's critique with what actually went wrong there: the merged weekday and weekend hours, the wrong loan period, and the invented "free" claim. Did the critique anticipate those failures, or only generic ones?
+
+| | Reverse prompting | Meta-prompting |
+| :--- | :--- | :--- |
+| Starts from | An output | A goal or an existing prompt |
+| Produces | Possible prompts that could have generated the output | A new or improved prompt, or questions about it |
+| Main use | Understanding why prompts produce what they produce | Writing and improving your own prompts |
+
+```{warning}
+A prompt written by a model is still a **draft**, and it needs the same evaluation as any other prompt. Watch for three common problems. It may contain placeholders such as [insert details], which you must fill in or delete. It may add requirements you never wanted, such as a word count or a tone. And it can only include the context you supplied, so a polished-looking prompt can still be missing the one fact that matters. Run the improved prompt, evaluate its output with Section 2.3, and compare it with your own version before you adopt it.
+```
+
+### Exercise 2: Meta-Prompting
+
+1. Choose a task you actually do: writing to a professor, planning a trip, preparing a presentation, or summarizing readings.
+2. Write your own prompt for it first, without help.
+3. In a new conversation, use the interview-first meta-prompt (Use 2), adapted to your task, and answer the model's questions.
+4. Run both prompts, each in its own new conversation, and score both outputs with the five criteria.
+5. Which prompt won? Which questions from the model revealed context you had left out?
+
+### 2.9 How Much Checking Is Enough?
 
 Not every output deserves the same scrutiny. Match the effort to the cost of an error.
 
@@ -597,7 +649,7 @@ Writing the same role and reference context into every conversation is tedious. 
 3. In the worked example of Section 2.4, the prompt said "use only the information in the announcement" and the model still added a claim. What does that imply about how much any prompt can guarantee?
 4. A well-engineered prompt makes the output more likely to be **what you asked for**. Does it make it more likely to be **correct**? Are those the same thing?
 
-**Connecting to HW7 (Prompt Iteration Log):** choose one real task from your own life, studies, or intended career. Write an initial prompt and then five successive revisions, changing one thing each time and running each in a new conversation. For each version, record what you changed and why, the five criterion scores, and any claims you checked. Your final version must use at least two context engineering techniques from Section 3.3; name them. End with the AI Disclosure statement required by the syllabus. The log is graded, not the final prompt.
+**Connecting to HW7 (Prompt Iteration Log):** choose one real task from your own life, studies, or intended career. Write an initial prompt and then five successive revisions, changing one thing each time and running each in a new conversation. For each version, record what you changed and why, the five criterion scores, and any claims you checked. At least one revision must come from a meta-prompt (Section 2.8); record what the model changed and which changes you kept. Your final version must use at least two context engineering techniques from Section 3.3; name them. End with the AI Disclosure statement required by the syllabus. The log is graded, not the final prompt.
 
 ## 📘 Further Reading
 
@@ -606,9 +658,8 @@ Writing the same role and reference context into every conversation is tedious. 
 - Mollick, E., & Mollick, L. R. (2024). _Co-Intelligence: Living and Working with AI_. Portfolio.
 - Prompt Engineering Guide. [https://www.promptingguide.ai/](https://www.promptingguide.ai/)
 - White, J. et al. (2023). _A Prompt Pattern Catalog to Enhance Prompt Engineering with ChatGPT_. arXiv:2302.11382. [https://arxiv.org/abs/2302.11382](https://arxiv.org/abs/2302.11382)
+- Zhou, Y. et al. (2023). _Large Language Models Are Human-Level Prompt Engineers_. arXiv:2211.01910. [https://arxiv.org/abs/2211.01910](https://arxiv.org/abs/2211.01910)
 - Wei, J. et al. (2022). _Chain-of-Thought Prompting Elicits Reasoning in Large Language Models_. arXiv:2201.11903. [https://arxiv.org/abs/2201.11903](https://arxiv.org/abs/2201.11903)
 - Lewis, P. et al. (2020). _Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks_. arXiv:2005.11401. [https://arxiv.org/abs/2005.11401](https://arxiv.org/abs/2005.11401)
 - Anthropic (2025). _Effective Context Engineering for AI Agents_. [https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
 - Dendritic Institute (2025). _AI Literacy Series — Module 5: Fundamentals of Prompt Engineering_ and _Module 6: Context Engineering_.
-
-
