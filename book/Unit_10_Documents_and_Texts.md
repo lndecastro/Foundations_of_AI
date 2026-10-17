@@ -1,7 +1,7 @@
 # Unit 10: Documents and Texts
 
 ```
-Session 16 | Oct 12 | HW10 (Office Portfolio) assigned Oct 12, due Oct 21
+Session 16 | Oct 19 | HW10 (Office Portfolio) assigned Oct 19, due Oct 25
 ```
 
 Part IV covers the three document types that consume most professional working hours: text, slides, and spreadsheets. By this point in the course you already know how to write a good prompt. This unit is not about prompting. It is about what happens **after** the prompt: whether the output has the structure you asked for, whether it says only what the source says, and whether you can prove either of those things.
@@ -37,7 +37,7 @@ Every task in this unit is a transformation: code into documentation, a flat doc
 
 ### 1.2 Four Things AI Can Do with a Document
 
-The examples below come from the *AI for Everyday Life* program ([Module 2, Part I](https://lndecastro.github.io/AI4EL/Module2_Daily_Assistant.html#ai-for-documents-reading-summarizing-and-creating)). Use the paper on Transfer Learning in Bioinspired Algorithms linked there, or any paper from your capstone domain.
+AI is extraordinarily useful for working with longer-form written content, such as reports, articles, meeting notes, policy documents, proposals, and more. To illustrate, consider the paper about the use of Transfer Learning in Bioinspired Algorithms authored by Rita Xavier and Dr. Leandro de Castro, published in the Artificial Intelligence Reviews: [Download the paper](.Data/TLBIA_AIR.pdf). Use the paper on Transfer Learning or any paper from your capstone domain.
 
 **Summarizing.** The most familiar use, and the least informative.
 
