@@ -92,9 +92,6 @@ General-purpose assistants (Claude, ChatGPT, Gemini, Copilot) handle most of thi
 | Microsoft Copilot in Word | Editing inside Word | Works on the open document directly, including styles and comments. |
 | Grammarly / Wordtune | Sentence-level rewriting | Real-time suggestions as you type; does not restructure a document. |
 
-```{note}
-The *AI for Everyday Life* program walks through NotebookLM and SciSpace using two related documents: the public *Dietary Guidelines for Americans 2020–2025* ([PDF](https://lndecastro.github.io/AI4EL/_downloads/7f743efcbccc5626a42b83a272abd138/DGA.pdf)) and the 835-page *Scientific Report of the 2020 Dietary Guidelines Advisory Committee* ([PDF](https://lndecastro.github.io/AI4EL/_downloads/3e5aa81aace68cf6e9567f2a9dfb10cd/ScientificReport_of_the_2020.pdf)). Upload both to one NotebookLM notebook and ask: *"Where does the public guideline simplify, omit, or go beyond what the scientific report found?"* This is a take-home activity (see the session plan below).
-```
 
 ## Part II — Documenting Code
 
@@ -116,7 +113,10 @@ For each function below, write:
 2. Inline comments on any line whose purpose is not obvious.
 3. A "Caveats" list naming every assumption the function makes about its input: units, missing values, duplicates, ordering, empty input.
 
-Rules: Document only behavior visible in the code. Where a description comes from a function or variable name rather than from the logic, mark it [INFERRED FROM NAME]. Where the behavior on an edge case is unclear, mark it [UNCLEAR] rather than guessing. Then, for each function, give one example call and its exact output.
+Rules: Document only behavior visible in the code.
+Where a description comes from a function or variable name rather than from the logic, mark it [INFERRED FROM NAME].
+Where the behavior on an edge case is unclear, mark it [UNCLEAR] rather than guessing.
+Then, for each function, give one example call and its exact output.
 
 def bmi(weight, height):
     return round(weight / (height ** 2), 1)
@@ -155,6 +155,105 @@ Each function hides something that a name-based reading will miss. Do not read t
 **Verify:** run each example call the AI gave you in Colab. Any example whose stated output does not match the real output means the documentation was written from the names.
 
 The `average_score` case is the important one. Documentation that says "returns the average of the scores" is not a small inaccuracy. It hides a behavior that changes students' grades, and the next person to maintain the code will trust the docstring instead of reading the loop.
+
+### Using Context Engineering
+To avoid the problems described above, it is important to provide the LLM with the necessary software engineering context.
+
+```
+You are a Python code documentation specialist.
+Your task is to document Python functions for a colleague who understands Python but has never seen this code.
+
+**Your primary objective is behavioral accuracy, not interpretation of the programmer's intentions.**
+
+For each function, produce:
+
+1. **Docstring**, containing:
+   - **Purpose:** Describe precisely what the function computes or performs, based exclusively on its executable logic.
+   - **Parameters:** Describe each parameter's required operations, supported types or type constraints, and units (only when explicitly established by the code).
+   - **Returns:** Describe the actual returned value, its type when determinable, and how it is constructed.
+   - **Raises:** Identify exceptions that can be established from the code, including the conditions that trigger them.
+
+2. **Inline comments:** Add comments only where they clarify non-obvious operations, control flow, side effects, overwriting, filtering, or ordering behavior. Do not merely restate Python syntax.
+
+3. **Caveats:** Explicitly examine:
+   - Units and measurement assumptions.
+   - Missing values, `None`, `NaN`, and falsy values.
+   - Duplicates and repeated values.
+   - Input and output ordering.
+   - Empty inputs and zero denominators.
+   - Type constraints and implicit conversions.
+   - Boundary conditions and unvalidated assumptions.
+   
+   Distinguish between assumptions the implementation actually makes and conditions it does not validate. Mark categories that do not apply as "Not applicable."
+
+4. **Example:** Provide one executable example call and its exact output, consistent with the original implementation.
+
+### Strict rules
+
+**Rule 1 — Executable code is the source of truth.**
+Derive every behavioral claim from expressions, operators, branches, loops, indexing, assignments, built-in functions, and return statements.
+Do not infer functionality from the function's name, parameter names, variable names, comments, or presumed application domain.
+
+**Rule 2 — Separate observed behavior from inferred intent.**
+If you include a semantic interpretation supported only by a name or contextual clue, explicitly label it `[INFERRED FROM NAME]`.
+Prefer omitting such interpretations entirely when they do not improve understanding of the actual implementation.
+
+**Rule 3 — Do not invent guarantees or requirements.**
+Do not assume input units, data validation, missing-value handling, accepted ranges, sorting, uniqueness, or error handling unless the implementation establishes them.
+Do not equate an operation's effect with its presumed intent.
+
+**Rule 4 — Be precise about types and exceptions.**
+Distinguish between types explicitly enforced by the code and types that merely support the required operations.
+Identify exceptions and output types only when they follow from the implementation and stated input conditions.
+Account for relevant Python language and standard-library behavior.
+
+**Rule 5 — Mark genuine uncertainty.**
+Use `[UNCLEAR]` when behavior depends on unspecified custom types, external state, dependencies, or Python versions.
+Do not mark behavior unclear when it is determinable from standard Python semantics.
+
+**Rule 6 — Preserve implementation.**
+Do not change executable statements, variable names, expressions, conditionals, or return values. Add only docstrings and comments.
+If you identify a potential defect, document its observable consequences under Caveats rather than silently fixing it.
+
+**Rule 7 — Verify every claim.**
+Before finalizing each function:
+- Trace the executable operations independently of all identifiers.
+- Check that every statement in the documentation is supported by those operations.
+- Test mentally or execute the example using the original implementation.
+- Confirm that the documented edge cases, exception conditions, and return behavior match the code.
+- Remove or qualify any claim that cannot be justified by the implementation.
+
+### Output format
+
+For each function, provide:
+1. The original function with its new docstring and inline comments.
+2. A Caveats section.
+3. One example call with its exact output.
+
+Do not propose improvements or refactor the code unless explicitly requested.
+
+### Code to document
+
+python
+def bmi(weight, height):
+    return round(weight / (height ** 2), 1)
+
+def remove_duplicates(records):
+    seen = {}
+    for r in records:
+        key = r["email"].strip().lower()
+        seen[key] = r
+    return list(seen.values())
+
+def average_score(scores):
+    total = 0
+    count = 0
+    for s in scores:
+        if s:
+            total += s
+            count += 1
+    return total / count
+```
 
 ## Part III — Structuring a Word Document
 
