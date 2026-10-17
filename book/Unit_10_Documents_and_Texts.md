@@ -42,13 +42,17 @@ AI is extraordinarily useful for working with longer-form written content, such 
 **Summarizing.** The most familiar use, and the least informative.
 
 ```
-Summarize the attached paper in five bullet points for a reader who works in industry and has no background in optimization. Focus on what the authors claim, not on how the paper is organized. After the bullets, list any claim in your summary that is not stated explicitly in the paper but that you inferred.
+Summarize the attached paper in five bullet points for a reader who works in industry and has no background in natural computing.
+Focus on what the authors claim, not on how the paper is organized.
+After the bullets, list any claim in your summary that is not stated explicitly in the paper but that you inferred.
 ```
 
 **Targeted extraction.** Far more useful, because the answer can be checked.
 
 ```
-Answer the three questions below using only the attached paper. For each answer, give the section number and quote the sentence that supports it. If the paper does not answer a question, write "Not addressed in the paper" and stop.
+Answer the three questions below using only the attached paper.
+For each answer, give the section number and quote the sentence that supports it.
+If the paper does not answer a question, write "Not addressed in the paper" and stop.
 
 1. How do the authors define transfer learning?
 2. Which families of bioinspired algorithms do they review?
@@ -58,7 +62,8 @@ Answer the three questions below using only the attached paper. For each answer,
 **Explaining specialist language.** Useful when the stakes of misreading are real.
 
 ```
-Explain the paragraph below in plain English for a tenant with no legal background. Then list every obligation it places on the tenant as a separate bullet, and state what would happen if the tenant ignored each one.
+Explain the paragraph below in plain English for a tenant with no legal background.
+Then list every obligation it places on the tenant as a separate bullet, and state what would happen if the tenant ignored each one.
 
 "Notwithstanding any other provision of this Agreement, Tenant shall indemnify, defend, and hold harmless Landlord and its respective officers, directors, employees, agents, successors, and assigns from and against any and all claims, damages, losses, costs, and expenses, including reasonable attorneys' fees, arising out of or related to Tenant's use or occupancy of the Premises, any breach or default by Tenant under this Agreement, or any act or omission of Tenant or Tenant's agents, employees, contractors, or invitees."
 ```
