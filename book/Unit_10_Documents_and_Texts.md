@@ -263,7 +263,8 @@ AI can repair this, and it can do it with **tracked changes**, so that every edi
 
 ### 3.1 The Prompt
 
-Attach a Word document (.docx) to an assistant that can read and write files (Claude, ChatGPT, or Copilot in Word), then send:
+Attach the Word document below to an assistant that can read and write files (Claude, ChatGPT, or Copilot in Word), then runthe following prompt:
+[Word document](../Data/word_document_editing_test.docx)
 
 ```
 I have attached a Word document. Return a revised .docx file with the following changes.
