@@ -312,10 +312,12 @@ Use the structured document you produced in Part III as the input. The work you 
 ```
 I have attached a Word document. Convert it into a LaTeX project that compiles in Overleaf with pdfLaTeX, without errors.
 
-Deliver:
+Deliver a single .zip file that I can upload to Overleaf with New Project > Upload Project, containing:
 1. main.tex using the article class.
 2. refs.bib containing every reference in the document as a BibTeX entry, cited in the text with \cite.
-3. A list of the image files I need to upload to Overleaf, with the exact file names main.tex expects.
+3. A folder named figures/ containing every image extracted from the Word document, with the exact file names main.tex expects.
+
+Before giving me the .zip, confirm that every file named in an \includegraphics command exists in the figures/ folder.
 
 Conversion rules:
 - Word headings become \section, \subsection, and \subsubsection.
@@ -330,11 +332,15 @@ After the files, list anything in the Word document you could not convert faithf
 
 ### 4.2 What to Check
 
-1. **Compile.** Create a blank Overleaf project, upload `main.tex`, `refs.bib`, and the images, and compile. Every error message is a conversion failure. Paste the error back into the assistant and ask for the fix, but record each one.
+1. **Compile.** In Overleaf, choose New Project > Upload Project, select the .zip, and compile. Open the `figures/` folder and confirm that it contains every image from the Word document. Every error message is a conversion failure. Paste the error back into the assistant and ask for the fix, but record each one.
 2. **Cross-references.** Search the PDF for `??`. Each one is a `\ref` or `\cite` that points at nothing.
 3. **Counts.** Number of sections, figures, tables, equations, and references in the PDF must match the Word document exactly.
 4. **Equations.** Compare every equation symbol by symbol with the original. This is where conversions fail most quietly: a missing exponent or a swapped subscript compiles perfectly.
 5. **Text.** Pick three paragraphs at random and compare them word for word with the original.
+
+```{note}
+Some assistants cannot create .zip files, especially on free plans. In that case, ask for main.tex and refs.bib as separate files, and extract the images yourself: make a copy of the .docx, rename it to .zip, open it, and copy the files from the `word/media` folder into a `figures/` folder in Overleaf. Check that their names match the `\includegraphics` commands in main.tex.
+```
 
 ```{tip}
 **Going further.** [Pandoc](https://pandoc.org), a free conversion tool, can also convert Word to LaTeX, deterministically and with no AI involved. In Colab, upload your .docx and run `!pandoc input.docx -s -o pandoc.tex --extract-media=.` Compare the two outputs: which handles equations better, which handles references better, and which makes errors you would not notice without checking? The point is not that one tool wins. A deterministic tool always makes the same mistakes; an LLM may make different ones each time.
