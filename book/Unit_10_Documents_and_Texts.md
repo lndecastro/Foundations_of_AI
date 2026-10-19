@@ -37,7 +37,7 @@ Every task in this unit is a transformation: code into documentation, a flat doc
 
 ### 1.2 Four Things AI Can Do with a Document
 
-AI is extraordinarily useful for working with longer-form written content, such as reports, articles, meeting notes, policy documents, proposals, and more. To illustrate, consider the paper about the use of Transfer Learning in Bioinspired Algorithms authored by Rita Xavier and Dr. Leandro de Castro, published in the Artificial Intelligence Reviews: [Download the paper](.Data/TLBIA_AIR.pdf). Use the paper on Transfer Learning or any paper from your capstone domain.
+AI is extraordinarily useful for working with longer-form written content, such as reports, articles, meeting notes, policy documents, proposals, and more. To illustrate, consider the paper about the use of Transfer Learning in Bioinspired Algorithms authored by Rita Xavier and Dr. Leandro de Castro, published in the Artificial Intelligence Reviews: [Download the paper](./Data/TLBIA_AIR.pdf). Use the paper on Transfer Learning or any paper from your capstone domain.
 
 **Summarizing.** The most familiar use, and the least informative.
 
