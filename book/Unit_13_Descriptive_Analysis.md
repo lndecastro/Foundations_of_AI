@@ -1,20 +1,20 @@
 # Unit 13: AI for Descriptive Analysis
 
 ```
-Sessions 19–20 | Oct 21, 26 | HW11 assigned Oct 28, due Nov 04
+Sessions 19–20 | Oct 26, 28 | HW11 assigned Oct 28, due Nov 04
 ```
 
-Part V is where the course turns back toward computing. Units 10 through 12 used AI on documents; Units 13 through 15 use it on data and code. The skills are related but the stakes rise, because a wrong number in an analysis propagates into every conclusion drawn from it.
+Units 13 through 15 use AI on data and code. The skills are related but the stakes rise, because a wrong number in an analysis propagates into every conclusion drawn from it.
 
-**Exploratory data analysis** is what you do before modeling: look at the data, understand its shape, find what is broken. Unit 3 told you preprocessing consumes the largest share of effort in an AI project. This unit is that share.
+**Exploratory data analysis** is what you do before inference: look at the data, understand its characteristics, perform a descriptive analysis, visualize, and then build stories and dashboards. Unit 3 told you preprocessing may consume the largest share of effort in an AI project. 
 
-The specific opportunity is that AI is genuinely excellent at the mechanical parts of EDA — generating the right summary code, suggesting what to check next, explaining an unfamiliar statistic — and genuinely poor at the part that matters, which is deciding what the numbers mean.
+The specific opportunity is that AI is genuinely excellent at the mechanical parts of EDA, generating the right summary code, suggesting what to check next, explaining an unfamiliar statistic, and genuinely poor at the part that matters, which is deciding what the numbers mean.
 
 ## Learning Objectives
 
 After completing this unit, you will be able to:
 
-- Describe where EDA fits in the data science workflow and why it precedes modeling.
+- Describe where EDA fits in the data science workflow and why it precedes inference.
 - Compute and **interpret** distributions, central tendency, dispersion, and association.
 - Use AI to accelerate EDA while retaining responsibility for every claim.
 - Recognize when a summary statistic conceals more than it reveals.
@@ -23,13 +23,9 @@ After completing this unit, you will be able to:
 
 Exploratory data analysis, in Tukey's original framing, is detective work: you approach data without a hypothesis to confirm, looking for what is there.
 
-**EDA is:** examining distributions, spotting anomalies and missing values, discovering relationships, forming hypotheses, and deciding whether the data can answer the question at all.
+**EDA is:** examining distributions, spotting anomalies and missing values, discovering relationships, forming hypotheses, and deciding whether the data can answer the questions at all.
 
-**EDA is not:** confirming what you already believe, generating charts to decorate a report, or a step to skip when the deadline is close.
-
-```{note}
-The most valuable outcome of EDA is sometimes the conclusion that **the data cannot answer the question**. This is a real result and a professionally difficult one to deliver. It is also the outcome an AI assistant is least likely to volunteer, because "here is an analysis" is a far more typical continuation than "you should not proceed."
-```
+**EDA is not:** making inferences, predictions, or generalizing from data.
 
 ### 1.1 Where It Fits
 
@@ -80,7 +76,25 @@ A Pearson correlation near zero does **not** mean no relationship. It means no *
 
 ## ⚙️ Hands-On: A Complete Descriptive Pass
 
-We use the diabetes dataset bundled with scikit-learn — 442 patients, ten baseline measurements, and a quantitative disease-progression score one year later.
+We use the diabetes dataset bundled with scikit-learn. This dataset comes from Efron, Hastie, Johnstone, and Tibshirani (2004), *Least Angle Regression*, Annals of Statistics, 32(2), 407–499. It contains **442 patients**, each described by **ten baseline measurements**. The target is a **quantitative measure of disease progression one year after baseline**. The original data is available at the [NCSU repository](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.tab.txt); see also the [scikit-learn documentation](https://scikit-learn.org/stable/datasets/toy_dataset.html#diabetes-dataset).
+
+| Column | Meaning |
+|---|---|
+| `age` | Age in years |
+| `sex` | Sex (coded 1/2 in the raw data) |
+| `bmi` | Body mass index |
+| `bp` | Average blood pressure |
+| `s1` | Total serum cholesterol (tc) |
+| `s2` | Low-density lipoproteins (ldl) |
+| `s3` | High-density lipoproteins (hdl) |
+| `s4` | Total cholesterol / HDL ratio (tch) |
+| `s5` | Possibly the log of serum triglycerides (ltg) |
+| `s6` | Blood sugar level (glu) |
+| `target` | Disease progression one year after baseline (renamed `progression` in this unit) |
+
+Note
+
+By default, `load_diabetes()` returns the ten features **mean-centered and scaled** so that the sum of squares of each column equals 1. The original units are not visible in this version. To see them, call `load_diabetes(as_frame=True, scaled=False)`.
 
 ```python
 import numpy as np
@@ -129,7 +143,7 @@ Three things are worth noticing in this output.
 
 This is the kind of thing EDA exists to catch, and it is invisible if you go straight to modeling.
 
-**The `diff` column** shows where Spearman and Pearson disagree. A large gap signals a monotonic but non-linear relationship — the variable matters, but not in a straight line.
+**The `diff` column** shows where Spearman and Pearson disagree. A large gap signals a monotonic but non-linear relationship; the variable matters, but not in a straight line.
 
 **Nothing here tells you what to do.** The numbers are facts about the file. Whether the strongest correlate is clinically actionable, confounded, or an artifact of how patients entered this study is not in the data, and no amount of further computation will put it there.
 
