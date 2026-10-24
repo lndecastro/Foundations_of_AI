@@ -1,0 +1,1493 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 7: Prompt Engineering and Context Engineering &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_07_Prompt_Engineering';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 8: AI Workspaces and Assistants" href="Unit_08_Workspaces_and_Assistants.html" />
+    <link rel="prev" title="Unit 6: AI Applications Across Domains" href="Unit_06_AI_Applications.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Documents_and_Texts.html">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Presentations.html">Unit 11: Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Spreadsheets.html">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_Descriptive_Analysis.html">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_14_Data_Visualization.html">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_15_Vibe_Coding_Tools.html">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_16_Responsible_AI.html">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_D_Prompt_Library.html">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_07_Prompt_Engineering.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_07_Prompt_Engineering.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 7: Prompt Engineering and Context Engineering</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-prompt-engineering">Part I — Prompt Engineering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-prompt-engineering">1.1 What Is Prompt Engineering?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-prompt">1.2 Anatomy of a Prompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-deconstruct-this-prompt">Exercise 1: Deconstruct This Prompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#five-common-prompt-types">1.3 Five Common Prompt Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration-the-first-prompt-is-a-draft">1.4 Iteration: The First Prompt Is a Draft</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-1-improving-a-prompt-one-step-at-a-time">⚙️ Hands-On 1: Improving a Prompt One Step at a Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-evaluating-prompts-and-outputs">Part II — Evaluating Prompts and Outputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-looks-good-is-not-an-evaluation">2.1 Why “It Looks Good” Is Not an Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#five-criteria-for-a-prompt-output-pair">2.2 Five Criteria for a Prompt-Output Pair</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-evaluate-a-six-step-procedure">2.3 How to Evaluate: A Six-Step Procedure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example">2.4 Worked Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques-to-reduce-and-detect-hallucinations">2.5 Techniques to Reduce and Detect Hallucinations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-a-prompt">2.6 Troubleshooting a Prompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverse-prompting-analyzing-prompts-backwards">2.7 Reverse Prompting: Analyzing Prompts Backwards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meta-prompting-using-ai-to-write-and-improve-prompts">2.8 Meta-Prompting: Using AI to Write and Improve Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-meta-prompting">Exercise 2: Meta-Prompting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-checking-is-enough">2.9 How Much Checking Is Enough?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-2-evaluate-an-output">⚙️ Hands-On 2: Evaluate an Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-context-engineering">Part III — Context Engineering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-context-engineering">3.1 What Is Context Engineering?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-context-matters-the-context-window">3.2 Why Context Matters: The Context Window</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-techniques-in-context-engineering">3.3 Key Techniques in Context Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-engineering-vs-context-engineering">3.4 Prompt Engineering vs. Context Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example-from-prompt-to-context">3.5 Worked Example: From Prompt to Context</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-3-from-prompt-engineering-to-context-engineering">⚙️ Hands-On 3: From Prompt Engineering to Context Engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">💡 Looking Ahead</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-7-prompt-engineering-and-context-engineering">
+<h1>Unit 7: Prompt Engineering and Context Engineering<a class="headerlink" href="#unit-7-prompt-engineering-and-context-engineering" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sessions 11–12 | Sep 23, 28 | HW7 assigned Sep 28, due Oct 05
+</pre></div>
+</div>
+<p>Part III begins here. For six units you have studied what artificial intelligence is and how machines learn. From now on we focus on <strong>using</strong> generative AI well. Most of what you do in Units 8 through 15 rests on the skills developed in this unit.</p>
+<p>The skill is simple to state and hard to master: an AI model responds based on what you tell it. Initially it does not know who you are, who the answer is for, what you already tried, or what “good” means to you. <strong>Prompt engineering</strong> is the practice of saying clearly what you want. <strong>Context engineering</strong> is the practice of giving the model everything it needs to know in order to deliver it.</p>
+<p>This unit follows the same concepts and terminology as <strong>Modules 5 and 6 of the Dendritic Institute AI Literacy Program</strong>. If you complete that program, you will recognize every term used here.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Explain the purpose of prompt engineering and identify the four components of a prompt.</p></li>
+<li><p>Recognize and apply five common prompt types: instructional, role-based, chain-of-thought, zero-shot, and few-shot.</p></li>
+<li><p>Improve a prompt through iteration, changing one thing at a time.</p></li>
+<li><p><strong>Evaluate</strong> a prompt-output pair using five quality criteria and check its factual claims.</p></li>
+<li><p>Use reverse prompting and meta-prompting to analyze, write, and improve prompts.</p></li>
+<li><p>Explain what context engineering is, how it differs from prompt engineering, and apply its main techniques.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="part-i-prompt-engineering">
+<h2>Part I — Prompt Engineering<a class="headerlink" href="#part-i-prompt-engineering" title="Link to this heading">#</a></h2>
+<section id="what-is-prompt-engineering">
+<h3>1.1 What Is Prompt Engineering?<a class="headerlink" href="#what-is-prompt-engineering" title="Link to this heading">#</a></h3>
+<p>Prompt engineering is the practice of crafting effective inputs (prompts) for large language models (LLMs) so that they produce accurate, relevant, and useful outputs.</p>
+<p>It is not programming. You communicate in natural language, but you do it <strong>strategically</strong>: every word you add either removes a guess the model would otherwise make, or it adds noise.</p>
+<p>Compare these two requests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Write</span> <span class="n">something</span> <span class="n">about</span> <span class="n">hurricanes</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Write</span> <span class="n">a</span> <span class="n">one</span><span class="o">-</span><span class="n">paragraph</span> <span class="n">explanation</span> <span class="n">of</span> <span class="n">how</span> <span class="n">to</span> <span class="n">prepare</span> <span class="n">a</span> <span class="n">home</span> <span class="k">for</span> <span class="n">a</span> <span class="n">hurricane</span><span class="p">,</span> <span class="k">for</span> <span class="n">a</span> <span class="n">family</span> <span class="n">that</span> <span class="n">has</span> <span class="n">just</span> <span class="n">moved</span> <span class="n">to</span> <span class="n">Florida</span> <span class="kn">from</span><span class="w"> </span><span class="nn">a</span> <span class="n">state</span> <span class="n">without</span> <span class="n">hurricanes</span><span class="o">.</span>
+<span class="n">Use</span> <span class="n">plain</span> <span class="n">language</span> <span class="ow">and</span> <span class="n">end</span> <span class="k">with</span> <span class="n">the</span> <span class="n">single</span> <span class="n">most</span> <span class="n">important</span> <span class="n">action</span> <span class="n">to</span> <span class="n">take</span> <span class="n">before</span> <span class="n">June</span> <span class="mf">1.</span>
+</pre></div>
+</div>
+<p>The first prompt forces the model to guess the topic, the audience, the length, and the purpose. The second removes all four guesses. Neither prompt uses special syntax; the difference is entirely in how clearly the request is described.</p>
+</section>
+<section id="anatomy-of-a-prompt">
+<h3>1.2 Anatomy of a Prompt<a class="headerlink" href="#anatomy-of-a-prompt" title="Link to this heading">#</a></h3>
+<p>A good prompt typically has four components. Only the first is always required, but you should know which ones you left out and why.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Component</p></th>
+<th class="head text-left"><p>What it answers</p></th>
+<th class="head text-left"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>1. Instruction</strong></p></td>
+<td class="text-left"><p>What should the model do?</p></td>
+<td class="text-left"><p>“Rewrite the instructions below in plain language.”</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>2. Context</strong> (optional)</p></td>
+<td class="text-left"><p>What background or perspective should it use?</p></td>
+<td class="text-left"><p>“They are for my 82-year-old grandmother, who is not familiar with medical terms.”</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>3. Input Data</strong> (optional)</p></td>
+<td class="text-left"><p>What text, question, or file should it work on?</p></td>
+<td class="text-left"><p>The pharmacy label text pasted below the request.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>4. Output Format</strong> (optional)</p></td>
+<td class="text-left"><p>What shape should the answer take?</p></td>
+<td class="text-left"><p>“A numbered list of no more than five items, each under 12 words.”</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Here is the complete prompt built from those four components:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Rewrite</span> <span class="n">the</span> <span class="n">pharmacy</span> <span class="n">instructions</span> <span class="n">below</span> <span class="ow">in</span> <span class="n">plain</span> <span class="n">language</span><span class="o">.</span>
+<span class="n">They</span> <span class="n">are</span> <span class="k">for</span> <span class="n">my</span> <span class="mi">82</span><span class="o">-</span><span class="n">year</span><span class="o">-</span><span class="n">old</span> <span class="n">grandmother</span><span class="p">,</span> <span class="n">who</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">familiar</span> <span class="k">with</span> <span class="n">medical</span> <span class="n">terms</span><span class="o">.</span>
+<span class="n">Present</span> <span class="n">them</span> <span class="k">as</span> <span class="n">a</span> <span class="n">numbered</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">no</span> <span class="n">more</span> <span class="n">than</span> <span class="n">five</span> <span class="n">items</span><span class="p">,</span> <span class="n">each</span> <span class="n">under</span> <span class="mi">12</span> <span class="n">words</span><span class="o">.</span>
+
+<span class="n">Instructions</span><span class="p">:</span>
+<span class="n">Take</span> <span class="mi">1</span> <span class="n">tablet</span> <span class="n">by</span> <span class="n">mouth</span> <span class="n">twice</span> <span class="n">daily</span> <span class="k">with</span> <span class="n">food</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">crush</span> <span class="ow">or</span> <span class="n">chew</span><span class="o">.</span>
+<span class="n">Avoid</span> <span class="n">grapefruit</span> <span class="n">juice</span> <span class="k">while</span> <span class="n">taking</span> <span class="n">this</span> <span class="n">medication</span><span class="o">.</span>
+<span class="n">May</span> <span class="n">cause</span> <span class="n">drowsiness</span><span class="p">;</span> <span class="n">use</span> <span class="n">caution</span> <span class="n">when</span> <span class="n">driving</span> <span class="ow">or</span> <span class="n">operating</span> <span class="n">machinery</span><span class="o">.</span>
+<span class="n">Complete</span> <span class="n">the</span> <span class="n">full</span> <span class="n">course</span> <span class="n">even</span> <span class="k">if</span> <span class="n">symptoms</span> <span class="n">improve</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The component that beginners omit most often is <strong>Context</strong>. Without it, the model writes for an average reader of an average request, which is rarely the reader you have in mind. One sentence about who the answer is for often changes the output more than any other addition.</p>
+</div>
+</section>
+<section id="exercise-1-deconstruct-this-prompt">
+<h3>Exercise 1: Deconstruct This Prompt<a class="headerlink" href="#exercise-1-deconstruct-this-prompt" title="Link to this heading">#</a></h3>
+<p>Identify the four components in the prompt below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">an</span> <span class="n">assistant</span> <span class="n">coach</span> <span class="k">for</span> <span class="n">a</span> <span class="n">youth</span> <span class="n">soccer</span> <span class="n">team</span><span class="o">.</span>
+<span class="n">Using</span> <span class="n">the</span> <span class="n">attendance</span> <span class="n">notes</span> <span class="n">below</span><span class="p">,</span> <span class="nb">list</span> <span class="n">the</span> <span class="n">players</span> <span class="n">who</span> <span class="n">missed</span> <span class="n">more</span> <span class="n">than</span> <span class="n">one</span> <span class="n">practice</span> <span class="n">this</span> <span class="n">month</span><span class="o">.</span>
+<span class="n">Present</span> <span class="n">the</span> <span class="n">answer</span> <span class="k">as</span> <span class="n">a</span> <span class="n">two</span><span class="o">-</span><span class="n">column</span> <span class="n">table</span> <span class="k">with</span> <span class="n">the</span> <span class="n">headings</span> <span class="n">Player</span> <span class="ow">and</span> <span class="n">Practices</span> <span class="n">Missed</span><span class="o">.</span>
+
+<span class="n">Notes</span><span class="p">:</span>
+<span class="n">Ana</span> <span class="n">missed</span> <span class="n">March</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">March</span> <span class="mf">10.</span> <span class="n">Ben</span> <span class="n">missed</span> <span class="n">March</span> <span class="mf">3.</span>
+<span class="n">Carla</span> <span class="n">missed</span> <span class="n">March</span> <span class="mi">3</span><span class="p">,</span> <span class="n">March</span> <span class="mi">10</span><span class="p">,</span> <span class="ow">and</span> <span class="n">March</span> <span class="mf">17.</span>
+<span class="n">Diego</span> <span class="n">attended</span> <span class="n">every</span> <span class="n">practice</span><span class="o">.</span> <span class="n">Emma</span> <span class="n">missed</span> <span class="n">March</span> <span class="mf">17.</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Check your answer</p>
+<ul class="simple">
+<li><p><strong>Instruction:</strong> “list the players who missed more than one practice this month.”</p></li>
+<li><p><strong>Context:</strong> “You are an assistant coach for a youth soccer team.” (a role that sets the perspective)</p></li>
+<li><p><strong>Input Data:</strong> the attendance notes.</p></li>
+<li><p><strong>Output Format:</strong> “a two-column table with the headings Player and Practices Missed.”</p></li>
+</ul>
+<p>The correct table contains Ana (2) and Carla (3) only. Run the prompt and check whether the model got it right; this is your first evaluation of an output.</p>
+</div>
+</section>
+<section id="five-common-prompt-types">
+<h3>1.3 Five Common Prompt Types<a class="headerlink" href="#five-common-prompt-types" title="Link to this heading">#</a></h3>
+<p>Prompt types (also called prompt patterns) are reusable structures. Knowing them lets you choose the right structure for your goal instead of starting from scratch every time.</p>
+<p><strong>1. Instructional prompt.</strong> Directly ask the model to perform a task.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Summarize</span> <span class="n">the</span> <span class="n">following</span> <span class="n">paragraph</span> <span class="ow">in</span> <span class="n">two</span> <span class="n">sentences</span> <span class="k">for</span> <span class="n">a</span> <span class="n">general</span> <span class="n">audience</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">Atlantic</span> <span class="n">hurricane</span> <span class="n">season</span> <span class="n">officially</span> <span class="n">runs</span> <span class="kn">from</span><span class="w"> </span><span class="nn">June</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">November</span> <span class="mf">30.</span>
+<span class="n">Most</span> <span class="n">storms</span> <span class="n">form</span> <span class="n">between</span> <span class="n">August</span> <span class="ow">and</span> <span class="n">October</span><span class="p">,</span> <span class="n">when</span> <span class="n">ocean</span> <span class="n">temperatures</span> <span class="n">are</span> <span class="n">highest</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">statistical</span> <span class="n">peak</span> <span class="n">of</span> <span class="n">the</span> <span class="n">season</span> <span class="ow">is</span> <span class="n">around</span> <span class="n">September</span> <span class="mf">10.</span>
+<span class="n">Forecasters</span> <span class="n">issue</span> <span class="n">a</span> <span class="n">hurricane</span> <span class="n">watch</span> <span class="n">when</span> <span class="n">hurricane</span> <span class="n">conditions</span> <span class="n">are</span> <span class="n">possible</span> <span class="n">within</span> <span class="mi">48</span> <span class="n">hours</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">hurricane</span> <span class="n">warning</span> <span class="n">when</span> <span class="n">they</span> <span class="n">are</span> <span class="n">expected</span> <span class="n">within</span> <span class="mi">36</span> <span class="n">hours</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>2. Role-based prompt.</strong> Assign the model a role or identity that shapes its tone and the knowledge it draws on.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">a</span> <span class="n">financial</span> <span class="n">counselor</span> <span class="n">at</span> <span class="n">a</span> <span class="n">university</span><span class="o">.</span>
+<span class="n">A</span> <span class="n">first</span><span class="o">-</span><span class="n">year</span> <span class="n">student</span> <span class="n">asks</span> <span class="n">how</span> <span class="n">to</span> <span class="n">start</span> <span class="n">building</span> <span class="n">credit</span> <span class="n">without</span> <span class="n">getting</span> <span class="n">into</span> <span class="n">debt</span><span class="o">.</span>
+<span class="n">Give</span> <span class="n">practical</span> <span class="n">advice</span> <span class="ow">in</span> <span class="n">five</span> <span class="n">bullet</span> <span class="n">points</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>3. Chain-of-thought prompt.</strong> Ask the model to work through the problem step by step before answering.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>A family is driving 540 miles. Their car averages 30 miles per gallon, and gas costs $3.40 per gallon.
+They will split the fuel cost equally with another family.
+Work through the calculation step by step, then state how much each family pays.
+</pre></div>
+</div>
+<p>The correct answer is $30.60 (18 gallons × $3.40 = $61.20, divided by 2). Showing the steps lets you check each one, which is the main practical benefit of this pattern.</p>
+<p><strong>4. Zero-shot prompt.</strong> Give only the instruction and the input, with no examples.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Classify</span> <span class="n">the</span> <span class="n">following</span> <span class="n">customer</span> <span class="n">comment</span> <span class="k">as</span> <span class="n">positive</span><span class="p">,</span> <span class="n">negative</span><span class="p">,</span> <span class="ow">or</span> <span class="n">neutral</span><span class="o">.</span>
+
+<span class="n">Comment</span><span class="p">:</span> <span class="s2">"The delivery came a day late, but the flowers were beautiful."</span>
+</pre></div>
+</div>
+<p><strong>5. Few-shot prompt.</strong> Give a few examples of input and output so the model can imitate the pattern.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Classify each customer comment.
+
+Comment: "Fast shipping and great quality." → Positive
+Comment: "The box was crushed and nothing worked." → Negative
+Comment: "Great taste, but the portion was tiny." → Mixed
+Comment: "The delivery came a day late, but the flowers were beautiful." →
+</pre></div>
+</div>
+<p>Notice what the few-shot version did: the examples introduced a category, <strong>Mixed</strong>, that the zero-shot version never offered. Examples communicate things that are hard to describe in words, such as a label set, a tone, or a format.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A prompt can belong to more than one type at the same time.
+The instructional prompt above is also a zero-shot prompt, and the role-based prompt could become few-shot by adding examples of good advice.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many recent models reason step by step on their own before answering, so asking for chain-of-thought improves their answers less than it did with earlier models.
+It is still valuable for a different reason: it makes the reasoning <strong>visible</strong>, so you can check it.</p>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Type</p></th>
+<th class="head text-left"><p>Best used for</p></th>
+<th class="head text-left"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Instructional</p></td>
+<td class="text-left"><p>Clear, single-step tasks</p></td>
+<td class="text-left"><p>“Summarize this paragraph.”</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Role-based</p></td>
+<td class="text-left"><p>Matching tone, perspective, or expertise</p></td>
+<td class="text-left"><p>“You are a financial counselor…”</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Chain-of-thought</p></td>
+<td class="text-left"><p>Multi-step reasoning, calculations</p></td>
+<td class="text-left"><p>“Work through it step by step…”</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Zero-shot</p></td>
+<td class="text-left"><p>Quick, common tasks</p></td>
+<td class="text-left"><p>“Classify this comment…”</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Few-shot</p></td>
+<td class="text-left"><p>Custom formats, labels, or styles</p></td>
+<td class="text-left"><p>Examples first, then the new case</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="iteration-the-first-prompt-is-a-draft">
+<h3>1.4 Iteration: The First Prompt Is a Draft<a class="headerlink" href="#iteration-the-first-prompt-is-a-draft" title="Link to this heading">#</a></h3>
+<p>Even a good prompt can return a vague, incomplete, or wrong answer. Prompting is a loop, not a single attempt:</p>
+<ol class="arabic simple">
+<li><p><strong>Draft</strong> the initial prompt.</p></li>
+<li><p><strong>Review</strong> the output. Is it accurate? Complete? In the right tone and format?</p></li>
+<li><p><strong>Refine</strong> the prompt. Add what was missing, clarify the goal, or adjust the role.</p></li>
+<li><p><strong>Test again</strong> and compare the new output with the previous one.</p></li>
+</ol>
+<p>One rule makes this loop useful: <strong>change one thing at a time</strong>. If you change four things and the output improves, you do not know which change helped, so you have learned nothing you can reuse next time.</p>
+<p>A second rule: <strong>test each version in a new conversation</strong>. The model can see everything earlier in the same conversation, so a previous attempt can influence the next one. Part III explains why.</p>
+</section>
+</section>
+<section id="hands-on-1-improving-a-prompt-one-step-at-a-time">
+<h2>⚙️ Hands-On 1: Improving a Prompt One Step at a Time<a class="headerlink" href="#hands-on-1-improving-a-prompt-one-step-at-a-time" title="Link to this heading">#</a></h2>
+<p>Open any AI assistant (ChatGPT, Claude, Gemini, Copilot, or another). Paste the prompt below into a <strong>new conversation</strong> and save the output.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Explain</span> <span class="n">what</span> <span class="n">a</span> <span class="n">credit</span> <span class="n">score</span> <span class="ow">is</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic">
+<li><p><strong>Add Context (audience).</strong> In a new conversation, paste:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Explain</span> <span class="n">what</span> <span class="n">a</span> <span class="n">credit</span> <span class="n">score</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">a</span> <span class="n">first</span><span class="o">-</span><span class="n">year</span> <span class="n">college</span> <span class="n">student</span> <span class="n">who</span> <span class="n">has</span> <span class="n">never</span> <span class="n">had</span> <span class="n">a</span> <span class="n">credit</span> <span class="n">card</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Compare the two outputs. What changed in the vocabulary, the length, and the examples used?</p>
+</li>
+<li><p><strong>Add Output Format.</strong> In a new conversation, paste:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Explain</span> <span class="n">what</span> <span class="n">a</span> <span class="n">credit</span> <span class="n">score</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">a</span> <span class="n">first</span><span class="o">-</span><span class="n">year</span> <span class="n">college</span> <span class="n">student</span> <span class="n">who</span> <span class="n">has</span> <span class="n">never</span> <span class="n">had</span> <span class="n">a</span> <span class="n">credit</span> <span class="n">card</span><span class="o">.</span>
+<span class="n">Use</span> <span class="n">exactly</span> <span class="n">four</span> <span class="n">bullet</span> <span class="n">points</span><span class="p">,</span> <span class="n">then</span> <span class="n">end</span> <span class="k">with</span> <span class="n">one</span> <span class="n">everyday</span> <span class="n">analogy</span><span class="o">.</span> <span class="n">Keep</span> <span class="n">the</span> <span class="n">whole</span> <span class="n">answer</span> <span class="n">under</span> <span class="mi">150</span> <span class="n">words</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Did the model follow every format instruction? Count the bullet points and the words yourself; do not assume.</p>
+</li>
+<li><p><strong>Add a role and chain-of-thought.</strong> In a new conversation, paste:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">a</span> <span class="n">financial</span> <span class="n">counselor</span> <span class="n">at</span> <span class="n">a</span> <span class="n">university</span><span class="o">.</span> <span class="n">Explain</span> <span class="n">what</span> <span class="n">a</span> <span class="n">credit</span> <span class="n">score</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">a</span> <span class="n">first</span><span class="o">-</span><span class="n">year</span> <span class="n">college</span> <span class="n">student</span> <span class="n">who</span> <span class="n">has</span> <span class="n">never</span> <span class="n">had</span> <span class="n">a</span> <span class="n">credit</span> <span class="n">card</span><span class="o">.</span>
+<span class="n">First</span><span class="p">,</span> <span class="nb">list</span> <span class="n">the</span> <span class="n">factors</span> <span class="n">that</span> <span class="n">make</span> <span class="n">up</span> <span class="n">a</span> <span class="n">credit</span> <span class="n">score</span><span class="o">.</span>
+<span class="n">Then</span> <span class="n">explain</span> <span class="n">which</span> <span class="n">of</span> <span class="n">those</span> <span class="n">factors</span> <span class="n">a</span> <span class="n">student</span> <span class="n">can</span> <span class="n">control</span> <span class="n">during</span> <span class="n">the</span> <span class="n">first</span> <span class="n">year</span> <span class="n">of</span> <span class="n">college</span><span class="p">,</span> <span class="ow">and</span> <span class="n">give</span> <span class="n">one</span> <span class="n">concrete</span> <span class="n">action</span> <span class="k">for</span> <span class="n">each</span><span class="o">.</span>
+<span class="n">Keep</span> <span class="n">the</span> <span class="n">whole</span> <span class="n">answer</span> <span class="n">under</span> <span class="mi">200</span> <span class="n">words</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Which of the three changes produced the largest improvement for this student? Do you think the same change would matter most for a different task?</p>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="part-ii-evaluating-prompts-and-outputs">
+<h2>Part II — Evaluating Prompts and Outputs<a class="headerlink" href="#part-ii-evaluating-prompts-and-outputs" title="Link to this heading">#</a></h2>
+<section id="why-it-looks-good-is-not-an-evaluation">
+<h3>2.1 Why “It Looks Good” Is Not an Evaluation<a class="headerlink" href="#why-it-looks-good-is-not-an-evaluation" title="Link to this heading">#</a></h3>
+<p>In Unit 5 you saw that a language model generates the most plausible continuation of its input. Plausible and correct often coincide, but not always. The model writes a wrong answer with the same fluency and confidence as a right one. A <strong>hallucination</strong> is an output that states incorrect or invented information as if it were true.</p>
+<p>Two further facts complicate evaluation:</p>
+<ul class="simple">
+<li><p><strong>The same prompt can produce different outputs.</strong> Run it twice and you may get two different answers. One good output does not prove the prompt is good.</p></li>
+<li><p><strong>A well-formatted answer is not evidence of a correct one.</strong> A neat table of numbers can contain numbers that were never calculated.</p></li>
+</ul>
+<p>So evaluation must be deliberate. It has two parts: <strong>scoring the output against criteria</strong> and <strong>checking its claims</strong>.</p>
+</section>
+<section id="five-criteria-for-a-prompt-output-pair">
+<h3>2.2 Five Criteria for a Prompt-Output Pair<a class="headerlink" href="#five-criteria-for-a-prompt-output-pair" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Criterion</p></th>
+<th class="head text-left"><p>Question to ask</p></th>
+<th class="head text-left"><p>How to check it</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>1. Relevance</strong></p></td>
+<td class="text-left"><p>Does the response address what the prompt asked, for the audience it named?</p></td>
+<td class="text-left"><p>Reread the instruction and context. Mark anything in the output that answers a different question.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>2. Completeness</strong></p></td>
+<td class="text-left"><p>Does it cover every requested part?</p></td>
+<td class="text-left"><p>List each item the prompt requested. Tick each one you find in the output.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>3. Clarity</strong></p></td>
+<td class="text-left"><p>Is it easy to understand and well organized?</p></td>
+<td class="text-left"><p>Could the intended reader act on it without asking a follow-up question?</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>4. Factual Accuracy</strong></p></td>
+<td class="text-left"><p>Are the claims and numbers correct and verifiable?</p></td>
+<td class="text-left"><p>Check each factual claim against the source you provided, or an independent source you trust.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>5. Format</strong></p></td>
+<td class="text-left"><p>Does it follow the requested structure, length, and style?</p></td>
+<td class="text-left"><p>Count bullets, words, columns. Compare with what you asked for.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Score each criterion from 1 to 5:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Score</p></th>
+<th class="head text-left"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>5</strong></p></td>
+<td class="text-left"><p>Fully meets the criterion; nothing to fix.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>3</strong></p></td>
+<td class="text-left"><p>Partly meets it; usable after edits.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>1</strong></p></td>
+<td class="text-left"><p>Fails it; the output cannot be used as is.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not simply add up the five scores. <strong>Factual Accuracy is a gate, not an ingredient.</strong> An output that scores 5 on everything except accuracy is not “80% good”; if you use it, you pass on an error. When accuracy fails, the output fails, whatever the total.</p>
+</div>
+</section>
+<section id="how-to-evaluate-a-six-step-procedure">
+<h3>2.3 How to Evaluate: A Six-Step Procedure<a class="headerlink" href="#how-to-evaluate-a-six-step-procedure" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Decide what a good answer must contain before you run the prompt.</strong> Write down the items you expect to see. If you cannot say what a good answer looks like, the prompt is not ready.</p></li>
+<li><p><strong>Run the prompt in a new conversation.</strong></p></li>
+<li><p><strong>Score the five criteria</strong>, using the “How to check it” column above.</p></li>
+<li><p><strong>Check every factual claim.</strong> Go through the output sentence by sentence and label each claim as <em>supported</em>, <em>not supported</em>, or <em>cannot verify</em>.</p></li>
+<li><p><strong>Run the prompt a second time</strong>, in another new conversation. If the two outputs differ substantially, the prompt leaves too much to guesswork.</p></li>
+<li><p><strong>Change one thing</strong> in the prompt to address the weakest criterion, and repeat.</p></li>
+</ol>
+</section>
+<section id="worked-example">
+<h3>2.4 Worked Example<a class="headerlink" href="#worked-example" title="Link to this heading">#</a></h3>
+<p>A student asks an AI assistant to summarize a library announcement for a neighborhood newsletter.</p>
+<p><strong>The prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Summarize the library announcement below for a neighborhood newsletter.
+Use exactly three bullet points.
+Include the new hours, the laptop rules, and the cost of late returns.
+Use only the information in the announcement.
+
+Announcement:
+Starting March 1, the Riverside Public Library will extend its weekday hours to 9 a.m. to 8 p.m.
+Weekend hours remain 10 a.m. to 5 p.m. The library will also begin lending laptops to cardholders aged 18 and older.
+Laptops may be borrowed for up to 7 days and cannot be renewed. Late returns are charged $5 per day.
+The program is funded by a two-year state grant.
+</pre></div>
+</div>
+<p><strong>Step 1, before running:</strong> a good answer must contain (a) weekday hours, (b) weekend hours, (c) who can borrow laptops, (d) loan length and no renewal, (e) the $5 daily late fee, in three bullets.</p>
+<p><strong>The output (an illustrative example):</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Starting March 1, the Riverside Public Library is open longer, from 9 a.m. to 8 p.m. every day.</p></li>
+<li><p>Adults can now borrow laptops for up to two weeks, thanks to a state grant.</p></li>
+<li><p>Laptop loans are free, so stop by and pick one up!</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Step 4, claim check:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Claim in the output</p></th>
+<th class="head text-left"><p>Label</p></th>
+<th class="head text-left"><p>Reason</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Open 9 a.m. to 8 p.m. from March 1</p></td>
+<td class="text-left"><p>Supported, partly</p></td>
+<td class="text-left"><p>True for weekdays only.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>…every day</p></td>
+<td class="text-left"><p><strong>Not supported</strong></p></td>
+<td class="text-left"><p>Weekend hours are unchanged.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Adults can borrow laptops</p></td>
+<td class="text-left"><p>Supported</p></td>
+<td class="text-left"><p>Cardholders aged 18 and older.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>…for up to two weeks</p></td>
+<td class="text-left"><p><strong>Not supported</strong></p></td>
+<td class="text-left"><p>The limit is 7 days, with no renewal.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Funded by a state grant</p></td>
+<td class="text-left"><p>Supported</p></td>
+<td class="text-left"><p>Stated in the announcement.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Laptop loans are free</p></td>
+<td class="text-left"><p><strong>Not supported</strong></p></td>
+<td class="text-left"><p>Never stated, and misleading given the late fee.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Step 3, scores:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Criterion</p></th>
+<th class="head text-center"><p>Score</p></th>
+<th class="head text-left"><p>Reason</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Relevance</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-left"><p>Addresses the announcement for newsletter readers.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Completeness</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-left"><p>Late fee missing; weekend hours missing.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Clarity</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-left"><p>Easy to read.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Factual Accuracy</p></td>
+<td class="text-center"><p><strong>1</strong></p></td>
+<td class="text-left"><p>Two errors and one invented claim.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Format</p></td>
+<td class="text-center"><p>5</p></td>
+<td class="text-left"><p>Exactly three bullets.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The total is 18 out of 25, which sounds acceptable. It is not. A reader following this newsletter would arrive on a Saturday evening to a closed library, keep a laptop for two weeks, and be surprised by a $35 fine. <strong>The accuracy gate fails, so the output fails.</strong></p>
+<p>Notice also that the prompt already said “use only the information in the announcement”. The model still added a claim. Instructions reduce errors; they do not eliminate them. That is why step 4 exists.</p>
+<p><strong>Step 6, refining the prompt.</strong> The weakest criterion is accuracy, and the errors cluster around hours and loan rules. One change:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Summarize the library announcement below for a neighborhood newsletter.
+Use exactly three bullet points: one for the hours (list weekday and weekend hours separately), one for the laptop rules (who, how long, renewals), and one for late returns.
+Use only the information in the announcement. Do not add benefits, prices, or rules that are not stated.
+
+Announcement:
+Starting March 1, the Riverside Public Library will extend its weekday hours to 9 a.m. to 8 p.m.
+Weekend hours remain 10 a.m. to 5 p.m. The library will also begin lending laptops to cardholders aged 18 and older.
+Laptops may be borrowed for up to 7 days and cannot be renewed. Late returns are charged $5 per day.
+The program is funded by a two-year state grant.
+</pre></div>
+</div>
+<p>The revision assigns each bullet a job, which makes omissions obvious, and it names the kind of addition that is forbidden. You would now run it, in a new conversation, and evaluate again.</p>
+</section>
+<section id="techniques-to-reduce-and-detect-hallucinations">
+<h3>2.5 Techniques to Reduce and Detect Hallucinations<a class="headerlink" href="#techniques-to-reduce-and-detect-hallucinations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Tell the model to <strong>use only the provided text or file</strong>.</p></li>
+<li><p>Tell the model to say <strong>“I do not know”</strong> or “not stated” when the information is not available.</p></li>
+<li><p>Ask the model to <strong>cite its sources</strong>, and then open every source. A fabricated reference usually looks real: plausible authors, plausible journal, plausible year.</p></li>
+<li><p>Ask the model to <strong>explain the data and generalizations</strong> it presents, so you can see where a number came from.</p></li>
+<li><p><strong>Check numbers yourself.</strong> A model can produce a statistic that appears in no source at all.</p></li>
+</ul>
+</section>
+<section id="troubleshooting-a-prompt">
+<h3>2.6 Troubleshooting a Prompt<a class="headerlink" href="#troubleshooting-a-prompt" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>If the output is…</p></th>
+<th class="head text-left"><p>Try this</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Too generic</p></td>
+<td class="text-left"><p>Add Context: who it is for, and why they need it. Add an example.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Hallucinating</p></td>
+<td class="text-left"><p>Restrict it to provided information; ask it to say “not stated” when unsure; ask for sources.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Missing parts</p></td>
+<td class="text-left"><p>Give each part of the request its own numbered item or bullet.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Inconsistent between runs</p></td>
+<td class="text-left"><p>Specify the role and the output format more precisely; add a few-shot example.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Too long</p></td>
+<td class="text-left"><p>State a word or bullet limit, and say what to leave out.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="reverse-prompting-analyzing-prompts-backwards">
+<h3>2.7 Reverse Prompting: Analyzing Prompts Backwards<a class="headerlink" href="#reverse-prompting-analyzing-prompts-backwards" title="Link to this heading">#</a></h3>
+<p>Reverse prompting starts from an <strong>output</strong> and asks: <em>what prompt would have produced this?</em> It is not a prompt type; it is an analysis method. It trains you to see which features of a prompt produce which features of an answer.</p>
+<p>You can do it yourself, or ask the model to do it with a <strong>meta-prompt</strong> (a prompt about prompts; Section 2.8 covers meta-prompting in full):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Here</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">AI</span><span class="o">-</span><span class="n">generated</span> <span class="n">output</span><span class="p">:</span>
+
+<span class="mf">1.</span> <span class="n">Check</span> <span class="n">whether</span> <span class="n">your</span> <span class="n">homeowner</span><span class="s1">'s or renter'</span><span class="n">s</span> <span class="n">insurance</span> <span class="n">covers</span> <span class="n">flood</span> <span class="n">damage</span><span class="o">.</span>
+<span class="mf">2.</span> <span class="n">Photograph</span> <span class="n">your</span> <span class="n">belongings</span> <span class="ow">and</span> <span class="n">store</span> <span class="n">the</span> <span class="n">photos</span> <span class="n">online</span><span class="o">.</span>
+<span class="mf">3.</span> <span class="n">Pack</span> <span class="n">a</span> <span class="n">go</span><span class="o">-</span><span class="n">bag</span> <span class="k">with</span> <span class="n">medications</span><span class="p">,</span> <span class="n">documents</span><span class="p">,</span> <span class="n">water</span><span class="p">,</span> <span class="ow">and</span> <span class="n">chargers</span><span class="o">.</span>
+
+<span class="n">Your</span> <span class="n">task</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">reverse</span> <span class="n">prompt</span> <span class="n">this</span> <span class="n">output</span><span class="o">.</span>
+<span class="n">Propose</span> <span class="n">three</span> <span class="n">different</span> <span class="n">prompts</span> <span class="n">that</span> <span class="n">could</span> <span class="n">have</span> <span class="n">generated</span> <span class="n">it</span><span class="o">.</span>
+<span class="n">For</span> <span class="n">each</span> <span class="n">one</span><span class="p">,</span> <span class="n">explain</span> <span class="n">which</span> <span class="n">words</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">prompt</span> <span class="n">would</span> <span class="n">produce</span> <span class="n">the</span> <span class="n">numbered</span> <span class="nb">format</span><span class="p">,</span> <span class="n">the</span> <span class="n">practical</span> <span class="n">tone</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">focus</span> <span class="n">on</span> <span class="n">preparation</span> <span class="n">before</span> <span class="n">a</span> <span class="n">storm</span><span class="o">.</span>
+<span class="n">Then</span> <span class="n">explain</span> <span class="n">how</span> <span class="n">changing</span> <span class="n">the</span> <span class="n">audience</span> <span class="ow">in</span> <span class="n">each</span> <span class="n">prompt</span> <span class="n">would</span> <span class="n">change</span> <span class="n">the</span> <span class="n">output</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Compare the model’s reconstructed prompts with your own guesses. Did either include a role? An audience? A number of items? Each feature you can explain is a feature you can now produce deliberately.</p>
+</section>
+<section id="meta-prompting-using-ai-to-write-and-improve-prompts">
+<h3>2.8 Meta-Prompting: Using AI to Write and Improve Prompts<a class="headerlink" href="#meta-prompting-using-ai-to-write-and-improve-prompts" title="Link to this heading">#</a></h3>
+<p>A <strong>meta-prompt</strong> is a prompt whose subject is another prompt. Reverse prompting is one use of it: you give the model an output and ask for the prompt behind it. <strong>Meta-prompting</strong> is the broader practice of asking the model to help you <strong>write, question, critique, or improve</strong> a prompt before you use it.</p>
+<p>It works because the model has seen a great many instructions and requests, so it is good at noticing what a request leaves unsaid. It cannot, however, know facts about your situation that you have not given it. Meta-prompting helps you find the gaps; only you can fill them.</p>
+<p><strong>Use 1: Draft a prompt from a goal.</strong> Describe what you want to achieve and ask the model to write the prompt.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">volunteer</span> <span class="n">at</span> <span class="n">an</span> <span class="n">animal</span> <span class="n">shelter</span><span class="o">.</span>
+<span class="n">Every</span> <span class="n">week</span> <span class="n">I</span> <span class="n">write</span> <span class="n">short</span> <span class="n">online</span> <span class="n">profiles</span> <span class="k">for</span> <span class="n">dogs</span> <span class="n">available</span> <span class="k">for</span> <span class="n">adoption</span><span class="p">,</span> <span class="ow">and</span> <span class="n">I</span> <span class="n">want</span> <span class="n">an</span> <span class="n">AI</span> <span class="n">assistant</span> <span class="n">to</span> <span class="n">draft</span> <span class="n">them</span> <span class="k">for</span> <span class="n">me</span> <span class="kn">from</span><span class="w"> </span><span class="nn">my</span> <span class="n">notes</span><span class="o">.</span>
+<span class="n">Write</span> <span class="n">a</span> <span class="n">prompt</span> <span class="n">I</span> <span class="n">can</span> <span class="n">reuse</span> <span class="k">for</span> <span class="n">this</span> <span class="n">task</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">prompt</span> <span class="n">must</span> <span class="n">contain</span> <span class="n">the</span> <span class="n">four</span> <span class="n">components</span> <span class="n">of</span> <span class="n">a</span> <span class="n">prompt</span><span class="p">:</span> <span class="n">an</span> <span class="n">instruction</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">a</span> <span class="n">place</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">data</span><span class="p">,</span> <span class="ow">and</span> <span class="n">an</span> <span class="n">output</span> <span class="nb">format</span><span class="o">.</span>
+<span class="n">Explain</span> <span class="ow">in</span> <span class="n">one</span> <span class="n">sentence</span> <span class="n">why</span> <span class="n">you</span> <span class="n">chose</span> <span class="n">each</span> <span class="n">component</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Use 2: Let the model interview you first.</strong> Ask the model to question you before it writes anything. This is the most effective way to discover the context you forgot to give.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">want</span> <span class="n">to</span> <span class="n">write</span> <span class="n">a</span> <span class="n">prompt</span> <span class="n">that</span> <span class="n">helps</span> <span class="n">me</span> <span class="n">prepare</span> <span class="k">for</span> <span class="n">a</span> <span class="n">job</span> <span class="n">interview</span> <span class="k">for</span> <span class="n">a</span> <span class="n">part</span><span class="o">-</span><span class="n">time</span> <span class="n">position</span> <span class="n">at</span> <span class="n">a</span> <span class="n">local</span> <span class="n">bank</span><span class="o">.</span>
+<span class="n">Before</span> <span class="n">you</span> <span class="n">write</span> <span class="n">the</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">ask</span> <span class="n">me</span> <span class="n">up</span> <span class="n">to</span> <span class="n">five</span> <span class="n">questions</span> <span class="n">about</span> <span class="n">anything</span> <span class="n">you</span> <span class="n">would</span> <span class="n">need</span> <span class="n">to</span> <span class="n">know</span> <span class="n">to</span> <span class="n">make</span> <span class="n">it</span> <span class="n">effective</span><span class="o">.</span>
+<span class="n">Ask</span> <span class="n">the</span> <span class="n">questions</span> <span class="n">one</span> <span class="n">at</span> <span class="n">a</span> <span class="n">time</span> <span class="ow">and</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">my</span> <span class="n">answer</span> <span class="n">to</span> <span class="n">each</span><span class="o">.</span> <span class="n">After</span> <span class="n">the</span> <span class="n">last</span> <span class="n">answer</span><span class="p">,</span> <span class="n">write</span> <span class="n">the</span> <span class="n">complete</span> <span class="n">prompt</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Use 3: Critique and improve an existing prompt.</strong> Paste a prompt and ask the model to evaluate it against the criteria from Section 2.2 before you run it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Here</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">prompt</span> <span class="n">I</span> <span class="n">plan</span> <span class="n">to</span> <span class="n">use</span><span class="p">:</span>
+
+<span class="s2">"Summarize the library announcement below for a neighborhood newsletter.</span>
+<span class="n">Use</span> <span class="n">exactly</span> <span class="n">three</span> <span class="n">bullet</span> <span class="n">points</span><span class="o">.</span>
+<span class="n">Include</span> <span class="n">the</span> <span class="n">new</span> <span class="n">hours</span><span class="p">,</span> <span class="n">the</span> <span class="n">laptop</span> <span class="n">rules</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">cost</span> <span class="n">of</span> <span class="n">late</span> <span class="n">returns</span><span class="o">.</span>
+<span class="n">Use</span> <span class="n">only</span> <span class="n">the</span> <span class="n">information</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">announcement</span><span class="o">.</span><span class="s2">"</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">answer</span> <span class="n">the</span> <span class="n">prompt</span><span class="o">.</span> <span class="n">Instead</span><span class="p">,</span> <span class="n">evaluate</span> <span class="n">it</span> <span class="k">as</span> <span class="n">a</span> <span class="n">prompt</span><span class="o">.</span>
+<span class="n">For</span> <span class="n">each</span> <span class="n">of</span> <span class="n">these</span> <span class="n">criteria</span><span class="p">,</span> <span class="n">explain</span> <span class="n">how</span> <span class="n">the</span> <span class="n">prompt</span> <span class="n">could</span> <span class="n">lead</span> <span class="n">to</span> <span class="n">a</span> <span class="n">weak</span> <span class="n">output</span><span class="p">:</span> <span class="n">relevance</span><span class="p">,</span> <span class="n">completeness</span><span class="p">,</span> <span class="n">clarity</span><span class="p">,</span> <span class="n">factual</span> <span class="n">accuracy</span><span class="p">,</span> <span class="ow">and</span> <span class="nb">format</span><span class="o">.</span>
+<span class="n">Then</span> <span class="n">write</span> <span class="n">an</span> <span class="n">improved</span> <span class="n">version</span> <span class="ow">and</span> <span class="nb">list</span> <span class="n">each</span> <span class="n">change</span> <span class="n">you</span> <span class="n">made</span> <span class="k">with</span> <span class="n">the</span> <span class="n">reason</span> <span class="k">for</span> <span class="n">it</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This is the first prompt from the worked example in Section 2.4. Compare the model’s critique with what actually went wrong there: the merged weekday and weekend hours, the wrong loan period, and the invented “free” claim. Did the critique anticipate those failures, or only generic ones?</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p>Reverse prompting</p></th>
+<th class="head text-left"><p>Meta-prompting</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Starts from</p></td>
+<td class="text-left"><p>An output</p></td>
+<td class="text-left"><p>A goal or an existing prompt</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Produces</p></td>
+<td class="text-left"><p>Possible prompts that could have generated the output</p></td>
+<td class="text-left"><p>A new or improved prompt, or questions about it</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Main use</p></td>
+<td class="text-left"><p>Understanding why prompts produce what they produce</p></td>
+<td class="text-left"><p>Writing and improving your own prompts</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A prompt written by a model is still a <strong>draft</strong>, and it needs the same evaluation as any other prompt. Watch for three common problems. It may contain placeholders such as [insert details], which you must fill in or delete. It may add requirements you never wanted, such as a word count or a tone. And it can only include the context you supplied, so a polished-looking prompt can still be missing the one fact that matters. Run the improved prompt, evaluate its output with Section 2.3, and compare it with your own version before you adopt it.</p>
+</div>
+</section>
+<section id="exercise-2-meta-prompting">
+<h3>Exercise 2: Meta-Prompting<a class="headerlink" href="#exercise-2-meta-prompting" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Choose a task you actually do: writing to a professor, planning a trip, preparing a presentation, or summarizing readings.</p></li>
+<li><p>Write your own prompt for it first, without help.</p></li>
+<li><p>In a new conversation, use the interview-first meta-prompt (Use 2), adapted to your task, and answer the model’s questions.</p></li>
+<li><p>Run both prompts, each in its own new conversation, and score both outputs with the five criteria.</p></li>
+<li><p>Which prompt won? Which questions from the model revealed context you had left out?</p></li>
+</ol>
+</section>
+<section id="how-much-checking-is-enough">
+<h3>2.9 How Much Checking Is Enough?<a class="headerlink" href="#how-much-checking-is-enough" title="Link to this heading">#</a></h3>
+<p>Not every output deserves the same scrutiny. Match the effort to the cost of an error.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Cost of an error</p></th>
+<th class="head text-left"><p>Example</p></th>
+<th class="head text-left"><p>What to check</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Trivial</strong></p></td>
+<td class="text-left"><p>Brainstorming names for a club</p></td>
+<td class="text-left"><p>Read it.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Low</strong></p></td>
+<td class="text-left"><p>A first draft of an email</p></td>
+<td class="text-left"><p>Check any fact, date, or name it contains.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Moderate</strong></p></td>
+<td class="text-left"><p>A summary you will forward to others</p></td>
+<td class="text-left"><p>Check every claim against the source.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>High</strong></p></td>
+<td class="text-left"><p>Anything with a citation, statistic, or legal or medical statement</p></td>
+<td class="text-left"><p>Verify each one independently.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Severe</strong></p></td>
+<td class="text-left"><p>Decisions about someone’s health, money, safety, or record</p></td>
+<td class="text-left"><p>Use AI for support at most; the judgment stays with a qualified person.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This table is also the reasoning behind the course AI Use Statement: you may use AI on homework, but you are responsible for what you submit.</p>
+</section>
+</section>
+<section id="hands-on-2-evaluate-an-output">
+<h2>⚙️ Hands-On 2: Evaluate an Output<a class="headerlink" href="#hands-on-2-evaluate-an-output" title="Link to this heading">#</a></h2>
+<p>Paste the prompt below into a new conversation. Before reading the output, write down what a good answer must contain (step 1 of the procedure). Then complete steps 3 and 4: score the five criteria and build a claim-check table.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You are a student-services advisor.
+Read the scholarship notice below and turn it into a checklist a student can follow to apply.
+Present a numbered checklist, then one line stating the deadline. Use only the information in the notice.
+If a student would need to know something that the notice does not state, list it under the heading "Not stated: ask the Fund".
+
+Notice:
+The Harbor Valley Community Fund Scholarship awards $2,500 to one student each year.
+Applicants must be enrolled full time at a public college or university in Florida and have a cumulative GPA of at least 3.0.
+Applicants must submit a 500-word essay describing a problem in their local community and how they would address it, plus two letters of recommendation, at least one of which must come from a faculty member.
+Applications are due November 15 at 5:00 p.m. Finalists will be interviewed in December, and the recipient will be announced on January 20.
+</pre></div>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Remove the safeguards.</strong> In a new conversation, run the same prompt but delete the two sentences that begin “Use only” and “If a student”. Build a new claim-check table. Did any unsupported claims appear, such as a submission address, a required transcript, or a renewal rule?</p></li>
+<li><p><strong>Test consistency.</strong> Run the original prompt again in another new conversation. Did the checklist order, the number of items, or the “Not stated” list change? What does that tell you about how much one output can prove?</p></li>
+<li><p><strong>Reverse prompt it.</strong> In a new conversation, paste your best output from this exercise and ask the model to reverse prompt it, using the meta-prompt from Section 2.7 as a model. Did the reconstructed prompts include your “Not stated” instruction? If not, what does that tell you about which parts of a prompt leave visible traces in the output?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="part-iii-context-engineering">
+<h2>Part III — Context Engineering<a class="headerlink" href="#part-iii-context-engineering" title="Link to this heading">#</a></h2>
+<section id="what-is-context-engineering">
+<h3>3.1 What Is Context Engineering?<a class="headerlink" href="#what-is-context-engineering" title="Link to this heading">#</a></h3>
+<p><strong>Context engineering</strong> is the practice of designing, structuring, and managing everything the model can see when it produces an answer, not just the instruction itself.</p>
+<ul class="simple">
+<li><p>Prompt engineering asks: <em>how should I phrase the request?</em></p></li>
+<li><p>Context engineering asks: <em>what information should surround the request so that the model can answer it well?</em></p></li>
+</ul>
+<p>It is sometimes called “prompt engineering on steroids” because it moves from a single well-worded request to deliberate control of the model’s whole working environment.</p>
+</section>
+<section id="why-context-matters-the-context-window">
+<h3>3.2 Why Context Matters: The Context Window<a class="headerlink" href="#why-context-matters-the-context-window" title="Link to this heading">#</a></h3>
+<p>A language model has no memory of you, your class, or your job. Each time it answers, it reads only its <strong>context window</strong>: everything present in the current exchange. That includes:</p>
+<ul class="simple">
+<li><p>any instructions set by the application or by you (for example, custom instructions),</p></li>
+<li><p>the earlier messages in the same conversation,</p></li>
+<li><p>any files or images you attached,</p></li>
+<li><p>and your latest message.</p></li>
+</ul>
+<p>Nothing outside that window influences the answer. This has four practical consequences.</p>
+<ol class="arabic simple">
+<li><p><strong>What you do not include, the model does not know.</strong> If your budget is $60, and you do not say so, the model plans for an average budget.</p></li>
+<li><p><strong>Relevant material improves answers.</strong> Supplying the actual document reduces hallucination, because the model can draw on the text instead of on vague patterns.</p></li>
+<li><p><strong>Irrelevant material makes answers worse.</strong> Pasting in five loosely related documents “just in case” gives the model more to be distracted by. More context is not automatically better context.</p></li>
+<li><p><strong>Earlier messages stay in the window.</strong> Suppose that ten messages ago you asked for recipes that include peanuts, and later you say you are cooking for a friend with a peanut allergy. The earlier request is still in the context, competing with the correction. When a conversation has gone wrong, <strong>starting a new conversation with a clean, complete prompt usually works better than correcting it message by message.</strong></p></li>
+</ol>
+<p>By shaping the context deliberately, you can steer the model toward the answer you need, ground it in reliable sources, fit it to a specific role, and make the same task repeatable.</p>
+</section>
+<section id="key-techniques-in-context-engineering">
+<h3>3.3 Key Techniques in Context Engineering<a class="headerlink" href="#key-techniques-in-context-engineering" title="Link to this heading">#</a></h3>
+<p><strong>1. System role design.</strong> Define the model’s role and purpose in detail: who it is, whom it serves, and how it should communicate. This goes further than a one-line role.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">a</span> <span class="n">museum</span> <span class="n">educator</span> <span class="n">at</span> <span class="n">a</span> <span class="n">natural</span> <span class="n">history</span> <span class="n">museum</span><span class="o">.</span> <span class="n">You</span> <span class="n">help</span> <span class="n">visiting</span> <span class="n">families</span> <span class="k">with</span> <span class="n">children</span> <span class="n">aged</span> <span class="mi">8</span> <span class="n">to</span> <span class="mi">12</span> <span class="n">understand</span> <span class="n">the</span> <span class="n">exhibits</span><span class="o">.</span> <span class="n">Use</span> <span class="n">short</span> <span class="n">sentences</span><span class="p">,</span> <span class="n">one</span> <span class="n">surprising</span> <span class="n">fact</span> <span class="n">per</span> <span class="n">answer</span><span class="p">,</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">question</span> <span class="n">the</span> <span class="n">children</span> <span class="n">can</span> <span class="n">discuss</span> <span class="n">afterward</span><span class="o">.</span> <span class="n">Avoid</span> <span class="n">scientific</span> <span class="n">terms</span> <span class="n">unless</span> <span class="n">you</span> <span class="n">explain</span> <span class="n">them</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">same</span> <span class="n">sentence</span><span class="o">.</span>
+
+<span class="n">Explain</span> <span class="n">why</span> <span class="n">dinosaurs</span> <span class="n">are</span> <span class="n">considered</span> <span class="n">relatives</span> <span class="n">of</span> <span class="n">modern</span> <span class="n">birds</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>2. Instruction layering.</strong> Combine several patterns in one request: a role, a task, a format, and a goal.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Act</span> <span class="k">as</span> <span class="n">a</span> <span class="n">travel</span> <span class="n">planner</span> <span class="k">for</span> <span class="n">students</span> <span class="n">on</span> <span class="n">a</span> <span class="n">tight</span> <span class="n">budget</span><span class="o">.</span> <span class="n">List</span> <span class="n">five</span> <span class="n">low</span><span class="o">-</span><span class="n">cost</span> <span class="n">activities</span> <span class="k">for</span> <span class="n">a</span> <span class="n">weekend</span> <span class="ow">in</span> <span class="n">St</span><span class="o">.</span> <span class="n">Augustine</span><span class="p">,</span> <span class="n">Florida</span><span class="o">.</span> <span class="n">Then</span> <span class="n">write</span> <span class="n">a</span> <span class="mi">100</span><span class="o">-</span><span class="n">word</span> <span class="n">plan</span> <span class="k">for</span> <span class="n">Saturday</span> <span class="n">that</span> <span class="n">uses</span> <span class="n">three</span> <span class="n">of</span> <span class="n">them</span><span class="p">,</span> <span class="k">with</span> <span class="n">an</span> <span class="n">estimated</span> <span class="n">total</span> <span class="n">cost</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>3. Contextual priming.</strong> Provide reference material or an example that shapes how the model responds. Unlike few-shot prompting, which teaches a pattern through several input-output pairs, priming supplies a model to follow.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Below is an example of a strong restaurant review (Review 1). Rewrite Review 2 using the same structure: one sentence on atmosphere, one on a specific dish, one on service, and a final sentence with a clear recommendation.
+
+Review 1: The dining room is small and warm, lit mostly by candles on each table. The grouper sandwich arrived with a crisp crust and a bright lime sauce that balanced the richness of the fish. Our server remembered our drink order without writing it down and checked on us exactly once. For a relaxed dinner under $25, this is the best choice in the neighborhood.
+
+Review 2: It was ok. Food was kind of good I guess, we got pasta. The waiter was nice but slow. Probably would go again maybe.
+</pre></div>
+</div>
+<p><strong>4. Retrieval-Augmented Generation (RAG).</strong> In professional systems, RAG automatically <strong>retrieves</strong> relevant passages from a collection of documents and adds them to the context before the model <strong>generates</strong> its answer. The answer is then grounded in those passages rather than in the model’s general training. When you attach a document to a chat and ask the model to answer from it, you are doing a simplified, manual version of the same idea.</p>
+<p>Download the course syllabus from Canvas and attach it to this prompt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You are demonstrating Retrieval-Augmented Generation for a classroom lesson.
+
+Step 1 — Retrieve: From the attached syllabus only, find the passages that describe (a) the policy for late submissions and (b) the rules for using AI tools on the capstone project. Quote each passage word for word and name the section heading it appears under.
+
+Step 2 — Label: Present those passages under the heading Retrieved Content. Do not paraphrase them and do not add anything that is not in the document.
+
+Step 3 — Generate: Under the heading Generated Answer, write three sentences explaining what a student must do to submit a late assignment and to use AI on the capstone, using only the retrieved passages.
+</pre></div>
+</div>
+<p>Then complete the two steps that only you can do. <strong>Verify:</strong> open the syllabus and confirm every quotation, noting any the model altered, merged, or invented. <strong>Explain:</strong> how is this different from contextual priming, where you paste the passage yourself and the model does no searching?</p>
+<p><strong>5. Chained prompts.</strong> Break a complex task into stages and send them as separate messages, checking each output before moving on. Errors caught at stage 1 do not propagate into stage 3.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Step</span> <span class="mi">1</span><span class="p">:</span> <span class="n">List</span> <span class="n">five</span> <span class="n">common</span> <span class="n">reasons</span> <span class="n">members</span> <span class="n">cancel</span> <span class="n">their</span> <span class="n">membership</span> <span class="n">at</span> <span class="n">a</span> <span class="n">small</span> <span class="n">neighborhood</span> <span class="n">gym</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>After you review and correct that list, send:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Step</span> <span class="mi">2</span><span class="p">:</span> <span class="n">For</span> <span class="n">each</span> <span class="n">of</span> <span class="n">those</span> <span class="n">five</span> <span class="n">reasons</span><span class="p">,</span> <span class="n">propose</span> <span class="n">one</span> <span class="n">low</span><span class="o">-</span><span class="n">cost</span> <span class="n">action</span> <span class="n">the</span> <span class="n">gym</span> <span class="n">owner</span> <span class="n">could</span> <span class="n">take</span> <span class="n">to</span> <span class="n">keep</span> <span class="n">those</span> <span class="n">members</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Then:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Step</span> <span class="mi">3</span><span class="p">:</span> <span class="n">Summarize</span> <span class="n">your</span> <span class="n">recommendations</span> <span class="ow">in</span> <span class="n">a</span> <span class="mi">120</span><span class="o">-</span><span class="n">word</span> <span class="n">memo</span> <span class="n">to</span> <span class="n">the</span> <span class="n">gym</span> <span class="n">owner</span><span class="p">,</span> <span class="n">ordered</span> <span class="kn">from</span><span class="w"> </span><span class="nn">cheapest</span> <span class="n">to</span> <span class="n">most</span> <span class="n">expensive</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>6. Output shaping.</strong> Specify tone, style, length, and format for a specific destination.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Write</span> <span class="n">a</span> <span class="n">reminder</span> <span class="n">to</span> <span class="n">parents</span> <span class="n">that</span> <span class="n">the</span> <span class="n">school</span> <span class="n">science</span> <span class="n">fair</span> <span class="ow">is</span> <span class="nb">next</span> <span class="n">Thursday</span> <span class="n">at</span> <span class="mi">6</span> <span class="n">p</span><span class="o">.</span><span class="n">m</span><span class="o">.</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">gym</span><span class="o">.</span> <span class="n">Write</span> <span class="n">it</span> <span class="k">as</span> <span class="n">a</span> <span class="n">text</span> <span class="n">message</span><span class="p">:</span> <span class="n">friendly</span><span class="p">,</span> <span class="n">under</span> <span class="mi">50</span> <span class="n">words</span><span class="p">,</span> <span class="k">with</span> <span class="n">the</span> <span class="n">date</span> <span class="ow">and</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">first</span> <span class="n">sentence</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>7. Negative context engineering.</strong> State explicitly what to avoid or leave out.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Explain</span> <span class="n">three</span> <span class="n">benefits</span> <span class="n">of</span> <span class="n">regular</span> <span class="n">physical</span> <span class="n">activity</span> <span class="k">for</span> <span class="n">college</span> <span class="n">students</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">recommend</span> <span class="n">specific</span> <span class="n">products</span><span class="p">,</span> <span class="n">apps</span><span class="p">,</span> <span class="ow">or</span> <span class="n">supplements</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">use</span> <span class="n">medical</span> <span class="n">terminology</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">give</span> <span class="n">weight</span><span class="o">-</span><span class="n">loss</span> <span class="n">targets</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>8. Multimodal context.</strong> Combine different kinds of input, such as text and images, in one request. Take a photo of the nutrition facts label on any packaged food you have, attach it, and paste:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Using</span> <span class="n">only</span> <span class="n">the</span> <span class="n">attached</span> <span class="n">photo</span> <span class="n">of</span> <span class="n">a</span> <span class="n">nutrition</span> <span class="n">facts</span> <span class="n">label</span><span class="p">,</span> <span class="n">state</span> <span class="n">the</span> <span class="n">serving</span> <span class="n">size</span><span class="p">,</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">servings</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">package</span><span class="p">,</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">calories</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">whole</span> <span class="n">package</span><span class="o">.</span> <span class="n">Show</span> <span class="n">the</span> <span class="n">calculation</span> <span class="k">for</span> <span class="n">the</span> <span class="n">whole</span><span class="o">-</span><span class="n">package</span> <span class="n">calories</span><span class="o">.</span> <span class="n">If</span> <span class="nb">any</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">unreadable</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">photo</span><span class="p">,</span> <span class="n">say</span> <span class="n">so</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">estimating</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Check the calculation against the label yourself.</p>
+</section>
+<section id="prompt-engineering-vs-context-engineering">
+<h3>3.4 Prompt Engineering vs. Context Engineering<a class="headerlink" href="#prompt-engineering-vs-context-engineering" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Aspect</p></th>
+<th class="head text-left"><p>Prompt Engineering</p></th>
+<th class="head text-left"><p>Context Engineering</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Focus</p></td>
+<td class="text-left"><p>Wording of the instruction</p></td>
+<td class="text-left"><p>Everything around the instruction</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Scope</p></td>
+<td class="text-left"><p>A single prompt</p></td>
+<td class="text-left"><p>Roles, reference materials, files, conversation history, sequences of prompts</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Goal</p></td>
+<td class="text-left"><p>A better single response</p></td>
+<td class="text-left"><p>Consistent, reliable, domain-specific responses</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Analogy</p></td>
+<td class="text-left"><p>Writing a recipe</p></td>
+<td class="text-left"><p>Designing the whole kitchen and stocking the pantry</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The two are not rivals. Every context-engineered input still contains a well-engineered prompt; context engineering adds what the prompt alone cannot carry.</p>
+</section>
+<section id="worked-example-from-prompt-to-context">
+<h3>3.5 Worked Example: From Prompt to Context<a class="headerlink" href="#worked-example-from-prompt-to-context" title="Link to this heading">#</a></h3>
+<p><strong>Prompt engineering only:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Plan</span> <span class="n">dinners</span> <span class="k">for</span> <span class="nb">next</span> <span class="n">week</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The model must guess how many people, which days, what budget, what diet, what skills, and what is already in the kitchen. It will guess all of them, plausibly and probably wrongly.</p>
+<p><strong>Context engineered:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>System Role: You are a practical home-cooking coach who helps college students eat well on a small budget.
+
+Reference Context: I share an apartment with one roommate, who is vegetarian. We cook dinner together Monday through Friday. Our total grocery budget for the week is $60. We have one pot, one frying pan, and no oven. Already in our pantry: rice, dried black beans, pasta, olive oil, garlic, onions, and canned tomatoes.
+
+Task: Plan five vegetarian dinners for two people that use the pantry items first. Then write one combined shopping list for the ingredients we still need to buy.
+
+Constraints: Each dinner must take 30 minutes or less. Do not use any recipe that requires an oven. Do not exceed the budget; if prices are estimates, say so.
+
+Output: A table with the columns Day, Dinner, Pantry Items Used, and Cooking Time, followed by the shopping list grouped by store section, with an estimated total cost.
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Line</p></th>
+<th class="head text-left"><p>Technique</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>System Role</p></td>
+<td class="text-left"><p>System role design</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Reference Context</p></td>
+<td class="text-left"><p>Contextual priming: the facts the model could not know</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Task (two parts)</p></td>
+<td class="text-left"><p>Instruction layering</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Constraints</p></td>
+<td class="text-left"><p>Negative context engineering</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Output</p></td>
+<td class="text-left"><p>Output shaping</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Now evaluate it with Part II: is every dinner vegetarian, oven-free, and under 30 minutes? Does the shopping list actually cover every ingredient in the table? Is the total cost plausible, and did the model flag it as an estimate?</p>
+</section>
+</section>
+<section id="hands-on-3-from-prompt-engineering-to-context-engineering">
+<h2>⚙️ Hands-On 3: From Prompt Engineering to Context Engineering<a class="headerlink" href="#hands-on-3-from-prompt-engineering-to-context-engineering" title="Link to this heading">#</a></h2>
+<p>Paste this baseline prompt into a new conversation and save the output.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Summarize</span> <span class="n">the</span> <span class="n">following</span> <span class="n">idea</span> <span class="ow">in</span> <span class="n">three</span> <span class="n">bullet</span> <span class="n">points</span><span class="o">.</span>
+
+<span class="n">Idea</span><span class="p">:</span> <span class="n">A</span> <span class="n">phone</span> <span class="n">app</span> <span class="n">that</span> <span class="n">alerts</span> <span class="n">residents</span> <span class="n">when</span> <span class="n">local</span> <span class="n">drainage</span> <span class="n">canals</span> <span class="n">are</span> <span class="n">close</span> <span class="n">to</span> <span class="n">overflowing</span> <span class="n">during</span> <span class="n">heavy</span> <span class="n">rain</span><span class="p">,</span> <span class="n">using</span> <span class="n">water</span><span class="o">-</span><span class="n">level</span> <span class="n">sensors</span> <span class="ow">and</span> <span class="n">weather</span> <span class="n">forecasts</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic">
+<li><p><strong>Add a role and reference context.</strong> In a new conversation, paste the version below. Score both outputs with the five criteria from Part II. Which criteria improved, and by how much?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">System</span> <span class="n">Role</span><span class="p">:</span> <span class="n">You</span> <span class="n">are</span> <span class="n">a</span> <span class="n">city</span> <span class="n">planning</span> <span class="n">consultant</span> <span class="n">who</span> <span class="n">advises</span> <span class="n">small</span> <span class="n">cities</span> <span class="n">on</span> <span class="n">flood</span> <span class="n">preparedness</span><span class="o">.</span>
+
+<span class="n">Reference</span> <span class="n">Context</span><span class="p">:</span> <span class="n">The</span> <span class="n">city</span> <span class="n">has</span> <span class="mi">40</span><span class="p">,</span><span class="mi">000</span> <span class="n">residents</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">limited</span> <span class="n">technology</span> <span class="n">budget</span><span class="o">.</span> <span class="n">About</span> <span class="n">one</span> <span class="n">third</span> <span class="n">of</span> <span class="n">residents</span> <span class="n">are</span> <span class="n">over</span> <span class="mi">65</span><span class="p">,</span> <span class="ow">and</span> <span class="n">many</span> <span class="n">of</span> <span class="n">them</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">use</span> <span class="n">smartphones</span><span class="o">.</span> <span class="n">Heavy</span> <span class="n">summer</span> <span class="n">rain</span> <span class="n">closes</span> <span class="n">several</span> <span class="n">roads</span> <span class="n">each</span> <span class="n">year</span><span class="o">.</span>
+
+<span class="n">Task</span><span class="p">:</span> <span class="n">Summarize</span> <span class="n">the</span> <span class="n">idea</span> <span class="n">below</span> <span class="ow">and</span> <span class="n">assess</span> <span class="n">whether</span> <span class="n">it</span> <span class="n">fits</span> <span class="n">this</span> <span class="n">city</span><span class="o">.</span>
+
+<span class="n">Idea</span><span class="p">:</span> <span class="n">A</span> <span class="n">phone</span> <span class="n">app</span> <span class="n">that</span> <span class="n">alerts</span> <span class="n">residents</span> <span class="n">when</span> <span class="n">local</span> <span class="n">drainage</span> <span class="n">canals</span> <span class="n">are</span> <span class="n">close</span> <span class="n">to</span> <span class="n">overflowing</span> <span class="n">during</span> <span class="n">heavy</span> <span class="n">rain</span><span class="p">,</span> <span class="n">using</span> <span class="n">water</span><span class="o">-</span><span class="n">level</span> <span class="n">sensors</span> <span class="ow">and</span> <span class="n">weather</span> <span class="n">forecasts</span><span class="o">.</span>
+
+<span class="n">Output</span><span class="p">:</span> <span class="n">Three</span> <span class="n">bullet</span> <span class="n">points</span> <span class="n">under</span> <span class="n">the</span> <span class="n">headings</span> <span class="n">Value</span> <span class="n">to</span> <span class="n">Residents</span><span class="p">,</span> <span class="n">Practical</span> <span class="n">Obstacles</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Recommended</span> <span class="n">Next</span> <span class="n">Step</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Add negative context.</strong> Add these two sentences before the Output line and run it in a new conversation: <em>“Do not recommend any specific commercial product or company. Do not assume a budget larger than the one described.”</em> What disappeared from the answer? Was anything useful lost?</p></li>
+<li><p><strong>Remove one component.</strong> Run version 1 again in a new conversation, but delete the Reference Context lines. Which of the three bullets changed the most? The component whose removal hurts the output most is the one doing the work, and it is the one you should never leave out for this kind of task.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="looking-ahead">
+<h2>💡 Looking Ahead<a class="headerlink" href="#looking-ahead" title="Link to this heading">#</a></h2>
+<p>Writing the same role and reference context into every conversation is tedious. In <strong>Unit 8</strong>, you will save context so that it applies automatically: <strong>personalized assistants</strong> (such as Custom GPTs and Gems) store a role, instructions, and knowledge files for one purpose, and <strong>AI workspaces</strong> (Projects) keep files, instructions, and conversations together for ongoing work. Both are context engineering made permanent. They correspond to Section 6.6 of AI Literacy Module 6.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>How does communicating with an AI model differ from communicating with another person who shares your background?</p></li>
+<li><p>Which prompt type felt most natural to you, and which needed the most experimentation?</p></li>
+<li><p>In the worked example of Section 2.4, the prompt said “use only the information in the announcement” and the model still added a claim. What does that imply about how much any prompt can guarantee?</p></li>
+<li><p>A well-engineered prompt makes the output more likely to be <strong>what you asked for</strong>. Does it make it more likely to be <strong>correct</strong>? Are those the same thing?</p></li>
+</ol>
+<p><strong>Connecting to HW7 (Prompt Iteration Log):</strong> choose one real task from your own life, studies, or intended career. Write an initial prompt and then five successive revisions, changing one thing each time and running each in a new conversation. For each version, record what you changed and why, the five criterion scores, and any claims you checked. At least one revision must come from a meta-prompt (Section 2.8); record what the model changed and which changes you kept. Your final version must use at least two context engineering techniques from Section 3.3; name them. End with the AI Disclosure statement required by the syllabus. The log is graded, not the final prompt.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Russell, S., &amp; Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em>, 4th Ed., Ch. 24. Pearson.</p></li>
+<li><p>Mitchell, M. (2020). <em>Artificial Intelligence: A Guide for Thinking Humans</em>, Ch. 11–13. Penguin Books.</p></li>
+<li><p>Mollick, E., &amp; Mollick, L. R. (2024). <em>Co-Intelligence: Living and Working with AI</em>. Portfolio.</p></li>
+<li><p>Prompt Engineering Guide. <a class="reference external" href="https://www.promptingguide.ai/">https://www.promptingguide.ai/</a></p></li>
+<li><p>White, J. et al. (2023). <em>A Prompt Pattern Catalog to Enhance Prompt Engineering with ChatGPT</em>. arXiv:2302.11382. <a class="reference external" href="https://arxiv.org/abs/2302.11382">https://arxiv.org/abs/2302.11382</a></p></li>
+<li><p>Zhou, Y. et al. (2023). <em>Large Language Models Are Human-Level Prompt Engineers</em>. arXiv:2211.01910. <a class="reference external" href="https://arxiv.org/abs/2211.01910">https://arxiv.org/abs/2211.01910</a></p></li>
+<li><p>Wei, J. et al. (2022). <em>Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</em>. arXiv:2201.11903. <a class="reference external" href="https://arxiv.org/abs/2201.11903">https://arxiv.org/abs/2201.11903</a></p></li>
+<li><p>Lewis, P. et al. (2020). <em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</em>. arXiv:2005.11401. <a class="reference external" href="https://arxiv.org/abs/2005.11401">https://arxiv.org/abs/2005.11401</a></p></li>
+<li><p>Anthropic (2025). <em>Effective Context Engineering for AI Agents</em>. <a class="reference external" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</a></p></li>
+<li><p>Dendritic Institute (2025). <em>AI Literacy Series — Module 5: Fundamentals of Prompt Engineering</em> and <em>Module 6: Context Engineering</em>.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_06_AI_Applications.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 6: AI Applications Across Domains</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_08_Workspaces_and_Assistants.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 8: AI Workspaces and Assistants</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-prompt-engineering">Part I — Prompt Engineering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-prompt-engineering">1.1 What Is Prompt Engineering?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-prompt">1.2 Anatomy of a Prompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-deconstruct-this-prompt">Exercise 1: Deconstruct This Prompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#five-common-prompt-types">1.3 Five Common Prompt Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration-the-first-prompt-is-a-draft">1.4 Iteration: The First Prompt Is a Draft</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-1-improving-a-prompt-one-step-at-a-time">⚙️ Hands-On 1: Improving a Prompt One Step at a Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-evaluating-prompts-and-outputs">Part II — Evaluating Prompts and Outputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-looks-good-is-not-an-evaluation">2.1 Why “It Looks Good” Is Not an Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#five-criteria-for-a-prompt-output-pair">2.2 Five Criteria for a Prompt-Output Pair</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-evaluate-a-six-step-procedure">2.3 How to Evaluate: A Six-Step Procedure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example">2.4 Worked Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#techniques-to-reduce-and-detect-hallucinations">2.5 Techniques to Reduce and Detect Hallucinations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-a-prompt">2.6 Troubleshooting a Prompt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reverse-prompting-analyzing-prompts-backwards">2.7 Reverse Prompting: Analyzing Prompts Backwards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meta-prompting-using-ai-to-write-and-improve-prompts">2.8 Meta-Prompting: Using AI to Write and Improve Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-meta-prompting">Exercise 2: Meta-Prompting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-checking-is-enough">2.9 How Much Checking Is Enough?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-2-evaluate-an-output">⚙️ Hands-On 2: Evaluate an Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-context-engineering">Part III — Context Engineering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-context-engineering">3.1 What Is Context Engineering?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-context-matters-the-context-window">3.2 Why Context Matters: The Context Window</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-techniques-in-context-engineering">3.3 Key Techniques in Context Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-engineering-vs-context-engineering">3.4 Prompt Engineering vs. Context Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#worked-example-from-prompt-to-context">3.5 Worked Example: From Prompt to Context</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-3-from-prompt-engineering-to-context-engineering">⚙️ Hands-On 3: From Prompt Engineering to Context Engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead">💡 Looking Ahead</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

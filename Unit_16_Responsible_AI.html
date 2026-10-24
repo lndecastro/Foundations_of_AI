@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 16: Responsible AI &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_16_Responsible_AI';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Appendix A: Python and Colab Primer" href="Appendix_A_Python_and_Colab_Primer.html" />
+    <link rel="prev" title="Unit 15: Vibe Coding Tools" href="Unit_15_Vibe_Coding_Tools.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Documents_and_Texts.html">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Presentations.html">Unit 11: Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Spreadsheets.html">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_Descriptive_Analysis.html">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_14_Data_Visualization.html">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_15_Vibe_Coding_Tools.html">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_D_Prompt_Library.html">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_16_Responsible_AI.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_16_Responsible_AI.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 16: Responsible AI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-data-quality-leakage-privacy">Part I — Data: Quality, Leakage, Privacy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-quality-dimensions">1.1 The Quality Dimensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leakage">1.2 Leakage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-leakage-in-action">⚙️ Hands-On: Leakage in Action</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-anonymization-is-weaker-than-it-looks">⚙️ Hands-On: Anonymization Is Weaker Than It Looks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-bias-and-fairness">Part II — Bias and Fairness</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-bias-enters">2.1 Where Bias Enters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-definitions-conflict">2.2 Fairness Definitions Conflict</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-accountability-and-governance">Part III — Accountability and Governance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-accountability-gap">3.1 The Accountability Gap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-cards">3.2 Model Cards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompts-for-responsible-ai-work">3.3 Prompts for Responsible AI Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-regulatory-landscape">3.4 The Regulatory Landscape</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-one-system-four-views">💡 Example: One System, Four Views</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-16-responsible-ai">
+<h1>Unit 16: Responsible AI<a class="headerlink" href="#unit-16-responsible-ai" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sessions 24–25 | Nov 09, 16 | HW12 assigned Nov 09, due Nov 16
+</pre></div>
+</div>
+<p>This unit closes the course, and it is a synthesis rather than a new topic. Data quality, privacy, bias, fairness, ethics, and governance have appeared throughout Parts IV and V — confidentiality in Unit 10, fabricated numbers in Unit 12, confounding in Unit 13, honest axes in Unit 14, licensing and security in Unit 15. Here they become a single framework you can apply deliberately.</p>
+<p>Two sessions is not much time for material that fills entire degree programs. The goal is correspondingly focused: <strong>you should leave able to identify what could go wrong with a specific system, in specific terms, and say who would be harmed.</strong> That is more useful than a survey of ethical theories.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Detect <strong>data leakage</strong> and explain why it inflates results silently.</p></li>
+<li><p>Demonstrate that anonymization is weaker than it appears.</p></li>
+<li><p>Distinguish sources of bias and show that fairness definitions can conflict mathematically.</p></li>
+<li><p>Apply an accountability framework and produce a <strong>model card</strong>.</p></li>
+<li><p>Locate a system within the current regulatory landscape.</p></li>
+</ul>
+</section>
+<section id="part-i-data-quality-leakage-privacy">
+<h2>Part I — Data: Quality, Leakage, Privacy<a class="headerlink" href="#part-i-data-quality-leakage-privacy" title="Link to this heading">#</a></h2>
+<section id="the-quality-dimensions">
+<h3>1.1 The Quality Dimensions<a class="headerlink" href="#the-quality-dimensions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Dimension</p></th>
+<th class="head text-left"><p>Question</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Accuracy</p></td>
+<td class="text-left"><p>Do values reflect reality?</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Completeness</p></td>
+<td class="text-left"><p>What is missing, and is it missing <em>at random</em>?</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Consistency</p></td>
+<td class="text-left"><p>Do sources agree?</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Timeliness</p></td>
+<td class="text-left"><p>Is it current enough to act on?</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Provenance</p></td>
+<td class="text-left"><p>Where did it come from, and with what consent?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Completeness deserves emphasis. <strong>Missing data is almost never missing at random.</strong> Patients who miss follow-up appointments differ systematically from those who attend. Employees who skip the engagement survey differ from those who complete it. Dropping incomplete rows does not remove a nuisance; it silently changes the population your model describes.</p>
+</section>
+<section id="leakage">
+<h3>1.2 Leakage<a class="headerlink" href="#leakage" title="Link to this heading">#</a></h3>
+<p>Leakage is when information unavailable at prediction time leaks into training. It produces spectacular results that collapse in deployment, and it is the single most common way for a competent team to ship something worthless.</p>
+</section>
+</section>
+<section id="hands-on-leakage-in-action">
+<h2>⚙️ Hands-On: Leakage in Action<a class="headerlink" href="#hands-on-leakage-in-action" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1200</span>
+
+<span class="c1"># Real clinical factors that genuinely predict readmission</span>
+<span class="n">age</span>        <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">prior_adm</span>  <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">comorbid</span>   <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">risk</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.02</span> <span class="o">*</span> <span class="p">(</span><span class="n">age</span> <span class="o">-</span> <span class="mi">40</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.30</span> <span class="o">*</span> <span class="n">prior_adm</span> <span class="o">+</span> <span class="mf">0.15</span> <span class="o">*</span> <span class="n">comorbid</span>
+        <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="n">readmitted</span> <span class="o">=</span> <span class="p">(</span><span class="n">risk</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">risk</span><span class="p">,</span> <span class="mi">70</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># THE LEAK: a field the hospital system only fills in AFTER a readmission.</span>
+<span class="c1"># A well-meaning analyst pulls the whole table and includes it.</span>
+<span class="n">followup_code</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">readmitted</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                         <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">31</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span> <span class="n">n</span><span class="p">),</span>      <span class="c1"># post-readmission codes</span>
+                         <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"age"</span><span class="p">:</span> <span class="n">age</span><span class="p">,</span> <span class="s2">"prior_admissions"</span><span class="p">:</span> <span class="n">prior_adm</span><span class="p">,</span>
+                   <span class="s2">"comorbidities"</span><span class="p">:</span> <span class="n">comorbid</span><span class="p">,</span>
+                   <span class="s2">"followup_code"</span><span class="p">:</span> <span class="n">followup_code</span><span class="p">,</span>
+                   <span class="s2">"readmitted"</span><span class="p">:</span> <span class="n">readmitted</span><span class="p">})</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="n">X_tr</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">y_te</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">readmitted</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">.3</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">readmitted</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_te</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">label</span><span class="si">:</span><span class="s2">&lt;34</span><span class="si">}</span><span class="s2"> test accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">m</span><span class="p">,</span> <span class="n">features</span>
+
+<span class="n">clean</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"age"</span><span class="p">,</span> <span class="s2">"prior_admissions"</span><span class="p">,</span> <span class="s2">"comorbidities"</span><span class="p">]</span>
+<span class="n">leaky</span> <span class="o">=</span> <span class="n">clean</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"followup_code"</span><span class="p">]</span>
+
+<span class="n">m_leak</span><span class="p">,</span> <span class="n">f_leak</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">leaky</span><span class="p">,</span> <span class="s2">"WITH the leaked column"</span><span class="p">)</span>
+<span class="n">m_ok</span><span class="p">,</span>   <span class="n">f_ok</span>   <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">clean</span><span class="p">,</span> <span class="s2">"WITHOUT it (honest model)"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Feature importances of the leaky model:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">f_leak</span><span class="p">,</span> <span class="n">m_leak</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">),</span>
+                   <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  </span><span class="si">{</span><span class="n">f</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}{</span><span class="n">i</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The leaky model looks excellent. It is useless: in deployment <code class="docutils literal notranslate"><span class="pre">followup_code</span></code> does not exist yet for the patient you are trying to predict, because it is created <em>by</em> the event you are predicting.</p>
+<p>The feature-importance listing is the diagnostic. <strong>When one feature dominates implausibly, suspect leakage before celebrating.</strong> The honest model’s lower accuracy is the real number, and it is the one that would survive deployment.</p>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Make the leak subtler — have <code class="docutils literal notranslate"><span class="pre">followup_code</span></code> agree with the outcome only 80% of the time. Accuracy drops but stays inflated. Is it still detectable from importances?</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">days_since_discharge</span></code> column that is <code class="docutils literal notranslate"><span class="pre">NaN</span></code> for non-readmitted patients. Does missingness itself leak?</p></li>
+<li><p>Write down the four questions you would ask about <strong>any</strong> feature to decide whether it could leak. This is your checklist.</p></li>
+</ol>
+</section>
+<section id="hands-on-anonymization-is-weaker-than-it-looks">
+<h2>⚙️ Hands-On: Anonymization Is Weaker Than It Looks<a class="headerlink" href="#hands-on-anonymization-is-weaker-than-it-looks" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">zips</span> <span class="o">=</span> <span class="p">[</span><span class="mi">33901</span><span class="p">,</span> <span class="mi">33907</span><span class="p">,</span> <span class="mi">33912</span><span class="p">,</span> <span class="mi">33913</span><span class="p">,</span> <span class="mi">33916</span><span class="p">,</span> <span class="mi">33919</span><span class="p">,</span> <span class="mi">33928</span><span class="p">,</span> <span class="mi">33931</span><span class="p">,</span> <span class="mi">33966</span><span class="p">]</span>
+
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"zip"</span><span class="p">:</span>        <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">zips</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+    <span class="s2">"birth_year"</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1940</span><span class="p">,</span> <span class="mi">2006</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span>
+    <span class="s2">"sex"</span><span class="p">:</span>        <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"F"</span><span class="p">,</span> <span class="s2">"M"</span><span class="p">],</span> <span class="n">n</span><span class="p">),</span>
+    <span class="s2">"diagnosis"</span><span class="p">:</span>  <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"D"</span><span class="p">],</span> <span class="n">n</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="c1"># Names and IDs removed. This is what "de-identified" usually means.</span>
+
+<span class="n">quasi</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"zip"</span><span class="p">,</span> <span class="s2">"birth_year"</span><span class="p">,</span> <span class="s2">"sex"</span><span class="p">]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">quasi</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">unique</span> <span class="o">=</span> <span class="p">(</span><span class="n">sizes</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Records: </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Uniquely identified by ZIP + birth year + sex: "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">unique</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">unique</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"In groups of 2 or fewer: "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">sizes</span><span class="p">[</span><span class="n">sizes</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">sizes</span><span class="p">[</span><span class="n">sizes</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+
+<span class="c1"># k-anonymity: generalize birth year into decades</span>
+<span class="n">records</span><span class="p">[</span><span class="s2">"birth_decade"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">records</span><span class="o">.</span><span class="n">birth_year</span> <span class="o">//</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="n">sizes_k</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"zip"</span><span class="p">,</span> <span class="s2">"birth_decade"</span><span class="p">,</span> <span class="s2">"sex"</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">After generalizing birth year to decade:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  smallest group size (k): </span><span class="si">{</span><span class="n">sizes_k</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  uniquely identified:     </span><span class="si">{</span><span class="p">(</span><span class="n">sizes_k</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Names removed, IDs removed — and dozens of records are still uniquely identified by three fields nobody considers identifying, with hundreds more in groups of two. Anyone holding a voter roll can match them. Note that this is a <em>generous</em> test: only nine ZIP codes and 5,000 records. Widen the ZIP range or narrow the population and the unique fraction climbs sharply, which is why real re-identification studies on state-level data reach far higher numbers.</p>
+<p>Generalizing birth year to a decade raises <strong>k-anonymity</strong> sharply. It also destroys information, and that trade-off is the entire field: privacy protection is paid for in analytical utility, and someone has to decide the exchange rate.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>“We removed personally identifiable information” is a description of an action, not a guarantee of an outcome. The correct question is always: <strong>what is the smallest group in this dataset, on any combination of fields an adversary might hold?</strong></p>
+</div>
+</section>
+<section id="part-ii-bias-and-fairness">
+<h2>Part II — Bias and Fairness<a class="headerlink" href="#part-ii-bias-and-fairness" title="Link to this heading">#</a></h2>
+<section id="where-bias-enters">
+<h3>2.1 Where Bias Enters<a class="headerlink" href="#where-bias-enters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Source</p></th>
+<th class="head text-left"><p>Mechanism</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Historical</strong></p></td>
+<td class="text-left"><p>The data faithfully records a biased world</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Representation</strong></p></td>
+<td class="text-left"><p>Some groups are undersampled</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Measurement</strong></p></td>
+<td class="text-left"><p>The proxy differs in meaning across groups</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Aggregation</strong></p></td>
+<td class="text-left"><p>One model imposed where groups differ</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Deployment</strong></p></td>
+<td class="text-left"><p>Used on a population it was not trained for</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Historical bias is the hardest because the data is <em>accurate</em>. A hiring model trained on ten years of decisions learns those decisions. If they were biased, the model reproduces the bias — faithfully, at scale, and with the appearance of objectivity that a number carries.</p>
+<p>Measurement bias is the subtlest. Healthcare cost has been used as a proxy for health need; because less is historically spent on some populations for the same condition, the proxy encodes unequal access as lower need. Nothing in the pipeline is broken. The proxy is simply not measuring what it was assumed to measure.</p>
+</section>
+<section id="fairness-definitions-conflict">
+<h3>2.2 Fairness Definitions Conflict<a class="headerlink" href="#fairness-definitions-conflict" title="Link to this heading">#</a></h3>
+<p>This is the mathematically important result of the unit, and it is not a matter of opinion.</p>
+<ul class="simple">
+<li><p><strong>Demographic parity</strong> — equal positive rates across groups.</p></li>
+<li><p><strong>Equal opportunity</strong> — equal true-positive rates across groups.</p></li>
+<li><p><strong>Predictive parity</strong> — equal precision across groups.</p></li>
+<li><p><strong>Individual fairness</strong> — similar individuals treated similarly.</p></li>
+</ul>
+<p><strong>When base rates genuinely differ between groups, these cannot all hold simultaneously.</strong> Not “are hard to achieve” — cannot. This was proved in the context of the COMPAS recidivism debate, where a system was defended as fair by one definition and attacked as unfair by another, and both sides were arithmetically right.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The consequence is that <strong>there is no technically correct answer to “is this system fair?”</strong> Choosing a fairness criterion is choosing which harm to prioritize, and that is a normative decision requiring the people affected to have a say.</p>
+<p>An engineering team that picks a fairness metric quietly, because it needed one to proceed, has made a policy decision without acknowledging it. Naming the choice is the professional obligation.</p>
+</div>
+</section>
+</section>
+<section id="part-iii-accountability-and-governance">
+<h2>Part III — Accountability and Governance<a class="headerlink" href="#part-iii-accountability-and-governance" title="Link to this heading">#</a></h2>
+<section id="the-accountability-gap">
+<h3>3.1 The Accountability Gap<a class="headerlink" href="#the-accountability-gap" title="Link to this heading">#</a></h3>
+<p>When an AI system causes harm, responsibility diffuses: the data was collected by one party, the model built by another, the product designed by a third, deployed by a fourth, and used by a fifth. Everyone acted reasonably within their scope, and nobody owns the outcome.</p>
+<p>Closing the gap requires naming, in advance, who is answerable for what. The mechanism is documentation.</p>
+</section>
+<section id="model-cards">
+<h3>3.2 Model Cards<a class="headerlink" href="#model-cards" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_card</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Sprint Completion Predictor v0.3"</span><span class="p">,</span>
+    <span class="s2">"owner"</span><span class="p">:</span> <span class="s2">"your name and contact"</span><span class="p">,</span>
+    <span class="s2">"date"</span><span class="p">:</span> <span class="s2">"2026-11-09"</span><span class="p">,</span>
+
+    <span class="s2">"intended_use"</span><span class="p">:</span> <span class="s2">"Flag sprints at risk of under-delivery for team discussion."</span><span class="p">,</span>
+    <span class="s2">"out_of_scope"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"Individual performance evaluation"</span><span class="p">,</span>
+        <span class="s2">"Any input to compensation or promotion decisions"</span><span class="p">,</span>
+        <span class="s2">"Teams outside the two it was trained on"</span><span class="p">,</span>
+    <span class="p">],</span>
+
+    <span class="s2">"training_data"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"source"</span><span class="p">:</span> <span class="s2">"Internal sprint records, Jan 2025 - Sep 2026"</span><span class="p">,</span>
+        <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"1,340 sprint-engineer rows"</span><span class="p">,</span>
+        <span class="s2">"known_gaps"</span><span class="p">:</span> <span class="s2">"Two teams only; no contractor data; "</span>
+                      <span class="s2">"task difficulty not recorded"</span><span class="p">,</span>
+        <span class="s2">"consent"</span><span class="p">:</span> <span class="s2">"Team leads informed; individual engineers not consulted"</span><span class="p">,</span>
+    <span class="p">},</span>
+
+    <span class="s2">"performance"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"overall"</span><span class="p">:</span> <span class="s2">"accuracy 0.78, precision 0.71, recall 0.66"</span><span class="p">,</span>
+        <span class="s2">"subgroups"</span><span class="p">:</span> <span class="s2">"Not evaluated by team size — a known gap"</span><span class="p">,</span>
+        <span class="s2">"baseline"</span><span class="p">:</span> <span class="s2">"Always-predict-on-time: 0.64 accuracy"</span><span class="p">,</span>
+    <span class="p">},</span>
+
+    <span class="s2">"known_limitations"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"Trained on a period including one reorganization"</span><span class="p">,</span>
+        <span class="s2">"Story points are not comparable across teams"</span><span class="p">,</span>
+        <span class="s2">"Does not distinguish under-delivery from over-commitment"</span><span class="p">,</span>
+    <span class="p">],</span>
+
+    <span class="s2">"fairness"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"criterion_chosen"</span><span class="p">:</span> <span class="s2">"Equal opportunity across teams"</span><span class="p">,</span>
+        <span class="s2">"why"</span><span class="p">:</span> <span class="s2">"False negatives (missed risk) are the costly error here"</span><span class="p">,</span>
+        <span class="s2">"not_chosen"</span><span class="p">:</span> <span class="s2">"Demographic parity — teams have different real risk"</span><span class="p">,</span>
+    <span class="p">},</span>
+
+    <span class="s2">"accountable_party"</span><span class="p">:</span> <span class="s2">"who is answerable if this causes harm"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="n">card</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">card</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">pad</span> <span class="o">=</span> <span class="s2">"  "</span> <span class="o">*</span> <span class="n">indent</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pad</span><span class="si">}{</span><span class="n">k</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span><span class="w"> </span><span class="s1">' '</span><span class="p">)</span><span class="si">}</span><span class="s2">:"</span><span class="p">);</span> <span class="n">render</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">indent</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pad</span><span class="si">}{</span><span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span><span class="w"> </span><span class="s1">' '</span><span class="p">)</span><span class="si">}</span><span class="s2">:"</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pad</span><span class="si">}</span><span class="s2">  - </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">pad</span><span class="si">}{</span><span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'_'</span><span class="p">,</span><span class="w"> </span><span class="s1">' '</span><span class="p">)</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">render</span><span class="p">(</span><span class="n">model_card</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Fill this in for a model you built in Unit 4 or your capstone. Which field was hardest to complete honestly?</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">baseline</span></code> field is the one most often omitted. Why does 0.78 accuracy mean something different once you know the trivial baseline is 0.64?</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">monitoring</span></code> section: what would you measure after deployment, and what result would trigger retraining?</p></li>
+</ol>
+</section>
+<section id="prompts-for-responsible-ai-work">
+<h3>3.3 Prompts for Responsible AI Work<a class="headerlink" href="#prompts-for-responsible-ai-work" title="Link to this heading">#</a></h3>
+<p>These three do most of the work on HW12. Full versions with verification steps are in Appendix D.10.</p>
+<p><strong>Leakage audit</strong> — run this on your capstone’s feature list before you model anything:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Below is a list of the features in my dataset and a description of the outcome I am predicting. For each feature, tell me: could this value be unavailable, incomplete, or different at the moment a real prediction would be made? Consider fields that are populated after the outcome, fields derived from the outcome, and fields whose meaning changes over the record's lifecycle. Flag anything suspicious even if you are unsure — I would rather check five clean features than miss one leak.
+OUTCOME: [what you are predicting, and when the prediction happens]
+FEATURES: [list with a one-line description of each]
+</pre></div>
+</div>
+<p><strong>Bias by mechanism</strong> — the phrasing matters, because a vague prompt returns vague risks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Identify sources of bias by mechanism, using these categories: historical, representation, measurement, aggregation, deployment. For each one you identify, state the specific mechanism — not that bias "could exist," but what in this particular pipeline would produce it, and which group would be affected how. If a category does not apply here, say so rather than inventing an instance.
+DATASET: [source, collection period, population, label definition]
+DECISION: [what the output is used for, and by whom]
+</pre></div>
+</div>
+<p><strong>Fairness trade-off:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>For the system described below, walk through what each of these fairness criteria would require: demographic parity, equal opportunity, predictive parity, individual fairness. Then tell me which pairs cannot hold simultaneously given the base rates I describe, and what each choice sacrifices. Do not recommend one — state what a person choosing each would be prioritizing.
+SYSTEM: [what it decides, for whom] | BASE RATES: [outcome rates across groups] | ERROR COSTS: [what each error costs, and to whom]
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note the shape shared by all three: they forbid the reassuring answer. “Could be biased,” “seems reasonable,” and “no major concerns” are the statistically typical continuations, and they are worth nothing on this assignment. Constraining the output away from them is the whole technique.</p>
+</div>
+</section>
+<section id="the-regulatory-landscape">
+<h3>3.4 The Regulatory Landscape<a class="headerlink" href="#the-regulatory-landscape" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>EU AI Act</strong> — risk-tiered. Unacceptable-risk uses prohibited; high-risk uses (employment, credit, education, law enforcement) face conformity, documentation, and human-oversight requirements. Extraterritorial in effect.</p></li>
+<li><p><strong>United States</strong> — sectoral rather than comprehensive. FTC authority over unfair practices, sector regulators in finance and health, plus state laws — Colorado’s AI Act and Illinois’s biometric statute among the most consequential.</p></li>
+<li><p><strong>NIST AI Risk Management Framework</strong> — voluntary in the US, and rapidly becoming the de facto documentation standard.</p></li>
+<li><p><strong>ISO/IEC 42001</strong> — an auditable AI management-system standard.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The practical takeaway for a software engineer is narrower than the landscape suggests: <strong>know whether what you are building falls in a high-risk category.</strong> Employment, credit, education, healthcare, and law enforcement applications carry obligations that a recommendation engine for music does not. The classification determines the paperwork, and the paperwork determines the timeline.</p>
+</div>
+</section>
+</section>
+<section id="example-one-system-four-views">
+<h2>💡 Example: One System, Four Views<a class="headerlink" href="#example-one-system-four-views" title="Link to this heading">#</a></h2>
+<p>A university deploys a model flagging students at risk of failing, so advisors can intervene.</p>
+<ul class="simple">
+<li><p><strong>Data view.</strong> The label is “failed the course.” Historical grades encode past instructor variation. Students who withdrew are missing — not at random.</p></li>
+<li><p><strong>Fairness view.</strong> Equal opportunity across demographic groups? Or equal precision, so that advisors’ limited time is not wasted disproportionately on one group? These conflict, and choosing is a policy decision.</p></li>
+<li><p><strong>Accountability view.</strong> If a flagged student is treated differently and performs worse as a result, who is answerable — the vendor, the institution, or the advisor who acted on the flag?</p></li>
+<li><p><strong>Governance view.</strong> Educational applications are high-risk under the EU AI Act. Under FERPA, the data has consent constraints that most vendors’ terms do not satisfy.</p></li>
+</ul>
+<p>Every one of these is a real objection, and none is resolved by improving the model’s accuracy.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>Across this course you built classifiers, generated documents, analyzed data, and evaluated coding tools. In nearly every unit, the failure mode was the same shape: <strong>the system produced something that looked right.</strong></p>
+<p>What is the one habit you will actually keep — not the one you should keep — that would catch that?</p>
+</div></blockquote>
+<p><strong>Connecting to HW12 (Responsible AI Assessment):</strong> assigned Nov 09, due Nov 16. Take one AI system — ideally your own capstone — and produce a completed model card plus a one-page risk assessment covering: one leakage risk, one privacy risk, one bias source with its mechanism, the fairness criterion you chose and what you gave up, and who is accountable. Vague risks (“could be biased”) receive no credit; name the mechanism.</p>
+<p><strong>Capstone presentations begin Nov 18.</strong></p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Russell, S., &amp; Norvig, P. (2022). <em>Artificial Intelligence: A Modern Approach</em>, 4th Ed., Ch. 27. Pearson.</p></li>
+<li><p>Mitchell, M. (2020). <em>Artificial Intelligence: A Guide for Thinking Humans</em>, Ch. 7, Part V. Penguin Books.</p></li>
+<li><p>Barocas, S., Hardt, M., &amp; Narayanan, A. (2023). <em>Fairness and Machine Learning</em>. MIT Press. [<a class="reference external" href="https://fairmlbook.org">https://fairmlbook.org</a>]</p></li>
+<li><p>Mitchell, M., et al. (2019). <em>Model Cards for Model Reporting.</em> ACM FAccT.</p></li>
+<li><p>Sweeney, L. (2002). <em>k-Anonymity: A Model for Protecting Privacy.</em> IJUFKS 10(5).</p></li>
+<li><p>NIST (2023). <em>AI Risk Management Framework 1.0.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_15_Vibe_Coding_Tools.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 15: Vibe Coding Tools</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Appendix_A_Python_and_Colab_Primer.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendix A: Python and Colab Primer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-data-quality-leakage-privacy">Part I — Data: Quality, Leakage, Privacy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-quality-dimensions">1.1 The Quality Dimensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#leakage">1.2 Leakage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-leakage-in-action">⚙️ Hands-On: Leakage in Action</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-anonymization-is-weaker-than-it-looks">⚙️ Hands-On: Anonymization Is Weaker Than It Looks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-bias-and-fairness">Part II — Bias and Fairness</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-bias-enters">2.1 Where Bias Enters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-definitions-conflict">2.2 Fairness Definitions Conflict</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-accountability-and-governance">Part III — Accountability and Governance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-accountability-gap">3.1 The Accountability Gap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-cards">3.2 Model Cards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prompts-for-responsible-ai-work">3.3 Prompts for Responsible AI Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-regulatory-landscape">3.4 The Regulatory Landscape</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-one-system-four-views">💡 Example: One System, Four Views</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

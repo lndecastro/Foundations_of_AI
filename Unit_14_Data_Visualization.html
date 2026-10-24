@@ -1,0 +1,848 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 14: AI for Data Visualization &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_14_Data_Visualization';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 15: Vibe Coding Tools" href="Unit_15_Vibe_Coding_Tools.html" />
+    <link rel="prev" title="Unit 13: AI for Descriptive Analysis" href="Unit_13_Descriptive_Analysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Documents_and_Texts.html">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Presentations.html">Unit 11: Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Spreadsheets.html">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_Descriptive_Analysis.html">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_15_Vibe_Coding_Tools.html">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_16_Responsible_AI.html">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_D_Prompt_Library.html">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_14_Data_Visualization.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_14_Data_Visualization.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 14: AI for Data Visualization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-why-you-must-look">Part I — Why You Must Look</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-case-that-settles-it">1.1 The Case That Settles It</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preattentive-processing">1.2 Preattentive Processing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-choosing-the-chart">Part II — Choosing the Chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-the-same-data-two-honest-charts">⚙️ Hands-On: The Same Data, Two Honest Charts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-using-ai-for-visualization">Part III — Using AI for Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iv-from-chart-to-story">Part IV — From Chart to Story</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-chart-that-ended-the-argument">💡 Example: The Chart That Ended the Argument</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-14-ai-for-data-visualization">
+<h1>Unit 14: AI for Data Visualization<a class="headerlink" href="#unit-14-ai-for-data-visualization" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Session</span> <span class="mi">21</span> <span class="o">|</span> <span class="n">Oct</span> <span class="mi">28</span> <span class="o">|</span> <span class="n">HW11</span> <span class="n">assigned</span> <span class="n">Oct</span> <span class="mi">28</span><span class="p">,</span> <span class="n">due</span> <span class="n">Nov</span> <span class="mi">04</span>
+</pre></div>
+</div>
+<p>Unit 13 produced numbers. This session is about what numbers cannot show you, and about the fact that the same data can be drawn to support opposite conclusions without a single value being falsified.</p>
+<p>Visualization is the point in the pipeline where analysis becomes persuasion, and the transition is easy to make without noticing. That makes it the place where honesty has to be a deliberate practice rather than a default.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Demonstrate why summary statistics require visual inspection.</p></li>
+<li><p>Select an appropriate chart type from the shape of the question.</p></li>
+<li><p>Apply design principles that reduce cognitive load rather than decorate.</p></li>
+<li><p>Identify how a technically accurate chart can mislead, including your own.</p></li>
+</ul>
+</section>
+<section id="part-i-why-you-must-look">
+<h2>Part I — Why You Must Look<a class="headerlink" href="#part-i-why-you-must-look" title="Link to this heading">#</a></h2>
+<section id="the-case-that-settles-it">
+<h3>1.1 The Case That Settles It<a class="headerlink" href="#the-case-that-settles-it" title="Link to this heading">#</a></h3>
+<p>Four datasets. Nearly identical mean, variance, correlation, and regression line. Completely different structures. This is <strong>Anscombe’s Quartet</strong>, and it is the strongest argument in statistics for a single practice: plot the data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">ans</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"anscombe"</span><span class="p">)</span>   <span class="c1"># if offline, see the fallback note below</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'set'</span><span class="si">:</span><span class="s2">&gt;4</span><span class="si">}{</span><span class="s1">'mean x'</span><span class="si">:</span><span class="s2">&gt;9</span><span class="si">}{</span><span class="s1">'mean y'</span><span class="si">:</span><span class="s2">&gt;9</span><span class="si">}{</span><span class="s1">'std y'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2">"</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'corr'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}{</span><span class="s1">'slope'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}{</span><span class="s1">'intercept'</span><span class="si">:</span><span class="s2">&gt;11</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">ans</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"dataset"</span><span class="p">):</span>
+    <span class="n">lr</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&gt;4</span><span class="si">}{</span><span class="n">g</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">9.2f</span><span class="si">}{</span><span class="n">g</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">9.2f</span><span class="si">}{</span><span class="n">g</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">8.2f</span><span class="si">}</span><span class="s2">"</span>
+          <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="si">:</span><span class="s2">8.3f</span><span class="si">}{</span><span class="n">lr</span><span class="o">.</span><span class="n">slope</span><span class="si">:</span><span class="s2">8.3f</span><span class="si">}{</span><span class="n">lr</span><span class="o">.</span><span class="n">intercept</span><span class="si">:</span><span class="s2">11.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">,</span> <span class="n">ans</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"dataset"</span><span class="p">)):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">lr</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">lr</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">lr</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">"r-"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Dataset </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">"Identical statistics. Four different realities."</span><span class="p">,</span>
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Read the table first, then the plot. The table says these are the same data. They are not: one is a clean linear relationship, one is a perfect curve, one is a tight line ruined by a single outlier, and one has all its x-values identical except for one point that single-handedly creates the entire correlation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Offline fallback.</strong> If <code class="docutils literal notranslate"><span class="pre">sns.load_dataset</span></code> cannot reach the network, the quartet is small enough to type: the four x/y series are published in Anscombe (1973) and reproduced in the Dendritic <em>Data Analysis with AI</em> materials, Module 4.</p>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Remove the single outlier from Dataset III and recompute the correlation. How much of the “relationship” was that one point?</p></li>
+<li><p>In Dataset IV, what would you have to know about data collection to explain that structure? Notice the answer is not in the file.</p></li>
+<li><p>Ask an AI assistant to interpret the <strong>summary table alone</strong>. Does it conclude the four datasets are equivalent?</p></li>
+</ol>
+</section>
+<section id="preattentive-processing">
+<h3>1.2 Preattentive Processing<a class="headerlink" href="#preattentive-processing" title="Link to this heading">#</a></h3>
+<p>Some visual properties are processed before conscious attention — in under 250 milliseconds, without search. Position, length, color hue, size, orientation, and enclosure are among them.</p>
+<p>This has one practical consequence worth internalizing: <strong>encode your most important variable in position or length</strong>, because those are the channels humans read most accurately. Encode secondary variables in color or size. Do not encode anything important in a channel people read poorly, such as area or angle — which is precisely the problem with pie charts.</p>
+</section>
+</section>
+<section id="part-ii-choosing-the-chart">
+<h2>Part II — Choosing the Chart<a class="headerlink" href="#part-ii-choosing-the-chart" title="Link to this heading">#</a></h2>
+<p>The selection is determined by the <strong>question</strong>, not by the data type and certainly not by which chart looks best.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Your question</p></th>
+<th class="head text-left"><p>Chart</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>How is one variable distributed?</p></td>
+<td class="text-left"><p>Histogram, density plot, box plot</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>How do distributions compare across groups?</p></td>
+<td class="text-left"><p>Grouped box or violin plot</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Do two quantitative variables relate?</p></td>
+<td class="text-left"><p>Scatter plot</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Do many variables relate?</p></td>
+<td class="text-left"><p>Scatterplot matrix, correlation heatmap</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>How do amounts compare across categories?</p></td>
+<td class="text-left"><p>Bar chart</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>How do parts make a whole?</p></td>
+<td class="text-left"><p>Stacked bar (rarely a pie)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>How does something change over time?</p></td>
+<td class="text-left"><p>Line chart</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>How does something vary over space?</p></td>
+<td class="text-left"><p>Choropleth, bubble map</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>How does something flow between states?</p></td>
+<td class="text-left"><p>Sankey diagram</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Pie charts.</strong> They encode value in angle and area, the two channels humans read least accurately, and they fail entirely beyond about four categories. A bar chart answers the same question better in nearly every case. Use a pie chart when you have two or three categories and the point is “roughly half” — and be aware that you are choosing familiarity over precision.</p>
+</div>
+</section>
+<section id="hands-on-the-same-data-two-honest-charts">
+<h2>⚙️ Hands-On: The Same Data, Two Honest Charts<a class="headerlink" href="#hands-on-the-same-data-two-honest-charts" title="Link to this heading">#</a></h2>
+<p>No number is falsified in either chart below. They support different conclusions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">months</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="n">incidents</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">42</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">37</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># --- Chart A: truncated axis -------------------------------------</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">incidents</span><span class="p">,</span> <span class="s2">"o-"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"crimson"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="mi">46</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Incidents Down 12% — Reliability Push Working"</span><span class="p">,</span>
+                <span class="n">weight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Month"</span><span class="p">);</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Incidents"</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
+
+<span class="c1"># --- Chart B: zero baseline --------------------------------------</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">months</span><span class="p">,</span> <span class="n">incidents</span><span class="p">,</span> <span class="s2">"o-"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"steelblue"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Incident Volume Broadly Flat Across the Year"</span><span class="p">,</span>
+                <span class="n">weight</span><span class="o">=</span><span class="s2">"bold"</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Month"</span><span class="p">);</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Incidents"</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">drop</span> <span class="o">=</span> <span class="p">(</span><span class="n">incidents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">incidents</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">incidents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Absolute change : </span><span class="si">{</span><span class="n">incidents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">incidents</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> "</span>
+      <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">incidents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">incidents</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> incidents)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Relative change : </span><span class="si">{</span><span class="n">drop</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Monthly std dev : </span><span class="si">{</span><span class="n">incidents</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">  "</span>
+      <span class="sa">f</span><span class="s2">"(is the trend larger than the noise?)"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Both titles are defensible. Both axes are labeled. The 12% figure is arithmetically correct. And the standard deviation tells you that the month-to-month noise is comparable to the entire “trend,” which neither chart communicates and which is the single most decision-relevant fact available.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The truncated axis is not always dishonest — for data with a meaningful non-zero baseline, such as body temperature, starting at zero would be absurd. The question is never “is the axis truncated” but <strong>“does the visual magnitude of the change match its real importance?”</strong></p>
+<p>You will be tempted by Chart A. It will be for a result you worked hard on, and it will feel like clarity rather than exaggeration. That is what makes this the hardest habit in the unit.</p>
+</div>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Add error bars of ±1 standard deviation to Chart A. Does the story survive?</p></li>
+<li><p>Extend the series backwards with three years of similar values. Is a 12% within-year change unusual?</p></li>
+<li><p>Which chart would you show a manager who is deciding whether to continue funding the reliability push — and can you defend that choice as an analyst rather than an advocate?</p></li>
+</ol>
+</section>
+<section id="part-iii-using-ai-for-visualization">
+<h2>Part III — Using AI for Visualization<a class="headerlink" href="#part-iii-using-ai-for-visualization" title="Link to this heading">#</a></h2>
+<p>AI is strong at chart <strong>implementation</strong> and weak at chart <strong>judgment</strong>, which mirrors every other unit in Part IV and V.</p>
+<p><strong>Effective prompts:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Write matplotlib code for the following.
+
+Question the chart must answer: [do resolution times differ across severity levels?]
+Data: &lt;~800 rows; "severity" is one of four ordered categories; "minutes" is heavily right-skewed with outliers I want visible, not clipped&gt;
+
+Rules: label both axes with units. Do not truncate the y-axis. Do not add a title that merely restates the axis labels. Return only code.
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Below is the code for a chart I built. I am claiming [your claim] from it.
+
+You are a skeptical reviewer. What could you legitimately object to about how this is drawn? Check specifically: axis truncation, missing baseline, unlabeled units, a selected date range, aggregation that hides variance, and colour choices that imply a judgment.
+
+For each objection, say how I would fix it and what I would lose by fixing it.
+
+CODE: [PASTE]
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">want</span> <span class="n">to</span> <span class="n">answer</span> <span class="p">[</span><span class="n">your</span> <span class="n">question</span><span class="p">]</span> <span class="kn">from</span><span class="w"> </span><span class="nn">data</span> <span class="k">with</span> <span class="n">columns</span> <span class="p">[</span><span class="nb">list</span> <span class="n">them</span><span class="p">]</span><span class="o">.</span>
+
+<span class="n">Suggest</span> <span class="n">three</span> <span class="n">different</span> <span class="n">chart</span> <span class="n">types</span><span class="o">.</span> <span class="n">For</span> <span class="n">each</span><span class="p">:</span> <span class="n">what</span> <span class="n">it</span> <span class="n">would</span> <span class="n">reveal</span><span class="p">,</span> <span class="n">what</span> <span class="n">it</span> <span class="n">would</span> <span class="n">hide</span><span class="p">,</span> <span class="ow">and</span> <span class="n">which</span> <span class="n">audience</span> <span class="n">it</span> <span class="n">suits</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">recommend</span> <span class="n">one</span><span class="o">.</span> <span class="n">I</span> <span class="n">will</span> <span class="n">choose</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Ineffective prompts:</strong></p>
+<blockquote>
+<div><p><em>“Make a nice visualization of this data.”</em></p>
+</div></blockquote>
+<p>You get a default chart — usually a bar chart, usually with a title restating the axis labels. Defaults are not answers to questions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The second prompt above — asking for objections to your own chart — is the most useful of the three. It reliably surfaces truncated axes, missing baselines, unlabeled units, and cherry-picked ranges, and it does so without the emotional investment you have in the result. It is the visualization equivalent of the adversarial reading from Unit 13.</p>
+</div>
+</section>
+<section id="part-iv-from-chart-to-story">
+<h2>Part IV — From Chart to Story<a class="headerlink" href="#part-iv-from-chart-to-story" title="Link to this heading">#</a></h2>
+<p>A dashboard full of accurate charts can still fail, because the reader does not know where to look or what to do.</p>
+<p><strong>Three questions before publishing any chart or dashboard:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Who reads this, and what decision do they make?</strong> A chart for an engineer debugging a regression and a chart for a director allocating budget are different charts, even from identical data.</p></li>
+<li><p><strong>What is the one thing they should take away?</strong> If you cannot say it in a sentence, the chart is not finished.</p></li>
+<li><p><strong>What would change their mind?</strong> A visualization that cannot be contradicted by the data is decoration.</p></li>
+</ol>
+<p>For dashboards specifically: order by decision priority, not by data availability. Most inherited dashboards are ordered by what was easy to query, which is why nobody looks at them.</p>
+</section>
+<section id="example-the-chart-that-ended-the-argument">
+<h2>💡 Example: The Chart That Ended the Argument<a class="headerlink" href="#example-the-chart-that-ended-the-argument" title="Link to this heading">#</a></h2>
+<p>A team argued for months about whether their API was getting slower. Both sides had charts. One showed mean latency, flat. The other showed p99 latency, rising sharply.</p>
+<p>Both were correct. The mean was flat because most requests were unaffected. The p99 was rising because a growing subset — the users with the largest accounts, and the ones most likely to churn — were experiencing severe degradation.</p>
+<p>The chart that ended the argument was a distribution plot per month, showing a bimodal shape emerging over time. No summary statistic showed it. Anscombe’s lesson, in production.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>You will build a chart this semester for your capstone, and you will want it to support your conclusion.</p>
+<p>What specific check will you run on it before presenting — and would you actually run that check on a chart that came out in your favor?</p>
+</div></blockquote>
+<p><strong>HW11 (Data Analysis, Units 13–14) is due Nov 04.</strong> Submit the descriptive pass from Unit 13, plus <strong>three charts</strong> with a written justification of each chart-type choice, plus one chart drawn <strong>two defensible ways</strong> with an argument for which you would publish and why. State every prompt used.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Anscombe, F. J. (1973). <em>Graphs in Statistical Analysis.</em> The American Statistician, 27(1).</p></li>
+<li><p>Tufte, E. (2001). <em>The Visual Display of Quantitative Information</em>, 2nd Ed. Graphics Press.</p></li>
+<li><p>Wilke, C. (2019). <em>Fundamentals of Data Visualization</em>. O’Reilly.</p></li>
+<li><p>Cairo, A. (2019). <em>How Charts Lie</em>. W. W. Norton.</p></li>
+<li><p>Dendritic Institute (2025). <em>Data Analysis with AI — Modules 4, 5 and 7.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_13_Descriptive_Analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 13: AI for Descriptive Analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_15_Vibe_Coding_Tools.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 15: Vibe Coding Tools</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-why-you-must-look">Part I — Why You Must Look</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-case-that-settles-it">1.1 The Case That Settles It</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preattentive-processing">1.2 Preattentive Processing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-choosing-the-chart">Part II — Choosing the Chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-the-same-data-two-honest-charts">⚙️ Hands-On: The Same Data, Two Honest Charts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-using-ai-for-visualization">Part III — Using AI for Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iv-from-chart-to-story">Part IV — From Chart to Story</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-chart-that-ended-the-argument">💡 Example: The Chart That Ended the Argument</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
