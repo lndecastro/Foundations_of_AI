@@ -55,7 +55,7 @@ Teams of 4 to 5, 45 minutes, one workbook, one online form.
 
 **The story.** It is audit day at Gulf Coast Clinics, which runs two walk-in clinics in Lee County, Florida. The state auditor arrives in 45 minutes. The visit log was merged from two front-desk systems and never cleaned. Five locked doors stand between your team and the exit, and each opens only for a number computed from the full log.
 
-**The dataset.** The dataset is synthetic and can be downloaded here [Gulf Coast Clinics](..\Data\Gulf_Coast_Clinics_Audit.xlsx).
+**The dataset.** The dataset is synthetic and can be downloaded here [Gulf Coast Clinics](../Data/Gulf_Coast_Clinics_Audit.xlsx).
 
 **The AI rule.** The visit log is patient data, so **the AI never sees it.** You look at the data, the AI writes the formulas, and Google Sheets or Excel does the computing.
 
@@ -249,7 +249,13 @@ About 35 minutes, in the session after the escape room. Work in your escape room
 2. **Change the rule** (1 minute). Imagine the clinic has an approved, HIPAA-compliant AI tool. Under that policy only, upload the workbook to the AI assistant your team used, and paste this prompt:
 
    ```
-   I am attaching a spreadsheet of visits to two walk-in clinics. The data is in the sheet "Visits"; the sheet "About" describes the columns. Answer the five questions below. For each question: (1) state every assumption you make about the data before computing, especially about duplicate rows, blank or text values, and date formats; (2) write the code you use and run it on the full sheet; (3) report how many rows your calculation included and how many it excluded, and why; (4) give the answer. Do not estimate any number. If you cannot run code on the file, say so and stop.
+   I am attaching a spreadsheet of visits to two walk-in clinics.
+   The data is in the sheet "Visits"; the sheet "About" describes the columns. Answer the five questions below.
+   For each question:
+   (1) state every assumption you make about the data before computing, especially about duplicate rows, blank or text values, and date formats;
+   (2) write the code you use and run it on the full sheet;
+   (3) report how many rows your calculation included and how many it excluded, and why;
+   (4) give the answer. Do not estimate any number. If you cannot run code on the file, say so and stop.
 
    1. A visit is valid when it is counted once (some rows are exact copies of another row with the same visit_id; count each visit_id only once), it has a visit date (blank or "TBD" means no date), and it has a recorded wait time (blank or "n/a" means no wait time). How many valid visits are there?
    2. What is the average wait time, in minutes, across all valid visits, rounded to 1 decimal?
@@ -278,13 +284,21 @@ Every prompt below is written to produce **Mode 1** output. Complete versions wi
 **Describe the data before you ask for anything.** This is the prompt that closes the description gap, and it asks the model to find what you missed:
 
 ```
-I have a Google Sheets log of city service requests, rows 2 through 416. Column A is the request id, B is the category, C is the date received, and D is the number of days to close. I have noticed that some dates in column C are real dates and others are text such as "09/14/2026" or "Sep 14, 2026", that some values in D are text such as "8 days", that the category is typed with mixed capitalization, and that some rows may be exact duplicates. Before writing any formula, list every other problem a column like each of these commonly has that would make a COUNTIFS or AVERAGE give a wrong answer without an error. For each problem, tell me how to check for it in the sheet myself. Do not compute anything.
+I have a Google Sheets log of city service requests, rows 2 through 416.
+Column A is the request id, B is the category, C is the date received, and D is the number of days to close.
+I have noticed that some dates in column C are real dates and others are text such as "09/14/2026" or "Sep 14, 2026", that some values in D are text such as "8 days", that the category is typed with mixed capitalization, and that some rows may be exact duplicates.
+Before writing any formula, list every other problem a column like each of these commonly has that would make a COUNTIFS or AVERAGE give a wrong answer without an error.
+For each problem, tell me how to check for it in the sheet myself. Do not compute anything.
 ```
 
 **Get the formula, never the answer:**
 
 ```
-Write a Google Sheets formula for the following. My data: columns A = ticket id, B = status, C = closed date, D = minutes to resolve, rows 2 through 847. What I want: the median resolution time for tickets whose status is "closed" and whose closed date is on or after 1 September 2026. Return the formula and a one-line explanation of each argument. Do not tell me the answer; I will run it. If the calculation requires an assumption about my data that I have not stated (blank cells, text in a numeric column, date format), state the assumption instead of picking one silently.
+Write a Google Sheets formula for the following.
+My data: columns A = ticket id, B = status, C = closed date, D = minutes to resolve, rows 2 through 847.
+ What I want: the median resolution time for tickets whose status is "closed" and whose closed date is on or after 1 September 2026.
+Return the formula and a one-line explanation of each argument.
+Do not tell me the answer; I will run it. If the calculation requires an assumption about my data that I have not stated (blank cells, text in a numeric column, date format), state the assumption instead of picking one silently.
 ```
 
 **Audit a number you were given.** Use this the moment any tool states a figure:
