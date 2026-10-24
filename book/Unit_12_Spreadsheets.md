@@ -6,7 +6,7 @@ Session 18 | Oct 19 | HW10 (Office Portfolio) due Oct 21
 
 Spreadsheets are where AI assistance is most useful and most dangerous, and the two facts have the same cause: **a spreadsheet looks authoritative.** A number in a cell carries an air of computation whether or not any computation occurred.
 
-This session closes Part IV and sets up Part V. The habits you build here — never trusting a number you did not verify, always separating computation from generation — are the habits that make Units 13 and 14 safe.
+This session closes Part IV and sets up Part V. The habits you build here, such as never trusting a number you did not verify and always separating computation from generation, are the habits that make Units 13 and 14 safe.
 
 ## Learning Objectives
 
@@ -25,12 +25,12 @@ There are two fundamentally different things an AI tool can do with your data, a
 You get `=SUMIFS(D:D, B:B, "closed", C:C, ">="&DATE(2026,9,1))` or a few lines of pandas. The computation happens in your spreadsheet or your runtime, deterministically. The AI is generating a *specification for arithmetic*, and if the specification is wrong you can read it and see that it is wrong.
 
 **Mode 2 — It reads your data and tells you the answer.**
-You get "the average resolution time was 4.2 days." This number was **generated as text**, by a system whose objective is producing likely continuations. Unit 5's argument applies with full force: it may be right, it may be approximately right, and it may be entirely invented — and it will look identical in all three cases.
+You get "the average resolution time was 4.2 days." This number was **generated as text**, by a system whose objective is producing likely continuations. Unit 5's argument applies with full force: it may be right, it may be approximately right, and it may be entirely invented, and it will look identical in all three cases.
 
 ```{warning}
 **Prefer Mode 1 always.** When the answer arrives as a formula you can inspect and re-run, you have an auditable artifact. When it arrives as a sentence, you have a claim.
 
-This single habit prevents more spreadsheet errors than everything else in this unit combined. If a tool gives you a number, ask it for the formula that produced the number — and if it cannot produce one, you have learned something important about where the number came from.
+This single habit prevents more spreadsheet errors than everything else in this unit combined. If a tool gives you a number, ask it for the formula that produced the number, and if it cannot produce one, you have learned something important about where the number came from.
 ```
 
 ## Part II — Where AI Genuinely Helps
