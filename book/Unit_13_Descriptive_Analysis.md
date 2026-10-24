@@ -92,9 +92,9 @@ We use the diabetes dataset bundled with scikit-learn. This dataset comes from E
 | `s6` | Blood sugar level (glu) |
 | `target` | Disease progression one year after baseline (renamed `progression` in this unit) |
 
-Note
-
+```{note}
 By default, `load_diabetes()` returns the ten features **mean-centered and scaled** so that the sum of squares of each column equals 1. The original units are not visible in this version. To see them, call `load_diabetes(as_frame=True, scaled=False)`.
+```
 
 ```python
 import numpy as np
@@ -248,7 +248,7 @@ print("\nGROUP BALANCE ACROSS PHASES")
 print(pd.crosstab(df.phase, df.group).to_string())
 ```
 
-The naive reading shows a difference between groups. The stratified reading shows that almost all of it comes from the recalibration, not the group — and the crosstab shows whether the groups were balanced across phases in the first place.
+The naive reading shows a difference between groups. The stratified reading shows that almost all of it comes from the recalibration, not the group, and the crosstab shows whether the groups were balanced across phases in the first place.
 
 This is **Simpson's paradox** territory, and it is not exotic. It is what happens whenever a variable you did not think to record is doing the work. No summary statistic can warn you; only the question *"what else changed?"* can, and asking it is your job.
 
@@ -264,7 +264,7 @@ Question 3 is the exercise. An assistant shown one table will interpret that tab
 
 A student analyzing course-evaluation data found a correlation of 0.61 between class size and average rating, and prepared a recommendation to cap enrollment.
 
-EDA would have surfaced three things first. Large classes in this dataset were disproportionately introductory courses. Introductory courses were disproportionately taught by first-year instructors. And response rates fell from 68% in small classes to 31% in large ones — meaning the large-class ratings represented a self-selected third of students.
+EDA would have surfaced three things first. Large classes in this dataset were disproportionately introductory courses. Introductory courses were disproportionately taught by first-year instructors. And response rates fell from 68% in small classes to 31% in large ones, meaning the large-class ratings represented a self-selected third of students.
 
 The correlation was real. The recommendation did not follow from it. Nothing in the summary statistics would have stopped the student; only the habit of asking what else varies alongside the variable of interest.
 
@@ -274,11 +274,12 @@ The correlation was real. The recommendation did not follow from it. Nothing in 
 >
 > Which of the three failures in the example above could that speed have caught — and which required knowing something that was not in the file at all?
 
-**Connecting to HW11 (Data Analysis, Units 13–14):** assigned Oct 28, due Nov 04. Perform a full descriptive pass on a dataset of your choosing. Submit: the code (Mode 1 throughout), your summary output, three findings, and — carrying equal weight — **one confound or limitation you identified that the statistics alone would not have revealed**. State every prompt used and disclose all AI assistance.
+**Connecting to HW11 (Data Analysis, Units 13–14):** assigned Oct 28, due Nov 04. Perform a full descriptive pass on a dataset of your choosing. Submit: the code (Mode 1 throughout), your summary output, three findings, and, carrying equal weight, **one confound or limitation you identified that the statistics alone would not have revealed**. State every prompt used and disclose all AI assistance.
 
 ## 📘 Further Reading
 
 - Tukey, J. W. (1977). _Exploratory Data Analysis_. Addison-Wesley.
 - de Castro, L. N., & Ferrari, D. G. (2016). _Introdução à Mineração de Dados_, Cap. 3. Saraiva.
+- de Castro, L. N. (2026). _Exploratory Data Analysis: Descriptive Analysis, Visualization, and Dashboard Design_ CRC Press.
 - Wickham, H., & Grolemund, G. (2023). _R for Data Science_, 2nd Ed., Ch. 10–12. O'Reilly.
 - Dendritic Institute (2025). _Data Analysis with AI — Module 3: Descriptive Analysis._
