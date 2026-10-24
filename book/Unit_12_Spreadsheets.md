@@ -1,10 +1,10 @@
 # Unit 12: Spreadsheets
 
 ```
-Session 18 | Oct 19 | HW10 (Office Portfolio) due Oct 21
+Sessions 18 and 19 | Oct 21 | Escape Room (Unit 12 grade) 
 ```
 
-Spreadsheets are where AI assistance is most useful and most dangerous, and the two facts have the same cause: **a spreadsheet looks authoritative.** A number in a cell carries an air of computation whether or not any computation occurred.
+Spreadsheets are where AI assistance is useful and dangerous, and the two facts have the same cause: **a spreadsheet looks authoritative.** A number in a cell carries an air of computation whether or not any computation occurred.
 
 This unit is built around one in-class activity, **The Audit at Gulf Coast Clinics**, an escape room in which teams open five locked doors with numbers computed from a messy clinic visit log. The concepts below explain what the doors were testing, the hands-on cells let you rerun each trap on new data, and the debrief compares your method with what an AI model does when it is handed the whole file.
 
@@ -55,7 +55,9 @@ Teams of 4 to 5, 45 minutes, one workbook, one online form.
 
 **The story.** It is audit day at Gulf Coast Clinics, which runs two walk-in clinics in Lee County, Florida. The state auditor arrives in 45 minutes. The visit log was merged from two front-desk systems and never cleaned. Five locked doors stand between your team and the exit, and each opens only for a number computed from the full log.
 
-**The AI rule.** The visit log is patient data, so **the AI never sees it.** You look at the data, the AI writes the formulas, and Google Sheets does the computing.
+**The dataset.** The dataset is synthetic and can be downloaded here [Gulf Coast Clinics](..\Data\Gulf_Coast_Clinics_Audit.xlsx).
+
+**The AI rule.** The visit log is patient data, so **the AI never sees it.** You look at the data, the AI writes the formulas, and Google Sheets or Excel does the computing.
 
 | Allowed | Not allowed |
 | --- | --- |
