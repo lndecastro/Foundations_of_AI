@@ -4,7 +4,7 @@
 Session 21 | Oct 28 | HW11 assigned Oct 28, due Nov 04
 ```
 
-Unit 13 produced numbers. This session is about what numbers cannot show you, and about the fact that the same data can be drawn to support opposite conclusions without a single value being falsified.
+Unit 13 produced numbers, that is, the descriptive analysis of the data. This session is about what numbers cannot show you, and about the fact that the same data can be drawn to support opposite conclusions without a single value being falsified.
 
 Visualization is the point in the pipeline where analysis becomes persuasion, and the transition is easy to make without noticing. That makes it the place where honesty has to be a deliberate practice rather than a default.
 
@@ -66,9 +66,9 @@ Read the table first, then the plot. The table says these are the same data. The
 
 ### 1.2 Preattentive Processing
 
-Some visual properties are processed before conscious attention — in under 250 milliseconds, without search. Position, length, color hue, size, orientation, and enclosure are among them.
+Some visual properties are processed before conscious attention, in under 250 milliseconds, without search. Position, length, color hue, size, orientation, and enclosure are among them.
 
-This has one practical consequence worth internalizing: **encode your most important variable in position or length**, because those are the channels humans read most accurately. Encode secondary variables in color or size. Do not encode anything important in a channel people read poorly, such as area or angle — which is precisely the problem with pie charts.
+This has one practical consequence worth internalizing: **encode your most important variable in position or length**, because those are the channels humans read most accurately. Encode secondary variables in color or size. Do not encode anything important in a channel people read poorly, such as area or angle, which is precisely the problem with pie charts.
 
 ## Part II — Choosing the Chart
 
@@ -84,7 +84,7 @@ The selection is determined by the **question**, not by the data type and certai
 | How does something vary over space? | Geospatial | Choropleth map, bubble map |
 
 ```{warning}
-**Pie charts.** They encode value in angle and area, the two channels humans read least accurately, and they fail entirely beyond about four categories. A bar chart answers the same question better in nearly every case. Use a pie chart when you have two or three categories and the point is "roughly half" — and be aware that you are choosing familiarity over precision.
+**Pie charts.** They encode value in angle and area, the two channels humans read least accurately, and they fail entirely beyond about four categories. A bar chart answers the same question better in nearly every case. Use a pie chart when you have two or three categories and the point is "roughly half", and be aware that you are choosing familiarity over precision.
 ```
 
 ## Part III — Six Chart Families: Code, Then Prompt
@@ -106,7 +106,7 @@ Use these five checks in every round. Each round adds the specific things to loo
 | :--- | :--- |
 | **Numbers** | Do the values the AI printed or plotted match the values printed by the Python cell? If not, which one is right, and why do they differ? |
 | **Encoding** | Did the AI map the same variables to the same channels (position, length, color, size)? |
-| **Defaults** | What did the AI decide that the prompt did not specify — bins, scales, colors, sort order, axis ranges, dropped rows? |
+| **Defaults** | What did the AI decide that the prompt did not specify, e.g. bins, scales, colors, sort order, axis ranges, dropped rows? |
 | **Errors** | Is anything wrong: a mislabeled axis, a silently dropped group, a statistic computed with a different convention? |
 | **Judgment** | Does the AI's written interpretation say something the chart does not support? |
 
