@@ -1,0 +1,830 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 11: Presentations &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_11_Presentations';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 12: Spreadsheets" href="Unit_12_Spreadsheets.html" />
+    <link rel="prev" title="Unit 10: Documents and Texts" href="Unit_10_Documents_and_Texts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Documents_and_Texts.html">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 11: Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_12_Spreadsheets.html">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_Descriptive_Analysis.html">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_14_Data_Visualization.html">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_15_Vibe_Coding_Tools.html">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_16_Responsible_AI.html">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_D_Prompt_Library.html">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_11_Presentations.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_11_Presentations.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 11: Presentations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-where-ai-helps-and-where-it-hurts">Part I — Where AI Helps and Where It Hurts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-structure-before-slides">Part II — Structure Before Slides</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-one-sentence-test">2.1 The One-Sentence Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assertion-evidence">2.2 Assertion-Evidence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-idea-per-slide">2.3 One Idea Per Slide</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-outline-to-deck">⚙️ Hands-On: Outline to Deck</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-generate-then-repair">⚙️ In-Class Activity: Generate, Then Repair</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-rehearsal-and-questions">Part III — Rehearsal and Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-same-content-two-decks">💡 Example: The Same Content, Two Decks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-11-presentations">
+<h1>Unit 11: Presentations<a class="headerlink" href="#unit-11-presentations" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Session</span> <span class="mi">17</span> <span class="o">|</span> <span class="n">Oct</span> <span class="mi">14</span> <span class="o">|</span> <span class="n">Part</span> <span class="n">of</span> <span class="n">HW10</span> <span class="p">(</span><span class="n">Office</span> <span class="n">Portfolio</span><span class="p">),</span> <span class="n">due</span> <span class="n">Oct</span> <span class="mi">21</span>
+</pre></div>
+</div>
+<p>Six weeks from now you will each deliver a capstone presentation. This session is therefore not incidental — it is direct preparation for a graded deliverable, and you should treat the techniques here as tools you will use in November.</p>
+<p>The engineering context matters. Software engineers present constantly: architecture reviews, sprint demos, incident briefings, design proposals, and conference talks. Most engineering presentations fail the same way, and it is not a design failure. It is a <strong>translation failure</strong> — the presenter knows the material so well that they cannot see what the audience does not know.</p>
+<p>AI tools are surprisingly good at that specific problem, and surprisingly bad at almost everything else about presentations.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Separate the parts of presentation work that AI helps with from the parts it damages.</p></li>
+<li><p>Generate a slide deck from a structured outline and evaluate the result critically.</p></li>
+<li><p>Apply the <strong>one idea per slide</strong> and <strong>assertion-evidence</strong> principles.</p></li>
+<li><p>Rehearse against AI-generated audience questions.</p></li>
+</ul>
+</section>
+<section id="part-i-where-ai-helps-and-where-it-hurts">
+<h2>Part I — Where AI Helps and Where It Hurts<a class="headerlink" href="#part-i-where-ai-helps-and-where-it-hurts" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Genuinely useful</p></th>
+<th class="head text-left"><p>Do it yourself</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Translating technical depth for a non-technical audience</p></td>
+<td class="text-left"><p>Deciding what the presentation argues</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Generating a first structural outline</p></td>
+<td class="text-left"><p>Choosing what to cut</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Turning a design doc into slide-sized units</p></td>
+<td class="text-left"><p>The actual technical claims</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Producing speaker notes from your bullets</p></td>
+<td class="text-left"><p>Anything with a number on it</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Anticipating audience questions</p></td>
+<td class="text-left"><p>The delivery</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>AI presentation generators produce <strong>plausible decks</strong>, and plausible is the failure mode. Ask for “a presentation about my capstone project” and you will get twelve slides in a familiar shape — Introduction, Background, Methodology, Results, Conclusion — with generic content in each. It will look finished. It will argue nothing.</p>
+<p>A presentation with no argument is worse than no presentation, because it consumes the audience’s time and yours without transferring anything.</p>
+</div>
+</section>
+<section id="part-ii-structure-before-slides">
+<h2>Part II — Structure Before Slides<a class="headerlink" href="#part-ii-structure-before-slides" title="Link to this heading">#</a></h2>
+<p>The order matters and most people get it backwards. <strong>Do not open a slide tool first.</strong></p>
+<section id="the-one-sentence-test">
+<h3>2.1 The One-Sentence Test<a class="headerlink" href="#the-one-sentence-test" title="Link to this heading">#</a></h3>
+<p>Before anything else, write the single sentence you want the audience to repeat afterwards. Not a topic — a claim.</p>
+<ul class="simple">
+<li><p>Topic: <em>“My capstone on hospital readmission.”</em> (Nobody repeats this.)</p></li>
+<li><p>Claim: <em>“Readmission models trained on billing data learn coding practice, not clinical risk.”</em> (This is worth thirty seconds of someone else’s attention.)</p></li>
+</ul>
+<p>If you cannot write the claim, you are not ready for slides, and no tool will rescue you.</p>
+</section>
+<section id="assertion-evidence">
+<h3>2.2 Assertion-Evidence<a class="headerlink" href="#assertion-evidence" title="Link to this heading">#</a></h3>
+<p>The dominant convention in technical presentations — a topic phrase headline over a bulleted list — is a poor format, because the headline carries no information and the bullets carry too much.</p>
+<p>The alternative:</p>
+<ul class="simple">
+<li><p><strong>Headline is a full sentence stating the claim.</strong> “Accuracy hides the error that matters” rather than “Model Evaluation.”</p></li>
+<li><p><strong>Body is visual evidence for that claim.</strong> A chart, a diagram, a code fragment, an image.</p></li>
+<li><p><strong>Speaker supplies the connective reasoning.</strong> Not the slide.</p></li>
+</ul>
+<p>This is a better format for one specific reason: a reader skimming your headlines alone should get the whole argument. Try that with topic headlines and you get a table of contents.</p>
+</section>
+<section id="one-idea-per-slide">
+<h3>2.3 One Idea Per Slide<a class="headerlink" href="#one-idea-per-slide" title="Link to this heading">#</a></h3>
+<p>If a slide needs two ideas, it needs to be two slides. Slides are free; audience attention is not.</p>
+</section>
+</section>
+<section id="hands-on-outline-to-deck">
+<h2>⚙️ Hands-On: Outline to Deck<a class="headerlink" href="#hands-on-outline-to-deck" title="Link to this heading">#</a></h2>
+<p>The reliable workflow is <strong>you write the argument, the tool writes the slides.</strong> Never the reverse.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1: write your argument as a structured outline BEFORE touching any tool.</span>
+<span class="c1"># Each headline is a full-sentence claim. Each evidence line is what will</span>
+<span class="c1"># occupy the slide body.</span>
+
+<span class="n">outline</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"claim"</span><span class="p">:</span> <span class="p">(</span><span class="s2">"Readmission models trained on billing data learn coding "</span>
+              <span class="s2">"practice, not clinical risk."</span><span class="p">),</span>
+    <span class="s2">"audience"</span><span class="p">:</span> <span class="s2">"Engineering faculty and classmates; technical, not clinical."</span><span class="p">,</span>
+    <span class="s2">"duration_min"</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="s2">"slides"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">"Hospitals lose money on readmissions, so everyone wants to predict them."</span><span class="p">,</span>
+         <span class="s2">"One chart: readmission penalty cost, national"</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"The obvious data source is the billing record."</span><span class="p">,</span>
+         <span class="s2">"Diagram: what a billing record contains"</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"A model on billing data reaches 91</span><span class="si">% a</span><span class="s2">ccuracy."</span><span class="p">,</span>
+         <span class="s2">"Confusion matrix"</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"That number is measuring the wrong thing."</span><span class="p">,</span>
+         <span class="s2">"Highlight: the discharge-code column, filled in after the outcome"</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"Removing the leaked column drops accuracy to 68%."</span><span class="p">,</span>
+         <span class="s2">"Same confusion matrix, side by side"</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"68</span><span class="si">% i</span><span class="s2">s the honest number, and it is still useful."</span><span class="p">,</span>
+         <span class="s2">"Cost curve: value at 68% vs. clinician baseline"</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">"Any model using post-outcome fields should be assumed leaked."</span><span class="p">,</span>
+         <span class="s2">"Checklist: four questions to ask of any feature"</span><span class="p">),</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"CLAIM: </span><span class="si">{</span><span class="n">outline</span><span class="p">[</span><span class="s1">'claim'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"AUDIENCE: </span><span class="si">{</span><span class="n">outline</span><span class="p">[</span><span class="s1">'audience'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BUDGET: </span><span class="si">{</span><span class="n">outline</span><span class="p">[</span><span class="s1">'duration_min'</span><span class="p">]</span><span class="si">}</span><span class="s2"> min "</span>
+      <span class="sa">f</span><span class="s2">"→ </span><span class="si">{</span><span class="n">outline</span><span class="p">[</span><span class="s1">'duration_min'</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">outline</span><span class="p">[</span><span class="s1">'slides'</span><span class="p">])</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">s per slide</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"HEADLINE-ONLY READ-THROUGH (does the argument survive?)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">68</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">headline</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outline</span><span class="p">[</span><span class="s2">"slides"</span><span class="p">],</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">headline</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">SLIDE PLAN"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">68</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">headline</span><span class="p">,</span> <span class="n">evidence</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">outline</span><span class="p">[</span><span class="s2">"slides"</span><span class="p">],</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">headline</span><span class="si">}</span><span class="se">\n</span><span class="s2">     evidence: </span><span class="si">{</span><span class="n">evidence</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Step 2: paste the SLIDE PLAN into a presentation tool as the generation prompt.</span>
+<span class="c1"># Step 3: fix everything it invents.</span>
+</pre></div>
+</div>
+<p>The <strong>headline-only read-through</strong> is the diagnostic. Read those seven sentences with nothing else. If they form an argument, the deck will work. If they read as a list of topics, no amount of visual design will save it.</p>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Do the read-through on your own capstone outline. Does it argue, or does it list?</p></li>
+<li><p>Cut two slides. Which two? The exercise of finding them tells you which slides were carrying the argument.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">audience</span></code> to “hospital administrators, non-technical” and rewrite three headlines. What changed — the claims, or the evidence?</p></li>
+</ol>
+</section>
+<section id="in-class-activity-generate-then-repair">
+<h2>⚙️ In-Class Activity: Generate, Then Repair<a class="headerlink" href="#in-class-activity-generate-then-repair" title="Link to this heading">#</a></h2>
+<p>Working in pairs, roughly 30 minutes.</p>
+<ol class="arabic">
+<li><p><strong>Write an outline</strong> in the form above for a topic from Units 4–9. Ten minutes, no tools.</p></li>
+<li><p><strong>Generate a deck.</strong> Paste the slide plan into an AI presentation tool with this instruction:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Below is a slide plan. Each entry has a headline, which is a complete-sentence claim, and a description of the evidence that belongs on that slide. Build these slides.
+
+Rules, and these matter more than the design: Do not change my headlines. Do not shorten them into topic phrases — "Accuracy hides the error that matters" must not become "Model Evaluation." Do not add slides. Do not add content to fill empty space; a sparse slide is finished. Do not add any number, statistic, date, or citation that is not in my plan.
+
+SLIDE PLAN: [PASTE]
+</pre></div>
+</div>
+</li>
+<li><p><strong>Audit the output against this checklist:</strong></p>
+<ul class="simple">
+<li><p>Which headlines were changed from claims into topics? (This is the most common regression.)</p></li>
+<li><p>What content appeared that you did not supply? Every instance is fabricated.</p></li>
+<li><p>Are there any numbers on the slides? Where did they come from?</p></li>
+<li><p>How many ideas are on the busiest slide?</p></li>
+</ul>
+</li>
+<li><p><strong>Repair it.</strong> Restore your headlines, delete invented content, fix the busiest slide.</p></li>
+<li><p><strong>Report</strong> to the class: what did the tool do well, and what did it silently change?</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Step 3’s second question is the one that matters. AI presentation tools fill empty space, because a sparse slide looks unfinished to a system optimizing for typical output. The filling is generated, not retrieved, and it will be confidently wrong about your project in ways only you can detect.</p>
+</div>
+</section>
+<section id="part-iii-rehearsal-and-questions">
+<h2>Part III — Rehearsal and Questions<a class="headerlink" href="#part-iii-rehearsal-and-questions" title="Link to this heading">#</a></h2>
+<p>The most undervalued use of AI in presentations is not building slides. It is <strong>adversarial rehearsal</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">are</span> <span class="n">a</span> <span class="n">skeptical</span> <span class="n">engineering</span> <span class="n">professor</span> <span class="n">attending</span> <span class="n">an</span> <span class="mi">11</span><span class="o">-</span><span class="n">minute</span> <span class="n">presentation</span><span class="o">.</span> <span class="n">You</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">hostile</span><span class="p">,</span> <span class="n">but</span> <span class="n">you</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">accept</span> <span class="n">a</span> <span class="n">claim</span> <span class="n">that</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">supported</span><span class="o">.</span>
+
+<span class="n">Below</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">slide</span> <span class="n">plan</span><span class="o">.</span> <span class="n">Generate</span> <span class="n">the</span> <span class="n">eight</span> <span class="n">hardest</span> <span class="n">questions</span> <span class="n">you</span> <span class="n">would</span> <span class="n">ask</span><span class="p">,</span> <span class="n">ordered</span> <span class="n">by</span> <span class="n">how</span> <span class="n">much</span> <span class="n">damage</span> <span class="n">each</span> <span class="n">would</span> <span class="n">do</span> <span class="n">to</span> <span class="n">my</span> <span class="n">argument</span> <span class="k">if</span> <span class="n">I</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">answer</span> <span class="n">it</span><span class="o">.</span>
+
+<span class="n">For</span> <span class="n">each</span> <span class="n">question</span><span class="p">,</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">one</span> <span class="n">line</span> <span class="n">what</span> <span class="n">a</span> <span class="n">weak</span> <span class="n">answer</span> <span class="n">would</span> <span class="n">sound</span> <span class="n">like</span><span class="p">,</span> <span class="n">so</span> <span class="n">I</span> <span class="n">can</span> <span class="n">recognize</span> <span class="n">myself</span> <span class="n">giving</span> <span class="n">one</span><span class="o">.</span>
+
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">answer</span> <span class="n">the</span> <span class="n">questions</span><span class="o">.</span>
+
+<span class="n">SLIDE</span> <span class="n">PLAN</span><span class="p">:</span> <span class="p">[</span><span class="n">PASTE</span> <span class="n">THE</span> <span class="n">OUTPUT</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">HANDS</span><span class="o">-</span><span class="n">ON</span> <span class="n">CELL</span> <span class="n">ABOVE</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This works because the questions come from statistical regularity — the model produces the questions <em>usually</em> asked of arguments shaped like yours. That is precisely the set you should be prepared for.</p>
+<p>Then, separately, on your own answer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Here</span> <span class="ow">is</span> <span class="n">my</span> <span class="n">answer</span> <span class="n">to</span> <span class="n">question</span> <span class="mf">3.</span> <span class="n">Tell</span> <span class="n">me</span> <span class="n">where</span> <span class="n">a</span> <span class="n">follow</span><span class="o">-</span><span class="n">up</span> <span class="n">question</span> <span class="n">would</span> <span class="k">break</span> <span class="n">it</span><span class="p">,</span> <span class="ow">and</span> <span class="n">what</span> <span class="n">I</span> <span class="n">would</span> <span class="n">need</span> <span class="n">to</span> <span class="n">know</span> <span class="n">to</span> <span class="n">survive</span> <span class="n">that</span> <span class="n">follow</span><span class="o">-</span><span class="n">up</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">improve</span> <span class="n">my</span> <span class="n">answer</span> <span class="k">for</span> <span class="n">me</span><span class="o">.</span>
+
+<span class="n">QUESTION</span><span class="p">:</span> <span class="p">[</span><span class="n">PASTE</span><span class="p">]</span>
+<span class="n">MY</span> <span class="n">ANSWER</span><span class="p">:</span> <span class="p">[</span><span class="n">PASTE</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not ask it to write your answers. In the capstone Q&amp;A you will be answering live, and a memorized answer collapses under one follow-up. Use it to find the questions; find the answers yourself, in the material.</p>
+</div>
+</section>
+<section id="example-the-same-content-two-decks">
+<h2>💡 Example: The Same Content, Two Decks<a class="headerlink" href="#example-the-same-content-two-decks" title="Link to this heading">#</a></h2>
+<p><strong>Deck A</strong> — generated from “make a presentation about bias in machine learning.” Twelve slides. Headlines: <em>Introduction, What is Bias, Types of Bias, Real-World Examples, Mitigation Strategies, Conclusion.</em> Every slide has four bullets. It is polished, it is complete, and it could have been generated for any student in any course in any year.</p>
+<p><strong>Deck B</strong> — generated from a seven-line outline written by a student who had spent two weeks on one hiring dataset. Headlines are claims. Slide four is a single confusion matrix with one cell circled.</p>
+<p>Deck B is worse-looking and better. The difference is not the tool — both used the same one. The difference is that Deck B’s author knew what they were arguing before they generated anything.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>A tool can now produce a competent-looking deck from a one-line request in about ninety seconds.</p>
+<p>If the deck looks finished and argues nothing, has the tool helped you or has it helped you avoid noticing that you had nothing to say yet?</p>
+</div></blockquote>
+<p><strong>Connecting to HW10 (Office Portfolio) and the Capstone:</strong> for Unit 11, submit a <strong>five-to-seven slide outline in the format above</strong> for your capstone, plus the headline-only read-through, plus the eight adversarial questions and your own answers to the three hardest. This is graded as Unit 11 work and is also the scaffold for your November presentation — the work is not duplicated.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Alley, M. (2013). <em>The Craft of Scientific Presentations</em>, 2nd Ed. Springer. (Origin of the assertion-evidence structure.)</p></li>
+<li><p>Tufte, E. (2006). <em>The Cognitive Style of PowerPoint</em>, 2nd Ed. Graphics Press.</p></li>
+<li><p>Dendritic Institute (2025). <em>AI Literacy Series — Module 3, Part III: AI for Presentations.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_10_Documents_and_Texts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 10: Documents and Texts</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_12_Spreadsheets.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 12: Spreadsheets</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-where-ai-helps-and-where-it-hurts">Part I — Where AI Helps and Where It Hurts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-structure-before-slides">Part II — Structure Before Slides</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-one-sentence-test">2.1 The One-Sentence Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assertion-evidence">2.2 Assertion-Evidence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-idea-per-slide">2.3 One Idea Per Slide</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-outline-to-deck">⚙️ Hands-On: Outline to Deck</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-generate-then-repair">⚙️ In-Class Activity: Generate, Then Repair</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-rehearsal-and-questions">Part III — Rehearsal and Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-same-content-two-decks">💡 Example: The Same Content, Two Decks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

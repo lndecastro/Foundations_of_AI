@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unit 12: Spreadsheets &#8212; Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Unit_12_Spreadsheets';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unit 13: AI for Descriptive Analysis" href="Unit_13_Descriptive_Analysis.html" />
+    <link rel="prev" title="Unit 11: Presentations" href="Unit_11_Presentations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/dendritic_logo.png" class="logo__image only-light" alt="Foundations of AI - Home"/>
+    <img src="_static/dendritic_logo.png" class="logo__image only-dark pst-js-only" alt="Foundations of AI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Foundations of AI
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations of AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_01_History_and_Evolution.html">Unit 1: History and Evolution of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_02_Goals_and_Foundations.html">Unit 2: Goals and Foundations of AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_03_How_AI_Works.html">Unit 3: How AI Works</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — How Machines Learn</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_04_Machine_Learning_Paradigms.html">Unit 4: Machine Learning Paradigms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_05_Deep_Learning_and_Neural_Networks.html">Unit 5: Deep Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_06_AI_Applications.html">Unit 6: AI Applications Across Domains</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — AI in Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_07_Prompt_Engineering.html">Unit 7: Prompt Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_08_Workspaces_and_Assistants.html">Unit 8: AI Workspaces and Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_09_Careers_in_AI.html">Unit 9: Careers in AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — AI in the Office</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_10_Documents_and_Texts.html">Unit 10: Documents and Texts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_11_Presentations.html">Unit 11: Presentations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unit 12: Spreadsheets</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part V — AI for Data Analysis and Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_13_Descriptive_Analysis.html">Unit 13: AI for Descriptive Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_14_Data_Visualization.html">Unit 14: AI for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_15_Vibe_Coding_Tools.html">Unit 15: Vibe Coding Tools</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part VI — Responsible AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Unit_16_Responsible_AI.html">Unit 16: Responsible AI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Appendix_A_Python_and_Colab_Primer.html">Appendix A: Python and Colab Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_B_Capstone_Project_Guide.html">Appendix B: Capstone Project Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_C_AI_Use_and_Disclosure.html">Appendix C: AI Use and Disclosure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix_D_Prompt_Library.html">Appendix D: The Course Prompt Library</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/lndecastro/Foundations_of_AI/edit/main/book/Unit_12_Spreadsheets.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Unit_12_Spreadsheets.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unit 12: Spreadsheets</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-the-central-distinction">Part I — The Central Distinction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-where-ai-helps-and-what-it-cannot-do-for-you">Part II — Where AI Helps, and What It Cannot Do for You</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-the-audit-at-gulf-coast-clinics">⚙️ In-Class Activity: The Audit at Gulf Coast Clinics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-what-the-five-doors-teach">Part III — What the Five Doors Teach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-how-cleaning-fails-silently">⚙️ Hands-On: How Cleaning Fails Silently</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-when-the-total-points-the-wrong-way">⚙️ Hands-On: When the Total Points the Wrong Way</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-debrief-your-method-versus-the-model-s">⚙️ In-Class Activity: Debrief — Your Method versus the Model’s</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iv-prompts-for-spreadsheet-work">Part IV — Prompts for Spreadsheet Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-estimate-that-was-never-computed">💡 Example: The Estimate That Was Never Computed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-12-spreadsheets">
+<h1>Unit 12: Spreadsheets<a class="headerlink" href="#unit-12-spreadsheets" title="Link to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sessions</span> <span class="mi">18</span> <span class="ow">and</span> <span class="mi">19</span> <span class="o">|</span> <span class="n">Oct</span> <span class="mi">21</span> <span class="o">|</span> <span class="n">Escape</span> <span class="n">Room</span> <span class="p">(</span><span class="n">Unit</span> <span class="mi">12</span> <span class="n">grade</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>Spreadsheets are where AI assistance is useful and dangerous, and the two facts have the same cause: <strong>a spreadsheet looks authoritative.</strong> A number in a cell carries an air of computation whether or not any computation occurred.</p>
+<p>This unit is built around one in-class activity, <strong>The Audit at Gulf Coast Clinics</strong>, an escape room in which teams open five locked doors with numbers computed from a messy clinic visit log. The concepts below explain what the doors were testing, the hands-on cells let you rerun each trap on new data, and the debrief compares your method with what an AI model does when it is handed the whole file.</p>
+<p>This session closes Part IV and sets up Part V. The habits you build here, such as never trusting a number you did not verify and always separating computation from generation, are the habits that make Units 13 and 14 safe.</p>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>After completing this unit, you will be able to:</p>
+<ul class="simple">
+<li><p>Distinguish AI that <strong>writes a formula</strong> from AI that <strong>states a number</strong>, and prefer the first.</p></li>
+<li><p>Describe a dataset precisely enough for an AI tool to write correct formulas for it.</p></li>
+<li><p>Generate, run, and audit formulas for cleaning, counting, and summarizing data.</p></li>
+<li><p>Recognize when a correct-looking number answers the wrong question, and when data cannot support a decision about a person.</p></li>
+<li><p>Decide what data may and may not be shared with an AI tool.</p></li>
+</ul>
+</section>
+<section id="part-i-the-central-distinction">
+<h2>Part I — The Central Distinction<a class="headerlink" href="#part-i-the-central-distinction" title="Link to this heading">#</a></h2>
+<p>There are two fundamentally different things an AI tool can do with your data, and confusing them is the source of nearly every serious error in this domain.</p>
+<p><strong>Mode 1 — It writes code or a formula that computes the answer.</strong>
+You get <code class="docutils literal notranslate"><span class="pre">=SUMIFS(D:D,</span> <span class="pre">B:B,</span> <span class="pre">&quot;closed&quot;,</span> <span class="pre">C:C,</span> <span class="pre">&quot;&gt;=&quot;&amp;DATE(2026,9,1))</span></code> or a few lines of pandas. The computation happens in your spreadsheet or your runtime, deterministically. The AI is generating a <em>specification for arithmetic</em>, and if the specification is wrong you can read it and see that it is wrong.</p>
+<p><strong>Mode 2 — It reads your data and tells you the answer.</strong>
+You get “the average resolution time was 4.2 days.” This number was <strong>generated as text</strong>, by a system whose objective is producing likely continuations. Unit 5’s argument applies with full force: it may be right, it may be approximately right, and it may be entirely invented, and it will look identical in all three cases.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Prefer Mode 1 always.</strong> When the answer arrives as a formula you can inspect and re-run, you have an auditable artifact. When it arrives as a sentence, you have a claim.</p>
+<p>If a tool gives you a number, ask it for the formula that produced the number, and if it cannot produce one, you have learned something important about where the number came from.</p>
+</div>
+</section>
+<section id="part-ii-where-ai-helps-and-what-it-cannot-do-for-you">
+<h2>Part II — Where AI Helps, and What It Cannot Do for You<a class="headerlink" href="#part-ii-where-ai-helps-and-what-it-cannot-do-for-you" title="Link to this heading">#</a></h2>
+<p>AI tools are genuinely good at the mechanical parts of spreadsheet work:</p>
+<ul class="simple">
+<li><p><strong>Formula generation.</strong> Describing what you want in words and receiving a formula is far faster than remembering <code class="docutils literal notranslate"><span class="pre">INDEX/MATCH</span></code> argument order, and it is easy to verify: run it on rows where you know the answer.</p></li>
+<li><p><strong>Cleaning logic.</strong> Inconsistent dates, mixed units, stray whitespace, names in three formats: AI-generated cleaning formulas and code handle these well, and the results are checkable by inspection.</p></li>
+<li><p><strong>Formula debugging.</strong> A <code class="docutils literal notranslate"><span class="pre">#REF!</span></code> or <code class="docutils literal notranslate"><span class="pre">#VALUE!</span></code> in a nested formula is exactly the kind of syntactic puzzle these tools solve.</p></li>
+<li><p><strong>Aggregation design.</strong> Describing the summary you want and getting the grouping logic for a pivot table.</p></li>
+</ul>
+<p>What the tool cannot do is <strong>see what you did not tell it.</strong> When you describe your data, the description is the whole world the model works in. If you do not notice that some dates are stored as text, you will not mention it, and the model will write a clean, plausible formula that silently skips those rows. Call this the <strong>description gap</strong>: every error the AI cannot catch sits between what the data contains and what you said it contains.</p>
+<p>The escape room was designed around that gap.</p>
+</section>
+<section id="in-class-activity-the-audit-at-gulf-coast-clinics">
+<h2>⚙️ In-Class Activity: The Audit at Gulf Coast Clinics<a class="headerlink" href="#in-class-activity-the-audit-at-gulf-coast-clinics" title="Link to this heading">#</a></h2>
+<p>Teams of 4 to 5, 45 minutes, one workbook, one online form.</p>
+<p><strong>The story.</strong> It is audit day at Gulf Coast Clinics, which runs two walk-in clinics in Lee County, Florida. The state auditor arrives in 45 minutes. The visit log was merged from two front-desk systems and never cleaned. Five locked doors stand between your team and the exit, and each opens only for a number computed from the full log.</p>
+<p><strong>The dataset.</strong> The dataset is synthetic and can be downloaded here <a class="reference download internal" download="" href="_downloads/5668ffec6c69b4dd61990796447cb23a/Gulf_Coast_Clinics_Audit.xlsx"><span class="xref download myst">Gulf Coast Clinics</span></a>.</p>
+<p><strong>The AI rule.</strong> The visit log is patient data, so <strong>the AI never sees it.</strong> You look at the data, the AI writes the formulas, and Google Sheets or Excel does the computing.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Allowed</p></th>
+<th class="head"><p>Not allowed</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Describing the columns and what you see in them</p></td>
+<td><p>Uploading the workbook to any AI tool</p></td>
+</tr>
+<tr class="row-odd"><td><p>Typing made-up example rows</p></td>
+<td><p>Pasting, typing, or screenshotting real rows</p></td>
+</tr>
+<tr class="row-even"><td><p>Pasting formulas and error messages</p></td>
+<td><p>Asking the AI to state a number for you</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pasting summary tables you computed (counts or rates by group)</p></td>
+<td><p>Copying another team’s codes or formulas</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In a real clinic, patient records cannot be pasted into a public chatbot. In many jobs you will be allowed to upload data to an approved AI tool; the debrief and Unit 13 use that workflow. The rule here is not a handicap: it is what makes your contribution visible.</p>
+<p><strong>The doors.</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Door</p></th>
+<th class="head"><p>Room</p></th>
+<th class="head"><p>Task</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Intake</p></td>
+<td><p>Count the valid visits</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>The Screenshot</p></td>
+<td><p>Find the average wait across all valid visits</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>The Deadline</p></td>
+<td><p>Count Urgent visits that broke a new 60-minute rule</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Which Clinic?</p></td>
+<td><p>Decide which clinic should be the model for the other</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>The Last Door</p></td>
+<td><p>Answer the board’s request to put a doctor on probation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The rooms are chained: each uses the result of the one before. A wrong value shows a nudge; a correct one opens the door and reveals a stamp word.</p>
+<p><strong>The Team Log</strong> is the first sheet of the workbook and the basis of your grade. For every door, it records the stamp word, the formula you ran, the prompt you gave the AI, and every wrong value you tried with one line on why it was wrong.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Points</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Doors opened (stamp word logged)</p></td>
+<td><p>5 × 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Formula and prompt logged, per open door</p></td>
+<td><p>5 × 0.5</p></td>
+</tr>
+<tr class="row-even"><td><p>Room 4 explanation, with numbers</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Room 5 justification, with numbers</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Wrong-values list</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total</strong></p></td>
+<td><p><strong>10</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Breaking the AI rule costs 5 points. The first team out earns 1 bonus point and the second 0.5.</p>
+</section>
+<section id="part-iii-what-the-five-doors-teach">
+<h2>Part III — What the Five Doors Teach<a class="headerlink" href="#part-iii-what-the-five-doors-teach" title="Link to this heading">#</a></h2>
+<p>Every door was built around one trap, and every trap survives correct arithmetic. None of them is caught by checking the math; each is caught by checking <strong>what was computed, over which rows, for which question.</strong></p>
+<p><strong>Door 1 — Cleaning fails silently.</strong> The log held duplicate rows, blank dates, “TBD” dates, and wait times typed as text, such as <code class="docutils literal notranslate"><span class="pre">25</span> <span class="pre">min</span></code>. A formula that treats text as missing drops real visits without an error message. The habit: before trusting any count, count what did not survive each cleaning step.</p>
+<p><strong>Door 2 — Correct arithmetic, wrong population.</strong> The clue offered a figure a chatbot computed from the first rows of the log. Its arithmetic was fine; it simply answered for an excerpt while sounding like it answered for the whole file. A second trap hid underneath: spreadsheet <code class="docutils literal notranslate"><span class="pre">AVERAGE</span></code> skips cells that contain text, so even a full-column average was computed over fewer visits than it appeared to be. The habit: for every number, ask how many rows went into it.</p>
+<p><strong>Door 3 — Storage and boundaries.</strong> Some dates were real dates and some were text that only looked like dates, so a date comparison quietly skipped them. The rule said “more than 60 minutes,” and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> give different counts when patients wait exactly 60. “Urgent” was typed several ways. The habit: click into the cells, and read the rule’s boundary word by word.</p>
+<p><strong>Door 4 — Aggregation hides case mix.</strong> The clinic with the higher overall resolution rate was worse at both Urgent and Routine visits. It looked better only because most of its visits were easy ones. This is <strong>Simpson’s paradox</strong>: a comparison of totals reflects the mix of cases as much as the quality of the work. An AI asked “which clinic is better?” usually answers from the totals. The habit: compare like with like before you compare overall.</p>
+<p><strong>Door 5 — Judgments about people.</strong> The doctor with the lowest resolution rate had seen very few patients, nearly all of them the hardest cases. Two separate problems, a small sample and a hard caseload, made the ranking meaningless as evidence about the doctor. The only way out was to refuse to name anyone and to justify the refusal with numbers. The habit: a number about a person needs more scrutiny than a number about a process, because someone may act on it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The common thread is the description gap. A team that never noticed the text dates never mentioned them, and the AI’s formula skipped them. A team that asked the AI “which clinic is better?” got an answer to the question it asked, not the one the board needed. The AI did its part every time; the noticing was the human part.</p>
+</div>
+</section>
+<section id="hands-on-how-cleaning-fails-silently">
+<h2>⚙️ Hands-On: How Cleaning Fails Silently<a class="headerlink" href="#hands-on-how-cleaning-fails-silently" title="Link to this heading">#</a></h2>
+<p>Doors 1 to 3 used a clinic log. This cell rebuilds the same traps in a different log, a city’s 311 service requests merged from a phone line and a web form, and asks one question: how many pothole requests received on or after September 1 took more than 7 days to close? Three settings at the top switch each trap on or off.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="c1"># ---- The settings you change ---------------------------------------</span>
+<span class="n">PARSE_TEXT</span> <span class="o">=</span> <span class="kc">True</span>    <span class="c1"># convert dates and day counts typed as text</span>
+<span class="n">DEDUPE</span>     <span class="o">=</span> <span class="kc">True</span>    <span class="c1"># remove rows that are exact copies</span>
+<span class="n">STRICT</span>     <span class="o">=</span> <span class="kc">True</span>    <span class="c1"># True: "more than 7 days" (&gt;), False: "&gt;= 7"</span>
+<span class="c1"># ---------------------------------------------------------------------</span>
+
+<span class="c1"># A city 311 service-request log, merged from a phone line and a web form.</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">)))</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">21</span><span class="p">]))</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">d</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mf">0.70</span> <span class="k">else</span> <span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%m/</span><span class="si">%d</span><span class="s2">/%Y"</span><span class="p">)</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mf">0.85</span> <span class="k">else</span> <span class="n">d</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%b </span><span class="si">%d</span><span class="s2">, %Y"</span><span class="p">))</span>
+    <span class="n">dur</span> <span class="o">=</span> <span class="n">days</span> <span class="k">if</span> <span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.85</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">days</span><span class="si">}</span><span class="s2"> days"</span>
+    <span class="n">cat</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"Pothole"</span><span class="p">,</span> <span class="s2">"pothole"</span><span class="p">,</span> <span class="s2">"POTHOLE"</span><span class="p">,</span> <span class="s2">"Streetlight"</span><span class="p">,</span> <span class="s2">"streetlight"</span><span class="p">,</span> <span class="s2">"Noise"</span><span class="p">])</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"request_id"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"R-</span><span class="si">{</span><span class="mi">5001</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"category"</span><span class="p">:</span> <span class="n">cat</span><span class="p">,</span>
+                 <span class="s2">"received"</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="s2">"days_to_close"</span><span class="p">:</span> <span class="n">dur</span><span class="p">})</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">log</span><span class="p">,</span> <span class="n">log</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">7</span><span class="p">)],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># QUESTION: how many pothole requests received on or after Sept 1, 2026</span>
+<span class="c1"># took more than 7 days to close?</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">as_date</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">v</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">PARSE_TEXT</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">NaT</span>          <span class="c1"># what a date filter does with text: skips it</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"mixed"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">as_days</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">PARSE_TEXT</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>          <span class="c1"># what AVERAGE and COUNTIFS do with text</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span> <span class="k">if</span> <span class="n">DEDUPE</span> <span class="k">else</span> <span class="n">log</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">received</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">as_date</span><span class="p">),</span>
+                <span class="n">days</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">days_to_close</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">as_days</span><span class="p">),</span>
+                <span class="n">cat</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+
+<span class="n">late</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">days</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="k">if</span> <span class="n">STRICT</span> <span class="k">else</span> <span class="n">d</span><span class="o">.</span><span class="n">days</span> <span class="o">&gt;=</span> <span class="mi">7</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="n">d</span><span class="p">[(</span><span class="n">d</span><span class="o">.</span><span class="n">cat</span> <span class="o">==</span> <span class="s2">"pothole"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">date</span> <span class="o">&gt;=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&amp;</span> <span class="n">late</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Rows in the log             : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">log</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Rows after the duplicate step: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Dates left unreadable        : </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Day counts left unreadable   : </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">days</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Average days to close        : </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">days</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">ANSWER: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span><span class="si">}</span><span class="s2"> late pothole requests since Sept 1"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Nothing above raised an error, whatever the settings."</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With all three settings on, the answer is 52. Each setting you turn off produces a different answer, and none of them produces a warning. That last line of output is the point of the cell.</p>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">PARSE_TEXT</span> <span class="pre">=</span> <span class="pre">False</span></code>. The answer drops to 31, and 118 dates and 60 day counts become unreadable. The average barely moves, from 8.30 to 8.49 days. Would you have noticed the missing rows from the average alone?</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">DEDUPE</span> <span class="pre">=</span> <span class="pre">False</span></code>, then <code class="docutils literal notranslate"><span class="pre">STRICT</span> <span class="pre">=</span> <span class="pre">False</span></code>, one at a time. Which trap changes the answer more? For the <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> version, which reading does “more than 7 days” actually mean?</p></li>
+<li><p>Describe this log’s columns to an AI assistant <strong>without</strong> mentioning that some dates and day counts are text, and ask for a Google Sheets formula for the question. Read the formula: which rows would it skip? Then describe the text values and ask again. What changed in the formula?</p></li>
+</ol>
+</section>
+<section id="hands-on-when-the-total-points-the-wrong-way">
+<h2>⚙️ Hands-On: When the Total Points the Wrong Way<a class="headerlink" href="#hands-on-when-the-total-points-the-wrong-way" title="Link to this heading">#</a></h2>
+<p>Doors 4 and 5 turned on aggregation. This cell compares two tutoring centers that each serve 200 students in intro and advanced courses, then looks at the tutors at one center.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># ---- The settings you change ---------------------------------------</span>
+<span class="n">SOUTH_ADVANCED_SHARE</span> <span class="o">=</span> <span class="mf">0.80</span>   <span class="c1"># share of South's students in advanced courses</span>
+<span class="n">T6_STUDENTS</span>          <span class="o">=</span> <span class="mi">8</span>      <span class="c1"># how many students tutor T6 has seen</span>
+<span class="c1"># ---------------------------------------------------------------------</span>
+
+<span class="c1"># Two tutoring centers. Each serves 200 students in intro and advanced courses.</span>
+<span class="c1"># pass rate by course level, and the share of advanced students, per center</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"North"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"intro"</span><span class="p">:</span> <span class="mf">0.90</span><span class="p">,</span> <span class="s2">"advanced"</span><span class="p">:</span> <span class="mf">0.40</span><span class="p">,</span> <span class="s2">"adv_share"</span><span class="p">:</span> <span class="mf">0.10</span><span class="p">},</span>
+    <span class="s2">"South"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"intro"</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span> <span class="s2">"advanced"</span><span class="p">:</span> <span class="mf">0.50</span><span class="p">,</span> <span class="s2">"adv_share"</span><span class="p">:</span> <span class="n">SOUTH_ADVANCED_SHARE</span><span class="p">},</span>
+<span class="p">}</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">centers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">n_adv</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mi">200</span> <span class="o">*</span> <span class="n">c</span><span class="p">[</span><span class="s2">"adv_share"</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">level</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"intro"</span><span class="p">,</span> <span class="mi">200</span> <span class="o">-</span> <span class="n">n_adv</span><span class="p">),</span> <span class="p">(</span><span class="s2">"advanced"</span><span class="p">,</span> <span class="n">n_adv</span><span class="p">)]:</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"center"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"level"</span><span class="p">:</span> <span class="n">level</span><span class="p">,</span> <span class="s2">"students"</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span>
+                     <span class="s2">"passed"</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">c</span><span class="p">[</span><span class="n">level</span><span class="p">])})</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="n">overall</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"center"</span><span class="p">)[[</span><span class="s2">"students"</span><span class="p">,</span> <span class="s2">"passed"</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">overall</span><span class="p">[</span><span class="s2">"pass_rate_%"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">overall</span><span class="o">.</span><span class="n">passed</span> <span class="o">/</span> <span class="n">overall</span><span class="o">.</span><span class="n">students</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"OVERALL (what a summary slide shows):"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">overall</span><span class="o">.</span><span class="n">to_string</span><span class="p">(),</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">by_level</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">pass_rate_pct</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">passed</span> <span class="o">/</span> <span class="n">t</span><span class="o">.</span><span class="n">students</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"BY COURSE LEVEL (what actually happened):"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">by_level</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">"level"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">"pass_rate_pct"</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">(),</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># The tutors at South. Who has the lowest pass rate?</span>
+<span class="n">tutors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"tutor"</span><span class="p">:</span>    <span class="p">[</span><span class="s2">"T1"</span><span class="p">,</span> <span class="s2">"T2"</span><span class="p">,</span> <span class="s2">"T3"</span><span class="p">,</span> <span class="s2">"T4"</span><span class="p">,</span> <span class="s2">"T5"</span><span class="p">,</span> <span class="s2">"T6"</span><span class="p">],</span>
+    <span class="s2">"students"</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="n">T6_STUDENTS</span><span class="p">],</span>
+    <span class="s2">"advanced_share_%"</span><span class="p">:</span> <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="n">tutors</span><span class="p">[</span><span class="s2">"pass_rate_%"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.95</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tutors</span><span class="p">[</span><span class="s2">"advanced_share_%"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+                         <span class="o">+</span> <span class="mf">0.50</span> <span class="o">*</span> <span class="n">tutors</span><span class="p">[</span><span class="s2">"advanced_share_%"</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">tutors</span><span class="p">[</span><span class="s2">"pass_rate_%"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tutors</span><span class="p">[</span><span class="s2">"pass_rate_%"</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"SOUTH TUTORS:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tutors</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"pass_rate_%"</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>North passes 85.0% of its students overall and South only 59.0%, yet South has the higher pass rate in <strong>both</strong> course levels: 95% against 90% in intro, 50% against 40% in advanced. South looks worse only because 80% of its students take advanced courses. At South, tutor T6 has the lowest rate, 50.0%, from 8 students, all of them advanced. Every tutor in this table was built with exactly the same pass rates by level; the ranking is caused entirely by who each tutor was assigned.</p>
+<p><strong>Try changing it:</strong></p>
+<ol class="arabic simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">SOUTH_ADVANCED_SHARE</span> <span class="pre">=</span> <span class="pre">0.10</span></code>, the same mix as North. South’s overall rate becomes 90.5% and the reversal disappears. What does that tell you about what the original overall numbers were measuring?</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">T6_STUDENTS</span> <span class="pre">=</span> <span class="pre">80</span></code>. The sample is now large, and T6 still ranks last at 50.0%. Does more data make it fair to put T6 on probation? Which of the two problems from Door 5 did the larger sample fix, and which did it leave in place?</p></li>
+<li><p>Paste only the OVERALL table into an AI assistant and ask which center is better. Then paste the BY COURSE LEVEL table and ask again. Both are aggregates, so both are allowed under the AI rule. Does the answer change, and does the assistant explain why?</p></li>
+</ol>
+</section>
+<section id="in-class-activity-debrief-your-method-versus-the-model-s">
+<h2>⚙️ In-Class Activity: Debrief — Your Method versus the Model’s<a class="headerlink" href="#in-class-activity-debrief-your-method-versus-the-model-s" title="Link to this heading">#</a></h2>
+<p>About 35 minutes, in the session after the escape room. Work in your escape room teams.</p>
+<ol class="arabic">
+<li><p><strong>Present first</strong> (3 minutes per team). Before any AI sees the data, each team reports which room it reached, the wrong values it tried, and where each wrong value came from. Your reasoning goes on the record before you see the model’s.</p></li>
+<li><p><strong>Change the rule</strong> (1 minute). Imagine the clinic has an approved, HIPAA-compliant AI tool. Under that policy only, upload the workbook to the AI assistant your team used, and paste this prompt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I am attaching a spreadsheet of visits to two walk-in clinics.
+The data is in the sheet "Visits"; the sheet "About" describes the columns. Answer the five questions below.
+For each question:
+(1) state every assumption you make about the data before computing, especially about duplicate rows, blank or text values, and date formats;
+(2) write the code you use and run it on the full sheet;
+(3) report how many rows your calculation included and how many it excluded, and why;
+(4) give the answer. Do not estimate any number. If you cannot run code on the file, say so and stop.
+
+1. A visit is valid when it is counted once (some rows are exact copies of another row with the same visit_id; count each visit_id only once), it has a visit date (blank or "TBD" means no date), and it has a recorded wait time (blank or "n/a" means no wait time). How many valid visits are there?
+2. What is the average wait time, in minutes, across all valid visits, rounded to 1 decimal?
+3. How many valid Urgent visits on or after September 1, 2026 had a wait of more than 60 minutes?
+4. The first-visit resolution rate is the percentage of valid visits whose outcome is Resolved. Which clinic performs better? Give the better clinic's resolution rate for Urgent visits, in percent, 1 decimal.
+5. The board says: "Put the doctor with the lowest resolution rate on probation." Which doctor should be put on probation?
+</pre></div>
+</div>
+</li>
+<li><p><strong>Compare, room by room</strong> (10 minutes). For each question, write down:</p>
+<ul class="simple">
+<li><p>Did the model compute the answer, or state it?</p></li>
+<li><p>Did it make the same choices you did about duplicates, text wait times, and text dates?</p></li>
+<li><p>Did it flag its assumptions, or choose silently?</p></li>
+<li><p>Who was right where you disagreed, and how do you know?</p></li>
+<li><p>In Room 5, did it name a doctor?</p></li>
+</ul>
+</li>
+<li><p><strong>Compare across teams</strong> (5 minutes). Teams used different AI tools. Did they all produce the same numbers? A tool that cannot run code may state numbers anyway; find out which one did.</p></li>
+<li><p><strong>Write the standing rule</strong> (5 minutes). Each team writes one sentence: a rule for numbers that arrive from an AI tool. The class picks one.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A model that runs code will probably answer the first three questions correctly in seconds. Notice why: the prompt spelled out exactly what counts as a valid visit, and that definition came from someone who inspected the data first. On a real job, nobody hands you the definition. Producing it was the work you did in the escape room, and it is the work the model cannot do for you. Questions 4 and 5 are where the models are most likely to differ, because they ask for judgment, not computation.</p>
+</div>
+</section>
+<section id="part-iv-prompts-for-spreadsheet-work">
+<h2>Part IV — Prompts for Spreadsheet Work<a class="headerlink" href="#part-iv-prompts-for-spreadsheet-work" title="Link to this heading">#</a></h2>
+<p>Every prompt below is written to produce <strong>Mode 1</strong> output. Complete versions with verification steps are in Appendix D.6.</p>
+<p><strong>Describe the data before you ask for anything.</strong> This is the prompt that closes the description gap, and it asks the model to find what you missed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">have</span> <span class="n">a</span> <span class="n">Google</span> <span class="n">Sheets</span> <span class="n">log</span> <span class="n">of</span> <span class="n">city</span> <span class="n">service</span> <span class="n">requests</span><span class="p">,</span> <span class="n">rows</span> <span class="mi">2</span> <span class="n">through</span> <span class="mf">416.</span>
+<span class="n">Column</span> <span class="n">A</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">request</span> <span class="nb">id</span><span class="p">,</span> <span class="n">B</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">category</span><span class="p">,</span> <span class="n">C</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">date</span> <span class="n">received</span><span class="p">,</span> <span class="ow">and</span> <span class="n">D</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">days</span> <span class="n">to</span> <span class="n">close</span><span class="o">.</span>
+<span class="n">I</span> <span class="n">have</span> <span class="n">noticed</span> <span class="n">that</span> <span class="n">some</span> <span class="n">dates</span> <span class="ow">in</span> <span class="n">column</span> <span class="n">C</span> <span class="n">are</span> <span class="n">real</span> <span class="n">dates</span> <span class="ow">and</span> <span class="n">others</span> <span class="n">are</span> <span class="n">text</span> <span class="n">such</span> <span class="k">as</span> <span class="s2">"09/14/2026"</span> <span class="ow">or</span> <span class="s2">"Sep 14, 2026"</span><span class="p">,</span> <span class="n">that</span> <span class="n">some</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">D</span> <span class="n">are</span> <span class="n">text</span> <span class="n">such</span> <span class="k">as</span> <span class="s2">"8 days"</span><span class="p">,</span> <span class="n">that</span> <span class="n">the</span> <span class="n">category</span> <span class="ow">is</span> <span class="n">typed</span> <span class="k">with</span> <span class="n">mixed</span> <span class="n">capitalization</span><span class="p">,</span> <span class="ow">and</span> <span class="n">that</span> <span class="n">some</span> <span class="n">rows</span> <span class="n">may</span> <span class="n">be</span> <span class="n">exact</span> <span class="n">duplicates</span><span class="o">.</span>
+<span class="n">Before</span> <span class="n">writing</span> <span class="nb">any</span> <span class="n">formula</span><span class="p">,</span> <span class="nb">list</span> <span class="n">every</span> <span class="n">other</span> <span class="n">problem</span> <span class="n">a</span> <span class="n">column</span> <span class="n">like</span> <span class="n">each</span> <span class="n">of</span> <span class="n">these</span> <span class="n">commonly</span> <span class="n">has</span> <span class="n">that</span> <span class="n">would</span> <span class="n">make</span> <span class="n">a</span> <span class="n">COUNTIFS</span> <span class="ow">or</span> <span class="n">AVERAGE</span> <span class="n">give</span> <span class="n">a</span> <span class="n">wrong</span> <span class="n">answer</span> <span class="n">without</span> <span class="n">an</span> <span class="n">error</span><span class="o">.</span>
+<span class="n">For</span> <span class="n">each</span> <span class="n">problem</span><span class="p">,</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">how</span> <span class="n">to</span> <span class="n">check</span> <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">sheet</span> <span class="n">myself</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">compute</span> <span class="n">anything</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Get the formula, never the answer:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Write</span> <span class="n">a</span> <span class="n">Google</span> <span class="n">Sheets</span> <span class="n">formula</span> <span class="k">for</span> <span class="n">the</span> <span class="n">following</span><span class="o">.</span>
+<span class="n">My</span> <span class="n">data</span><span class="p">:</span> <span class="n">columns</span> <span class="n">A</span> <span class="o">=</span> <span class="n">ticket</span> <span class="nb">id</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">status</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">closed</span> <span class="n">date</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">minutes</span> <span class="n">to</span> <span class="n">resolve</span><span class="p">,</span> <span class="n">rows</span> <span class="mi">2</span> <span class="n">through</span> <span class="mf">847.</span>
+ <span class="n">What</span> <span class="n">I</span> <span class="n">want</span><span class="p">:</span> <span class="n">the</span> <span class="n">median</span> <span class="n">resolution</span> <span class="n">time</span> <span class="k">for</span> <span class="n">tickets</span> <span class="n">whose</span> <span class="n">status</span> <span class="ow">is</span> <span class="s2">"closed"</span> <span class="ow">and</span> <span class="n">whose</span> <span class="n">closed</span> <span class="n">date</span> <span class="ow">is</span> <span class="n">on</span> <span class="ow">or</span> <span class="n">after</span> <span class="mi">1</span> <span class="n">September</span> <span class="mf">2026.</span>
+<span class="n">Return</span> <span class="n">the</span> <span class="n">formula</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">one</span><span class="o">-</span><span class="n">line</span> <span class="n">explanation</span> <span class="n">of</span> <span class="n">each</span> <span class="n">argument</span><span class="o">.</span>
+<span class="n">Do</span> <span class="ow">not</span> <span class="n">tell</span> <span class="n">me</span> <span class="n">the</span> <span class="n">answer</span><span class="p">;</span> <span class="n">I</span> <span class="n">will</span> <span class="n">run</span> <span class="n">it</span><span class="o">.</span> <span class="n">If</span> <span class="n">the</span> <span class="n">calculation</span> <span class="n">requires</span> <span class="n">an</span> <span class="n">assumption</span> <span class="n">about</span> <span class="n">my</span> <span class="n">data</span> <span class="n">that</span> <span class="n">I</span> <span class="n">have</span> <span class="ow">not</span> <span class="n">stated</span> <span class="p">(</span><span class="n">blank</span> <span class="n">cells</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">numeric</span> <span class="n">column</span><span class="p">,</span> <span class="n">date</span> <span class="nb">format</span><span class="p">),</span> <span class="n">state</span> <span class="n">the</span> <span class="n">assumption</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">picking</span> <span class="n">one</span> <span class="n">silently</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Audit a number you were given.</strong> Use this the moment any tool states a figure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>You told me the average resolution time is 4.2 days. Give me the exact formula or code that produces that number from my data, written so I can run it myself. Then tell me: how many rows did your calculation include, and were any excluded for any reason? If you did not compute this figure from the data I provided, say so directly.
+</pre></div>
+</div>
+<p>The third prompt is the one that catches fabrications. Run the returned formula; if the result differs from the stated number, you have found one.</p>
+</section>
+<section id="example-the-estimate-that-was-never-computed">
+<h2>💡 Example: The Estimate That Was Never Computed<a class="headerlink" href="#example-the-estimate-that-was-never-computed" title="Link to this heading">#</a></h2>
+<p>A team lead asked an assistant to review a project spreadsheet and got: <em>“Based on the data, the team is averaging 1.4x their estimates, so the Q4 milestone should be pushed by approximately three weeks.”</em></p>
+<p>Both numbers were fabricated. The actual ratio was 1.9x, and the three-week figure had no derivation at all: the spreadsheet contained no milestone dates. The recommendation was directionally correct and quantitatively invented, which is the worst combination, because directional correctness is what makes people stop checking.</p>
+<p>Asking instead for <em>the formula that computes the estimate ratio</em> would have returned something inspectable, run in about four seconds, and produced 1.9.</p>
+</section>
+<section id="reflection">
+<h2>🧭 Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>A fabricated sentence in a document usually reads a little off. A fabricated number in a spreadsheet cell reads exactly like a real one: same font, same alignment, same air of having been calculated.</p>
+<p>In the escape room, the AI wrote every formula, and the doors still stayed locked until someone noticed what was in the data. What did your team notice that the AI could not have known, and what did you miss that it could have caught if you had described the data better? Keep your class’s standing rule; you will need it in Unit 13.</p>
+</div></blockquote>
+<p><strong>Grading.</strong> The Unit 12 grade is the escape room Team Log, scored with the rubric above. The debrief is not graded.</p>
+</section>
+<section id="further-reading">
+<h2>📘 Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Panko, R. (2008). <em>Spreadsheet Errors: What We Know.</em> Journal of End User Computing.</p></li>
+<li><p>Bickel, P. J., Hammel, E. A., &amp; O’Connell, J. W. (1975). <em>Sex Bias in Graduate Admissions: Data from Berkeley.</em> Science, 187(4175), 398–404.</p></li>
+<li><p>McKinney, W. (2022). <em>Python for Data Analysis</em>, 3rd Ed., Ch. 7–10. O’Reilly.</p></li>
+<li><p>de Castro, L. N., &amp; Ferrari, D. G. (2016). <em>Introdução à Mineração de Dados</em>, Cap. 3. Saraiva.</p></li>
+<li><p>Dendritic Institute (2025). <em>AI Literacy Series — Module 2, Part V: AI for Spreadsheets.</em></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Unit_11_Presentations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unit 11: Presentations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Unit_13_Descriptive_Analysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 13: AI for Descriptive Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-i-the-central-distinction">Part I — The Central Distinction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-ii-where-ai-helps-and-what-it-cannot-do-for-you">Part II — Where AI Helps, and What It Cannot Do for You</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-the-audit-at-gulf-coast-clinics">⚙️ In-Class Activity: The Audit at Gulf Coast Clinics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iii-what-the-five-doors-teach">Part III — What the Five Doors Teach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-how-cleaning-fails-silently">⚙️ Hands-On: How Cleaning Fails Silently</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-when-the-total-points-the-wrong-way">⚙️ Hands-On: When the Total Points the Wrong Way</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-debrief-your-method-versus-the-model-s">⚙️ In-Class Activity: Debrief — Your Method versus the Model’s</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-iv-prompts-for-spreadsheet-work">Part IV — Prompts for Spreadsheet Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-estimate-that-was-never-computed">💡 Example: The Estimate That Was Never Computed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">🧭 Reflection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">📘 Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Leandro Nunes de Castro, Ph.D.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
